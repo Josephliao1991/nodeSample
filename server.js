@@ -7,10 +7,10 @@ var mongoose = require('mongoose');
 //
 mongoose.connect('mongodb:/10.240.250.86/home/db');
 
-  var family = mongoose.model('family', {
-    familyKet : String,
-    deviceToken: String
-  });
+  // var family = mongoose.model('family', {
+  //   familyKet : String,
+  //   deviceToken: String
+  // });
 
   var app = express();
 
@@ -26,15 +26,15 @@ mongoose.connect('mongodb:/10.240.250.86/home/db');
 
   app.get('/family',function(request, response){
 
-    family.find(function(error, phone) {
-      // body...
-      if (error) {
-          response.send(error);
-      }
-
-      response.json(phone)
-
-    })
+    // family.find(function(error, phone) {
+    //   // body...
+    //   if (error) {
+    //       response.send(error);
+    //   }
+    //
+    //   response.json(phone)
+    //
+    // })
 
     response.end("Get family");
 
@@ -42,25 +42,25 @@ mongoose.connect('mongodb:/10.240.250.86/home/db');
 
   app.post('/family',function(request, response){
 
-    family.create({
-        familyKey : request.body.familyKey,
-        deviceToken : request.body.deviceToken
-    },function(error, family){
-      // body...
-      if (error) {
-          response.send(error)
-      }
-
-      family.find(function(error, family) {
-        // body...
-        if (error) {
-            response.send(error)
-        }
-
-        response.json(family)
-
-      })
-    })
+    // family.create({
+    //     familyKey : request.body.familyKey,
+    //     deviceToken : request.body.deviceToken
+    // },function(error, family){
+    //   // body...
+    //   if (error) {
+    //       response.send(error)
+    //   }
+    //
+    //   family.find(function(error, family) {
+    //     // body...
+    //     if (error) {
+    //         response.send(error)
+    //     }
+    //
+    //     response.json(family)
+    //
+    //   })
+    // })
     var familyKey = request.body.familyKey;
     response.end("Post family : " + familyKey);
 

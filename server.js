@@ -5,12 +5,12 @@ var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 var argv = require('optimist').argv;
 //
-// mongoose.connect('mongodb://'+argv.be_ip+':80/db');
+mongoose.connect('mongodb://'+argv.be_ip+':80/db');
 
-  // var family = mongoose.model('family', {
-  //   familyKet : String,
-  //   deviceToken: String
-  // });
+  var family = mongoose.model('family', {
+    familyKet : String,
+    deviceToken: String
+  });
 
   var app = express();
 
@@ -97,7 +97,7 @@ var argv = require('optimist').argv;
   //   console.log("Press Ctrl+C to quit.");
   // });
 
-  app.listen(8080,function(request, response) {
+  app.listen(8080,argv.fe_ip,function(request, response) {
     // body...
     // console.log('App listening at http://%s:%s', server.address().address, server.address().port);
     console.log("Press Ctrl+C to quit.");

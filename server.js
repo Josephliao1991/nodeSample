@@ -5,7 +5,7 @@ var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 var argv = require('optimist').argv;
 //
-mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
+mongoose.connect('mongodb://'+argv.be_ip+':80/$HOME/db');
 
   var family = mongoose.model('family', {
     familyKet : String,
@@ -17,6 +17,7 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
   app.use(bodyparser.json())
   app.use(bodyparser.urlencoded({extended: true}))
+  app.use(bodyParser.json({ type: 'application/vnd.api+json' }))
   app.use(methodOverride())
 
   app.get('/',function(request,response){

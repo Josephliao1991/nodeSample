@@ -5,7 +5,7 @@ var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 // var ip = '10.240.212.168'
 //
-mongoose.connect('mongodb:/10.240.250.86/home/db');
+mongoose.connect('mongodb:/10.240.250.86/home/powei_lin0906/db');
 
   // var family = mongoose.model('family', {
   //   familyKet : String,

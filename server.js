@@ -3,9 +3,9 @@ var express = require('express');
 var bodyparser = require('body-parser');
 
 var mongoose = require('mongoose');
-var ip = '192.168.1.106'
+var ip = '10.240.212.168'
 
-mongoose.connect('mongodb://192.168.1.106:27017/data/db');
+mongoose.connect('mongodb:/10.240.212.168:80/db');
 
   var family = mongoose.model('family', {
     familyKet : String,

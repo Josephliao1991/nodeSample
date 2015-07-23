@@ -42,26 +42,26 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/db');
 
   app.post('/family',function(request, response){
 
-    family.create({
-        familyKey : request.body.familyKey,
-        deviceToken : request.body.deviceToken
-    },function(error, family){
-      // body...
-      if (error) {
-          response.send(error)
-      }
+    // family.create({
+    //     familyKey : request.body.familyKey,
+    //     deviceToken : request.body.deviceToken
+    // },function(error, family){
+    //   // body...
+    //   if (error) {
+    //       response.send(error)
+    //   }
+    //
+    //   family.find(function(error, family) {
+    //     // body...
+    //     if (error) {
+    //         response.send(error)
+    //     }
+    //
+    //     response.json(family)
+    //
+    //   })
+    // })
 
-      family.find(function(error, family) {
-        // body...
-        if (error) {
-            response.send(error)
-        }
-
-        response.json(family)
-
-      })
-    })
-    
     var familyKey = request.body.familyKey;
     response.end("Post family : " + familyKey);
 

@@ -64,8 +64,8 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
       })
     })
 
-    var familyKey = request.body.familyKey;
-    response.end("Post family : " + familyKey);
+    // var familyKey = request.body.familyKey;
+    // response.end("Post family : " + familyKey);
 
   });
 

@@ -5,7 +5,7 @@ var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 var argv = require('optimist').argv;
 //
-mongoose.connect('mongodb://'+argv.be_ip+':80/db');
+// mongoose.connect('mongodb://'+argv.be_ip+':80/db');
 
   // var family = mongoose.model('family', {
   //   familyKet : String,

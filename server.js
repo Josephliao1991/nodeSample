@@ -2,7 +2,18 @@ var http = require('http');
 var express = require('express');
 var bodyparser = require('body-parser');
 
+var mongoose = require('mongoose');
+var ip = '192.168.1.106'
+
+mongoose.connect('mongodb://192.168.1.106:27017/data/db');
+
+  var family = mongoose.model('family', {
+    familyKet : String,
+    deviceToken: String
+  });
+
   var app = express();
+
 
   app.use(bodyparser.json())
   app.use(bodyparser.urlencoded({
@@ -17,12 +28,41 @@ var bodyparser = require('body-parser');
 
   app.get('/family',function(request, response){
 
+    family.find(function(error, phone) {
+      // body...
+      if (error) {
+          response.send(error);
+      }
+
+      response.json(phone)
+
+    })
+
     response.end("Get family");
 
   });
 
   app.post('/family',function(request, response){
 
+    family.create({
+        familyKey : request.body.familyKey,
+        deviceToken : request.body.deviceToken
+    },function(error, family){
+      // body...
+      if (error) {
+          response.send(error)
+      }
+
+      family.find(function(error, family) {
+        // body...
+        if (error) {
+            response.send(error)
+        }
+
+        response.json(family)
+
+      })
+    })
     var familyKey = request.body.familyKey;
     response.end("Post family : " + familyKey);
 

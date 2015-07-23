@@ -8,7 +8,7 @@ var argv = require('optimist').argv;
 mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
   var family = mongoose.model('family', {
-    familyKet : String,
+    familyKey : String,
     deviceToken: String
   });
 

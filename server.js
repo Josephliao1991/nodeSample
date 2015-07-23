@@ -16,9 +16,7 @@ var mongoose = require('mongoose');
 
 
   app.use(bodyparser.json())
-  app.use(bodyparser.urlencoded({
-    extended: true
-  }))
+  app.use(bodyparser.urlencoded({extended: true}))
 
   app.get('/',function(request,response){
 

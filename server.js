@@ -93,5 +93,5 @@ var methodOverride = require('method-override');
   })
 
 
-  app.listen(8888)
+  app.listen(8888,'104.199.130.231')
   console.log("server start");

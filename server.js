@@ -18,7 +18,7 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/db');
   app.use(bodyparser.json())
   app.use(bodyparser.urlencoded({extended: true}))
   app.use(methodOverride())
-  
+
   app.get('/',function(request,response){
 
     response.end("Hello world");
@@ -68,29 +68,29 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/db');
 
   });
 
-  app.put('/family/:id',function(request, response){
-    // body...
-    var id = request.params.id
-    if (id == "abc123") {
+  // app.put('/family/:id',function(request, response){
+  //   // body...
+  //   var id = request.params.id
+  //   if (id == "abc123") {
+  //
+  //     var familyKey = request.body.familyKey;
+  //     response.end("Put family : " + familyKey);
+  //   }else {
+  //
+  //     response.end("Wrong id");
+  //   }
+  // })
 
-      var familyKey = request.body.familyKey;
-      response.end("Put family : " + familyKey);
-    }else {
-
-      response.end("Wrong id");
-    }
-  })
-
-  app.delete('/family/:id',function(request, response){
-    // body...
-    var id = request.params.id
-    if (id == "abc123") {
-      response.end("Delete family")
-    }else {
-      response.end("Wrong Id")
-    }
-
-  })
+  // app.delete('/family/:id',function(request, response){
+  //   // body...
+  //   var id = request.params.id
+  //   if (id == "abc123") {
+  //     response.end("Delete family")
+  //   }else {
+  //     response.end("Wrong Id")
+  //   }
+  //
+  // })
 
   // var server = app.listen(process.env.PORT||'8888','10.240.5.134',function(request, response) {
   //   console.log('App listening at http://%s:%s', server.address().address, server.address().port);

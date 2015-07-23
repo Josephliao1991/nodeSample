@@ -47,21 +47,22 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
     family.create({
         familyKey : request.body.familyKey,
         deviceToken : request.body.deviceToken
-    },function(error, family){
+    },function(error, familyy){
       // body...
       if (error) {
           response.send(error)
       }
 
-      // family.find(function(error, familys) {
-      //   // body...
-      //   if (error) {
-      //       response.send(error)
-      //   }
-      //
-      //   response.json(familys)
-      //
-      // })
+
+      family.find(function(error, familys) {
+        // body...
+        if (error) {
+            response.send(error)
+        }
+
+        response.json(familys)
+
+      })
     })
 
     // var familyKey = request.body.familyKey;

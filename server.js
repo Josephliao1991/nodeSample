@@ -3,9 +3,9 @@ var express = require('express');
 var bodyparser = require('body-parser');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
-// var ip = '10.240.212.168'
+var argv = require('optimist').argv;
 //
-mongoose.connect('mongodb:/10.240.250.86/my_datebase');
+mongoose.connect('mongodb:/'+argv.be_ip+':80/my_datebase');
 
   // var family = mongoose.model('family', {
   //   familyKet : String,
@@ -95,7 +95,7 @@ mongoose.connect('mongodb:/10.240.250.86/my_datebase');
   //   console.log("Press Ctrl+C to quit.");
   // });
 
-  app.listen(8080,'10.240.102.112',function(request, response) {
+  app.listen(8080,argv.fe_ip,function(request, response) {
     // body...
     // console.log('App listening at http://%s:%s', server.address().address, server.address().port);
     console.log("Press Ctrl+C to quit.");

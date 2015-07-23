@@ -7,10 +7,10 @@ var argv = require('optimist').argv;
 //
 mongoose.connect('mongodb://'+argv.be_ip+':80/db');
 
-  // var family = mongoose.model('family', {
-  //   familyKet : String,
-  //   deviceToken: String
-  // });
+  var family = mongoose.model('family', {
+    familyKet : String,
+    deviceToken: String
+  });
 
   var app = express();
 

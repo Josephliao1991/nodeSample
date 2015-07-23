@@ -17,7 +17,8 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/db');
 
   app.use(bodyparser.json())
   app.use(bodyparser.urlencoded({extended: true}))
-
+  app.use(methodOverride())
+  
   app.get('/',function(request,response){
 
     response.end("Hello world");

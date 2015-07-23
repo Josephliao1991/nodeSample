@@ -92,7 +92,7 @@ var methodOverride = require('method-override');
 
   })
 
-  var server = app.listen(process.env.PORT||'8888',function(request, response) {
+  var server = app.listen(process.env.PORT||'8888','10.240.5.134',function(request, response) {
     console.log('App listening at http://%s:%s', server.address().address, server.address().port);
     console.log("Press Ctrl+C to quit.");
   });

@@ -66,19 +66,19 @@ var mongoose = require('mongoose');
 
   });
 
-  // app.put('/family/:id',function(request, response){
-  //   // body...
-  //   var id = request.params.id
-  //   if (id == "abc123") {
-  //
-  //     var familyKey = request.body.familyKey;
-  //     response.end("Put family : " + familyKey);
-  //   }else {
-  //
-  //     response.end("Wrong id");
-  //   }
-  // })
-  //
+  app.put('/family/:id',function(request, response){
+    // body...
+    var id = request.params.id
+    if (id == "abc123") {
+
+      var familyKey = request.body.familyKey;
+      response.end("Put family : " + familyKey);
+    }else {
+
+      response.end("Wrong id");
+    }
+  })
+
   // app.delete('/family/:id',function(request, response){
   //   // body...
   //   var id = request.params.id

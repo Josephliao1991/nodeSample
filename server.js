@@ -70,29 +70,57 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
   });
 
-  // app.put('/family/:id',function(request, response){
-  //   // body...
-  //   var id = request.params.id
-  //   if (id == "abc123") {
-  //
-  //     var familyKey = request.body.familyKey;
-  //     response.end("Put family : " + familyKey);
-  //   }else {
-  //
-  //     response.end("Wrong id");
-  //   }
-  // })
+  app.put('/family/:id',function(request, response){
+    // body...
 
-  // app.delete('/family/:id',function(request, response){
-  //   // body...
-  //   var id = request.params.id
-  //   if (id == "abc123") {
-  //     response.end("Delete family")
-  //   }else {
-  //     response.end("Wrong Id")
-  //   }
-  //
-  // })
+    return family.findById(req.params.id, function(err, familyy) {
+	    familyy.familyKey = req.body.familyKey;
+	    familyy.deviceToken = req.body.deviceToken;
+	    return familyy.save(function(err) {
+	      if (err) {
+	        res.send(err);
+	      }
+	      return res.send(familyy);
+	    });
+	  });
+
+    // var id = request.params.id
+    // if (id == "abc123") {
+    //
+    //   var familyKey = request.body.familyKey;
+    //   response.end("Put family : " + familyKey);
+    // }else {
+    //
+    //   response.end("Wrong id");
+    // }
+  })
+
+  app.delete('/family/:id',function(request, response){
+    // body...
+
+    family.remove({
+			id : req.params.id
+		}, function(err, familyy) {
+			if (err)
+				res.send(err);
+
+			// get and return all the todos after you create another
+			family.find(function(err, familys) {
+				if (err)
+					res.send(err)
+				res.json(familys);
+			});
+		});
+
+
+    // var id = request.params.id
+    // if (id == "abc123") {
+    //   response.end("Delete family")
+    // }else {
+    //   response.end("Wrong Id")
+    // }
+
+  })
 
   // var server = app.listen(process.env.PORT||'8888','10.240.5.134',function(request, response) {
   //   console.log('App listening at http://%s:%s', server.address().address, server.address().port);

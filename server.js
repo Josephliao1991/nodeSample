@@ -79,16 +79,16 @@ var mongoose = require('mongoose');
     }
   })
 
-  // app.delete('/family/:id',function(request, response){
-  //   // body...
-  //   var id = request.params.id
-  //   if (id == "abc123") {
-  //     response.end("Delete family")
-  //   }else {
-  //     response.end("Wrong Id")
-  //   }
-  //
-  // })
+  app.delete('/family/:id',function(request, response){
+    // body...
+    var id = request.params.id
+    if (id == "abc123") {
+      response.end("Delete family")
+    }else {
+      response.end("Wrong Id")
+    }
+
+  })
 
   // var server = app.listen(process.env.PORT||'8888','10.240.5.134',function(request, response) {
   //   console.log('App listening at http://%s:%s', server.address().address, server.address().port);

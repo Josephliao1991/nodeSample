@@ -5,12 +5,12 @@ var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 // var ip = '10.240.212.168'
 //
-// mongoose.connect('mongodb:/10.240.212.168:80/db');
-//
-//   var family = mongoose.model('family', {
-//     familyKet : String,
-//     deviceToken: String
-//   });
+mongoose.connect('mongodb:/10.240.250.86/db');
+
+  var family = mongoose.model('family', {
+    familyKet : String,
+    deviceToken: String
+  });
 
   var app = express();
 
@@ -26,15 +26,15 @@ var mongoose = require('mongoose');
 
   app.get('/family',function(request, response){
 
-    // family.find(function(error, phone) {
-    //   // body...
-    //   if (error) {
-    //       response.send(error);
-    //   }
-    //
-    //   response.json(phone)
-    //
-    // })
+    family.find(function(error, phone) {
+      // body...
+      if (error) {
+          response.send(error);
+      }
+
+      response.json(phone)
+
+    })
 
     response.end("Get family");
 
@@ -42,25 +42,25 @@ var mongoose = require('mongoose');
 
   app.post('/family',function(request, response){
 
-    // family.create({
-    //     familyKey : request.body.familyKey,
-    //     deviceToken : request.body.deviceToken
-    // },function(error, family){
-    //   // body...
-    //   if (error) {
-    //       response.send(error)
-    //   }
-    //
-    //   family.find(function(error, family) {
-    //     // body...
-    //     if (error) {
-    //         response.send(error)
-    //     }
-    //
-    //     response.json(family)
-    //
-    //   })
-    // })
+    family.create({
+        familyKey : request.body.familyKey,
+        deviceToken : request.body.deviceToken
+    },function(error, family){
+      // body...
+      if (error) {
+          response.send(error)
+      }
+
+      family.find(function(error, family) {
+        // body...
+        if (error) {
+            response.send(error)
+        }
+
+        response.json(family)
+
+      })
+    })
     var familyKey = request.body.familyKey;
     response.end("Post family : " + familyKey);
 

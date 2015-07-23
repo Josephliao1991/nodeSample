@@ -73,14 +73,14 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
   app.put('/family/:id',function(request, response){
     // body...
 
-    return family.findById(req.params.id, function(err, familyy) {
-	    familyy.familyKey = req.body.familyKey;
-	    familyy.deviceToken = req.body.deviceToken;
+    return family.findById(request.params.id, function(err, familyy) {
+	    familyy.familyKey = request.body.familyKey;
+	    familyy.deviceToken = request.body.deviceToken;
 	    return familyy.save(function(err) {
 	      if (err) {
-	        res.send(err);
+	        response.send(err);
 	      }
-	      return res.send(familyy);
+	      return response.send(familyy);
 	    });
 	  });
 
@@ -99,16 +99,16 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
     // body...
 
     family.remove({
-			_id : req.params.id
+			_id : request.params.id
 		}, function(err, familyy) {
 			if (err)
-				res.send(err);
+				response.send(err);
 
 			// get and return all the todos after you create another
 			family.find(function(err, familys) {
 				if (err)
-					res.send(err)
-				res.json(familys);
+					response.send(err)
+				response.json(familys);
 			});
 		});
 

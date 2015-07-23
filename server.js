@@ -99,7 +99,7 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
     // body...
 
     family.remove({
-			id : req.params.id
+			_id : req.params.id
 		}, function(err, familyy) {
 			if (err)
 				res.send(err);

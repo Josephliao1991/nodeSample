@@ -38,7 +38,7 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
     })
 
-    response.end("Get family");
+    // response.end("Get family");
 
   });
 

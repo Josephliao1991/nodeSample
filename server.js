@@ -92,7 +92,7 @@ var methodOverride = require('method-override');
 
   })
 
-  var server = app.listen(8888||'8888','10.240.5.134',function(request, response) {
+  var server = app.listen(8888||'8888','104.155.198.46',function(request, response) {
     console.log('App listening at http://%s:%s', server.address().address, server.address().port);
     console.log("Press Ctrl+C to quit.");
   });

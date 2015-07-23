@@ -26,15 +26,15 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/db');
 
   app.get('/family',function(request, response){
 
-    family.find(function(error, phone) {
-      // body...
-      if (error) {
-          response.send(error);
-      }
-
-      response.json(phone)
-
-    })
+    // family.find(function(error, phone) {
+    //   // body...
+    //   if (error) {
+    //       response.send(error);
+    //   }
+    //
+    //   response.json(phone)
+    //
+    // })
 
     response.end("Get family");
 

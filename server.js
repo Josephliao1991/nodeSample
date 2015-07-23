@@ -53,15 +53,15 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
           response.send(error)
       }
 
-      family.find(function(error, familys) {
-        // body...
-        if (error) {
-            response.send(error)
-        }
-
-        response.json(familys)
-
-      })
+      // family.find(function(error, familys) {
+      //   // body...
+      //   if (error) {
+      //       response.send(error)
+      //   }
+      //
+      //   response.json(familys)
+      //
+      // })
     })
 
     // var familyKey = request.body.familyKey;

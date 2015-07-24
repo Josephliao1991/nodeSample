@@ -8,8 +8,9 @@ var argv = require('optimist').argv;
 mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
   var Phone = mongoose.model('phone', {
-      familyKey : String,
-      deviceToken: String
+      familyKey   : String,
+      deviceToken : String,
+      company     : String
   });
 
   var app = express();
@@ -58,8 +59,9 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
   app.post('/family/phone',function(request, response){
 
     Phone.create({
-        familyKey : request.body.familyKey,
-        deviceToken : request.body.deviceToken
+        familyKey   : request.body.familyKey,
+        deviceToken : request.body.deviceToken,
+        coompany    : require.body.company
     },function(error, phone){
       // body...
       if (error) {
@@ -90,8 +92,9 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
         response.end(error)
       }else {
 
-        phone.familyKey = request.body.familyKey;
-  	    phone.deviceToken = request.body.deviceToken;
+        phone.familyKey    = request.body.familyKey;
+  	    phone.deviceToken  = request.body.deviceToken;
+        phone.company      = request.body.company;
 
   	    return phone.save(function(error) {
   	      if (error) {

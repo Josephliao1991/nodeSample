@@ -27,6 +27,17 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
     var familyKey_find = request.query.familyKey
     console.log(familyKey_find);
+
+    Phone.find({familyKey:familyKey_find},function(error, phones) {
+      // body...
+      if (error) {
+        response.send(error)
+      }else {
+        response.json(phones)
+      }
+
+    })
+
     // Phone.find({familyKey:familyKey_find}).toArray(function(error, phones){
     //     // console.log(results); // output all records
     //     if (error) {

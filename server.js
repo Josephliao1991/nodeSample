@@ -40,7 +40,8 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
       })
 
-    }else {
+    }
+    if (familyKey_find){
 
       Phone.find({familyKey:familyKey_find},function(error, phones) {
         // body...

@@ -123,7 +123,7 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 	        response.send(error);
 	      }else {
 	        response.send("success")
-          return response.send(phone);
+          response.send(phone);
 	      }
 
     })

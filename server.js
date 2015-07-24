@@ -71,20 +71,11 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
   app.post('/family/phone',function(request, response){
 
-    Phone.create({
 
-      if (request.body.familyKey) {
-          familyKey    = request.body.familyKey;
-      }
-
-      if (request.body.deviceToken) {
-          deviceToken  = request.body.deviceToken;
-      }
-
-      if (request.body.operation) {
-          operation    = request.body.operation;
-      }
-
+    Phone.create({  
+        familyKey   : request.body.familyKey,
+        deviceToken : request.body.deviceToken,
+        operation   : request.body.operation
     },function(error, phone){
       // body...
       if (error) {

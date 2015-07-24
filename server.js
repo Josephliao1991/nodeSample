@@ -86,7 +86,7 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
   app.put('/family/phone',function(request, response){
     // body...
 
-    return Phone.findById(request.body.id, function(error, phone) {
+    return Phone.findById(request.body.identifier, function(error, phone) {
 
       if (error) {
         response.end(error)

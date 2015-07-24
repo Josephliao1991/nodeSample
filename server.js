@@ -38,36 +38,6 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
     })
 
-    // Phone.find({familyKey:familyKey_find}).toArray(function(error, phones){
-    //     // console.log(results); // output all records
-    //     if (error) {
-    //       response.send(error)
-    //     }else {
-    //       response.json(phones)
-    //     }
-    //
-    // });
-
-    // return Phone.findById(request.query.familyKey, function(error, phones) {
-    //
-    //    if (error) {
-    //      response.send(error)
-    //    }else {
-    //      response.json(phones)
-    //    }
-    //
-	  // });
-
-    // family.find(function(error, phone) {
-    //   // body...
-    //   if (error) {
-    //       response.send(error);
-    //   }
-    //
-    //   response.json(phone)
-    //
-    // })
-
   });
 
   app.post('/family/phone',function(request, response){
@@ -81,7 +51,7 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
           response.send(error)
       }else {
           // response.json(phone)
-          response.send("Success")
+          response.send("success")
       }
       // family.find(function(error, familys) {
       //   // body...
@@ -96,37 +66,47 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
   });
 
-  app.put('/family/:id',function(request, response){
+  app.put('/family/phone',function(request, response){
     // body...
 
-    return family.findById(request.params.id, function(err, familyy) {
-	    familyy.familyKey = request.body.familyKey;
-	    familyy.deviceToken = request.body.deviceToken;
-	    return familyy.save(function(err) {
-	      if (err) {
-	        response.send(err);
+    return Phone.findById(request.body.id, function(error, phone) {
+
+	    phone.familyKey = request.body.familyKey;
+	    phone.deviceToken = request.body.deviceToken;
+
+	    return phone.save(function(error) {
+	      if (error) {
+	        response.send(error);
+	      }else {
+	        response.send("success")
+          // return response.send(phone);
 	      }
-	      return response.send(familyy);
+
 	    });
 	  });
 
   })
 
-  app.delete('/family/:id',function(request, response){
+  app.delete('/family/phone',function(request, response){
     // body...
 
-    family.remove({
-			_id : request.params.id
-		}, function(err, familyy) {
-			if (err)
+    Phone.remove({_id : request.body.id}, function(err, phone) {
+
+      if (err){
 				response.send(err);
+      }else {
+        response.send("success")
+      }
 
 			// get and return all the todos after you create another
-			family.find(function(err, familys) {
-				if (err)
-					response.send(err)
-				response.json(familys);
-			});
+			// Phone.find(function(err, phones) {
+			// 	if (err){
+			// 		response.send(err)
+      //   }else {
+      //     response.json(phones);
+      //   }
+			// });
+
 		});
 
   })

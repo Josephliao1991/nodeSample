@@ -88,6 +88,10 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
     return Phone.findById(request.body.id, function(error, phone) {
 
+      if (error) {
+        response.end(error)
+      }
+      
 	    phone.familyKey = request.body.familyKey;
 	    phone.deviceToken = request.body.deviceToken;
 

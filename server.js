@@ -13,6 +13,19 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
       operation   : String
   });
 
+  var iNeDot = mongoose.model('inedot', {
+      familyKey     : String,
+      macAddr       : String,
+
+      name          : String,
+      situation     : String,
+
+      owner         : String,
+      connectState  : Boolean,
+
+      battery       : Number
+  });
+
   var app = express();
   app.use(bodyparser.json())
   app.use(bodyparser.urlencoded({extended: true}))
@@ -59,9 +72,19 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
   app.post('/family/phone',function(request, response){
 
     Phone.create({
-        familyKey   : request.body.familyKey,
-        deviceToken : request.body.deviceToken,
-        operation   : request.body.operation
+
+      if (request.body.familyKey) {
+          familyKey    = request.body.familyKey;
+      }
+
+      if (request.body.deviceToken) {
+          deviceToken  = request.body.deviceToken;
+      }
+
+      if (request.body.operation) {
+          operation    = request.body.operation;
+      }
+
     },function(error, phone){
       // body...
       if (error) {

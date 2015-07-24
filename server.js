@@ -90,20 +90,23 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
       if (error) {
         response.end(error)
+      }else {
+
+        phone.familyKey = request.body.familyKey;
+  	    phone.deviceToken = request.body.deviceToken;
+
+  	    return phone.save(function(error) {
+  	      if (error) {
+  	        response.send(error);
+  	      }else {
+  	        response.send("success")
+            // return response.send(phone);
+  	      }
+
+  	    });
+
       }
-      
-	    phone.familyKey = request.body.familyKey;
-	    phone.deviceToken = request.body.deviceToken;
 
-	    return phone.save(function(error) {
-	      if (error) {
-	        response.send(error);
-	      }else {
-	        response.send("success")
-          // return response.send(phone);
-	      }
-
-	    });
 	  });
 
   })
@@ -114,7 +117,7 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
     var delete_id = request.body.id
     console.log(delete_id)
 
-    Phone.remove({_id : ObjectID(delete_id)}, function(err, phone) {
+    Phone.remove({_id :delete_id}, function(err, phone) {
 
       // phone.save(function(error) {
 	    //   if (error) {

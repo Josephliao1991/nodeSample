@@ -5,7 +5,7 @@ var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 var argv = require('optimist').argv;
 //
-// mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
+mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
   var Phone = mongoose.model('phone', {
       familyKey : String,
@@ -19,29 +19,30 @@ var argv = require('optimist').argv;
   app.use(bodyparser.json({ type: 'application/vnd.api+json' }))
   app.use(methodOverride())
 
+
   app.get('/',function(request,response){
     response.end("Hello world, This is iNeDot Server!");
+  });
+
+
+  app.get('/family/phone/all',function(request, response){
+
+      Phone.find(function(error, phones) {
+        // body...
+        if (error) {
+          response.send(error)
+        }else {
+          response.json(phones)
+        }
+
+      })
+    
   });
 
   app.get('/family/phone',function(request, response){
 
     var familyKey_find = request.query.familyKey
     console.log('familyKey:'+ familyKey_find);
-
-    // if (familyKey_find == null) {
-    //
-    //   Phone.find(function(error, phones) {
-    //     // body...
-    //     if (error) {
-    //       response.send(error)
-    //     }else {
-    //       response.json(phones)
-    //     }
-    //
-    //   })
-    //
-    // }
-    // if (familyKey_find){
 
       Phone.find({familyKey:familyKey_find},function(error, phones) {
         // body...
@@ -52,9 +53,6 @@ var argv = require('optimist').argv;
         }
 
       })
-
-    // }
-
 
   });
 

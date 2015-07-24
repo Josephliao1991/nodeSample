@@ -25,7 +25,7 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
   app.get('/family/phone',function(request, response){
 
-    return Phone.findById(request.body.familyKey, function(error, phones) {
+    return Phone.findById(request.query.familyKey, function(error, phones) {
 
        if (error) {
          response.send(error)
@@ -57,7 +57,8 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
       if (error) {
           response.send(error)
       }else {
-        response.json(phone)
+          // response.json(phone)
+          response.send("Success")
       }
       // family.find(function(error, familys) {
       //   // body...

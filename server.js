@@ -93,11 +93,19 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
       }else {
 
         if (phone) {
-          phone.familyKey    = request.body.familyKey;
-    	    phone.deviceToken  = request.body.deviceToken;
-          phone.company      = request.body.company;
-        }
 
+          if (request.body.familyKey) {
+              phone.familyKey    = request.body.familyKey;
+          }
+
+          if (request.body.deviceToken;) {
+              phone.deviceToken  = request.body.deviceToken;
+          }
+
+          if (request.body.company;) {
+              phone.company      = request.body.company;
+          }  
+        }
 
   	    return phone.save(function(error) {
   	      if (error) {

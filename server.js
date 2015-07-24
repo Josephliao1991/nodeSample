@@ -117,7 +117,7 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
     var delete_id = request.body.id
     console.log(delete_id)
 
-    Phone.remove({_id :delete_id}, function(err, phone) {
+    // Phone.remove({_id :delete_id}, function(err, phone) {
 
       // phone.save(function(error) {
 	    //   if (error) {
@@ -136,15 +136,15 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
       // }
 
 			// get and return all the todos after you create another
-			Phone.find(function(err, phones) {
-				if (err){
-					response.send(err)
-        }else {
-          response.json(phones);
-        }
-			});
-
-		});
+		// 	Phone.find(function(err, phones) {
+		// 		if (err){
+		// 			response.send(err)
+    //     }else {
+    //       response.json(phones);
+    //     }
+		// 	});
+    //
+		// });
 
   })
 

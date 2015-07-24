@@ -116,52 +116,17 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
     var delete_id = request.body.id
     console.log(delete_id)
 
-    Phone.findById(request.body.id, function(error, phone) {
+    Phone.remove({_id :delete_id}, function(err, phone) {
 
-      if (error) {
-        response.send(error)
-      }else {
-        Phone.remove({_id :phone._id},function(error, phone) {
-          // body...
-          if (err){
-    				response.send(err);
-          }else {
-            response.send("success")
-          }
+      phone.save(function(error) {
+	      if (error) {
+	        response.send(error);
+	      }else {
+	        response.send("success")
+          // return response.send(phone);
+	      }
 
-        })
-      }
-
-	  });
-
-    // Phone.remove({_id :delete_id}, function(err, phone) {
-
-      // phone.save(function(error) {
-	    //   if (error) {
-	    //     response.send(error);
-	    //   }else {
-	    //     response.send("success")
-      //     // return response.send(phone);
-	    //   }
-      //
-	    // });
-
-      // if (err){
-			// 	response.send(err);
-      // }else {
-      //   response.send("success")
-      // }
-
-			// get and return all the todos after you create another
-			// Phone.find(function(err, phones) {
-			// 	if (err){
-			// 		response.send(err)
-      //   }else {
-      //     response.json(phones);
-      //   }
-			// });
-    //
-		// });
+	    });
 
   })
 

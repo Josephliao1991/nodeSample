@@ -121,8 +121,15 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
       if (error) {
         response.send(error)
       }else {
-        phone.remove()
-        response.send("success")
+        Phone.remove({_id :phone._id},function(error, phone) {
+          // body...
+          if (err){
+    				response.send(err);
+          }else {
+            response.send("success")
+          }
+
+        })
       }
 
 	  });

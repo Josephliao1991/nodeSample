@@ -111,23 +111,23 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
   })
 
-  app.delete('/family/phone',function(request, response){
+  app.delete('/family/phone/:id',function(request, response){
     // body...
 
-    var delete_id = request.body.id
+    var delete_id = request.params.id
     console.log(delete_id)
 
-    // Phone.remove({_id :delete_id}, function(err, phone) {
+    Phone.remove({_id :delete_id}, function(err, phone) {
 
-      // phone.save(function(error) {
-	    //   if (error) {
-	    //     response.send(error);
-	    //   }else {
-	    //     response.send("success")
-      //     // return response.send(phone);
-	    //   }
-      //
-	    // });
+      phone.save(function(error) {
+	      if (error) {
+	        response.send(error);
+	      }else {
+	        response.send("success")
+          // return response.send(phone);
+	      }
+
+	    });
 
       // if (err){
 			// 	response.send(err);

@@ -26,7 +26,7 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
   app.get('/family/phone',function(request, response){
 
     var familyKey_find = request.query.familyKey
-    console.log(familyKey_find);
+    console.log('familyKey:'+ familyKey_find);
 
     if (familyKey_find == null) {
 

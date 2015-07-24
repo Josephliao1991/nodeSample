@@ -108,6 +108,7 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
     // body...
 
     var delete_id = request.body.id
+    console.log(request.body.familyKey);
     console.log(delete_id)
 
     Phone.remove({_id : delete_id}, function(err, phone) {

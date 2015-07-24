@@ -1,5 +1,6 @@
 var http = require('http');
 var express = require('express');
+var connect = require('connect');
 var bodyparser = require('body-parser');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
@@ -14,7 +15,7 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
   var app = express();
 
-  app.use(require('connect').bodyParser());
+  app.use(connect.bodyParser());
   app.use(bodyparser.json())
   app.use(bodyparser.urlencoded({extended: true}))
   app.use(bodyparser.json({ type: 'application/vnd.api+json' }))

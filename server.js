@@ -128,6 +128,8 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
 	    });
 
+    })
+
   })
 
   app.listen(8080,argv.fe_ip,function(request, response) {

@@ -25,15 +25,17 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
   app.get('/family/phone',function(request, response){
 
-    Phone.find({familyKey:request.query.familyKey}).toArray(function(error, phones){
-        // console.log(results); // output all records
-        if (error) {
-          response.send(error)
-        }else {
-          response.json(phones)
-        }
-
-    });
+    var familyKey_find = request.query.familyKey
+    console.log(familyKey_find);
+    // Phone.find({familyKey:familyKey_find}).toArray(function(error, phones){
+    //     // console.log(results); // output all records
+    //     if (error) {
+    //       response.send(error)
+    //     }else {
+    //       response.json(phones)
+    //     }
+    //
+    // });
 
     // return Phone.findById(request.query.familyKey, function(error, phones) {
     //

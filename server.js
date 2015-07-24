@@ -28,15 +28,32 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
     var familyKey_find = request.query.familyKey
     console.log(familyKey_find);
 
-    Phone.find({familyKey:familyKey_find},function(error, phones) {
-      // body...
-      if (error) {
-        response.send(error)
-      }else {
-        response.json(phones)
-      }
+    if (familyKey_find == null) {
 
-    })
+      Phone.find(function(error, phones) {
+        // body...
+        if (error) {
+          response.send(error)
+        }else {
+          response.json(phones)
+        }
+
+      })
+
+    }else {
+
+      Phone.find({familyKey:familyKey_find},function(error, phones) {
+        // body...
+        if (error) {
+          response.send(error)
+        }else {
+          response.json(phones)
+        }
+
+      })
+
+    }
+
 
   });
 
@@ -90,7 +107,20 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
   app.delete('/family/phone',function(request, response){
     // body...
 
-    Phone.remove({_id : request.body.id}, function(err, phone) {
+    var delete_id = request.body.id
+    console.log(delete_id)
+
+    Phone.remove({_id : delete_id}, function(err, phone) {
+
+      // phone.save(function(error) {
+	    //   if (error) {
+	    //     response.send(error);
+	    //   }else {
+	    //     response.send("success")
+      //     // return response.send(phone);
+	    //   }
+      //
+	    // });
 
       if (err){
 				response.send(err);

@@ -15,7 +15,7 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
   var app = express();
 
-  app.use(bodyParser());
+  app.use(connect.bodyparser());
   app.use(bodyparser.json())
   app.use(bodyparser.urlencoded({extended: true}))
   app.use(bodyparser.json({ type: 'application/vnd.api+json' }))

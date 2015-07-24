@@ -10,7 +10,7 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
   var Phone = mongoose.model('phone', {
       familyKey   : String,
       deviceToken : String,
-      company     : String
+      operation   : String
   });
 
   var app = express();
@@ -61,7 +61,7 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
     Phone.create({
         familyKey   : request.body.familyKey,
         deviceToken : request.body.deviceToken,
-        company    : request.body.company
+        operation   : request.body.operation
     },function(error, phone){
       // body...
       if (error) {
@@ -102,8 +102,8 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
               phone.deviceToken  = request.body.deviceToken;
           }
 
-          if (request.body.company) {
-              phone.company      = request.body.company;
+          if (request.body.operation) {
+              phone.operation    = request.body.operation;
           }
         }
 

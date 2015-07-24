@@ -118,15 +118,13 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
     Phone.remove({_id :delete_id}, function(err, phone) {
 
-      phone.save(function(error) {
+
 	      if (error) {
 	        response.send(error);
 	      }else {
 	        response.send("success")
-          // return response.send(phone);
+          return response.send(phone);
 	      }
-
-	    });
 
     })
 

@@ -61,7 +61,7 @@ mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
     Phone.create({
         familyKey   : request.body.familyKey,
         deviceToken : request.body.deviceToken,
-        coompany    : request.body.company
+        company    : request.body.company
     },function(error, phone){
       // body...
       if (error) {

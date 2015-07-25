@@ -293,9 +293,6 @@ var argv = require('optimist').argv;
               if (request.body.owner) {
                   inedot.owner           = request.body.owner;
                 }
-
-            }else {
-              respond.end("fail")
             }
 
             return inedot.save(function(error) {

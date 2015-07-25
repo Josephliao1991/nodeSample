@@ -260,9 +260,11 @@ var argv = require('optimist').argv;
 
   app.put('/family/inedot',function(request, response){
     // body...
-
+    var familyKey_find = request.query.familyKey
+    var macAddr_find   = request.query.macAddr
+    
     iNeDot.find({familyKey : familyKey_find,
-                  macAddr   : macAddr_find},
+                  macAddr  : macAddr_find},
 
     function(error, inedot) {
         // body...

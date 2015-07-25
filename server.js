@@ -233,7 +233,7 @@ var argv = require('optimist').argv;
 
   app.post('/family/inedot',function(request, response){
 
-    Phone.create({
+    iNeDot.create({
 
         familyKey     : request.body.familyKey,
         macAddr       : request.body.macAddr,

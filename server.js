@@ -294,16 +294,17 @@ var argv = require('optimist').argv;
                   inedot.owner           = request.body.owner;
                 }
 
-              return inedot.save(function(error) {
-                if (error) {
-                  response.send(error);
-                }else {
-                  response.send("success")              // return response.send(phone);
-                }
-              });
             }else {
               respond.end("fail")
             }
+
+            return inedot.save(function(error) {
+              if (error) {
+                response.send(error);
+              }else {
+                response.send("success")              // return response.send(phone);
+              }
+            });
         }
       })
 

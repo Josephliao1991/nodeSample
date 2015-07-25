@@ -191,9 +191,7 @@ var argv = require('optimist').argv;
         }else {
           response.json(inedots)
         }
-
       })
-
   });
 
   app.get('/family/inedot',function(request, response){
@@ -229,12 +227,8 @@ var argv = require('optimist').argv;
           }else {
             response.json(inedots)
           }
-
         })
-
-    }
-
-
+      }
   });
 
   app.post('/family/inedot',function(request, response){
@@ -306,13 +300,10 @@ var argv = require('optimist').argv;
             }else {
               response.send("success")              // return response.send(phone);
             }
-
           });
       })
 
     });
-
-  })
 
   app.delete('/family/inedot',function(request, response){
     // body...

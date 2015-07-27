@@ -4,7 +4,7 @@ var bodyparser = require('body-parser');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 var argv = require('optimist').argv;
-var router = require('routes');
+
 //
   //Connect to Mongodb
   mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
@@ -15,7 +15,6 @@ var router = require('routes');
   app.use(bodyparser.urlencoded({extended: false}))
   app.use(bodyparser.json({ type: 'application/vnd.api+json' }))
   app.use(methodOverride())
-  app.use(app.router)
 
   //Testing api
   app.get('/',function(request,response){

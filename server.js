@@ -479,20 +479,50 @@ var argv = require('optimist').argv;
   app.delete('/family/center',function(request, response){
     // body...
 
+    var familyKey_find  = request.body.familyKey
+    var macAddr_fine    = request.body.macAddr
     var delete_id = request.body.identifier
+    console.log(familyKey_find);
+    console.log(macAddr_fine);
     console.log(delete_id)
 
-    Center.remove({_id :delete_id}, function(error, phone) {
+    Center.findOne({familyKey : familyKey_find,
+                    macAddr  : macAddr_find },
 
+    function(error, center) {
 
+        // body...
         if (error) {
-          response.send(error);
-        }else {
-          response.send("success")
-          // response.send(phone);
+          response.end(error)
         }
 
-    })
+        if (center) {
+
+          center.remove(function (error) {
+            // body...
+            if (error) {
+              response.send(error)
+            }else {
+              response.send("success")
+            }
+
+          })
+
+        }
+
+      })
+
+    // Center.remove({_id :delete_id}, function(error, phone) {
+    //
+    //
+    //     if (error) {
+    //       response.send(error);
+    //     }else {
+    //       response.send("success")
+    //       // response.send(phone);
+    //     }
+    //
+    // })
 
   })
 
@@ -501,6 +531,8 @@ var argv = require('optimist').argv;
 
     var delete_id = request.params.identifier
     console.log(delete_id)
+
+
 
     Center.remove({_id :delete_id}, function(error, phone) {
 

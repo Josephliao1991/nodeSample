@@ -480,7 +480,7 @@ var argv = require('optimist').argv;
     // body...
 
     var familyKey_find  = request.body.familyKey
-    var macAddr_fine    = request.body.macAddr
+    var macAddr_find    = request.body.macAddr
     var delete_id = request.body.identifier
     console.log(familyKey_find);
     console.log(macAddr_fine);

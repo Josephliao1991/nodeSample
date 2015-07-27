@@ -274,16 +274,16 @@ var argv = require('optimist').argv;
           response.end(error)
         }
 
-        // if (inedot) {
+        if (inedot) {
           // if (request.body.familyKey) {
           //     inedot.familyKey       = request.body.familyKey;
           //   }
           // if (request.body.macAddr) {
           //     inedot.macAddr         = request.body.macAddr;
           //   }
-          // if (request.body.situation) {
-          //     inedot.situation       = request.body.situation;
-          //   }
+          if (request.body.situation) {
+              inedot.situation       = request.body.situation;
+            }
           if (request.body.connectState) {
               inedot.connectState    = request.body.connectState;
             }
@@ -306,7 +306,7 @@ var argv = require('optimist').argv;
               response.send("success")              // return response.send(phone);
             }
           });
-        // }
+        }
 
       })
 

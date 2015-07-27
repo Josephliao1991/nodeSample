@@ -246,7 +246,7 @@ var argv = require('optimist').argv;
 
         battery       : request.body.battery
 
-    },function(error, phone){
+    },function(error, inedot){
       // body...
       if (error) {
           response.send(error)
@@ -269,52 +269,45 @@ var argv = require('optimist').argv;
     iNeDot.find({familyKey : familyKey_find,
                   macAddr  : macAddr_find},
 
-    function(error, inedot_find) {
+    function(error, inedot) {
         // body...
         if (error) {
           response.end(error)
-        }else {
-            if (inedot_find) {
-              console.log(inedot_find._id);
-              iNeDot.findById(inedot_find._id, function(error, inedot) {
-
-                if (inedot) {
-                  // if (request.body.familyKey) {
-                  //     inedot.familyKey       = request.body.familyKey;
-                  //   }
-                  // if (request.body.macAddr) {
-                  //     inedot.macAddr         = request.body.macAddr;
-                  //   }
-                  if (request.body.situation) {
-                      inedot.situation       = request.body.situation;
-                    }
-                  // if (request.body.connectState) {
-                  //     inedot.connectState    = request.body.connectState;
-                  //   }
-                  // if (request.body.name) {
-                  //     inedot.name            = request.body.name;
-                  //   }
-                  // if (request.body.battery) {
-                  //     inedot.battery         = request.body.battery;
-                  //   }
-                  // if (request.body.owner) {
-                  //     inedot.owner           = request.body.owner;
-                  //   }
-                  response.send(inedot)
-                }
-
-                inedot.save(function(error) {
-                  if (error) {
-                    response.send(error);
-                  }else {
-                    response.send("success")              // return response.send(phone);
-                  }
-                });
-
-              })
-            }
-
         }
+
+        if (inedot) {
+          // if (request.body.familyKey) {
+          //     inedot.familyKey       = request.body.familyKey;
+          //   }
+          // if (request.body.macAddr) {
+          //     inedot.macAddr         = request.body.macAddr;
+          //   }
+          if (request.body.situation) {
+              inedot.situation       = request.body.situation;
+            }
+          // if (request.body.connectState) {
+          //     inedot.connectState    = request.body.connectState;
+          //   }
+          // if (request.body.name) {
+          //     inedot.name            = request.body.name;
+          //   }
+          // if (request.body.battery) {
+          //     inedot.battery         = request.body.battery;
+          //   }
+          // if (request.body.owner) {
+          //     inedot.owner           = request.body.owner;
+          //   }
+          response.send(inedot)
+
+          return inedot.save(function(error) {
+            if (error) {
+              response.send(error);
+            }else {
+              response.send("success")              // return response.send(phone);
+            }
+          });
+        }
+
       })
 
     });

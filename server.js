@@ -276,7 +276,7 @@ var argv = require('optimist').argv;
         }else {
             if (inedot_find) {
 
-              return iNeDot.findById(inedot_find.identifier, function(error, inedot) {
+              return iNeDot.findById(inedot_find._id, function(error, inedot) {
 
                 if (inedot) {
                   // if (request.body.familyKey) {

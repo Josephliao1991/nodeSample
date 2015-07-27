@@ -60,7 +60,7 @@ var argv = require('optimist').argv;
 
   });
 
-  app.post('/family/phone',function(request, response){
+  app.post('/family/phone/create',function(request, response){
 
 
     Phone.create({
@@ -88,10 +88,18 @@ var argv = require('optimist').argv;
 
   });
 
-  app.put('/family/phone',function(request, response){
+  app.post('/family/phone/update',function(request, response){
     // body...
 
-    return Phone.findById(request.body.identifier, function(error, phone) {
+    var familyKey_find = request.body.familyKey
+    var macAddr_find   = request.body.macAddr
+
+    console.log(familyKey_find);
+    console.log(macAddr_find);
+
+    Phone.findOne({familyKey : familyKey_find,
+                    macAddr  : macAddr_find },
+    function(error, phone) {
 
       if (error) {
         response.end(error)
@@ -99,13 +107,13 @@ var argv = require('optimist').argv;
 
         if (phone) {
 
-          if (request.body.familyKey) {
-              phone.familyKey    = request.body.familyKey;
-          }
-
-          if (request.body.deviceToken) {
-              phone.deviceToken  = request.body.deviceToken;
-          }
+          // if (request.body.familyKey) {
+          //     phone.familyKey    = request.body.familyKey;
+          // }
+          //
+          // if (request.body.deviceToken) {
+          //     phone.deviceToken  = request.body.deviceToken;
+          // }
 
           if (request.body.operation) {
               phone.operation    = request.body.operation;
@@ -128,45 +136,75 @@ var argv = require('optimist').argv;
 
   })
 
-  app.delete('/family/phone',function(request, response){
+  app.post('/family/phone/delete',function(request, response){
     // body...
 
-    var delete_id = request.body.identifier
-    console.log(delete_id)
+    var familyKey_find = request.body.familyKey
+    var macAddr_find   = request.body.macAddr
 
-    Phone.remove({_id :delete_id}, function(error, phone) {
+    console.log(familyKey_find);
+    console.log(macAddr_find);
+
+    Phone.findOne({familyKey : familyKey_find,
+                    macAddr  : macAddr_find },
+
+    function(error, phone) {
+
+        // body...
+        if (error) {
+          response.end(error)
+        }
+
+        if (phone) {
+            // response.send(center)
+            phone.remove(function (error) {
+              // body...
+              if (error) {
+                response.send(error)
+              }else {
+                response.send("success")
+              }
+
+            })
+        }
 
 
-	      if (error) {
-	        response.send(error);
-	      }else {
-	        response.send("success")
-          // response.send(phone);
-	      }
-
-    })
+    // var delete_id = request.body.identifier
+    // console.log(delete_id)
+    //
+    // Phone.remove({_id :delete_id}, function(error, phone) {
+    //
+    //
+	  //     if (error) {
+	  //       response.send(error);
+	  //     }else {
+	  //       response.send("success")
+    //       // response.send(phone);
+	  //     }
+    //
+    // })
 
   })
 
-  app.delete('/family/phone/:identifier',function(request, response){
-    // body...
-
-    var delete_id = request.params.identifier
-    console.log(delete_id)
-
-    Phone.remove({_id :delete_id}, function(error, phone) {
-
-
-	      if (error) {
-	        response.send(error);
-	      }else {
-	        response.send("success")
-          // response.send(phone);
-	      }
-
-    })
-
-  })
+  // app.delete('/family/phone/:identifier',function(request, response){
+  //   // body...
+  //
+  //   var delete_id = request.params.identifier
+  //   console.log(delete_id)
+  //
+  //   Phone.remove({_id :delete_id}, function(error, phone) {
+  //
+  //
+	//       if (error) {
+	//         response.send(error);
+	//       }else {
+	//         response.send("success")
+  //         // response.send(phone);
+	//       }
+  //
+  //   })
+  //
+  // })
 
   //Create iNeDot Mongodb Module
   var iNeDot = mongoose.model('inedot', {
@@ -343,8 +381,6 @@ var argv = require('optimist').argv;
               }
 
             })
-
-
         }
 
       })

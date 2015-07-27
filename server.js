@@ -21,151 +21,151 @@ var argv = require('optimist').argv;
   });
 
   //Create Phone Mongodb Module
-  var Phone = mongoose.model('phone', {
-      familyKey   : String,
-      deviceToken : String,
-      operation   : String
-  });
-
-  //implement /family/phone/ API
-  app.get('/family/phone/all',function(request, response){
-
-      Phone.find(function(error, phones) {
-        // body...
-        if (error) {
-          response.send(error)
-        }else {
-          response.json(phones)
-        }
-
-      })
-
-  });
-
-  app.get('/family/phone',function(request, response){
-
-    var familyKey_find = request.query.familyKey
-    console.log('familyKey:'+ familyKey_find);
-
-      Phone.find({familyKey:familyKey_find},function(error, phones) {
-        // body...
-        if (error) {
-          response.send(error)
-        }else {
-          response.json(phones)
-        }
-
-      })
-
-  });
-
-  app.post('/family/phone',function(request, response){
-
-
-    Phone.create({
-        familyKey   : request.body.familyKey,
-        deviceToken : request.body.deviceToken,
-        operation   : request.body.operation
-    },function(error, phone){
-      // body...
-      if (error) {
-          response.send(error)
-      }else {
-          // response.json(phone)
-          response.send("success")
-      }
-      // family.find(function(error, familys) {
-      //   // body...
-      //   if (error) {
-      //       response.send(error)
-      //   }
-      //
-      //   response.json(familys)
-      //
-      // })
-    })
-
-  });
-
-  app.put('/family/phone',function(request, response){
-    // body...
-
-    return Phone.findById(request.body.identifier, function(error, phone) {
-
-      if (error) {
-        response.end(error)
-      }else {
-
-        if (phone) {
-
-          if (request.body.familyKey) {
-              phone.familyKey    = request.body.familyKey;
-          }
-
-          if (request.body.deviceToken) {
-              phone.deviceToken  = request.body.deviceToken;
-          }
-
-          if (request.body.operation) {
-              phone.operation    = request.body.operation;
-          }
-        }
-
-  	    return phone.save(function(error) {
-  	      if (error) {
-  	        response.send(error);
-  	      }else {
-  	        response.send("success")
-            // return response.send(phone);
-  	      }
-
-  	    });
-
-      }
-
-	  });
-
-  })
-
-  app.delete('/family/phone',function(request, response){
-    // body...
-
-    var delete_id = request.body.identifier
-    console.log(delete_id)
-
-    Phone.remove({_id :delete_id}, function(error, phone) {
-
-
-	      if (error) {
-	        response.send(error);
-	      }else {
-	        response.send("success")
-          // response.send(phone);
-	      }
-
-    })
-
-  })
-
-  app.delete('/family/phone/:identifier',function(request, response){
-    // body...
-
-    var delete_id = request.params.identifier
-    console.log(delete_id)
-
-    Phone.remove({_id :delete_id}, function(error, phone) {
-
-
-	      if (error) {
-	        response.send(error);
-	      }else {
-	        response.send("success")
-          // response.send(phone);
-	      }
-
-    })
-
-  })
+  // var Phone = mongoose.model('phone', {
+  //     familyKey   : String,
+  //     deviceToken : String,
+  //     operation   : String
+  // });
+  //
+  // //implement /family/phone/ API
+  // app.get('/family/phone/all',function(request, response){
+  //
+  //     Phone.find(function(error, phones) {
+  //       // body...
+  //       if (error) {
+  //         response.send(error)
+  //       }else {
+  //         response.json(phones)
+  //       }
+  //
+  //     })
+  //
+  // });
+  //
+  // app.get('/family/phone',function(request, response){
+  //
+  //   var familyKey_find = request.query.familyKey
+  //   console.log('familyKey:'+ familyKey_find);
+  //
+  //     Phone.find({familyKey:familyKey_find},function(error, phones) {
+  //       // body...
+  //       if (error) {
+  //         response.send(error)
+  //       }else {
+  //         response.json(phones)
+  //       }
+  //
+  //     })
+  //
+  // });
+  //
+  // app.post('/family/phone',function(request, response){
+  //
+  //
+  //   Phone.create({
+  //       familyKey   : request.body.familyKey,
+  //       deviceToken : request.body.deviceToken,
+  //       operation   : request.body.operation
+  //   },function(error, phone){
+  //     // body...
+  //     if (error) {
+  //         response.send(error)
+  //     }else {
+  //         // response.json(phone)
+  //         response.send("success")
+  //     }
+  //     // family.find(function(error, familys) {
+  //     //   // body...
+  //     //   if (error) {
+  //     //       response.send(error)
+  //     //   }
+  //     //
+  //     //   response.json(familys)
+  //     //
+  //     // })
+  //   })
+  //
+  // });
+  //
+  // app.put('/family/phone',function(request, response){
+  //   // body...
+  //
+  //   return Phone.findById(request.body.identifier, function(error, phone) {
+  //
+  //     if (error) {
+  //       response.end(error)
+  //     }else {
+  //
+  //       if (phone) {
+  //
+  //         if (request.body.familyKey) {
+  //             phone.familyKey    = request.body.familyKey;
+  //         }
+  //
+  //         if (request.body.deviceToken) {
+  //             phone.deviceToken  = request.body.deviceToken;
+  //         }
+  //
+  //         if (request.body.operation) {
+  //             phone.operation    = request.body.operation;
+  //         }
+  //       }
+  //
+  // 	    return phone.save(function(error) {
+  // 	      if (error) {
+  // 	        response.send(error);
+  // 	      }else {
+  // 	        response.send("success")
+  //           // return response.send(phone);
+  // 	      }
+  //
+  // 	    });
+  //
+  //     }
+  //
+	//   });
+  //
+  // })
+  //
+  // app.delete('/family/phone',function(request, response){
+  //   // body...
+  //
+  //   var delete_id = request.body.identifier
+  //   console.log(delete_id)
+  //
+  //   Phone.remove({_id :delete_id}, function(error, phone) {
+  //
+  //
+	//       if (error) {
+	//         response.send(error);
+	//       }else {
+	//         response.send("success")
+  //         // response.send(phone);
+	//       }
+  //
+  //   })
+  //
+  // })
+  //
+  // app.delete('/family/phone/:identifier',function(request, response){
+  //   // body...
+  //
+  //   var delete_id = request.params.identifier
+  //   console.log(delete_id)
+  //
+  //   Phone.remove({_id :delete_id}, function(error, phone) {
+  //
+  //
+	//       if (error) {
+	//         response.send(error);
+	//       }else {
+	//         response.send("success")
+  //         // response.send(phone);
+	//       }
+  //
+  //   })
+  //
+  // })
 
   //Create iNeDot Mongodb Module
   var iNeDot = mongoose.model('inedot', {

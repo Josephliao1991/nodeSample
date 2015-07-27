@@ -311,7 +311,7 @@ var argv = require('optimist').argv;
                   });
 
                 }
-              }
+              })
             }
 
         }

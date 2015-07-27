@@ -411,7 +411,7 @@ var argv = require('optimist').argv;
       }
   });
 
-  app.post('/family/center',function(request, response){
+  app.post('/family/center/create',function(request, response){
 
     Center.create({
 
@@ -432,7 +432,7 @@ var argv = require('optimist').argv;
 
   });
 
-  app.put('/family/center',function(request, response){
+  app.post('/family/center/update',function(request, response){
     // body...
     var familyKey_find = request.body.familyKey
     var macAddr_find   = request.body.macAddr
@@ -477,7 +477,7 @@ var argv = require('optimist').argv;
 
     });
 
-  app.put('/family/center/delete',function(request, response){
+  app.post('/family/center/delete',function(request, response){
     // body...
 
     // var familyKey_find = request.query.familyKey

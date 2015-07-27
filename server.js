@@ -262,11 +262,13 @@ var argv = require('optimist').argv;
     // body...
     var familyKey_find = request.query.familyKey
     var macAddr_find   = request.query.macAddr
-
+    var identifier     = request.params.identifier
     console.log(familyKey_find);
     console.log(macAddr_find);
 
-    iNeDot.find({familyKey : familyKey_find },function(error, inedot) {
+    // iNeDot.find({familyKey : familyKey_find,
+    //               macAddr  : macAddr_find },function(error, inedot) {
+    iNeDot.findById({identifier},function(error, inedot) {
         // body...
         if (error) {
           response.end(error)

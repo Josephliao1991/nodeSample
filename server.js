@@ -496,19 +496,20 @@ var argv = require('optimist').argv;
           response.end(error)
         }
 
-        if (center) {
-
-          center.remove(function (error) {
-            // body...
-            if (error) {
-              response.send(error)
-            }else {
-              response.send("success")
-            }
-
-          })
-
-        }
+        response.send(center)
+        // if (center) {
+        //
+        //   center.remove(function (error) {
+        //     // body...
+        //     if (error) {
+        //       response.send(error)
+        //     }else {
+        //       response.send("success")
+        //     }
+        //
+        //   })
+        //
+        // }
 
       })
 

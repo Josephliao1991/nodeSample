@@ -281,9 +281,9 @@ var argv = require('optimist').argv;
           // if (request.body.macAddr) {
           //     inedot.macAddr         = request.body.macAddr;
           //   }
-          if (request.body.situation) {
-              inedot.situation       = request.body.situation;
-            }
+          // if (request.body.situation) {
+          //     inedot.situation       = request.body.situation;
+          //   }
           if (request.body.connectState) {
               inedot.connectState    = request.body.connectState;
             }

@@ -303,7 +303,7 @@ var argv = require('optimist').argv;
                   response.send(inedot)
                 }
 
-                rinedot.save(function(error) {
+                inedot.save(function(error) {
                   if (error) {
                     response.send(error);
                   }else {

@@ -14,6 +14,7 @@ var argv = require('optimist').argv;
   app.use(bodyparser.urlencoded({extended: false}))
   app.use(bodyparser.json({ type: 'application/vnd.api+json' }))
   app.use(methodOverride())
+  app.use(app.router)
 
   //Testing api
   app.get('/',function(request,response){
@@ -478,7 +479,6 @@ var argv = require('optimist').argv;
 
   app.delete('/family/center',function(request, response){
     // body...
-
 
     var familyKey_find = request.body.familyKey
     var macAddr_find   = request.body.macAddr

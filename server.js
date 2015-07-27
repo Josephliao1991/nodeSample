@@ -266,7 +266,7 @@ var argv = require('optimist').argv;
     console.log(familyKey_find);
     console.log(macAddr_find);
 
-    return iNeDot.find({familyKey : familyKey_find,
+    iNeDot.find({familyKey : familyKey_find,
                   macAddr  : macAddr_find},
 
     function(error, inedot_find) {
@@ -275,8 +275,8 @@ var argv = require('optimist').argv;
           response.end(error)
         }else {
             if (inedot_find) {
-
-              return iNeDot.findById(inedot_find._id, function(error, inedot) {
+              console.log(inedot_find._id);
+              iNeDot.findById(inedot_find._id, function(error, inedot) {
 
                 if (inedot) {
                   // if (request.body.familyKey) {
@@ -301,16 +301,16 @@ var argv = require('optimist').argv;
                   //     inedot.owner           = request.body.owner;
                   //   }
                   response.send(inedot)
-
-                  return inedot.save(function(error) {
-                    if (error) {
-                      response.send(error);
-                    }else {
-                      response.send("success")              // return response.send(phone);
-                    }
-                  });
-
                 }
+
+                rinedot.save(function(error) {
+                  if (error) {
+                    response.send(error);
+                  }else {
+                    response.send("success")              // return response.send(phone);
+                  }
+                });
+
               })
             }
 

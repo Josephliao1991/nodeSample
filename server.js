@@ -4,6 +4,7 @@ var bodyparser = require('body-parser');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 var argv = require('optimist').argv;
+var router = require('routes');
 //
   //Connect to Mongodb
   mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');

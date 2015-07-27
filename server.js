@@ -351,6 +351,172 @@ var argv = require('optimist').argv;
 
   })
 
+
+  //Create Center Mongodb Module
+  var Center = mongoose.model('center', {
+      familyKey     : String,
+      macAddr       : String,
+
+      connectState  : Boolean,
+  });
+
+  //implement /family/inedot/ API
+  app.get('/family/center/all',function(request, response){
+
+      Center.find(function(error, inedots) {
+        // body...
+        if (error) {
+          response.send(error)
+        }else {
+          response.json(inedots)
+        }
+      })
+  });
+
+  app.get('/family/center',function(request, response){
+
+    var familyKey_find = request.query.familyKey
+    var macAddr_find   = request.query.macAddr
+    console.log('Center Query With familyKey: '+ familyKey_find);
+    console.log('Center Query With macAddr: '+ macAddr_find);
+
+    if (macAddr_find) {
+
+      Center.find({familyKey : familyKey_find,
+                  macAddr   : macAddr_find},
+
+        function(error, center) {
+          // body...
+          if (error) {
+            response.send(error)
+          }else {
+            response.json(center)
+          }
+
+        })
+
+    }else {
+
+      Center.find({familyKey : familyKey_find},
+
+        function(error, centers) {
+          // body...
+          if (error) {
+            response.send(error)
+          }else {
+            response.json(centers)
+          }
+        })
+      }
+  });
+
+  app.post('/family/center',function(request, response){
+
+    iNeDot.create({
+
+        familyKey     : request.body.familyKey,
+        macAddr       : request.body.macAddr,
+
+        connectState  : request.body.connectState,
+
+    },function(error, center){
+      // body...
+      if (error) {
+          response.send(error)
+      }else {
+          // response.json(phone)
+          response.send("success")
+      }
+    })
+
+  });
+
+  app.put('/family/center',function(request, response){
+    // body...
+    var familyKey_find = request.body.familyKey
+    var macAddr_find   = request.body.macAddr
+
+    console.log(familyKey_find);
+    console.log(macAddr_find);
+
+    Center.findOne({familyKey : familyKey_find,
+                    macAddr  : macAddr_find },
+
+    function(error, center) {
+
+        // body...
+        if (error) {
+          response.end(error)
+        }
+
+        if (center) {
+          // if (request.body.familyKey) {
+          //     center.familyKey       = request.body.familyKey;
+          //   }
+          // if (request.body.macAddr) {
+          //     center.macAddr         = request.body.macAddr;
+          //   }
+
+          if (request.body.connectState) {
+              center.connectState    = request.body.connectState;
+            }
+
+          // response.send(center)
+
+          return center.save(function(error) {
+            if (error) {
+              response.send(error);
+            }else {
+              response.send("success")              // return response.send(phone);
+            }
+          });
+        }
+
+      })
+
+    });
+
+  app.delete('/family/center',function(request, response){
+    // body...
+
+    var delete_id = request.body.identifier
+    console.log(delete_id)
+
+    Center.remove({_id :delete_id}, function(error, phone) {
+
+
+        if (error) {
+          response.send(error);
+        }else {
+          response.send("success")
+          // response.send(phone);
+        }
+
+    })
+
+  })
+
+  app.delete('/family/center/:identifier',function(request, response){
+    // body...
+
+    var delete_id = request.params.identifier
+    console.log(delete_id)
+
+    Center.remove({_id :delete_id}, function(error, phone) {
+
+        if (error) {
+          response.send(error);
+        }else {
+          response.send("success")
+          // response.send(phone);
+        }
+
+    })
+
+  })
+
+
+
   app.listen(8080,argv.fe_ip,function(request, response) {
     // body...
     // console.log('App listening at http://%s:%s', server.address().address, server.address().port);

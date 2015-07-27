@@ -268,7 +268,7 @@ var argv = require('optimist').argv;
 
     // iNeDot.find({familyKey : familyKey_find,
     //               macAddr  : macAddr_find },function(error, inedot) {
-    iNeDot.findById({identifier},function(error, inedot) {
+    iNeDot.findById(identifier,function(error, inedot) {
         // body...
         if (error) {
           response.end(error)

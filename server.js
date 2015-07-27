@@ -232,7 +232,7 @@ var argv = require('optimist').argv;
       }
   });
 
-  app.post('/family/inedot',function(request, response){
+  app.post('/family/inedot/create',function(request, response){
 
     iNeDot.create({
 
@@ -259,7 +259,7 @@ var argv = require('optimist').argv;
 
   });
 
-  app.put('/family/inedot',function(request, response){
+  app.post('/family/inedot/update',function(request, response){
     // body...
     var familyKey_find = request.body.familyKey
     var macAddr_find   = request.body.macAddr

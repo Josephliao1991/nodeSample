@@ -5,7 +5,6 @@ var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 var argv = require('optimist').argv;
 
-//
   //Connect to Mongodb
   mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
@@ -38,9 +37,7 @@ var argv = require('optimist').argv;
         }else {
           response.json(phones)
         }
-
       })
-
   });
 
   app.get('/family/phone',function(request, response){
@@ -48,20 +45,17 @@ var argv = require('optimist').argv;
     var familyKey_find = request.query.familyKey
     console.log('familyKey:'+ familyKey_find);
 
-      Phone.find({familyKey:familyKey_find},function(error, phones) {
+    Phone.find({familyKey:familyKey_find},function(error, phones) {
         // body...
         if (error) {
           response.send(error)
         }else {
           response.json(phones)
         }
-
       })
-
   });
 
   app.post('/family/phone/create',function(request, response){
-
 
     Phone.create({
         familyKey   : request.body.familyKey,
@@ -75,22 +69,11 @@ var argv = require('optimist').argv;
           // response.json(phone)
           response.send("success")
       }
-      // family.find(function(error, familys) {
-      //   // body...
-      //   if (error) {
-      //       response.send(error)
-      //   }
-      //
-      //   response.json(familys)
-      //
-      // })
     })
-
   });
 
   app.post('/family/phone/update',function(request, response){
     // body...
-
     var familyKey_find = request.body.familyKey
     var deviceToken_find   = request.body.deviceToken
 
@@ -100,11 +83,9 @@ var argv = require('optimist').argv;
     Phone.findOne({familyKey     : familyKey_find,
                    deviceToken   : deviceToken_find },
     function(error, phone) {
-
       if (error) {
         response.end(error)
       }else {
-
         if (phone) {
 
           // if (request.body.familyKey) {
@@ -114,12 +95,10 @@ var argv = require('optimist').argv;
           // if (request.body.deviceToken) {
           //     phone.deviceToken  = request.body.deviceToken;
           // }
-
           if (request.body.operation) {
               phone.operation    = request.body.operation;
           }
         }
-
   	    return phone.save(function(error) {
   	      if (error) {
   	        response.send(error);
@@ -127,18 +106,13 @@ var argv = require('optimist').argv;
   	        response.send("success")
             // return response.send(phone);
   	      }
-
   	    });
-
       }
-
 	  });
-
   })
 
   app.post('/family/phone/delete',function(request, response){
     // body...
-
     var familyKey_find    = request.body.familyKey
     var deviceToken_find  = request.body.deviceToken
 
@@ -154,7 +128,6 @@ var argv = require('optimist').argv;
         if (error) {
           response.end(error)
         }
-
         if (phone) {
             // response.send(center)
             phone.remove(function (error) {
@@ -164,25 +137,8 @@ var argv = require('optimist').argv;
               }else {
                 response.send("success")
               }
-
             })
         }
-
-
-    // var delete_id = request.body.identifier
-    // console.log(delete_id)
-    //
-    // Phone.remove({_id :delete_id}, function(error, phone) {
-    //
-    //
-	  //     if (error) {
-	  //       response.send(error);
-	  //     }else {
-	  //       response.send("success")
-    //       // response.send(phone);
-	  //     }
-    //
-    // })
     })
   })
 
@@ -252,13 +208,9 @@ var argv = require('optimist').argv;
           }else {
             response.json(inedots)
           }
-
         })
-
     }else {
-
       iNeDot.find({familyKey : familyKey_find},
-
         function(error, inedots) {
           // body...
           if (error) {
@@ -294,7 +246,6 @@ var argv = require('optimist').argv;
           response.send("success")
       }
     })
-
   });
 
   app.post('/family/inedot/update',function(request, response){
@@ -337,7 +288,6 @@ var argv = require('optimist').argv;
             }
 
           // response.send(inedot)
-
           return inedot.save(function(error) {
             if (error) {
               response.send(error);
@@ -346,9 +296,7 @@ var argv = require('optimist').argv;
             }
           });
         }
-
       })
-
     });
 
   app.post('/family/inedot/delete',function(request, response){
@@ -369,7 +317,6 @@ var argv = require('optimist').argv;
         if (error) {
           response.end(error)
         }
-
         if (inedot) {
             // response.send(center)
             inedot.remove(function (error) {
@@ -379,27 +326,9 @@ var argv = require('optimist').argv;
               }else {
                 response.send("success")
               }
-
             })
         }
-
       })
-
-    // var delete_id = request.body.identifier
-    // console.log(delete_id)
-    //
-    // iNeDot.remove({_id :delete_id}, function(error, phone) {
-    //
-    //
-    //     if (error) {
-    //       response.send(error);
-    //     }else {
-    //       response.send("success")
-    //       // response.send(phone);
-    //     }
-    //
-    // })
-
   })
 
   // app.delete('/family/inedot/:identifier',function(request, response){
@@ -462,13 +391,10 @@ var argv = require('optimist').argv;
           }else {
             response.json(center)
           }
-
         })
-
     }else {
 
       Center.find({familyKey : familyKey_find},
-
         function(error, centers) {
           // body...
           if (error) {
@@ -498,7 +424,6 @@ var argv = require('optimist').argv;
           response.send("success")
       }
     })
-
   });
 
   app.post('/family/center/update',function(request, response){
@@ -513,12 +438,10 @@ var argv = require('optimist').argv;
                     macAddr  : macAddr_find },
 
     function(error, center) {
-
         // body...
         if (error) {
           response.end(error)
         }
-
         if (center) {
           // if (request.body.familyKey) {
           //     center.familyKey       = request.body.familyKey;
@@ -530,9 +453,7 @@ var argv = require('optimist').argv;
           if (request.body.connectState) {
               center.connectState    = request.body.connectState;
             }
-
           // response.send(center)
-
           return center.save(function(error) {
             if (error) {
               response.send(error);
@@ -541,20 +462,11 @@ var argv = require('optimist').argv;
             }
           });
         }
-
       })
-
     });
 
   app.post('/family/center/delete',function(request, response){
     // body...
-
-    // var familyKey_find = request.query.familyKey
-    // var macAddr_find   = request.query.macAddr
-    //
-    // console.log(familyKey_find);
-    // console.log(macAddr_find);
-
     var familyKey_find = request.body.familyKey
     var macAddr_find   = request.body.macAddr
 
@@ -565,7 +477,6 @@ var argv = require('optimist').argv;
                     macAddr  : macAddr_find },
 
     function(error, center) {
-
         // body...
         if (error) {
           response.end(error)
@@ -580,14 +491,9 @@ var argv = require('optimist').argv;
               }else {
                 response.send("success")
               }
-
             })
-
-
         }
-
       })
-
   })
 
   // app.delete('/family/center/:identifier',function(request, response){
@@ -610,8 +516,6 @@ var argv = require('optimist').argv;
   //   })
   //
   // })
-
-
 
   app.listen(8080,argv.fe_ip,function(request, response) {
     // body...

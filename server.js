@@ -477,20 +477,20 @@ var argv = require('optimist').argv;
 
     });
 
-  app.delete('/family/center',function(request, response){
+  app.put('/family/center/delete',function(request, response){
     // body...
 
-    var familyKey_find = request.query.familyKey
-    var macAddr_find   = request.query.macAddr
+    // var familyKey_find = request.query.familyKey
+    // var macAddr_find   = request.query.macAddr
+    //
+    // console.log(familyKey_find);
+    // console.log(macAddr_find);
+
+    var familyKey_find = request.body.familyKey
+    var macAddr_find   = request.body.macAddr
 
     console.log(familyKey_find);
     console.log(macAddr_find);
-
-    var bfamilyKey_find = request.body.familyKey
-    var bmacAddr_find   = request.body.macAddr
-
-    console.log('body'+bfamilyKey_find);
-    console.log('body'+bmacAddr_find);
 
     Center.findOne({familyKey : familyKey_find,
                     macAddr  : macAddr_find },

@@ -518,26 +518,26 @@ var argv = require('optimist').argv;
 
   })
 
-  app.delete('/family/center/:identifier',function(request, response){
-    // body...
-
-    var delete_id = request.params.identifier
-    console.log(delete_id)
-
-
-
-    Center.remove({_id :delete_id}, function(error, phone) {
-
-        if (error) {
-          response.send(error);
-        }else {
-          response.send("success")
-          // response.send(phone);
-        }
-
-    })
-
-  })
+  // app.delete('/family/center/:identifier',function(request, response){
+  //   // body...
+  //
+  //   var delete_id = request.params.identifier
+  //   console.log(delete_id)
+  //
+  //
+  //
+  //   Center.remove({_id :delete_id}, function(error, phone) {
+  //
+  //       if (error) {
+  //         response.send(error);
+  //       }else {
+  //         response.send("success")
+  //         // response.send(phone);
+  //       }
+  //
+  //   })
+  //
+  // })
 
 
 

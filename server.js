@@ -486,11 +486,11 @@ var argv = require('optimist').argv;
     console.log(familyKey_find);
     console.log(macAddr_find);
 
-    var familyKey_find = request.body.familyKey
-    var macAddr_find   = request.body.macAddr
+    var bfamilyKey_find = request.body.familyKey
+    var bmacAddr_find   = request.body.macAddr
 
-    console.log('body'+familyKey_find);
-    console.log('body'+macAddr_find);
+    console.log('body'+bfamilyKey_find);
+    console.log('body'+bmacAddr_find);
 
     Center.findOne({familyKey : familyKey_find,
                     macAddr  : macAddr_find },

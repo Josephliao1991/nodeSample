@@ -267,15 +267,13 @@ var argv = require('optimist').argv;
     console.log(macAddr_find);
 
     iNeDot.find({familyKey : familyKey_find,
-                  macAddr  : macAddr_find},
-
-    function(error, inedot) {
+                  macAddr  : macAddr_find },function(error, inedot) {
         // body...
         if (error) {
           response.end(error)
         }
 
-        if (inedot) {
+        // if (inedot) {
           // if (request.body.familyKey) {
           //     inedot.familyKey       = request.body.familyKey;
           //   }
@@ -285,18 +283,19 @@ var argv = require('optimist').argv;
           if (request.body.situation) {
               inedot.situation       = request.body.situation;
             }
-          // if (request.body.connectState) {
-          //     inedot.connectState    = request.body.connectState;
-          //   }
-          // if (request.body.name) {
-          //     inedot.name            = request.body.name;
-          //   }
-          // if (request.body.battery) {
-          //     inedot.battery         = request.body.battery;
-          //   }
-          // if (request.body.owner) {
-          //     inedot.owner           = request.body.owner;
-          //   }
+          if (request.body.connectState) {
+              inedot.connectState    = request.body.connectState;
+            }
+          if (request.body.name) {
+              inedot.name            = request.body.name;
+            }
+          if (request.body.battery) {
+              inedot.battery         = request.body.battery;
+            }
+          if (request.body.owner) {
+              inedot.owner           = request.body.owner;
+            }
+
           response.send(inedot)
 
           return inedot.save(function(error) {
@@ -306,7 +305,7 @@ var argv = require('optimist').argv;
               response.send("success")              // return response.send(phone);
             }
           });
-        }
+        // }
 
       })
 

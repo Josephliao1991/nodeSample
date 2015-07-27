@@ -313,44 +313,77 @@ var argv = require('optimist').argv;
 
     });
 
-  app.delete('/family/inedot',function(request, response){
+  app.post('/family/inedot/delete',function(request, response){
     // body...
 
-    var delete_id = request.body.identifier
-    console.log(delete_id)
+    var familyKey_find = request.body.familyKey
+    var macAddr_find   = request.body.macAddr
 
-    iNeDot.remove({_id :delete_id}, function(error, phone) {
+    console.log(familyKey_find);
+    console.log(macAddr_find);
 
+    iNeDot.findOne({familyKey : familyKey_find,
+                    macAddr  : macAddr_find },
 
+    function(error, inedot) {
+
+        // body...
         if (error) {
-          response.send(error);
-        }else {
-          response.send("success")
-          // response.send(phone);
+          response.end(error)
         }
 
-    })
+        if (inedot) {
+            // response.send(center)
+            inedot.remove(function (error) {
+              // body...
+              if (error) {
+                response.send(error)
+              }else {
+                response.send("success")
+              }
+
+            })
+
+
+        }
+
+      })
+
+    // var delete_id = request.body.identifier
+    // console.log(delete_id)
+    //
+    // iNeDot.remove({_id :delete_id}, function(error, phone) {
+    //
+    //
+    //     if (error) {
+    //       response.send(error);
+    //     }else {
+    //       response.send("success")
+    //       // response.send(phone);
+    //     }
+    //
+    // })
 
   })
 
-  app.delete('/family/inedot/:identifier',function(request, response){
-    // body...
-
-    var delete_id = request.params.identifier
-    console.log(delete_id)
-
-    iNeDot.remove({_id :delete_id}, function(error, phone) {
-
-        if (error) {
-          response.send(error);
-        }else {
-          response.send("success")
-          // response.send(phone);
-        }
-
-    })
-
-  })
+  // app.delete('/family/inedot/:identifier',function(request, response){
+  //   // body...
+  //
+  //   var delete_id = request.params.identifier
+  //   console.log(delete_id)
+  //
+  //   iNeDot.remove({_id :delete_id}, function(error, phone) {
+  //
+  //       if (error) {
+  //         response.send(error);
+  //       }else {
+  //         response.send("success")
+  //         // response.send(phone);
+  //       }
+  //
+  //   })
+  //
+  // })
 
 
   //Create Center Mongodb Module

@@ -269,43 +269,51 @@ var argv = require('optimist').argv;
     return iNeDot.find({familyKey : familyKey_find,
                   macAddr  : macAddr_find},
 
-    function(error, inedot) {
+    function(error, inedot_find) {
         // body...
         if (error) {
           response.end(error)
         }else {
-            if (inedot) {
-              // if (request.body.familyKey) {
-              //     inedot.familyKey       = request.body.familyKey;
-              //   }
-              // if (request.body.macAddr) {
-              //     inedot.macAddr         = request.body.macAddr;
-              //   }
-              if (request.body.situation) {
-                  inedot.situation       = request.body.situation;
+            if (inedot_find) {
+
+              return iNeDot.findById(inedot_find.identifier, function(error, inedot) {
+
+                if (inedot) {
+                  // if (request.body.familyKey) {
+                  //     inedot.familyKey       = request.body.familyKey;
+                  //   }
+                  // if (request.body.macAddr) {
+                  //     inedot.macAddr         = request.body.macAddr;
+                  //   }
+                  if (request.body.situation) {
+                      inedot.situation       = request.body.situation;
+                    }
+                  // if (request.body.connectState) {
+                  //     inedot.connectState    = request.body.connectState;
+                  //   }
+                  // if (request.body.name) {
+                  //     inedot.name            = request.body.name;
+                  //   }
+                  // if (request.body.battery) {
+                  //     inedot.battery         = request.body.battery;
+                  //   }
+                  // if (request.body.owner) {
+                  //     inedot.owner           = request.body.owner;
+                  //   }
+                  response.send(inedot)
+
+                  return inedot.save(function(error) {
+                    if (error) {
+                      response.send(error);
+                    }else {
+                      response.send("success")              // return response.send(phone);
+                    }
+                  });
+
                 }
-              // if (request.body.connectState) {
-              //     inedot.connectState    = request.body.connectState;
-              //   }
-              // if (request.body.name) {
-              //     inedot.name            = request.body.name;
-              //   }
-              // if (request.body.battery) {
-              //     inedot.battery         = request.body.battery;
-              //   }
-              // if (request.body.owner) {
-              //     inedot.owner           = request.body.owner;
-              //   }
-              response.send(inedot)
+              }
             }
 
-            return inedot.save(function(error) {
-              if (error) {
-                response.send(error);
-              }else {
-                response.send("success")              // return response.send(phone);
-              }
-            });
         }
       })
 

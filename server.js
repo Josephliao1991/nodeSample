@@ -92,13 +92,13 @@ var argv = require('optimist').argv;
     // body...
 
     var familyKey_find = request.body.familyKey
-    var macAddr_find   = request.body.macAddr
+    var deviceToken_find   = request.body.deviceToken
 
     console.log(familyKey_find);
-    console.log(macAddr_find);
+    console.log(deviceToken_find);
 
-    Phone.findOne({familyKey : familyKey_find,
-                    macAddr  : macAddr_find },
+    Phone.findOne({familyKey     : familyKey_find,
+                   deviceToken   : deviceToken_find },
     function(error, phone) {
 
       if (error) {
@@ -139,14 +139,14 @@ var argv = require('optimist').argv;
   app.post('/family/phone/delete',function(request, response){
     // body...
 
-    var familyKey_find = request.body.familyKey
-    var macAddr_find   = request.body.macAddr
+    var familyKey_find    = request.body.familyKey
+    var deviceToken_find  = request.body.deviceToken
 
     console.log(familyKey_find);
-    console.log(macAddr_find);
+    console.log(deviceToken_find);
 
-    Phone.findOne({familyKey : familyKey_find,
-                    macAddr  : macAddr_find },
+    Phone.findOne({familyKey     : familyKey_find,
+                   deviceToken   : deviceToken_find },
 
     function(error, phone) {
 

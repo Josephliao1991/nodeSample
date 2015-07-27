@@ -15,7 +15,7 @@ var router = require('routes');
   app.use(bodyparser.urlencoded({extended: false}))
   app.use(bodyparser.json({ type: 'application/vnd.api+json' }))
   app.use(methodOverride())
-  app.use(router)
+  app.use(app.router)
 
   //Testing api
   app.get('/',function(request,response){

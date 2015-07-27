@@ -479,12 +479,12 @@ var argv = require('optimist').argv;
   app.delete('/family/center',function(request, response){
     // body...
 
-    var familyKey_find  = request.body.familyKey
-    var macAddr_find    = request.body.macAddr
-    var delete_id = request.body.identifier
-    console.log(String(familyKey_find));
-    console.log(String(macAddr_find));
-    // console.log(delete_id.toString())
+
+    var familyKey_find = request.body.familyKey
+    var macAddr_find   = request.body.macAddr
+
+    console.log(familyKey_find);
+    console.log(macAddr_find);
 
     Center.findOne({familyKey : familyKey_find,
                     macAddr  : macAddr_find },
@@ -496,20 +496,11 @@ var argv = require('optimist').argv;
           response.end(error)
         }
 
-        response.send(center)
-        // if (center) {
-        //
-        //   center.remove(function (error) {
-        //     // body...
-        //     if (error) {
-        //       response.send(error)
-        //     }else {
-        //       response.send("success")
-        //     }
-        //
-        //   })
-        //
-        // }
+        if (center) {
+            response.send(center)
+
+
+        }
 
       })
 

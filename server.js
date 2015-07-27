@@ -412,7 +412,7 @@ var argv = require('optimist').argv;
 
   app.post('/family/center',function(request, response){
 
-    iNeDot.create({
+    Center.create({
 
         familyKey     : request.body.familyKey,
         macAddr       : request.body.macAddr,

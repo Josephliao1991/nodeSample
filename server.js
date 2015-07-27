@@ -482,8 +482,8 @@ var argv = require('optimist').argv;
     var familyKey_find  = request.body.familyKey
     var macAddr_find    = request.body.macAddr
     var delete_id = request.body.identifier
-    console.log(familyKey_find.String());
-    console.log(macAddr_find.String());
+    console.log(String(familyKey_find));
+    console.log(String(macAddr_find));
     // console.log(delete_id.toString())
 
     Center.findOne({familyKey : familyKey_find,

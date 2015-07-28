@@ -362,12 +362,12 @@ var argv = require('optimist').argv;
   //implement /family/inedot/ API
   app.get('/family/center/all',function(request, response){
 
-      Center.find(function(error, inedots) {
+      Center.find(function(error, centers) {
         // body...
         if (error) {
           response.send(error)
         }else {
-          response.json(inedots)
+          response.json(centers)
         }
       })
   });

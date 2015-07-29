@@ -550,6 +550,7 @@ var argv = require('optimist').argv;
       c_macAddr     : String,
       i_macAddr     : String,
       command       : Number,
+      preset        : Array,
       checkMark     : Boolean
   });
 
@@ -592,12 +593,16 @@ var argv = require('optimist').argv;
 
   app.post('/family/c_push/create',function(request, response){
 
+    var presetValue;
+
+
     CPush.create({
 
         familyKey     : request.body.familyKey,
         c_macAddr     : request.body.c_macAddr,
         i_macAddr     : request.body.i_macAddr,
         command       : request.body.command,
+        preset        : request.body.preset,
         checkMark     : false
 
     },function(error, c_push){

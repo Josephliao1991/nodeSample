@@ -620,7 +620,7 @@ var argv = require('optimist').argv;
           //     push.c_macAddr       = request.body.c_macAddr;
           //   }
 
-          checkMark = true
+          c_push.checkMark = true
 
           // response.send(center)
           return c_push.save(function(error) {

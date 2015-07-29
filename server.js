@@ -297,10 +297,10 @@ var argv = require('optimist').argv;
               inedot.owner           = request.body.owner;
             }
           if (request.body.situation == "temp" && request.body.temp) {
-              inedot.presetValue     = [{temp : request.body.temp}];
+              inedot.preset     = [{temp : request.body.temp}];
           }
           if (request.body.situation == "alert" && request.body.alert) {
-              inedot.presetValue     = [{alert : request.body.alert}];
+              inedot.preset     = [{alert : request.body.alert}];
           }
 
           // response.send(inedot)

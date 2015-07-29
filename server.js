@@ -599,7 +599,7 @@ var argv = require('optimist').argv;
     var i_macAddr_find = request.query.i_macAddr
 
     if (request.body.command == 3 || request.body.command == 2) {
-      iNeDot.findOne({familyKey : familyKey_find,
+      iNeDot.find({familyKey : familyKey_find,
                       macAddr   : i_macAddr_find},
 
         function(error, inedot) {

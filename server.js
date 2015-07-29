@@ -594,26 +594,39 @@ var argv = require('optimist').argv;
   app.post('/family/c_push/create',function(request, response){
 
     var presetValue;
+    if (request.body.command == 3 || request.body.command == 2) {
+      iNeDot.findOne({familyKey : familyKey_find,
+                      macAddr   : macAddr_find},
 
+        function(error, inedot) {
+          // body...
+          if (error) {
+            response.send(error)
+          }else {
+            // response.json(inedot)
+            CPush.create({
 
-    CPush.create({
+                familyKey     : request.body.familyKey,
+                c_macAddr     : request.body.c_macAddr,
+                i_macAddr     : request.body.i_macAddr,
+                command       : request.body.command,
+                preset        : inedot.preset,
+                checkMark     : false
 
-        familyKey     : request.body.familyKey,
-        c_macAddr     : request.body.c_macAddr,
-        i_macAddr     : request.body.i_macAddr,
-        command       : request.body.command,
-        preset        : request.body.preset,
-        checkMark     : false
+            },function(error, c_push){
+              // body...
+              if (error) {
+                  response.send(error)
+              }else {
+                  // response.json(phone)
+                  response.send("success")
+              }
+            })
 
-    },function(error, c_push){
-      // body...
-      if (error) {
-          response.send(error)
-      }else {
-          // response.json(phone)
-          response.send("success")
-      }
-    })
+          }
+        })
+    }
+
   });
 
   app.post('/family/c_push/update',function(request, response){

@@ -593,7 +593,7 @@ var argv = require('optimist').argv;
 
   app.post('/family/c_push/create',function(request, response){
 
-    var presetValue;
+
     var familyKey_find = request.query.familyKey
     var c_macAddr_find = request.query.c_macAddr
     var i_macAddr_find = request.query.i_macAddr
@@ -609,6 +609,7 @@ var argv = require('optimist').argv;
           }else {
             response.json(inedot)
             CPush.create({
+              var presetValue = inedot.preset
 
                 familyKey     : request.body.familyKey,
                 c_macAddr     : request.body.c_macAddr,
@@ -622,7 +623,7 @@ var argv = require('optimist').argv;
               if (error) {
                   response.send(error)
               }else {
-                  // response.json(phone)
+                  response.json(c_push)
                   response.send("success")
               }
             })

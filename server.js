@@ -608,25 +608,25 @@ var argv = require('optimist').argv;
             response.send(error)
           }else {
             response.json(inedot)
-            CPush.create({
-              // var presetValue = inedot.preset
-
-                familyKey     : request.body.familyKey,
-                c_macAddr     : request.body.c_macAddr,
-                i_macAddr     : request.body.i_macAddr,
-                command       : request.body.command,
-                preset        : inedot.preset,
-                checkMark     : false
-
-            },function(error, c_push){
-              // body...
-              if (error) {
-                  response.send(error)
-              }else {
-                  response.json(c_push)
-                  response.send("success")
-              }
-            })
+            // CPush.create({
+            //   // var presetValue = inedot.preset
+            //
+            //     familyKey     : request.body.familyKey,
+            //     c_macAddr     : request.body.c_macAddr,
+            //     i_macAddr     : request.body.i_macAddr,
+            //     command       : request.body.command,
+            //     preset        : inedot.preset,
+            //     checkMark     : false
+            //
+            // },function(error, c_push){
+            //   // body...
+            //   if (error) {
+            //       response.send(error)
+            //   }else {
+            //       response.json(c_push)
+            //       response.send("success")
+            //   }
+            // })
 
           }
         })

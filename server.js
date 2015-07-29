@@ -544,7 +544,7 @@ var argv = require('optimist').argv;
     if (c_macAddr_find) {
 
       CPush.find({familyKey : familyKey_find,
-                  c_macAddr : c_macAddr_find
+                  c_macAddr : c_macAddr_find,
                   checkMark : false},
 
         function(error, c_push) {

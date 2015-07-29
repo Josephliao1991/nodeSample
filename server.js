@@ -607,7 +607,7 @@ var argv = require('optimist').argv;
           if (error) {
             response.send(error)
           }else {
-            // response.json(inedot)
+            response.json(inedot)
             CPush.create({
 
                 familyKey     : request.body.familyKey,

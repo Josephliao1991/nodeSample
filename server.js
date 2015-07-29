@@ -173,7 +173,9 @@ var argv = require('optimist').argv;
       owner         : String,
       connectState  : Boolean,
 
-      battery       : Number
+      battery       : Number,
+
+      preset        : Array
   });
 
   //implement /family/inedot/ API
@@ -224,6 +226,11 @@ var argv = require('optimist').argv;
 
   app.post('/family/inedot/create',function(request, response){
 
+    var presetValue;
+    if (request.body.situation == temp) {
+        presetValue = [{temp : request.body.temp}]
+    }
+
     iNeDot.create({
 
         familyKey     : request.body.familyKey,
@@ -235,8 +242,9 @@ var argv = require('optimist').argv;
         name          : request.body.name,
         situation     : request.body.situation,
 
-        battery       : request.body.battery
+        battery       : request.body.battery,
 
+        presetValue   : presetValue
     },function(error, inedot){
       // body...
       if (error) {
@@ -286,6 +294,9 @@ var argv = require('optimist').argv;
           if (request.body.owner) {
               inedot.owner           = request.body.owner;
             }
+          if (request.body.situation == temp && request.body.temp) {
+              inedot.presetValue     = [{temp : request.body.temp}];
+          }
 
           // response.send(inedot)
           return inedot.save(function(error) {

@@ -569,8 +569,8 @@ var argv = require('optimist').argv;
 
   app.get('/family/c_push',function(request, response){
 
-    var familyKey_find = request.query.familyKey
-    var c_macAddr_find = request.query.c_macAddr
+    var familyKey_find = request.body.familyKey
+    var c_macAddr_find = request.body.c_macAddr
     console.log('c_push Query With familyKey: '+ familyKey_find);
     console.log('c_push Query With c_macAddr: '+ c_macAddr_find);
 
@@ -598,7 +598,7 @@ var argv = require('optimist').argv;
     var c_macAddr_find = request.query.c_macAddr
     var i_macAddr_find = request.query.i_macAddr
 
-    // if (request.body.command == 3 || request.body.command == 2) {
+    if (request.body.command == 3 || request.body.command == 2) {
       iNeDot.find({familyKey : familyKey_find,
                       macAddr   : i_macAddr_find},
 
@@ -608,29 +608,29 @@ var argv = require('optimist').argv;
             response.send(error)
           }else {
             response.json(inedot)
-            // CPush.create({
-            //   // var presetValue = inedot.preset
-            //
-            //     familyKey     : request.body.familyKey,
-            //     c_macAddr     : request.body.c_macAddr,
-            //     i_macAddr     : request.body.i_macAddr,
-            //     command       : request.body.command,
-            //     preset        : inedot.preset,
-            //     checkMark     : false
-            //
-            // },function(error, c_push){
-            //   // body...
-            //   if (error) {
-            //       response.send(error)
-            //   }else {
-            //       response.json(c_push)
-            //       response.send("success")
-            //   }
-            // })
+            CPush.create({
+              // var presetValue = inedot.preset
+
+                familyKey     : request.body.familyKey,
+                c_macAddr     : request.body.c_macAddr,
+                i_macAddr     : request.body.i_macAddr,
+                command       : request.body.command,
+                preset        : inedot.preset,
+                checkMark     : false
+
+            },function(error, c_push){
+              // body...
+              if (error) {
+                  response.send(error)
+              }else {
+                  response.json(c_push)
+                  response.send("success")
+              }
+            })
 
           }
         })
-    // }
+    }
 
   });
 

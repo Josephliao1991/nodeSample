@@ -227,7 +227,7 @@ var argv = require('optimist').argv;
   app.post('/family/inedot/create',function(request, response){
 
     var presetValue;
-    if (request.body.situation == temp) {
+    if (request.body.situation == temp && request.body.temp) {
         presetValue = [{temp : request.body.temp}]
     }
 

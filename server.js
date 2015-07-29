@@ -646,8 +646,7 @@ var argv = require('optimist').argv;
 
       CPush.findOne({familyKey : familyKey_find,
                      c_macAddr : c_macAddr_find,
-                     i_macAddr : i_macAddr_find,
-                     checkMark : false},
+                     i_macAddr : i_macAddr_find},
 
       function(error, c_push) {
           // body...

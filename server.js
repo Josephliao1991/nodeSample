@@ -244,7 +244,7 @@ var argv = require('optimist').argv;
 
         battery       : request.body.battery,
 
-        presetValue   : presetValue
+        preset        : presetValue
     },function(error, inedot){
       // body...
       if (error) {

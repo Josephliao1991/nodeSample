@@ -231,6 +231,8 @@ var argv = require('optimist').argv;
         presetValue = [{temp : request.body.temp}]
     }else if (request.body.situation == "alert" && request.body.alert) {
         presetValue = [{alert : request.body.alert}]
+    }else if (request.body.situation == "message" && request.body.message) {
+        presetValue = [{message : request.body.message}]
     }
 
     iNeDot.create({
@@ -298,9 +300,10 @@ var argv = require('optimist').argv;
             }
           if (request.body.situation == "temp" && request.body.temp) {
               inedot.preset     = [{temp : request.body.temp}];
-          }
-          if (request.body.situation == "alert" && request.body.alert) {
+          }else if (request.body.situation == "alert" && request.body.alert) {
               inedot.preset     = [{alert : request.body.alert}];
+          }else if (request.body.situation == "message" && request.body.message) {
+              inedot.preset     = [{message : request.body.message}];
           }
 
           // response.send(inedot)

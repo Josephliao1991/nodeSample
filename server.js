@@ -474,7 +474,7 @@ var argv = require('optimist').argv;
     console.log(macAddr_find);
 
     Center.findOne({familyKey : familyKey_find,
-                    macAddr  : macAddr_find },
+                    macAddr   : macAddr_find },
 
     function(error, center) {
         // body...
@@ -526,7 +526,7 @@ var argv = require('optimist').argv;
   Temp  = 3
   Break Connection  = 4
   */
-  var Push = mongoose.model('push', {
+  var CPush = mongoose.model('c_push', {
       familyKey     : String,
       c_macAddr     : String,
       i_macAddr     : String,
@@ -534,33 +534,33 @@ var argv = require('optimist').argv;
       checkMark     : Boolean
   });
 
-  app.get('/family/push',function(request, response){
+  app.get('/family/c_push',function(request, response){
 
     var familyKey_find = request.query.familyKey
-    var c_macAddr_find   = request.query.c_macAddr
-    console.log('Center Query With familyKey: '+ familyKey_find);
-    console.log('Center Query With c_macAddr: '+ c_macAddr_find);
+    var c_macAddr_find = request.query.c_macAddr
+    console.log('c_push Query With familyKey: '+ familyKey_find);
+    console.log('c_push Query With c_macAddr: '+ c_macAddr_find);
 
     if (c_macAddr_find) {
 
-      Push.find({familyKey : familyKey_find,
-                 c_macAddr : c_macAddr_find
-                 checkMark : false},
+      CPush.find({familyKey : familyKey_find,
+                  c_macAddr : c_macAddr_find
+                  checkMark : false},
 
-        function(error, center) {
+        function(error, c_push) {
           // body...
           if (error) {
             response.send(error)
           }else {
-            response.json(center)
+            response.json(c_push)
           }
         })
     }
   });
 
-  app.post('/family/push/create',function(request, response){
+  app.post('/family/c_push/create',function(request, response){
 
-    Push.create({
+    CPush.create({
 
         familyKey     : request.body.familyKey,
         c_macAddr     : request.body.c_macAddr,
@@ -568,7 +568,7 @@ var argv = require('optimist').argv;
         command       : request.body.command,
         checkMark     : false
 
-    },function(error, center){
+    },function(error, c_push){
       // body...
       if (error) {
           response.send(error)
@@ -579,7 +579,7 @@ var argv = require('optimist').argv;
     })
   });
 
-  app.post('/family/push/update',function(request, response){
+  app.post('/family/c_push/update',function(request, response){
     // body...
     var familyKey_find  = request.body.familyKey
     var c_macAddr_find  = request.body.c_macAddr
@@ -589,17 +589,17 @@ var argv = require('optimist').argv;
     console.log(c_macAddr_find);
     console.log(i_macAddr_find);
 
-    Push.findOne({familyKey : familyKey_find,
-                    c_macAddr : c_macAddr_find,
-                    i_macAddr : i_macAddr_find,
-                    checkMark : false},
+    CPush.findOne({familyKey : familyKey_find,
+                   c_macAddr : c_macAddr_find,
+                   i_macAddr : i_macAddr_find,
+                   checkMark : false},
 
-    function(error, push) {
+    function(error, c_push) {
         // body...
         if (error) {
           response.end(error)
         }
-        if (push) {
+        if (c_push) {
           // if (request.body.familyKey) {
           //     push.familyKey       = request.body.familyKey;
           //   }
@@ -610,7 +610,7 @@ var argv = require('optimist').argv;
           checkMark = true
 
           // response.send(center)
-          return center.save(function(error) {
+          return c_push.save(function(error) {
             if (error) {
               response.send(error);
             }else {
@@ -621,7 +621,7 @@ var argv = require('optimist').argv;
       })
     });
 
-    app.post('/family/push/delete',function(request, response){
+    app.post('/family/c_push/delete',function(request, response){
       // body...
       var familyKey_find  = request.body.familyKey
       var c_macAddr_find  = request.body.c_macAddr
@@ -631,20 +631,20 @@ var argv = require('optimist').argv;
       console.log(c_macAddr_find);
       console.log(i_macAddr_find);
 
-      Push.findOne({familyKey : familyKey_find,
-                    c_macAddr : c_macAddr_find,
-                    i_macAddr : i_macAddr_find,
-                    checkMark : false},
+      CPush.findOne({familyKey : familyKey_find,
+                     c_macAddr : c_macAddr_find,
+                     i_macAddr : i_macAddr_find,
+                     checkMark : false},
 
-      function(error, push) {
+      function(error, c_push) {
           // body...
           if (error) {
             response.end(error)
           }
 
-          if (push) {
+          if (c_push) {
               // response.send(center)
-              push.remove(function (error) {
+              c_push.remove(function (error) {
                 // body...
                 if (error) {
                   response.send(error)

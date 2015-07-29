@@ -534,6 +534,19 @@ var argv = require('optimist').argv;
       checkMark     : Boolean
   });
 
+  //implement /family/inedot/ API
+  app.get('/family/c_push/all',function(request, response){
+
+      CPush.find(function(error, c_pushs) {
+        // body...
+        if (error) {
+          response.send(error)
+        }else {
+          response.json(c_pushs)
+        }
+      })
+  });
+
   app.get('/family/c_push',function(request, response){
 
     var familyKey_find = request.query.familyKey

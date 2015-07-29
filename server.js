@@ -594,9 +594,13 @@ var argv = require('optimist').argv;
   app.post('/family/c_push/create',function(request, response){
 
     var presetValue;
+    var familyKey_find = request.query.familyKey
+    var c_macAddr_find = request.query.c_macAddr
+    var i_macAddr_find = request.query.i_macAddr
+
     if (request.body.command == 3 || request.body.command == 2) {
       iNeDot.findOne({familyKey : familyKey_find,
-                      macAddr   : macAddr_find},
+                      macAddr   : i_macAddr_find},
 
         function(error, inedot) {
           // body...

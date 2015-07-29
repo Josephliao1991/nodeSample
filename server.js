@@ -598,7 +598,7 @@ var argv = require('optimist').argv;
     var c_macAddr_find = request.query.c_macAddr
     var i_macAddr_find = request.query.i_macAddr
 
-    if (request.body.command == 3 || request.body.command == 2) {
+    // if (request.body.command == 3 || request.body.command == 2) {
       iNeDot.find({familyKey : familyKey_find,
                       macAddr   : i_macAddr_find},
 
@@ -630,7 +630,7 @@ var argv = require('optimist').argv;
 
           }
         })
-    }
+    // }
 
   });
 

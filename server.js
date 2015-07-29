@@ -517,6 +517,145 @@ var argv = require('optimist').argv;
   //
   // })
 
+  //Create Push Mongodb Module
+  /* Command Rule
+  command : Number
+  Baby  = 0
+  Area  = 1
+  Alert = 2
+  Temp  = 3
+  Break Connection  = 4
+  */
+  var Push = mongoose.model('push', {
+      familyKey     : String,
+      c_macAddr     : String,
+      i_macAddr     : String,
+      command       : Number,
+      checkMark     : Boolean
+  });
+
+  app.get('/family/push',function(request, response){
+
+    var familyKey_find = request.query.familyKey
+    var c_macAddr_find   = request.query.c_macAddr
+    console.log('Center Query With familyKey: '+ familyKey_find);
+    console.log('Center Query With c_macAddr: '+ c_macAddr_find);
+
+    if (c_macAddr_find) {
+
+      Push.find({familyKey : familyKey_find,
+                 c_macAddr : c_macAddr_find
+                 checkMark : false},
+
+        function(error, center) {
+          // body...
+          if (error) {
+            response.send(error)
+          }else {
+            response.json(center)
+          }
+        })
+    }
+  });
+
+  app.post('/family/push/create',function(request, response){
+
+    Push.create({
+
+        familyKey     : request.body.familyKey,
+        c_macAddr     : request.body.c_macAddr,
+        i_macAddr     : request.body.i_macAddr,
+        command       : request.body.command,
+        checkMark     : false
+
+    },function(error, center){
+      // body...
+      if (error) {
+          response.send(error)
+      }else {
+          // response.json(phone)
+          response.send("success")
+      }
+    })
+  });
+
+  app.post('/family/push/update',function(request, response){
+    // body...
+    var familyKey_find  = request.body.familyKey
+    var c_macAddr_find  = request.body.c_macAddr
+    var i_macAddr_find  = request.body.i_macAddr
+
+    console.log(familyKey_find);
+    console.log(c_macAddr_find);
+    console.log(i_macAddr_find);
+
+    Push.findOne({familyKey : familyKey_find,
+                    c_macAddr : c_macAddr_find,
+                    i_macAddr : i_macAddr_find,
+                    checkMark : false},
+
+    function(error, push) {
+        // body...
+        if (error) {
+          response.end(error)
+        }
+        if (push) {
+          // if (request.body.familyKey) {
+          //     push.familyKey       = request.body.familyKey;
+          //   }
+          // if (request.body.c_macAddr) {
+          //     push.c_macAddr       = request.body.c_macAddr;
+          //   }
+
+          checkMark = true
+
+          // response.send(center)
+          return center.save(function(error) {
+            if (error) {
+              response.send(error);
+            }else {
+              response.send("success")              // return response.send(phone);
+            }
+          });
+        }
+      })
+    });
+
+    app.post('/family/push/delete',function(request, response){
+      // body...
+      var familyKey_find  = request.body.familyKey
+      var c_macAddr_find  = request.body.c_macAddr
+      var i_macAddr_find  = request.body.i_macAddr
+
+      console.log(familyKey_find);
+      console.log(c_macAddr_find);
+      console.log(i_macAddr_find);
+
+      Push.findOne({familyKey : familyKey_find,
+                    c_macAddr : c_macAddr_find,
+                    i_macAddr : i_macAddr_find,
+                    checkMark : false},
+
+      function(error, push) {
+          // body...
+          if (error) {
+            response.end(error)
+          }
+
+          if (push) {
+              // response.send(center)
+              push.remove(function (error) {
+                // body...
+                if (error) {
+                  response.send(error)
+                }else {
+                  response.send("success")
+                }
+              })
+          }
+        })
+    })
+
   app.listen(8080,argv.fe_ip,function(request, response) {
     // body...
     // console.log('App listening at http://%s:%s', server.address().address, server.address().port);

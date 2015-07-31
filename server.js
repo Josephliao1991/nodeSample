@@ -665,7 +665,7 @@ var argv = require('optimist').argv;
     // console.log(i_macAddr_find);
     console.log(identifier_find);
 
-    CPush.findById({_id = identifier_find},
+    CPush.findById({_id : identifier_find},
 
     function(error, c_push) {
         // body...

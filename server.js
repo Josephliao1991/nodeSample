@@ -611,20 +611,61 @@ var argv = require('optimist').argv;
     })
   });
 
+  // app.post('/family/c_push/update',function(request, response){
+  //   // body...
+  //   var familyKey_find  = request.body.familyKey
+  //   var c_macAddr_find  = request.body.c_macAddr
+  //   var i_macAddr_find  = request.body.i_macAddr
+  //
+  //   console.log(familyKey_find);
+  //   console.log(c_macAddr_find);
+  //   console.log(i_macAddr_find);
+  //
+  //   CPush.findOne({familyKey : familyKey_find,
+  //                  c_macAddr : c_macAddr_find,
+  //                  i_macAddr : i_macAddr_find,
+  //                  checkMark : false},
+  //
+  //   function(error, c_push) {
+  //       // body...
+  //       if (error) {
+  //         response.end(error)
+  //       }
+  //       if (c_push) {
+  //         // if (request.body.familyKey) {
+  //         //     push.familyKey       = request.body.familyKey;
+  //         //   }
+  //         // if (request.body.c_macAddr) {
+  //         //     push.c_macAddr       = request.body.c_macAddr;
+  //         //   }
+  //
+  //         c_push.checkMark = true
+  //
+  //         // response.send(center)
+  //         return c_push.save(function(error) {
+  //           if (error) {
+  //             response.send(error);
+  //           }else {
+  //             response.send("success")              // return response.send(phone);
+  //           }
+  //         });
+  //       }
+  //     })
+  //   });
+
   app.post('/family/c_push/update',function(request, response){
     // body...
-    var familyKey_find  = request.body.familyKey
-    var c_macAddr_find  = request.body.c_macAddr
-    var i_macAddr_find  = request.body.i_macAddr
+    // var familyKey_find  = request.body.familyKey
+    // var c_macAddr_find  = request.body.c_macAddr
+    // var i_macAddr_find  = request.body.i_macAddr
+    var identifier_find = request.body.identifier;
 
-    console.log(familyKey_find);
-    console.log(c_macAddr_find);
-    console.log(i_macAddr_find);
+    // console.log(familyKey_find);
+    // console.log(c_macAddr_find);
+    // console.log(i_macAddr_find);
+    console.log(identifier_find);
 
-    CPush.findOne({familyKey : familyKey_find,
-                   c_macAddr : c_macAddr_find,
-                   i_macAddr : i_macAddr_find,
-                   checkMark : false},
+    CPush.findById({_id = identifier_find},
 
     function(error, c_push) {
         // body...
@@ -652,6 +693,7 @@ var argv = require('optimist').argv;
         }
       })
     });
+
 
     app.post('/family/c_push/delete',function(request, response){
       // body...

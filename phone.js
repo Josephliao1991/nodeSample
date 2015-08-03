@@ -32,7 +32,7 @@ function familyPhone(familyKey, callback) {
 
 module.exports = {
 
-  allPhone     :allPhone
+  allPhone     :allPhone,
   familyPhone  :familyPhone
 
 }

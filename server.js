@@ -4,7 +4,7 @@ var bodyparser = require('body-parser');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 var argv = require('optimist').argv;
-
+var phone = require('./phone.js');
   //Connect to Mongodb
   mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
@@ -30,14 +30,22 @@ var argv = require('optimist').argv;
   //implement /family/phone/ API
   app.get('/family/phone/all',function(request, response){
 
-      Phone.find(function(error, phones) {
+      // Phone.find(function(error, phones) {
+      //   // body...
+      //   if (error) {
+      //     response.send(error)
+      //   }else {
+      //     response.json(phones)
+      //   }
+      // })
+      phone(function (error,phones) {
         // body...
-        if (error) {
-          response.send(error)
-        }else {
-          response.json(phones)
-        }
+
+        console.log(phones);
+        
       })
+
+
   });
 
   app.get('/family/phone',function(request, response){
@@ -770,6 +778,8 @@ var argv = require('optimist').argv;
           if (inedot) {
             var situation = inedot.situation
             response.send("success")
+
+
           }else {
             response.send("fail")
           }

@@ -436,12 +436,13 @@ var argv = require('optimist').argv;
             if (error) {
               response.send(error)
             }
-            if (center) {
-              var familyKey = center.familyKey
-              response.send(familyKey)
-            }else {
-              response.end("Belong with no family")
-            }
+            console.log(center);
+            // if (center) {
+              // var familyKey = center.familyKey
+              response.send(center)
+            // }else {
+            //   response.end("Belong with no family")
+            // }
           })
     }
 

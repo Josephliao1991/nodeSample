@@ -6,7 +6,7 @@ var Phone = mongoose.model('phone', {
     operation   : String
 });
 
-module.exports = function phone(callback) {
+function allPhone(callback) {
   // body...
   Phone.find(function(error, phones) {
     // body...
@@ -16,5 +16,12 @@ module.exports = function phone(callback) {
       callback(null, phones)
     }
   })
+
+}
+
+
+module.exports = {
+
+  allPhone     :allPhone
 
 }

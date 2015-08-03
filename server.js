@@ -38,7 +38,7 @@ var phone = require('./phone.js');
       //     response.json(phones)
       //   }
       // })
-      phone(function (error,phones) {
+      phone.allPhone(function (error,phones) {
         // body...
         response.send(phones)
       })

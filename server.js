@@ -87,7 +87,6 @@ var phone = require('./phone.js');
     // body...
     phone.deletePhone(request, function(error, success) {
       // body...
-      respone.send("done")
       if (error) {
         resopnse.send(error)
       }
@@ -95,7 +94,7 @@ var phone = require('./phone.js');
         resopnse.send("success")
       }
     })
-
+  })
     // var familyKey_find    = request.body.familyKey
     // var deviceToken_find  = request.body.deviceToken
     //
@@ -123,7 +122,7 @@ var phone = require('./phone.js');
     //         })
     //     }
     // })
-  })
+  // })
 
   // app.delete('/family/phone/:identifier',function(request, response){
   //   // body...

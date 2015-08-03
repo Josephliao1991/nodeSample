@@ -43,9 +43,9 @@ function familyiNeDot(request, callback) {
       function(error, inedots) {
         // body...
         if (error) {
-         callback(error)
+         return callback(error)
         }else {
-         callback(null, inedots)
+        return callback(null, inedots)
         }
       })
   }else {
@@ -53,9 +53,9 @@ function familyiNeDot(request, callback) {
       function(error, inedots) {
         // body...
         if (error) {
-         callback(error)
+         return callback(error)
         }else {
-         callback(null, inedots)
+         return callback(null, inedots)
         }
       })
     }

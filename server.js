@@ -143,12 +143,14 @@ var inedot = require('./inedot.js');
 
   app.get('/family/inedot',function(request, response){
 
+    var res = response
+    var req = request
     inedot.familyiNeDot(request, function (error, inedots) {
       // body...
       if (error) {
         resopnse.send(error)
       }else {
-        // resopnse.send(inedots)
+        res.send(inedots)
         console.log(inedots);
       }
     })

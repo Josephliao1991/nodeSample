@@ -427,7 +427,7 @@ var argv = require('optimist').argv;
 
   app.get('/family/center/getfmilyKey',function(request, response) {
     // body...
-    var macAddr_find = request.body.macAddr
+    var macAddr_find = request.query.macAddr
     console.log(macAddr_find);
     if (macAddr_find) {
         Center.find({macAddr : macAddr_find},

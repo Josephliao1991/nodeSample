@@ -97,14 +97,15 @@ function deletePhone(request, callback) {
       }
       if (phone) {
         console.log("wait for delete : " + phone);
-          // phone.remove(function (error) {
-          //   // body...
-          //   if (error) {
-          //     return callback(error)
-          //   }else {
-          //     return callback(null, "success")
-          //   }
-          // })
+          phone.remove(function (error) {
+            // body...
+            if (error) {
+              return callback(error)
+            }else {
+              // return callback(null, "success")
+              console.log("Delete success");
+            }
+          })
       }
   })
 

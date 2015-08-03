@@ -143,12 +143,12 @@ var inedot = require('./inedot.js');
 
   app.get('/family/inedot',function(request, response){
 
-    // var familyKey_find = request.query.familyKey
-    // var macAddr_find   = request.query.macAddr
-    // console.log('iNeDots Query With familyKey: '+ familyKey_find);
-    // console.log('iNeDots Query With macAddr: '+ macAddr_find);
+    var familyKey_find = request.query.familyKey
+    var macAddr_find   = request.query.macAddr
+    console.log('iNeDots Query With familyKey: '+ familyKey_find);
+    console.log('iNeDots Query With macAddr: '+ macAddr_find);
 
-    inedot.familyiNeDot(request, function (error, inedots) {
+    inedot.familyiNeDot(familyKey_find, macAddr_find, request, function (error, inedots) {
       // body...
       if (error) {
         resopnse.send(error)

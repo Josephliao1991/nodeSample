@@ -21,11 +21,11 @@ var phone = require('./phone.js');
   });
 
   //Create Phone Mongodb Module
-  var Phone = mongoose.model('phone', {
-      familyKey   : String,
-      deviceToken : String,
-      operation   : String
-  });
+  // var Phone = mongoose.model('phone', {
+  //     familyKey   : String,
+  //     deviceToken : String,
+  //     operation   : String
+  // });
 
   //implement /family/phone/ API
   app.get('/family/phone/all',function(request, response){
@@ -42,7 +42,7 @@ var phone = require('./phone.js');
         // body...
 
         console.log(phones);
-        
+
       })
 
 

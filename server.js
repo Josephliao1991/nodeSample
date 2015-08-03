@@ -40,7 +40,13 @@ var phone = require('./phone.js');
       // })
       phone.allPhone(function (error,phones) {
         // body...
-        response.send(phones)
+        if (error) {
+          response.send(error)
+        }
+        if (phones) {
+          response.send(phones)
+        }
+
       })
 
 
@@ -51,14 +57,25 @@ var phone = require('./phone.js');
     var familyKey_find = request.query.familyKey
     console.log('familyKey:'+ familyKey_find);
 
-    Phone.find({familyKey:familyKey_find},function(error, phones) {
-        // body...
-        if (error) {
-          response.send(error)
-        }else {
-          response.json(phones)
-        }
-      })
+    // Phone.find({familyKey:familyKey_find},function(error, phones) {
+    //     // body...
+    //     if (error) {
+    //       response.send(error)
+    //     }else {
+    //       response.json(phones)
+    //     }
+    //   })
+    phone.familyPhone(error,function (phones) {
+      // body...
+      if (error) {
+        response.send(error)
+      }
+      if (phones) {
+        response.send(phones)
+      }
+
+    })
+
   });
 
   app.post('/family/phone/create',function(request, response){

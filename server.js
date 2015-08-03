@@ -767,9 +767,13 @@ var argv = require('optimist').argv;
           if (error) {
             response.send(error)
           }
+          if (inedot) {
+            var situation = inedot.situation
+            response.send("success")
+          }else {
+            response.send("fail")
+          }
 
-          var situation = inedot.situation
-          console.log(situation);
         })
 
 

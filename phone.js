@@ -102,7 +102,7 @@ function deletePhone(request, callback) {
             if (error) {
               return callback(error)
             }else {
-              callback(null, "success")
+              return callback(null, "success")
             }
           })
       }

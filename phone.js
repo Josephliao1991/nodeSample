@@ -78,11 +78,44 @@ function updatePhone(request, callback) {
     });
 }
 
+function deletePhone(request, callback) {
+  // body...
+  var familyKey_find    = request.body.familyKey
+  var deviceToken_find  = request.body.deviceToken
+
+  console.log(familyKey_find);
+  console.log(deviceToken_find);
+
+  Phone.findOne({familyKey     : familyKey_find,
+                 deviceToken   : deviceToken_find },
+
+  function(error, phone) {
+
+      // body...
+      if (error) {
+        return callback(error)
+      }
+      if (phone) {
+          // response.send(center)
+          phone.remove(function (error) {
+            // body...
+            if (error) {
+              return callback(error)
+            }else {
+              callback(null, "success")
+            }
+          })
+      }
+  })
+
+}
+
 module.exports = {
 
   allPhone     :allPhone,
   familyPhone  :familyPhone,
   createPhone  :createPhone,
-  updatePhone  :updatePhone
+  updatePhone  :updatePhone,
+  deletePhone  :deletePhone
 
 }

@@ -59,12 +59,6 @@ var phone = require('./phone.js');
 
   app.post('/family/phone/create',function(request, response){
 
-    // var familyKey_find     = request.body.familyKey
-    // var deviceToken_find   = request.body.deviceToken
-    // var operation_find     = request.body.operation
-    // console.log(familyKey_find);
-    // console.log(deviceToken_find);
-    // console.log(operation_find);
     phone.createPhone(request, function (error, success) {
       // body...
       if (error) {
@@ -74,20 +68,6 @@ var phone = require('./phone.js');
         response.send("success")
       }
     })
-
-    // Phone.create({
-    //     familyKey   : request.body.familyKey,
-    //     deviceToken : request.body.deviceToken,
-    //     operation   : request.body.operation
-    // },function(error, phone){
-    //   // body...
-    //   if (error) {
-    //       response.send(error)
-    //   }else {
-    //       // response.json(phone)
-    //       response.send("success")
-    //   }
-    // })
   });
 
   app.post('/family/phone/update',function(request, response){
@@ -106,33 +86,44 @@ var phone = require('./phone.js');
 
   app.post('/family/phone/delete',function(request, response){
     // body...
-    var familyKey_find    = request.body.familyKey
-    var deviceToken_find  = request.body.deviceToken
 
-    console.log(familyKey_find);
-    console.log(deviceToken_find);
-
-    Phone.findOne({familyKey     : familyKey_find,
-                   deviceToken   : deviceToken_find },
-
-    function(error, phone) {
-
-        // body...
-        if (error) {
-          response.end(error)
-        }
-        if (phone) {
-            // response.send(center)
-            phone.remove(function (error) {
-              // body...
-              if (error) {
-                response.send(error)
-              }else {
-                response.send("success")
-              }
-            })
-        }
+    phone.deletePhone(request, function(error, success) {
+      // body...
+      if (error) {
+        resopnse.send(error)
+      }
+      if (success) {
+        resopnse.send("success")
+      }
     })
+
+    // var familyKey_find    = request.body.familyKey
+    // var deviceToken_find  = request.body.deviceToken
+    //
+    // console.log(familyKey_find);
+    // console.log(deviceToken_find);
+    //
+    // Phone.findOne({familyKey     : familyKey_find,
+    //                deviceToken   : deviceToken_find },
+    //
+    // function(error, phone) {
+    //
+    //     // body...
+    //     if (error) {
+    //       response.end(error)
+    //     }
+    //     if (phone) {
+    //         // response.send(center)
+    //         phone.remove(function (error) {
+    //           // body...
+    //           if (error) {
+    //             response.send(error)
+    //           }else {
+    //             response.send("success")
+    //           }
+    //         })
+    //     }
+    // })
   })
 
   // app.delete('/family/phone/:identifier',function(request, response){

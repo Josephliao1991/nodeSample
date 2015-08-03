@@ -82,10 +82,10 @@ var phone = require('./phone.js');
     console.log(familyKey_find);
     console.log(deviceToken_find);
 
-    phone.updatePhone(familyKey_find, deviceToken_find, request, resopnse,
+    phone.updatePhone(familyKey_find, deviceToken_find, request,
       function (error, success) {
       // body...
-      console.log(success);
+      resopnse.send(success)
 
     })
 

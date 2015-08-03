@@ -30,7 +30,7 @@ function familyPhone(familyKey, callback) {
     })
 }
 
-function updatePhone(familyKey, deviceToken, request, response,callback) {
+function updatePhone(familyKey, deviceToken, request, callback) {
   // body...
   Phone.findOne({familyKey     : familyKey,
                  deviceToken   : deviceToken },
@@ -48,8 +48,7 @@ function updatePhone(familyKey, deviceToken, request, response,callback) {
       if (error) {
         return callback(error)
        }else {
-        //  callback(null, "success")
-        response.send("success")
+         callback(null, "success")
        }
       });
     });

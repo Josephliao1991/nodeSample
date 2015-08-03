@@ -139,48 +139,48 @@ var inedot = require('./inedot.js');
         response.json(inedots)
       }
     })
-
-      // iNeDot.find(function(error, inedots) {
-      //   // body...
-      //   if (error) {
-      //     response.send(error)
-      //   }else {
-      //     response.json(inedots)
-      //   }
-      // })
   });
 
   app.get('/family/inedot',function(request, response){
 
-    var familyKey_find = request.query.familyKey
-    var macAddr_find   = request.query.macAddr
-    console.log('iNeDots Query With familyKey: '+ familyKey_find);
-    console.log('iNeDots Query With macAddr: '+ macAddr_find);
-
-    if (macAddr_find) {
-
-      iNeDot.find({familyKey : familyKey_find,
-                  macAddr   : macAddr_find},
-
-        function(error, inedots) {
-          // body...
-          if (error) {
-            response.send(error)
-          }else {
-            response.json(inedots)
-          }
-        })
-    }else {
-      iNeDot.find({familyKey : familyKey_find},
-        function(error, inedots) {
-          // body...
-          if (error) {
-            response.send(error)
-          }else {
-            response.json(inedots)
-          }
-        })
+    inedot.familyiNeDot(request, function (error, inedots) {
+      // body...
+      if (error) {
+        resopnse.send(error)
+      }else {
+        resopnse.send(inedots)
       }
+    })
+
+    // var familyKey_find = request.query.familyKey
+    // var macAddr_find   = request.query.macAddr
+    // console.log('iNeDots Query With familyKey: '+ familyKey_find);
+    // console.log('iNeDots Query With macAddr: '+ macAddr_find);
+    //
+    // if (macAddr_find) {
+    //
+    //   iNeDot.find({familyKey : familyKey_find,
+    //               macAddr   : macAddr_find},
+    //
+    //     function(error, inedots) {
+    //       // body...
+    //       if (error) {
+    //         response.send(error)
+    //       }else {
+    //         response.json(inedots)
+    //       }
+    //     })
+    // }else {
+    //   iNeDot.find({familyKey : familyKey_find},
+    //     function(error, inedots) {
+    //       // body...
+    //       if (error) {
+    //         response.send(error)
+    //       }else {
+    //         response.json(inedots)
+    //       }
+    //     })
+    //   }
   });
 
   app.post('/family/inedot/create',function(request, response){

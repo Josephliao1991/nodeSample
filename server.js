@@ -85,7 +85,7 @@ var phone = require('./phone.js');
 
   app.post('/family/phone/delete',function(request, response){
     // body...
-    console.log(request.body.macAddr);
+    // console.log(request.body.macAddr);
     response.send("delete test")
     // phone.deletePhone(request, function(error, success) {
     //   // body...

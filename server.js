@@ -124,25 +124,25 @@ var phone = require('./phone.js');
     // })
   })
 
-  // app.delete('/family/phone/:identifier',function(request, response){
-  //   // body...
-  //
-  //   var delete_id = request.params.identifier
-  //   console.log(delete_id)
-  //
-  //   Phone.remove({_id :delete_id}, function(error, phone) {
-  //
-  //
-	//       if (error) {
-	//         response.send(error);
-	//       }else {
-	//         response.send("success")
-  //         // response.send(phone);
-	//       }
-  //
-  //   })
-  //
-  // })
+  app.delete('/family/phone/:identifier',function(request, response){
+    // body...
+
+    var delete_id = request.params.identifier
+    console.log(delete_id)
+
+    Phone.remove({_id :delete_id}, function(error, phone) {
+
+
+	      if (error) {
+	        response.send(error);
+	      }else {
+	        response.send("success")
+          // response.send(phone);
+	      }
+
+    })
+
+  })
 
   //Create iNeDot Mongodb Module
   var iNeDot = mongoose.model('inedot', {

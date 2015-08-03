@@ -86,15 +86,15 @@ var phone = require('./phone.js');
   app.post('/family/phone/delete',function(request, response){
     // body...
     // console.log(request.body.macAddr);
-    response.send("delete test")
+    response.send("success")
     phone.deletePhone(request, function(error, success) {
       // body...
-      if (error) {
-        resopnse.send(error)
-      }
-      if (success) {
-        resopnse.send("success")
-      }
+      // if (error) {
+      //   resopnse.send(error)
+      // }
+      // if (success) {
+      //   // resopnse.send("success")
+      // }
     })
   })
     // var familyKey_find    = request.body.familyKey

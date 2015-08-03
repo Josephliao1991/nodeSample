@@ -94,17 +94,17 @@ function deletePhone(request, callback) {
         return callback(error)
       }
       if (phone) {
-        console.log("wait for delete : " + phone);
+        // console.log("wait for delete : " + phone);
+        phone.remove(function (error) {
+          // body...
+          if (error) {
+            return callback(error)
+          }else {
+            console.log("Delete success");
+            // callback(null, "success")
+          }
+        })
       }
-      phone.remove(function (error) {
-        // body...
-        if (error) {
-          return callback(error)
-        }else {
-          console.log("Delete success");
-          callback(null, "success")
-        }
-      })
   })
 
 }

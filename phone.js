@@ -97,13 +97,15 @@ function deletePhone(request, callback) {
       }
       if (phone) {
           // response.send(center)
+          callback(null, "success")
+
           phone.remove(function (error) {
             // body...
-            if (error) {
-              return callback(error)
-            }else {
-              return callback(null, "success")
-            }
+            // if (error) {
+            //   return callback(error)
+            // }else {
+            //   return callback(null, "success")
+            // }
           })
       }
   })

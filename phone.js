@@ -44,7 +44,7 @@ function updatePhone(familyKey, deviceToken, request, callback) {
           phone.operation    = request.body.operation;
       }
     }
-    return phone.save(function(error) {
+    phone.save(function(error) {
       if (error) {
         return callback(error)
        }else {

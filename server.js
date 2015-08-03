@@ -72,8 +72,7 @@ var phone = require('./phone.js');
 
   app.post('/family/phone/update',function(request, response){
     // body...
-    phone.updatePhone(request,
-      function (error, success) {
+    phone.updatePhone(request, function (error, success) {
       // body...
       if (error) {
         resopnse.send(error)
@@ -84,9 +83,8 @@ var phone = require('./phone.js');
     })
   })
 
-  app.post('/family/phone/delete',function(request, response){
+  app.post('/family/phone/delete', function(request, response){
     // body...
-
     phone.deletePhone(request, function(error, success) {
       // body...
       if (error) {

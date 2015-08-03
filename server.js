@@ -65,7 +65,7 @@ var phone = require('./phone.js');
     //       response.json(phones)
     //     }
     //   })
-    phone.familyPhone(error,familyKey_find,function (phones) {
+    phone.familyPhone(familyKey_find,function (error, phones) {
       // body...
       if (error) {
         response.send(error)

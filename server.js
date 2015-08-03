@@ -87,15 +87,15 @@ var phone = require('./phone.js');
     // body...
     // console.log(request.body.macAddr);
     response.send("delete test")
-    // phone.deletePhone(request, function(error, success) {
-    //   // body...
-    //   if (error) {
-    //     resopnse.send(error)
-    //   }
-    //   if (success) {
-    //     resopnse.send("success")
-    //   }
-    // })
+    phone.deletePhone(request, function(error, success) {
+      // body...
+      if (error) {
+        resopnse.send(error)
+      }
+      if (success) {
+        resopnse.send("success")
+      }
+    })
   })
     // var familyKey_find    = request.body.familyKey
     // var deviceToken_find  = request.body.deviceToken

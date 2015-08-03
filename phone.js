@@ -92,22 +92,22 @@ function deletePhone(request, callback) {
   function(error, phone) {
 
       // body...
-      if (error) {
-        return callback(error)
-      }
-      if (phone) {
-        console.log("wait for delete : " + phone);
-          phone.remove(function (error) {
-            // body...
-            if (error) {
-              return callback(error)
-            }else {
-              console.log("Delete success");
-            }
-          })
+      // if (error) {
+      //   return callback(error)
+      // }
+      // if (phone) {
+      //   console.log("wait for delete : " + phone);
+      //     phone.remove(function (error) {
+      //       // body...
+      //       if (error) {
+      //         return callback(error)
+      //       }else {
+      //         console.log("Delete success");
+      //       }
+      //     })
         callback(null, "success")
 
-      }
+      // }
   })
 
 }

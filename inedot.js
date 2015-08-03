@@ -28,12 +28,14 @@ function alliNeDot(callback) {
   })
 };
 
-function familyiNeDot(request, callback) {
+function familyiNeDot(request, resopnse, callback) {
   // body...
   var familyKey_find = request.query.familyKey
   var macAddr_find   = request.query.macAddr
   console.log('iNeDots Query With familyKey: '+ familyKey_find);
   console.log('iNeDots Query With macAddr: '+ macAddr_find);
+
+  var res = resopnse
 
   if (macAddr_find) {
 
@@ -45,7 +47,8 @@ function familyiNeDot(request, callback) {
         if (error) {
          callback(error)
         }else {
-          callback(null, inedots)
+          // callback(null, inedots)
+          res.send(inedots)
         }
       })
   }else {
@@ -55,7 +58,8 @@ function familyiNeDot(request, callback) {
         if (error) {
           callback(error)
         }else {
-          callback(null, inedots)
+          // callback(null, inedots)
+          res.send(inedots)
         }
       })
     }

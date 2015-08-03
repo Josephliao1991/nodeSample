@@ -100,7 +100,7 @@ function deletePhone(request, callback) {
           if (error) {
             callback(error)
           }else {
-            console.log("Delete success");
+            // console.log("Delete success");
             callback(null, "success")
           }
         })

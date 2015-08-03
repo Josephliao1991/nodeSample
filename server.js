@@ -147,10 +147,10 @@ var inedot = require('./inedot.js');
 
     var res = response
     var req = request
-    inedot.familyiNeDot(request, function (error, inedots) {
+    inedot.familyiNeDot(request, response, function (error, inedots) {
       // body...
       if (error) {
-        resopnse.send(error)
+        res.send(error)
       }else {
         res.send(inedots)
         // console.log(inedots);

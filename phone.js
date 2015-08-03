@@ -88,9 +88,7 @@ function deletePhone(request, callback) {
 
   Phone.findOne({familyKey     : familyKey_find,
                  deviceToken   : deviceToken_find },
-
   function(error, phone) {
-
       // body...
       if (error) {
         return callback(error)
@@ -98,7 +96,6 @@ function deletePhone(request, callback) {
       if (phone) {
         console.log("wait for delete : " + phone);
       }
-
       phone.remove(function (error) {
         // body...
         if (error) {

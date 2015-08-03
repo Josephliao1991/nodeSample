@@ -85,15 +85,16 @@ var phone = require('./phone.js');
 
   app.post('/family/phone/delete', function(request, response){
     // body...
-    phone.deletePhone(request, function(error, success) {
-      // body...
-      if (error) {
-        resopnse.send(error)
-      }
-      if (success) {
-        resopnse.send("success")
-      }
-    })
+    resopnse.send("delete test")
+    // phone.deletePhone(request, function(error, success) {
+    //   // body...
+    //   if (error) {
+    //     resopnse.send(error)
+    //   }
+    //   if (success) {
+    //     resopnse.send("success")
+    //   }
+    // })
   })
     // var familyKey_find    = request.body.familyKey
     // var deviceToken_find  = request.body.deviceToken

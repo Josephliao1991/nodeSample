@@ -87,6 +87,7 @@ var phone = require('./phone.js');
     // body...
     phone.deletePhone(request, function(error, success) {
       // body...
+      respone.send("done")
       if (error) {
         resopnse.send(error)
       }

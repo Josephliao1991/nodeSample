@@ -753,6 +753,24 @@ var argv = require('optimist').argv;
         })
     })
 
+
+    //HOME ALERT API
+    app.post('/monitor', function(request, response) {
+      // body...
+      var familyKey_alert = request.body.familyKey
+      var macAddr_alert   = request.body.macAddr
+
+      iNeDot.findOne({familyKey : familyKey_alert,
+                      macAddr   : macAddr_alert},
+      function(inedot) {
+          // body...
+          var situation = inedot.situation
+          console.log(situation);
+        }) 
+
+
+    })
+
   app.listen(8080,argv.fe_ip,function(request, response) {
     // body...
     // console.log('App listening at http://%s:%s', server.address().address, server.address().port);

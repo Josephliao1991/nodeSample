@@ -84,7 +84,7 @@ var inedot = require('./inedot.js');
     var req = request
     // response.send("success")
     phone.deletePhone(request, function(error, success) {
-      body...
+      // body...
       if (error) {
         res.send(error)
       }

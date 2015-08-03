@@ -425,10 +425,10 @@ var argv = require('optimist').argv;
       }
   });
 
-  app.get('/family/center/getfmilyKey',function(request, response) {
+  app.get('/family/center/getFmilyKey',function(request, response) {
     // body...
     var macAddr_find = request.query.macAddr
-    console.log(macAddr_find);
+    console.log("getFamilyKey Query : "macAddr_find);
     if (macAddr_find) {
         Center.find({macAddr : macAddr_find},
           function(error, center) {
@@ -436,13 +436,13 @@ var argv = require('optimist').argv;
             if (error) {
               response.send(error)
             }
-            console.log(center);
-            // if (center) {
-              // var familyKey = center.familyKey
+            // console.log(center);
+            if (center) {
+              var familyKey = center.familyKey
               response.send(center)
-            // }else {
-            //   response.end("Belong with no family")
-            // }
+            }else {
+              response.end("Belong with no family")
+            }
           })
     }
 

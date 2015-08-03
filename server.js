@@ -59,68 +59,49 @@ var phone = require('./phone.js');
 
   app.post('/family/phone/create',function(request, response){
 
-    Phone.create({
-        familyKey   : request.body.familyKey,
-        deviceToken : request.body.deviceToken,
-        operation   : request.body.operation
-    },function(error, phone){
+    // var familyKey_find     = request.body.familyKey
+    // var deviceToken_find   = request.body.deviceToken
+    // var operation_find     = request.body.operation
+    // console.log(familyKey_find);
+    // console.log(deviceToken_find);
+    // console.log(operation_find);
+    phone.createPhone(request, function (error, success) {
       // body...
       if (error) {
-          response.send(error)
-      }else {
-          // response.json(phone)
-          response.send("success")
+        resopnse.send(error)
+      }
+      if (success) {
+        response.send("success")
       }
     })
+
+    // Phone.create({
+    //     familyKey   : request.body.familyKey,
+    //     deviceToken : request.body.deviceToken,
+    //     operation   : request.body.operation
+    // },function(error, phone){
+    //   // body...
+    //   if (error) {
+    //       response.send(error)
+    //   }else {
+    //       // response.json(phone)
+    //       response.send("success")
+    //   }
+    // })
   });
 
   app.post('/family/phone/update',function(request, response){
     // body...
-    var familyKey_find = request.body.familyKey
-    var deviceToken_find   = request.body.deviceToken
-
-    console.log(familyKey_find);
-    console.log(deviceToken_find);
-
-    phone.updatePhone(familyKey_find, deviceToken_find, request,
+    phone.updatePhone(request,
       function (error, success) {
       // body...
-      response.send("success")
-      console.log(success);
-
+      if (error) {
+        resopnse.send(error)
+      }
+      if (success) {
+        response.send("success")
+      }
     })
-
-    // Phone.findOne({familyKey     : familyKey_find,
-    //                deviceToken   : deviceToken_find },
-    // function(error, phone) {
-    //   if (error) {
-    //     response.end(error)
-    //   }else {
-    //     if (phone) {
-    //
-    //       // if (request.body.familyKey) {
-    //       //     phone.familyKey    = request.body.familyKey;
-    //       // }
-    //       //
-    //       // if (request.body.deviceToken) {
-    //       //     phone.deviceToken  = request.body.deviceToken;
-    //       // }
-    //       if (request.body.operation) {
-    //           phone.operation    = request.body.operation;
-    //       }
-    //     }
-  	//     return phone.save(function(error) {
-  	//       if (error) {
-  	//         response.send(error);
-  	//       }else {
-  	//         response.send("success")
-    //         // return response.send(phone);
-  	//       }
-  	//     });
-    //   }
-	  // });
-
-
   })
 
   app.post('/family/phone/delete',function(request, response){

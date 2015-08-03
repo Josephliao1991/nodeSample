@@ -29,11 +29,35 @@ function familyPhone(familyKey, callback) {
       }
     })
 }
-
-function updatePhone(familyKey, deviceToken, request, callback) {
+function createPhone(request, callback) {
   // body...
-  Phone.findOne({familyKey     : familyKey,
-                 deviceToken   : deviceToken },
+
+  Phone.create({
+      familyKey   : request.body.familyKey,
+      deviceToken : request.body.deviceToken,
+      operation   : request.body.operation
+  },function(error, phone){
+    // body...
+    if (error) {
+        return callback(error)
+    }else {
+        // response.json(phone)
+        callback(null, "success")
+    }
+  })
+
+}
+
+function updatePhone(request, callback) {
+  // body...
+  var familyKey_find = request.body.familyKey
+  var deviceToken_find   = request.body.deviceToken
+
+  console.log(familyKey_find);
+  console.log(deviceToken_find);
+
+  Phone.findOne({familyKey     : familyKey_find,
+                 deviceToken   : deviceToken_find },
   function(error, phone) {
     if (error) {
       return callback(error)
@@ -58,6 +82,7 @@ module.exports = {
 
   allPhone     :allPhone,
   familyPhone  :familyPhone,
+  createPhone  :createPhone,
   updatePhone  :updatePhone
 
 }

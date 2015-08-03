@@ -38,9 +38,26 @@ function familyiNeDot(request, callback) {
   if (macAddr_find) {
 
      iNeDot.find({familyKey : familyKey_find,
-                 macAddr   : macAddr_find},callback)
+                 macAddr   : macAddr_find},
+
+      function(error, inedots) {
+        // body...
+        if (error) {
+         callback(error)
+        }else {
+          callback(null, inedots)
+        }
+      })
   }else {
-     iNeDot.find({familyKey : familyKey_find},callback)
+     iNeDot.find({familyKey : familyKey_find},
+      function(error, inedots) {
+        // body...
+        if (error) {
+          callback(error)
+        }else {
+          callback(null, inedots)
+        }
+      })
     }
 };
 

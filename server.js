@@ -148,7 +148,8 @@ var inedot = require('./inedot.js');
       if (error) {
         resopnse.send(error)
       }else {
-        resopnse.send(inedots)
+        // resopnse.send(inedots)
+        console.log(inedots);
       }
     })
 

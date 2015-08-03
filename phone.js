@@ -51,9 +51,7 @@ function updatePhone(familyKey, deviceToken, request, callback) {
          callback(null, "success")
        }
       });
-    }
-  });
-
+    });
 }
 
 module.exports = {

@@ -83,9 +83,10 @@ var phone = require('./phone.js');
     })
   })
 
-  app.post('/family/phone/delete', function(request, response){
+  app.post('/family/phone/delete',function(request, response){
     // body...
-    resopnse.send("delete test")
+    console.log(request.body.macAddr);
+    response.send("delete test")
     // phone.deletePhone(request, function(error, success) {
     //   // body...
     //   if (error) {

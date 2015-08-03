@@ -88,10 +88,10 @@ var phone = require('./phone.js');
     phone.deletePhone(request, function(error, success) {
       // body...
       if (error) {
-        // resopnse.send(error)
+        resopnse.send(error)
       }
       if (success) {
-        // resopnse.send("success")
+        resopnse.send("success")
       }
     })
   })

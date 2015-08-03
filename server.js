@@ -80,15 +80,17 @@ var inedot = require('./inedot.js');
   app.post('/family/phone/delete',function(request, response){
     // body...
     // console.log(request.body.macAddr);
-    response.send("success")
+    var res = response
+    var req = request
+    // response.send("success")
     phone.deletePhone(request, function(error, success) {
-      // body...
-      // if (error) {
-      //   resopnse.send(error)
-      // }
-      // if (success) {
-      //   // resopnse.send("success")
-      // }
+      body...
+      if (error) {
+        res.send(error)
+      }
+      if (success) {
+        res.send("success")
+      }
     })
   })
 
@@ -151,7 +153,7 @@ var inedot = require('./inedot.js');
         resopnse.send(error)
       }else {
         res.send(inedots)
-        console.log(inedots);
+        // console.log(inedots);
       }
     })
 

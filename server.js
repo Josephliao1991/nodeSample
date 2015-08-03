@@ -762,11 +762,15 @@ var argv = require('optimist').argv;
 
       iNeDot.findOne({familyKey : familyKey_alert,
                       macAddr   : macAddr_alert},
-      function(inedot) {
+      function(error,inedot) {
           // body...
+          if (error) {
+            response.send(error)
+          }
+
           var situation = inedot.situation
           console.log(situation);
-        }) 
+        })
 
 
     })

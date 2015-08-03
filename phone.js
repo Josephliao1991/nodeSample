@@ -30,9 +30,36 @@ function familyPhone(familyKey, callback) {
     })
 }
 
+function updatePhone(familyKey, deviceToken, request, callback) {
+  // body...
+  Phone.findOne({familyKey     : familyKey,
+                 deviceToken   : deviceToken },
+  function(error, phone) {
+    if (error) {
+      return callback(error)
+    }
+    if (phone) {
+
+      if (request.body.operation) {
+          phone.operation    = request.body.operation;
+      }
+    }
+    return phone.save(function(error) {
+      if (error) {
+        return callback(error)
+       }else {
+         callback(null, "success")
+       }
+      });
+    }
+  });
+
+}
+
 module.exports = {
 
   allPhone     :allPhone,
-  familyPhone  :familyPhone
+  familyPhone  :familyPhone,
+  updatePhone  :updatePhone
 
 }

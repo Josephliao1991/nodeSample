@@ -28,12 +28,12 @@ function alliNeDot(callback) {
   })
 };
 
-function familyiNeDot(familyKey_find, macAddr_find, request, callback) {
+function familyiNeDot(request, callback) {
   // body...
-  // var familyKey_find = request.query.familyKey
-  // var macAddr_find   = request.query.macAddr
-  // console.log('iNeDots Query With familyKey: '+ familyKey_find);
-  // console.log('iNeDots Query With macAddr: '+ macAddr_find);
+  var familyKey_find = request.query.familyKey
+  var macAddr_find   = request.query.macAddr
+  console.log('iNeDots Query With familyKey: '+ familyKey_find);
+  console.log('iNeDots Query With macAddr: '+ macAddr_find);
 
   if (macAddr_find) {
 
@@ -45,7 +45,7 @@ function familyiNeDot(familyKey_find, macAddr_find, request, callback) {
         if (error) {
           return callback(error)
         }else {
-          callback(null, inedots)
+          return callback(null, inedots)
         }
       })
   }else {
@@ -55,7 +55,7 @@ function familyiNeDot(familyKey_find, macAddr_find, request, callback) {
         if (error) {
           return callback(error)
         }else {
-          callback(null, inedots)
+          return callback(null, inedots)
         }
       })
     }

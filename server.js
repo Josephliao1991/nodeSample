@@ -5,6 +5,7 @@ var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 var argv = require('optimist').argv;
 var phone = require('./phone.js');
+var inedot = require('./inedot.js');
   //Connect to Mongodb
   mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
@@ -19,13 +20,6 @@ var phone = require('./phone.js');
   app.get('/',function(request,response){
     response.end("Hello world, This is iNeDot Server!");
   });
-
-  //Create Phone Mongodb Module
-  // var Phone = mongoose.model('phone', {
-  //     familyKey   : String,
-  //     deviceToken : String,
-  //     operation   : String
-  // });
 
   //implement /family/phone/ API
   app.get('/family/phone/all',function(request, response){
@@ -97,34 +91,6 @@ var phone = require('./phone.js');
       // }
     })
   })
-    // var familyKey_find    = request.body.familyKey
-    // var deviceToken_find  = request.body.deviceToken
-    //
-    // console.log(familyKey_find);
-    // console.log(deviceToken_find);
-    //
-    // Phone.findOne({familyKey     : familyKey_find,
-    //                deviceToken   : deviceToken_find },
-    //
-    // function(error, phone) {
-    //
-    //     // body...
-    //     if (error) {
-    //       response.end(error)
-    //     }
-    //     if (phone) {
-    //         // response.send(center)
-    //         phone.remove(function (error) {
-    //           // body...
-    //           if (error) {
-    //             response.send(error)
-    //           }else {
-    //             response.send("success")
-    //           }
-    //         })
-    //     }
-    // })
-  // })
 
   // app.delete('/family/phone/:identifier',function(request, response){
   //   // body...
@@ -146,33 +112,42 @@ var phone = require('./phone.js');
   //
   // })
 
-  //Create iNeDot Mongodb Module
-  var iNeDot = mongoose.model('inedot', {
-      familyKey     : String,
-      macAddr       : String,
-
-      name          : String,
-      situation     : String,
-
-      owner         : String,
-      connectState  : Boolean,
-
-      battery       : Number,
-
-      preset        : Array
-  });
+  // //Create iNeDot Mongodb Module
+  // var iNeDot = mongoose.model('inedot', {
+  //     familyKey     : String,
+  //     macAddr       : String,
+  //
+  //     name          : String,
+  //     situation     : String,
+  //
+  //     owner         : String,
+  //     connectState  : Boolean,
+  //
+  //     battery       : Number,
+  //
+  //     preset        : Array
+  // });
 
   //implement /family/inedot/ API
   app.get('/family/inedot/all',function(request, response){
 
-      iNeDot.find(function(error, inedots) {
-        // body...
-        if (error) {
-          response.send(error)
-        }else {
-          response.json(inedots)
-        }
-      })
+    inedot.alliNeDot(function (error, inedots) {
+      // body...
+      if (error) {
+        response.send(error)
+      }else {
+        response.json(inedots)
+      }
+    })
+
+      // iNeDot.find(function(error, inedots) {
+      //   // body...
+      //   if (error) {
+      //     response.send(error)
+      //   }else {
+      //     response.json(inedots)
+      //   }
+      // })
   });
 
   app.get('/family/inedot',function(request, response){

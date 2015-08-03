@@ -768,8 +768,8 @@ var argv = require('optimist').argv;
             response.send(error)
           }
 
-          var situation = inedot.situation
-          console.log(situation);
+          // var situation = inedot.situation
+          console.log(inedot);
         })
 
 

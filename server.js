@@ -430,7 +430,7 @@ var argv = require('optimist').argv;
     var macAddr_find = request.query.macAddr
     console.log("getFamilyKey Query : " + macAddr_find);
     if (macAddr_find) {
-        Center.find({macAddr : macAddr_find},
+        Center.findOne({macAddr : macAddr_find},
           function(error, center) {
             // body...
             if (error) {

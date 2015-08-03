@@ -98,10 +98,10 @@ function deletePhone(request, callback) {
         phone.remove(function (error) {
           // body...
           if (error) {
-            return callback(error)
+            callback(error)
           }else {
             console.log("Delete success");
-            // callback(null, "success")
+            callback(null, "success")
           }
         })
       }

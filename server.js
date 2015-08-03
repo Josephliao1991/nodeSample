@@ -150,11 +150,11 @@ var inedot = require('./inedot.js');
 
     inedot.familyiNeDot(request, function (error, inedots) {
       // body...
-      // if (error) {
-      //   resopnse.send(error)
-      // }else {
-      //   resopnse.send(inedots)
-      // }
+      if (error) {
+        resopnse.send(error)
+      }else {
+        resopnse.send(inedots)
+      }
     })
 
     // var familyKey_find = request.query.familyKey

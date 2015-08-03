@@ -38,6 +38,7 @@ var phone = require('./phone.js');
       //     response.json(phones)
       //   }
       // })
+      console.log(call phone);
       phone(function (error,phones) {
         // body...
 

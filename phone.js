@@ -8,6 +8,7 @@ var Phone = mongoose.model('phone', {
 
 module.exports = function phone(callback) {
   // body...
+  console.log("start");
   Phone.find(function(error, phones) {
     // body...
     if (error) {

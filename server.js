@@ -173,7 +173,9 @@ var argv = require('optimist').argv;
       owner         : String,
       connectState  : Boolean,
 
-      battery       : Number
+      battery       : Number,
+
+      preset        : Array
   });
 
   //implement /family/inedot/ API
@@ -224,6 +226,15 @@ var argv = require('optimist').argv;
 
   app.post('/family/inedot/create',function(request, response){
 
+    var presetValue;
+    if (request.body.situation == "temp" && request.body.temp) {
+        presetValue = [{temp : request.body.temp}]
+    }else if (request.body.situation == "alert" && request.body.alert) {
+        presetValue = [{alert : request.body.alert}]
+    }else if (request.body.situation == "message" && request.body.message) {
+        presetValue = [{message : request.body.message}]
+    }
+
     iNeDot.create({
 
         familyKey     : request.body.familyKey,
@@ -235,8 +246,9 @@ var argv = require('optimist').argv;
         name          : request.body.name,
         situation     : request.body.situation,
 
-        battery       : request.body.battery
+        battery       : request.body.battery,
 
+        preset        : presetValue
     },function(error, inedot){
       // body...
       if (error) {
@@ -286,6 +298,13 @@ var argv = require('optimist').argv;
           if (request.body.owner) {
               inedot.owner           = request.body.owner;
             }
+          if (request.body.situation == "temp" && request.body.temp) {
+              inedot.preset     = [{temp : request.body.temp}];
+          }else if (request.body.situation == "alert" && request.body.alert) {
+              inedot.preset     = [{alert : request.body.alert}];
+          }else if (request.body.situation == "message" && request.body.message) {
+              inedot.preset     = [{message : request.body.message}];
+          }
 
           // response.send(inedot)
           return inedot.save(function(error) {
@@ -496,7 +515,7 @@ var argv = require('optimist').argv;
     console.log(macAddr_find);
 
     Center.findOne({familyKey : familyKey_find,
-                    macAddr  : macAddr_find },
+                    macAddr   : macAddr_find },
 
     function(error, center) {
         // body...
@@ -538,6 +557,199 @@ var argv = require('optimist').argv;
   //   })
   //
   // })
+
+  //Create Push Mongodb Module
+  /* Command Rule
+  command : Number
+  Baby  = 0
+  Area  = 1
+  Alert = 2
+  Temp  = 3
+  Break Connection  = 4
+  */
+  var CPush = mongoose.model('c_push', {
+      familyKey     : String,
+      c_macAddr     : String,
+      i_macAddr     : String,
+      command       : Number,
+      checkMark     : Boolean
+  });
+
+  //implement /family/inedot/ API
+  app.get('/family/c_push/all',function(request, response){
+
+      CPush.find(function(error, c_pushs) {
+        // body...
+        if (error) {
+          response.send(error)
+        }else {
+          response.json(c_pushs)
+        }
+      })
+  });
+
+  app.get('/family/c_push',function(request, response){
+
+    var familyKey_find = request.query.familyKey
+    var c_macAddr_find = request.query.c_macAddr
+    console.log('c_push Query With familyKey: '+ familyKey_find);
+    console.log('c_push Query With c_macAddr: '+ c_macAddr_find);
+
+    if (c_macAddr_find) {
+
+      CPush.find({familyKey : familyKey_find,
+                  c_macAddr : c_macAddr_find,
+                  checkMark : false},
+
+        function(error, c_push) {
+          // body...
+          if (error) {
+            response.send(error)
+          }else {
+            response.json(c_push)
+          }
+        })
+    }
+  });
+
+  app.post('/family/c_push/create',function(request, response){
+
+    CPush.create({
+
+        familyKey     : request.body.familyKey,
+        c_macAddr     : request.body.c_macAddr,
+        i_macAddr     : request.body.i_macAddr,
+        command       : request.body.command,
+        checkMark     : false
+
+    },function(error, c_push){
+      // body...
+      if (error) {
+          response.send(error)
+      }else {
+          // response.json(phone)
+          response.send("success")
+      }
+    })
+  });
+
+  // app.post('/family/c_push/update',function(request, response){
+  //   // body...
+  //   var familyKey_find  = request.body.familyKey
+  //   var c_macAddr_find  = request.body.c_macAddr
+  //   var i_macAddr_find  = request.body.i_macAddr
+  //
+  //   console.log(familyKey_find);
+  //   console.log(c_macAddr_find);
+  //   console.log(i_macAddr_find);
+  //
+  //   CPush.findOne({familyKey : familyKey_find,
+  //                  c_macAddr : c_macAddr_find,
+  //                  i_macAddr : i_macAddr_find,
+  //                  checkMark : false},
+  //
+  //   function(error, c_push) {
+  //       // body...
+  //       if (error) {
+  //         response.end(error)
+  //       }
+  //       if (c_push) {
+  //         // if (request.body.familyKey) {
+  //         //     push.familyKey       = request.body.familyKey;
+  //         //   }
+  //         // if (request.body.c_macAddr) {
+  //         //     push.c_macAddr       = request.body.c_macAddr;
+  //         //   }
+  //
+  //         c_push.checkMark = true
+  //
+  //         // response.send(center)
+  //         return c_push.save(function(error) {
+  //           if (error) {
+  //             response.send(error);
+  //           }else {
+  //             response.send("success")              // return response.send(phone);
+  //           }
+  //         });
+  //       }
+  //     })
+  //   });
+
+  app.post('/family/c_push/update',function(request, response){
+    // body...
+    // var familyKey_find  = request.body.familyKey
+    // var c_macAddr_find  = request.body.c_macAddr
+    // var i_macAddr_find  = request.body.i_macAddr
+    var identifier_find = request.body.identifier;
+
+    // console.log(familyKey_find);
+    // console.log(c_macAddr_find);
+    // console.log(i_macAddr_find);
+    console.log(identifier_find);
+
+    CPush.findById({_id : identifier_find},
+
+    function(error, c_push) {
+        // body...
+        if (error) {
+          response.end(error)
+        }
+        if (c_push) {
+          // if (request.body.familyKey) {
+          //     push.familyKey       = request.body.familyKey;
+          //   }
+          // if (request.body.c_macAddr) {
+          //     push.c_macAddr       = request.body.c_macAddr;
+          //   }
+
+          c_push.checkMark = true
+
+          // response.send(center)
+          return c_push.save(function(error) {
+            if (error) {
+              response.send(error);
+            }else {
+              response.send("success")              // return response.send(phone);
+            }
+          });
+        }
+      })
+    });
+
+
+    app.post('/family/c_push/delete',function(request, response){
+      // body...
+      var familyKey_find  = request.body.familyKey
+      var c_macAddr_find  = request.body.c_macAddr
+      var i_macAddr_find  = request.body.i_macAddr
+
+      console.log(familyKey_find);
+      console.log(c_macAddr_find);
+      console.log(i_macAddr_find);
+
+      CPush.findOne({familyKey : familyKey_find,
+                     c_macAddr : c_macAddr_find,
+                     i_macAddr : i_macAddr_find},
+
+      function(error, c_push) {
+          // body...
+          if (error) {
+            response.end(error)
+          }
+
+          if (c_push) {
+              // response.send(center)
+              c_push.remove(function (error) {
+                // body...
+                if (error) {
+                  response.send(error)
+                }else {
+                  response.send("success")
+                }
+              })
+          }
+        })
+    })
 
   app.listen(8080,argv.fe_ip,function(request, response) {
     // body...

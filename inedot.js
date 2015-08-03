@@ -30,10 +30,6 @@ function alliNeDot(callback) {
 
 function familyiNeDot(request, callback) {
   // body...
-  var familyKey_find = request.query.familyKey
-  var macAddr_find   = request.query.macAddr
-  console.log('iNeDots Query With familyKey: '+ familyKey_find);
-  console.log('iNeDots Query With macAddr: '+ macAddr_find);
 
   if (macAddr_find) {
 

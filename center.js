@@ -77,12 +77,30 @@ function getCenterFamilyKey(request, response) {
   }
 }
 
+function createCenter(request, response) {
+  // body...
+  Center.create({
+      familyKey     : request.body.familyKey,
+      macAddr       : request.body.macAddr,
+
+      connectState  : request.body.connectState,},
+  function(error, center){
+    // body...
+    if (error) {
+        response.send(error)
+    }else {
+        // response.json(phone)
+        response.send("success")
+    }
+  })
+}
 
 
 
 module.exports = {
   allCenter     : allCenter,
   familyCenter  : familyCenter,
-  getCenterFamilyKey    : getCenterFamilyKey
+  getCenterFamilyKey    : getCenterFamilyKey,
+  createCenter  : createCenter
 
 }

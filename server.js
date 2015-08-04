@@ -195,22 +195,25 @@ var center = require('./center.js');
 
   app.post('/family/center/create',function(request, response){
 
-    Center.create({
-
-        familyKey     : request.body.familyKey,
-        macAddr       : request.body.macAddr,
-
-        connectState  : request.body.connectState,
-
-    },function(error, center){
-      // body...
-      if (error) {
-          response.send(error)
-      }else {
-          // response.json(phone)
-          response.send("success")
-      }
-    })
+    var req = request
+    var res = response
+    center.createCenter(req, res)
+    // Center.create({
+    //
+    //     familyKey     : request.body.familyKey,
+    //     macAddr       : request.body.macAddr,
+    //
+    //     connectState  : request.body.connectState,
+    //
+    // },function(error, center){
+    //   // body...
+    //   if (error) {
+    //       response.send(error)
+    //   }else {
+    //       // response.json(phone)
+    //       response.send("success")
+    //   }
+    // })
   });
 
   app.post('/family/center/update',function(request, response){

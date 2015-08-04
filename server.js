@@ -205,7 +205,7 @@ var cpush = require('./c-push.js');
     var familyKey_alert = request.body.familyKey
     var macAddr_alert   = request.body.macAddr
 
-    iNeDot.findOne({familyKey : familyKey_alert,
+    inedot.iNeDot.findOne({familyKey : familyKey_alert,
                     macAddr   : macAddr_alert},
     function(error,inedot) {
         // body...

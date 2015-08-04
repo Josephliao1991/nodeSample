@@ -65,9 +65,30 @@ function familyCPush(request, response) {
   }
 }
 
+function updateCPush(request, response) {
+  // body...
+  CPush.create({
+
+      familyKey     : request.body.familyKey,
+      c_macAddr     : request.body.c_macAddr,
+      i_macAddr     : request.body.i_macAddr,
+      command       : request.body.command,
+      checkMark     : false
+
+  },function(error, c_push){
+    // body...
+    if (error) {
+        response.send(error)
+    }else {
+        // response.json(phone)
+        response.send("success")
+    }
+  })
+}
 
 module.exports = {
   allCPush    : allCPush,
-  familyCPush : familyCPush
+  familyCPush : familyCPush,
+  updateCPush : updateCPush
 
 }

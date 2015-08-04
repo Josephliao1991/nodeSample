@@ -218,24 +218,26 @@ var cpush = require('./c-push.js');
   });
 
   app.post('/family/c_push/create',function(request, response){
-
-    CPush.create({
-
-        familyKey     : request.body.familyKey,
-        c_macAddr     : request.body.c_macAddr,
-        i_macAddr     : request.body.i_macAddr,
-        command       : request.body.command,
-        checkMark     : false
-
-    },function(error, c_push){
-      // body...
-      if (error) {
-          response.send(error)
-      }else {
-          // response.json(phone)
-          response.send("success")
-      }
-    })
+    var req = request
+    var res = response
+    cpush.updateCPush(req, res)
+    // CPush.create({
+    //
+    //     familyKey     : request.body.familyKey,
+    //     c_macAddr     : request.body.c_macAddr,
+    //     i_macAddr     : request.body.i_macAddr,
+    //     command       : request.body.command,
+    //     checkMark     : false
+    //
+    // },function(error, c_push){
+    //   // body...
+    //   if (error) {
+    //       response.send(error)
+    //   }else {
+    //       // response.json(phone)
+    //       response.send("success")
+    //   }
+    // })
   });
 
   // app.post('/family/c_push/update',function(request, response){

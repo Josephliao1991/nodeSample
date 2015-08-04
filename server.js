@@ -205,34 +205,23 @@ var cpush = require('./c-push.js');
     var familyKey_alert = request.body.familyKey
     var macAddr_alert   = request.body.macAddr
 
-    // iNeDot.findOne({familyKey : familyKey_alert,
-    //                 macAddr   : macAddr_alert},
-    // function(error,inedot) {
-    //     // body...
-    //     if (error) {
-    //       response.send(error)
-    //     }
-    //     if (inedot) {
-    //       var situation = inedot.situation
-    //       response.send("success")
-    //
-    //
-    //     }else {
-    //       response.send("fail")
-    //     }
-    //
-    //   })
-    var members = phone.getFamilyMember(familyKey_alert).toString()
-    // members = phone.getFamilyMember(familyKey_alert)
-    console.log(members);
-
-    // for (var member in members) {
-    //   if (members.hasOwnProperty(member)) {
-    //     console.log(member.familyKey);
-    //   }
-    // }
+    iNeDot.findOne({familyKey : familyKey_alert,
+                    macAddr   : macAddr_alert},
+    function(error,inedot) {
+        // body...
+        if (error) {
+          response.send(error)
+        }
+        if (inedot) {
+          var situation = inedot.situation
+          response.send(situation)
 
 
+        }else {
+          response.send("fail")
+        }
+
+      })
   })
 
   app.listen(8080,argv.fe_ip,function(request, response) {

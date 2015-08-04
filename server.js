@@ -256,6 +256,15 @@ var inedot = require('./inedot.js');
     //   })
   })
 
+  app.post('/family/inedot/deleteById',function(request, response){
+    // body...
+
+    var req = request
+    var res = response
+    inedot.deleteiNeDotById(req, res)
+
+  })
+
   // app.delete('/family/inedot/:identifier',function(request, response){
   //   // body...
   //

@@ -184,11 +184,37 @@ function deleteiNeDot(request, response) {
     })
 }
 
+function deleteiNeDotById(request, response) {
+  // body...
+  var id_find  = request.body.identifier
+  console.log(id_find);
+
+  iNeDot.findOne({_id   : id_find},
+    function(error, inedot) {
+      // body...
+      if (error) {
+        response.end(error)
+      }
+      if (inedot) {
+          // response.send(center)
+          inedot.remove(function (error) {
+            // body...
+            if (error) {
+              response.send(error)
+            }else {
+              response.send("success")
+            }
+          })
+      }
+    })
+}
+
 module.exports = {
 
   alliNeDot     : alliNeDot,
   familyiNeDot  : familyiNeDot,
   createiNeDot  : createiNeDot,
   updateiNeDot  : updateiNeDot,
-  deleteiNeDot  : deleteiNeDot
+  deleteiNeDot  : deleteiNeDot,
+  deleteiNeDotById   : deleteiNeDotById
 }

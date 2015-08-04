@@ -23,7 +23,8 @@ function sendiOSPush(deviceToken, situation, name, macAddr) {
   note.badge = 1;
   note.sound = "ping.aiff";
   note.alert = "situation : "+situation+" name : "+name+" macAddr : "+macAddr+" devicetoken : "+deviceToken;
-  note.payload = {'messageFrom': 'Caroline'};
+  note.payload = {"messageFrom": "iNedotServer",
+                  "situation"  : situation};
   note.device = myDevice;
 
   apnsConnection.sendNotification(note);

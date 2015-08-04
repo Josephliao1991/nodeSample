@@ -8,22 +8,22 @@ function sendPush(request, response) {
   var familyKey_alert = request.body.familyKey
   var macAddr_alert   = request.body.macAddr
 
-  inedot.iNeDot.findOne({familyKey  : familyKey_alert,
-                         macAddr    : macAddr_alert},
+  inedot.iNeDot.find({familyKey  : familyKey_alert,
+                      macAddr    : macAddr_alert},
    function(error, inedot) {
       // body...
       var situation = inedot.situation
       console.log("Now iNeDot Situation Is : " + situation);
 
-      phone.Phone.findOne({familyKey  : familyKey_alert},
+      phone.Phone.find({familyKey  : familyKey_alert},
         function(error, phones) {
         // body...
         console.log("Family Member Is : " + phones.length);
 
-        // for (var i = 0; i < phones.length; i++) {
-        //   var deviceToken = phones[i].deviceToken
+        for (var i = 0; i < phones.length; i++) {
+          var deviceToken = phones[i].deviceToken
           nodeiOSPush.sendiOSPush("sss", situation)
-        // }
+        }
       })
    })
 

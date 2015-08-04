@@ -54,13 +54,35 @@ function familyCenter(request, response) {
     }
 }
 
-
+function getCenterFamilyKey(request, response) {
+  // body...
+  var macAddr_find = request.query.macAddr
+  console.log("getFamilyKey Query : " + macAddr_find);
+  if (macAddr_find) {
+      Center.findOne({macAddr : macAddr_find},
+        function(error, center) {
+          // body...
+          if (error) {
+            response.send(error)
+          }
+          // console.log(center);
+          if (center) {
+            var familyKey = center.familyKey
+            console.log(center.familyKey);
+            response.send(familyKey)
+          }else {
+            response.end("Belong with no family")
+          }
+        })
+  }
+}
 
 
 
 
 module.exports = {
   allCenter     : allCenter,
-  familyCenter  : familyCenter
+  familyCenter  : familyCenter,
+  getCenterFamilyKey    : getCenterFamilyKey
 
 }

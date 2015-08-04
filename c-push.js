@@ -50,6 +50,18 @@ function familyCPush(request, response) {
           response.json(c_push)
         }
       })
+  }else {
+    CPush.find({familyKey : familyKey_find,
+                checkMark : false},
+
+      function(error, c_push) {
+        // body...
+        if (error) {
+          response.send(error)
+        }else {
+          response.json(c_push)
+        }
+      })
   }
 }
 

@@ -18,11 +18,12 @@ function sendPush(request, response) {
       phone.Phone.find({familyKey  : familyKey_alert},
         function(error, phones) {
         // body...
-        console.log("Family Member Is : " + phones.length);
+        console.log("Family Member Is : " + phones);
 
         for (var i = 0; i < phones.length; i++) {
           var deviceToken = phones[i].deviceToken
-          nodeiOSPush.sendiOSPush("sss", situation)
+          console.log(deviceToken);
+          // nodeiOSPush.sendiOSPush("sss", situation)
         }
       })
    })

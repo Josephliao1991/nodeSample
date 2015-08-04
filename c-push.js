@@ -29,9 +29,33 @@ function allCPush(request, response) {
   })
 }
 
+function familyCPush(request, response) {
+  // body...
+  var familyKey_find = request.query.familyKey
+  var c_macAddr_find = request.query.c_macAddr
+  console.log('c_push Query With familyKey: '+ familyKey_find);
+  console.log('c_push Query With c_macAddr: '+ c_macAddr_find);
+
+  if (c_macAddr_find) {
+
+    CPush.find({familyKey : familyKey_find,
+                c_macAddr : c_macAddr_find,
+                checkMark : false},
+
+      function(error, c_push) {
+        // body...
+        if (error) {
+          response.send(error)
+        }else {
+          response.json(c_push)
+        }
+      })
+  }
+}
 
 
 module.exports = {
-  allCPush    : allCPush
+  allCPush    : allCPush,
+  familyCPush : familyCPush
 
 }

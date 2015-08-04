@@ -192,26 +192,29 @@ var cpush = require('./c-push.js');
 
   app.get('/family/c_push',function(request, response){
 
-    var familyKey_find = request.query.familyKey
-    var c_macAddr_find = request.query.c_macAddr
-    console.log('c_push Query With familyKey: '+ familyKey_find);
-    console.log('c_push Query With c_macAddr: '+ c_macAddr_find);
-
-    if (c_macAddr_find) {
-
-      CPush.find({familyKey : familyKey_find,
-                  c_macAddr : c_macAddr_find,
-                  checkMark : false},
-
-        function(error, c_push) {
-          // body...
-          if (error) {
-            response.send(error)
-          }else {
-            response.json(c_push)
-          }
-        })
-    }
+    var req = request
+    var res = response
+    cpush.familyCPush(req, res)
+    // var familyKey_find = request.query.familyKey
+    // var c_macAddr_find = request.query.c_macAddr
+    // console.log('c_push Query With familyKey: '+ familyKey_find);
+    // console.log('c_push Query With c_macAddr: '+ c_macAddr_find);
+    //
+    // if (c_macAddr_find) {
+    //
+    //   CPush.find({familyKey : familyKey_find,
+    //               c_macAddr : c_macAddr_find,
+    //               checkMark : false},
+    //
+    //     function(error, c_push) {
+    //       // body...
+    //       if (error) {
+    //         response.send(error)
+    //       }else {
+    //         response.json(c_push)
+    //       }
+    //     })
+    // }
   });
 
   app.post('/family/c_push/create',function(request, response){

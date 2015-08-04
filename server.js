@@ -105,7 +105,7 @@ var inedot = require('./inedot.js');
 
   })
 
-  app.post('/family/phone/deleteById', function(request, respone) {
+  app.post('/family/phone/deleteById', function(request, response) {
     // body...
     var res = response
     var req = request

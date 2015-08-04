@@ -64,7 +64,7 @@ var inedot = require('./inedot.js');
     var req = request
     var res = response
 
-    phone.createPhone(request, response)
+    phone.createPhone(req, res)
 
     // phone.createPhone(request, function (error, success) {
     //   // body...
@@ -79,15 +79,20 @@ var inedot = require('./inedot.js');
 
   app.post('/family/phone/update',function(request, response){
     // body...
-    phone.updatePhone(request, function (error, success) {
-      // body...
-      if (error) {
-        resopnse.send(error)
-      }
-      if (success) {
-        response.send("success")
-      }
-    })
+    var req = request
+    var res = response
+
+    phone.updatePhone(req, res)
+
+    // phone.updatePhone(request, function (error, success) {
+    //   // body...
+    //   if (error) {
+    //     resopnse.send(error)
+    //   }
+    //   if (success) {
+    //     response.send("success")
+    //   }
+    // })
   })
 
   app.post('/family/phone/delete',function(request, response){

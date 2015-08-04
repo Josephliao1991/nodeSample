@@ -100,7 +100,7 @@ function createPhone(request, response) {
 
 
 
-function updatePhone(request, callback) {
+function updatePhone(request, response) {
   // body...
   var familyKey_find = request.body.familyKey
   var deviceToken_find   = request.body.deviceToken
@@ -112,7 +112,7 @@ function updatePhone(request, callback) {
                  deviceToken   : deviceToken_find },
   function(error, phone) {
     if (error) {
-      return callback(error)
+      response.send(error)
     }
     if (phone) {
 
@@ -122,9 +122,9 @@ function updatePhone(request, callback) {
     }
     phone.save(function(error) {
       if (error) {
-        return callback(error)
+        response.send(error)
        }else {
-         callback(null, "success")
+        response.send(error)
        }
       });
     });

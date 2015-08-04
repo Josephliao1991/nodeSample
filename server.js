@@ -131,36 +131,39 @@ var center = require('./center.js');
 
   app.get('/family/center',function(request, response){
 
-    var familyKey_find = request.query.familyKey
-    var macAddr_find   = request.query.macAddr
-    console.log('Center Query With familyKey: '+ familyKey_find);
-    console.log('Center Query With macAddr: '+ macAddr_find);
-
-    if (macAddr_find) {
-
-      Center.find({familyKey : familyKey_find,
-                  macAddr   : macAddr_find},
-
-        function(error, center) {
-          // body...
-          if (error) {
-            response.send(error)
-          }else {
-            response.json(center)
-          }
-        })
-    }else {
-
-      Center.find({familyKey : familyKey_find},
-        function(error, centers) {
-          // body...
-          if (error) {
-            response.send(error)
-          }else {
-            response.json(centers)
-          }
-        })
-      }
+    var req = request
+    var res = response
+    center.familyCenter(req, res)
+    // var familyKey_find = request.query.familyKey
+    // var macAddr_find   = request.query.macAddr
+    // console.log('Center Query With familyKey: '+ familyKey_find);
+    // console.log('Center Query With macAddr: '+ macAddr_find);
+    //
+    // if (macAddr_find) {
+    //
+    //   Center.find({familyKey : familyKey_find,
+    //               macAddr   : macAddr_find},
+    //
+    //     function(error, center) {
+    //       // body...
+    //       if (error) {
+    //         response.send(error)
+    //       }else {
+    //         response.json(center)
+    //       }
+    //     })
+    // }else {
+    //
+    //   Center.find({familyKey : familyKey_find},
+    //     function(error, centers) {
+    //       // body...
+    //       if (error) {
+    //         response.send(error)
+    //       }else {
+    //         response.json(centers)
+    //       }
+    //     })
+    //   }
   });
 
   app.get('/family/center/getFmilyKey',function(request, response) {

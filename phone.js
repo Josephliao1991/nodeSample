@@ -119,15 +119,20 @@ function updatePhone(request, response) {
       if (request.body.operation) {
           phone.operation    = request.body.operation;
       }
-    }
-    phone.save(function(error) {
-      if (error) {
-        response.send(error)
-       }else {
-        response.send("success")
-       }
+
+      phone.save(function(error) {
+        if (error) {
+          response.send(error)
+         }else {
+          response.send("success")
+         }
       });
-    });
+
+    }else {
+      respone.send("no such device")
+    }
+
+  });
 }
 
 function deletePhone(request, response) {
@@ -156,6 +161,8 @@ function deletePhone(request, response) {
             response.send("success")
           }
         })
+      }else {
+        respone.send("no such device")
       }
   })
 }
@@ -184,6 +191,8 @@ function deletePhoneById(request, response) {
             response.send("success")
           }
         })
+      }else {
+        respone.send("no such device")
       }
   })
 }

@@ -24,8 +24,16 @@ function sendPush(request, response) {
 
         for (var i = 0; i < phones.length; i++) {
           var deviceToken = phones[i].deviceToken
+          var operation   = phones[i].operation
           console.log(deviceToken);
-          nodeiOSPush.sendiOSPush(deviceToken, situation, name, macAddr)
+          console.log(operation);
+          if (operation == "ios") {
+            //iOS
+            nodeiOSPush.sendiOSPush(deviceToken, situation, name, macAddr)
+          }else {
+            //Android 
+          }
+
         }
 
         response.end("success")

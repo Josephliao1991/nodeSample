@@ -22,9 +22,12 @@ function sendiOSPush(deviceToken, situation, name, macAddr) {
   note.expiry = Math.floor(Date.now() / 1000) + 3600; // Expires 1 hour from now.
   note.badge = 1;
   note.sound = "ping.aiff";
-  note.alert = "situation : "+situation+" name : "+name+" macAddr : "+macAddr+" devicetoken : "+deviceToken;
+  note.alert = "Emergency From "+name
   note.payload = {"messageFrom": "iNedotServer",
-                  "situation"  : situation};
+                  "situation"  : situation,
+                  "name"       : name,
+                  "macAddr"    : macAddr};
+
   note.device = myDevice;
 
   apnsConnection.sendNotification(note);

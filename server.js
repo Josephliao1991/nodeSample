@@ -222,7 +222,7 @@ var cpush = require('./c-push.js');
     //     }
     //
     //   })
-    var member = [phone.getFamilyMember(familyKey_alert)]
+    var member = phone.getFamilyMember(familyKey_alert)
     console.log(member);
 
 

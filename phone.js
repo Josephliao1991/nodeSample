@@ -153,7 +153,7 @@ function getFamilyMember(familyKey_find) {
   Phone.findOne({familyKey  : familyKey_find},
     function (error,phones) {
       // body...
-      return phones;
+      return json.phones;
 
     }
   )

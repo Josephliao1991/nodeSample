@@ -158,5 +158,6 @@ module.exports = {
 
   alliNeDot     : alliNeDot,
   familyiNeDot  : familyiNeDot,
-  createiNeDot  : createiNeDot
+  createiNeDot  : createiNeDot,
+  updateiNeDot  : updateiNeDot
 }

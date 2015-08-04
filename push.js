@@ -12,13 +12,13 @@ function sendPush(request, response) {
                       macAddr    : macAddr_alert},
    function(error, inedot) {
       // body...
-      var situation = inedot.situation
+      var situation = inedot[0].situation
       console.log("Now iNeDot Situation Is : " + situation);
 
       phone.Phone.find({familyKey  : familyKey_alert},
         function(error, phones) {
         // body...
-        console.log("Family Member Is : " + phones);
+        // console.log("Family Member Is : " + phones);
 
         for (var i = 0; i < phones.length; i++) {
           var deviceToken = phones[i].deviceToken

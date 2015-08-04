@@ -23,7 +23,7 @@ function alliNeDot(request, response) {
     if (error) {
       response.send(error)
     }else {
-      response.send(inedots)
+      response.json(inedots)
     }
   })
 };
@@ -43,7 +43,7 @@ function familyiNeDot(request, resopnse) {
         if (error) {
           response.send(error)
         }else {
-          response.send(inedots)
+          response.json(inedots)
         }
       })
   }else {
@@ -53,7 +53,7 @@ function familyiNeDot(request, resopnse) {
         if (error) {
           response.send(error)
         }else {
-          response.send(inedots)
+          response.json(inedots)
         }
       })
     }

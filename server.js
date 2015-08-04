@@ -79,30 +79,16 @@ var inedot = require('./inedot.js');
 
   //implement /family/inedot/ API
   app.get('/family/inedot/all',function(request, response){
-
-    inedot.alliNeDot(function (error, inedots) {
-      // body...
-      if (error) {
-        response.send(error)
-      }else {
-        response.json(inedots)
-      }
-    })
+    var req = request
+    var res = response
+    inedot.alliNeDot(req, res)
   });
 
   app.get('/family/inedot',function(request, response){
 
     var res = response
     var req = request
-    inedot.familyiNeDot(request, response, function (error, inedots) {
-      // body...
-      if (error) {
-        res.send(error)
-      }else {
-        res.send(inedots)
-        // console.log(inedots);
-      }
-    })
+    inedot.familyiNeDot(req, res)
 
     // var familyKey_find = request.query.familyKey
     // var macAddr_find   = request.query.macAddr

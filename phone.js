@@ -14,7 +14,7 @@ function allPhone(resquest, resopnse) {
     if (error) {
       resopnse.send(error)
     }else {
-      resopnse.send(phones)
+      resopnse.json(phones)
     }
   })
 }
@@ -31,7 +31,7 @@ function familyPhone(request, response) {
         response.send(error)
       }
       if (phones) {
-        response.send(phones)
+        response.json(phones)
       }
     })
 }

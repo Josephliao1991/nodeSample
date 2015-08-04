@@ -21,6 +21,7 @@ var inedot = require('./inedot.js');
     response.end("Hello world, This is iNeDot Server!");
   });
 
+/*===========================PHONE==================================*/
   //implement /family/phone/ API
   app.get('/family/phone/all',function(request, response){
       var res = response
@@ -61,22 +62,7 @@ var inedot = require('./inedot.js');
     phone.deletePhoneById(req, res)
   })
 
-  // //Create iNeDot Mongodb Module
-  // var iNeDot = mongoose.model('inedot', {
-  //     familyKey     : String,
-  //     macAddr       : String,
-  //
-  //     name          : String,
-  //     situation     : String,
-  //
-  //     owner         : String,
-  //     connectState  : Boolean,
-  //
-  //     battery       : Number,
-  //
-  //     preset        : Array
-  // });
-
+/*===========================iNeDot==================================*/
   //implement /family/inedot/ API
   app.get('/family/inedot/all',function(request, response){
     var req = request
@@ -89,75 +75,12 @@ var inedot = require('./inedot.js');
     var res = response
     var req = request
     inedot.familyiNeDot(req, res)
-
-    // var familyKey_find = request.query.familyKey
-    // var macAddr_find   = request.query.macAddr
-    // console.log('iNeDots Query With familyKey: '+ familyKey_find);
-    // console.log('iNeDots Query With macAddr: '+ macAddr_find);
-    //
-    // if (macAddr_find) {
-    //
-    //   iNeDot.find({familyKey : familyKey_find,
-    //               macAddr   : macAddr_find},
-    //
-    //     function(error, inedots) {
-    //       // body...
-    //       if (error) {
-    //         response.send(error)
-    //       }else {
-    //         response.json(inedots)
-    //       }
-    //     })
-    // }else {
-    //   iNeDot.find({familyKey : familyKey_find},
-    //     function(error, inedots) {
-    //       // body...
-    //       if (error) {
-    //         response.send(error)
-    //       }else {
-    //         response.json(inedots)
-    //       }
-    //     })
-    //   }
   });
 
   app.post('/family/inedot/create',function(request, response){
-
     var req = request
     var res = response
     inedot.createiNeDot(req, res)
-    // var presetValue;
-    // if (request.body.situation == "temp" && request.body.temp) {
-    //     presetValue = [{temp : request.body.temp}]
-    // }else if (request.body.situation == "alert" && request.body.alert) {
-    //     presetValue = [{alert : request.body.alert}]
-    // }else if (request.body.situation == "message" && request.body.message) {
-    //     presetValue = [{message : request.body.message}]
-    // }
-    //
-    // iNeDot.create({
-    //
-    //     familyKey     : request.body.familyKey,
-    //     macAddr       : request.body.macAddr,
-    //
-    //     owner         : request.body.owner,
-    //     connectState  : request.body.connectState,
-    //
-    //     name          : request.body.name,
-    //     situation     : request.body.situation,
-    //
-    //     battery       : request.body.battery,
-    //
-    //     preset        : presetValue
-    // },function(error, inedot){
-    //   // body...
-    //   if (error) {
-    //       response.send(error)
-    //   }else {
-    //       // response.json(phone)
-    //       response.send("success")
-    //   }
-    // })
   });
 
   app.post('/family/inedot/update',function(request, response){
@@ -165,126 +88,23 @@ var inedot = require('./inedot.js');
     var req = request
     var res = response
     inedot.updateiNeDot(req, res)
-    // var familyKey_find = request.body.familyKey
-    // var macAddr_find   = request.body.macAddr
-    //
-    // console.log(familyKey_find);
-    // console.log(macAddr_find);
-    //
-    // iNeDot.findOne({familyKey : familyKey_find,
-    //               macAddr  : macAddr_find },function(error, inedot) {
-    // // return iNeDot.findById(identifier,function(error, inedot) {
-    //     // body...
-    //     if (error) {
-    //       response.end(error)
-    //     }
-    //
-    //     if (inedot) {
-    //       // if (request.body.familyKey) {
-    //       //     inedot.familyKey       = request.body.familyKey;
-    //       //   }
-    //       // if (request.body.macAddr) {
-    //       //     inedot.macAddr         = request.body.macAddr;
-    //       //   }
-    //       if (request.body.situation) {
-    //           inedot.situation       = request.body.situation;
-    //         }
-    //       if (request.body.connectState) {
-    //           inedot.connectState    = request.body.connectState;
-    //         }
-    //       if (request.body.name) {
-    //           inedot.name            = request.body.name;
-    //         }
-    //       if (request.body.battery) {
-    //           inedot.battery         = request.body.battery;
-    //         }
-    //       if (request.body.owner) {
-    //           inedot.owner           = request.body.owner;
-    //         }
-    //       if (request.body.situation == "temp" && request.body.temp) {
-    //           inedot.preset     = [{temp : request.body.temp}];
-    //       }else if (request.body.situation == "alert" && request.body.alert) {
-    //           inedot.preset     = [{alert : request.body.alert}];
-    //       }else if (request.body.situation == "message" && request.body.message) {
-    //           inedot.preset     = [{message : request.body.message}];
-    //       }
-    //
-    //       // response.send(inedot)
-    //       return inedot.save(function(error) {
-    //         if (error) {
-    //           response.send(error);
-    //         }else {
-    //           response.send("success")              // return response.send(phone);
-    //         }
-    //       });
-    //     }
-    //   })
-    });
+  });
 
   app.post('/family/inedot/delete',function(request, response){
     // body...
-
     var req = request
     var res = response
     inedot.deleteiNeDot(req, res)
-    // var familyKey_find = request.body.familyKey
-    // var macAddr_find   = request.body.macAddr
-    //
-    // console.log(familyKey_find);
-    // console.log(macAddr_find);
-    //
-    // iNeDot.findOne({familyKey : familyKey_find,
-    //                 macAddr   : macAddr_find },
-    //
-    // function(error, inedot) {
-    //
-    //     // body...
-    //     if (error) {
-    //       response.end(error)
-    //     }
-    //     if (inedot) {
-    //         // response.send(center)
-    //         inedot.remove(function (error) {
-    //           // body...
-    //           if (error) {
-    //             response.send(error)
-    //           }else {
-    //             response.send("success")
-    //           }
-    //         })
-    //     }
-    //   })
   })
 
   app.post('/family/inedot/deleteById',function(request, response){
     // body...
-
     var req = request
     var res = response
     inedot.deleteiNeDotById(req, res)
-
   })
 
-  // app.delete('/family/inedot/:identifier',function(request, response){
-  //   // body...
-  //
-  //   var delete_id = request.params.identifier
-  //   console.log(delete_id)
-  //
-  //   iNeDot.remove({_id :delete_id}, function(error, phone) {
-  //
-  //       if (error) {
-  //         response.send(error);
-  //       }else {
-  //         response.send("success")
-  //         // response.send(phone);
-  //       }
-  //
-  //   })
-  //
-  // })
-
-
+/*===========================CENTER==================================*/
   //Create Center Mongodb Module
   var Center = mongoose.model('center', {
       familyKey     : String,
@@ -474,6 +294,8 @@ var inedot = require('./inedot.js');
   //   })
   //
   // })
+
+/*===========================C_PUSH==================================*/
 
   //Create Push Mongodb Module
   /* Command Rule

@@ -6,22 +6,8 @@ var Phone = mongoose.model('phone', {
     operation   : String
 });
 
-// function allPhone(callback) {
-//   // body...
-//   Phone.find(function(error, phones) {
-//     // body...
-//     if (error) {
-//       return callback(error)
-//     }else {
-//       callback(null, phones)
-//     }
-//   })
-// }
-
 function allPhone(resquest, resopnse) {
   // body...
-  // var req = resquest
-  // var res = resopnse
 
   Phone.find(function(error, phones) {
     // body...
@@ -32,18 +18,6 @@ function allPhone(resquest, resopnse) {
     }
   })
 }
-
-// function familyPhone(familyKey, callback) {
-//   // body...
-//   Phone.find({familyKey:familyKey},function(error, phones) {
-//       // body...
-//       if (error) {
-//         return callback(error)
-//       }else {
-//         callback(null, phones)
-//       }
-//     })
-// }
 
 function familyPhone(request, response) {
   // body...
@@ -62,25 +36,6 @@ function familyPhone(request, response) {
     })
 }
 
-// function createPhone(request, callback) {
-//   // body...
-//
-//   Phone.create({
-//       familyKey   : request.body.familyKey,
-//       deviceToken : request.body.deviceToken,
-//       operation   : request.body.operation
-//   },function(error, phone){
-//     // body...
-//     if (error) {
-//         return callback(error)
-//     }else {
-//         // response.json(phone)
-//         callback(null, "success")
-//     }
-//   })
-//
-// }
-
 function createPhone(request, response) {
   // body...
 
@@ -97,8 +52,6 @@ function createPhone(request, response) {
     }
   })
 }
-
-
 
 function updatePhone(request, response) {
   // body...
@@ -179,13 +132,13 @@ function deletePhoneById(request, response) {
         response.send(error)
       }
       if (phone) {
-        console.log("wait for delete : " + phone);
+        // console.log("wait for delete : " + phone);
         phone.remove(function (error) {
           // body...
           if (error) {
             response.send(error)
           }else {
-            console.log("Delete success");
+            // console.log("Delete success");
             response.send("success")
           }
         })

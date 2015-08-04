@@ -16,39 +16,34 @@ var iNeDot = mongoose.model('inedot', {
     preset        : Array
 });
 
-function alliNeDot(callback) {
+function alliNeDot(request, response) {
   // body...
   iNeDot.find(function (error, inedots) {
     // body...
     if (error) {
-      return callback(error)
+      response.send(error)
     }else {
-      callback(null, inedots)
+      response.send(inedots)
     }
   })
 };
 
-function familyiNeDot(request, resopnse, callback) {
+function familyiNeDot(request, resopnse) {
   // body...
   var familyKey_find = request.query.familyKey
   var macAddr_find   = request.query.macAddr
   console.log('iNeDots Query With familyKey: '+ familyKey_find);
   console.log('iNeDots Query With macAddr: '+ macAddr_find);
 
-  var res = resopnse
-
   if (macAddr_find) {
-
      iNeDot.find({familyKey : familyKey_find,
-                 macAddr   : macAddr_find},
-
+                  macAddr   : macAddr_find},
       function(error, inedots) {
         // body...
         if (error) {
-         callback(error)
+          response.send(error)
         }else {
-          // callback(null, inedots)
-          res.send(inedots)
+          response.send(inedots)
         }
       })
   }else {
@@ -56,10 +51,9 @@ function familyiNeDot(request, resopnse, callback) {
       function(error, inedots) {
         // body...
         if (error) {
-          callback(error)
+          response.send(error)
         }else {
-          // callback(null, inedots)
-          res.send(inedots)
+          response.send(inedots)
         }
       })
     }

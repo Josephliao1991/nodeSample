@@ -23,116 +23,43 @@ var inedot = require('./inedot.js');
 
   //implement /family/phone/ API
   app.get('/family/phone/all',function(request, response){
-
-      // phone.allPhone(function (error,phones) {
-      //   // body...
-      //   if (error) {
-      //     response.send(error)
-      //   }
-      //   if (phones) {
-      //     response.send(phones)
-      //   }
-      // })
       var res = response
       var req = request
       phone.allPhone(req, res)
-
   });
 
   app.get('/family/phone',function(request, response){
-
     var req = request
     var res = response
-
     phone.familyPhone(req, res)
-    // var familyKey_find = request.query.familyKey
-    // console.log('familyKey:'+ familyKey_find);
-    //
-    // phone.familyPhone(familyKey_find,function (error, phones) {
-    //   // body...
-    //   if (error) {
-    //     response.send(error)
-    //   }
-    //   if (phones) {
-    //     response.send(phones)
-    //   }
-    // })
   });
 
   app.post('/family/phone/create',function(request, response){
-
     var req = request
     var res = response
-
     phone.createPhone(req, res)
-
-    // phone.createPhone(request, function (error, success) {
-    //   // body...
-    //   if (error) {
-    //     resopnse.send(error)
-    //   }
-    //   if (success) {
-    //     response.send("success")
-    //   }
-    // })
   });
 
   app.post('/family/phone/update',function(request, response){
     // body...
     var req = request
     var res = response
-
     phone.updatePhone(req, res)
-
-    // phone.updatePhone(request, function (error, success) {
-    //   // body...
-    //   if (error) {
-    //     resopnse.send(error)
-    //   }
-    //   if (success) {
-    //     response.send("success")
-    //   }
-    // })
   })
 
   app.post('/family/phone/delete',function(request, response){
     // body...
-    // console.log(request.body.macAddr);
     var res = response
     var req = request
-    // response.send("success")
     phone.deletePhone(req, res)
-
   })
 
   app.post('/family/phone/deleteById', function(request, response) {
     // body...
     var res = response
     var req = request
-    // response.send("success")
     phone.deletePhoneById(req, res)
-
   })
-
-  // app.delete('/family/phone/:identifier',function(request, response){
-  //   // body...
-  //
-  //   var delete_id = request.params.identifier
-  //   console.log(delete_id)
-  //
-  //   Phone.remove({_id :delete_id}, function(error, phone) {
-  //
-  //
-	//       if (error) {
-	//         response.send(error);
-	//       }else {
-	//         response.send("success")
-  //         // response.send(phone);
-	//       }
-  //
-  //   })
-  //
-  // })
 
   // //Create iNeDot Mongodb Module
   // var iNeDot = mongoose.model('inedot', {

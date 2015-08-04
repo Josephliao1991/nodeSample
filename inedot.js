@@ -153,11 +153,42 @@ function updateiNeDot(request, response) {
     })
 }
 
+function deleteiNeDot(reqest, response) {
+  // body...
+  var familyKey_find = request.body.familyKey
+  var macAddr_find   = request.body.macAddr
+
+  console.log(familyKey_find);
+  console.log(macAddr_find);
+
+  iNeDot.findOne({familyKey : familyKey_find,
+                  macAddr   : macAddr_find },
+
+  function(error, inedot) {
+
+      // body...
+      if (error) {
+        response.end(error)
+      }
+      if (inedot) {
+          // response.send(center)
+          inedot.remove(function (error) {
+            // body...
+            if (error) {
+              response.send(error)
+            }else {
+              response.send("success")
+            }
+          })
+      }
+    })
+}
 
 module.exports = {
 
   alliNeDot     : alliNeDot,
   familyiNeDot  : familyiNeDot,
   createiNeDot  : createiNeDot,
-  updateiNeDot  : updateiNeDot
+  updateiNeDot  : updateiNeDot,
+  deleteiNeDot  : deleteiNeDot
 }

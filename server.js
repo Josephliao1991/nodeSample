@@ -224,33 +224,36 @@ var inedot = require('./inedot.js');
   app.post('/family/inedot/delete',function(request, response){
     // body...
 
-    var familyKey_find = request.body.familyKey
-    var macAddr_find   = request.body.macAddr
-
-    console.log(familyKey_find);
-    console.log(macAddr_find);
-
-    iNeDot.findOne({familyKey : familyKey_find,
-                    macAddr  : macAddr_find },
-
-    function(error, inedot) {
-
-        // body...
-        if (error) {
-          response.end(error)
-        }
-        if (inedot) {
-            // response.send(center)
-            inedot.remove(function (error) {
-              // body...
-              if (error) {
-                response.send(error)
-              }else {
-                response.send("success")
-              }
-            })
-        }
-      })
+    var req = request
+    var res = response
+    inedot.deleteiNeDot(req, res)
+    // var familyKey_find = request.body.familyKey
+    // var macAddr_find   = request.body.macAddr
+    //
+    // console.log(familyKey_find);
+    // console.log(macAddr_find);
+    //
+    // iNeDot.findOne({familyKey : familyKey_find,
+    //                 macAddr   : macAddr_find },
+    //
+    // function(error, inedot) {
+    //
+    //     // body...
+    //     if (error) {
+    //       response.end(error)
+    //     }
+    //     if (inedot) {
+    //         // response.send(center)
+    //         inedot.remove(function (error) {
+    //           // body...
+    //           if (error) {
+    //             response.send(error)
+    //           }else {
+    //             response.send("success")
+    //           }
+    //         })
+    //     }
+    //   })
   })
 
   // app.delete('/family/inedot/:identifier',function(request, response){

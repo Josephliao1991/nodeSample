@@ -166,7 +166,7 @@ var center = require('./center.js');
     //   }
   });
 
-  app.get('/family/center/getFmilyKey',function(request, response) {
+  app.get('/family/center/getFamilyKey',function(request, response) {
     // body...
     var req = request
     var res = response

@@ -181,13 +181,13 @@ function deletePhoneById(request, response) {
         response.send(error)
       }
       if (phone) {
-        // console.log("wait for delete : " + phone);
+        console.log("wait for delete : " + phone);
         phone.remove(function (error) {
           // body...
           if (error) {
             response.send(error)
           }else {
-            // console.log("Delete success");
+            console.log("Delete success");
             response.send("success")
           }
         })

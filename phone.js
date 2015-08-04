@@ -151,16 +151,17 @@ function deletePhoneById(request, response) {
 function getFamilyMember(familyKey_find) {
   // body...
   Phone.find({familyKey  : familyKey_find},
-    function (error,phones[]) {
+    function (error,phones) {
       // body...
       // console.log(phones.length);
       // console.log(phones[0].familyKey);
-
+      var members = []
+      members[] = phones
       for (var i = 0; i < phones.length; i++) {
         console.log(phones[i].deviceToken)
       }
 
-      return phones[];
+      return members;
 
     }
   )

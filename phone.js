@@ -174,7 +174,7 @@ function deletePhoneById(request, response) {
   console.log(familyKey_find);
   console.log(deviceToken_find);
 
-  Phone.findById({_id   : id_find},
+  Phone.findOne({_id   : id_find},
   function(error, phone) {
       // body...
       if (error) {

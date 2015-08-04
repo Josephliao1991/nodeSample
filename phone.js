@@ -92,12 +92,10 @@ function createPhone(request, response) {
     // body...
     if (error) {
       resopnse.send(error)
-    }
-    if (success) {
+    }else {
       response.send("success")
     }
   })
-
 }
 
 

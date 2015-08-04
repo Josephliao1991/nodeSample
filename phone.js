@@ -176,23 +176,21 @@ function deletePhoneById(request, response) {
   function(error, phone) {
       // body...
       if (error) {
-        // response.send(error)
-        console.log(error);
+        response.send(error)
       }
       if (phone) {
         console.log("wait for delete : " + phone);
-        // phone.remove(function (error) {
-        //   // body...
-        //   if (error) {
-        //     response.send(error)
-        //   }else {
-        //     console.log("Delete success");
-        //     response.send("success")
-        //   }
-        // })
+        phone.remove(function (error) {
+          // body...
+          if (error) {
+            response.send(error)
+          }else {
+            console.log("Delete success");
+            response.send("success")
+          }
+        })
       }else {
-        // respone.send("no such device")
-        console.log("NO DEVICE");
+        respone.send("no such device")
       }
   })
 }

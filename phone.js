@@ -20,8 +20,8 @@ var Phone = mongoose.model('phone', {
 
 function allPhone(resquest, resopnse) {
   // body...
-  var req = resquest
-  var res = resopnse
+  // var req = resquest
+  // var res = resopnse
 
   Phone.find(function(error, phones) {
     // body...

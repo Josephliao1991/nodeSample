@@ -6,14 +6,29 @@ var Phone = mongoose.model('phone', {
     operation   : String
 });
 
-function allPhone(callback) {
+// function allPhone(callback) {
+//   // body...
+//   Phone.find(function(error, phones) {
+//     // body...
+//     if (error) {
+//       return callback(error)
+//     }else {
+//       callback(null, phones)
+//     }
+//   })
+// }
+
+function allPhone(resquest, resopnse) {
   // body...
+  var req = resquest
+  var res = response
+
   Phone.find(function(error, phones) {
     // body...
     if (error) {
-      return callback(error)
+      res.send(error)
     }else {
-      callback(null, phones)
+      res.send(phones)
     }
   })
 }

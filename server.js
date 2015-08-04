@@ -24,15 +24,18 @@ var inedot = require('./inedot.js');
   //implement /family/phone/ API
   app.get('/family/phone/all',function(request, response){
 
-      phone.allPhone(function (error,phones) {
-        // body...
-        if (error) {
-          response.send(error)
-        }
-        if (phones) {
-          response.send(phones)
-        }
-      })
+      // phone.allPhone(function (error,phones) {
+      //   // body...
+      //   if (error) {
+      //     response.send(error)
+      //   }
+      //   if (phones) {
+      //     response.send(phones)
+      //   }
+      // })
+
+      phone.allPhone(request, response)
+      
   });
 
   app.get('/family/phone',function(request, response){

@@ -222,5 +222,6 @@ module.exports = {
   createiNeDot  : createiNeDot,
   updateiNeDot  : updateiNeDot,
   deleteiNeDot  : deleteiNeDot,
-  deleteiNeDotById   : deleteiNeDotById
+  deleteiNeDotById   : deleteiNeDotById,
+  iNeDot        : iNeDot
 }

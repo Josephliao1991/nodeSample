@@ -149,6 +149,8 @@ function updateiNeDot(request, response) {
             response.send("success")              // return response.send(phone);
           }
         });
+      }else {
+        respone.send("no such device")
       }
     })
 }
@@ -180,6 +182,8 @@ function deleteiNeDot(request, response) {
               response.send("success")
             }
           })
+      }else {
+        respone.send("no such device")
       }
     })
 }
@@ -205,6 +209,8 @@ function deleteiNeDotById(request, response) {
               response.send("success")
             }
           })
+      }else {
+        respone.send("no such device")
       }
     })
 }

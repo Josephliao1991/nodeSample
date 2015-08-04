@@ -218,41 +218,45 @@ var center = require('./center.js');
 
   app.post('/family/center/update',function(request, response){
     // body...
-    var familyKey_find = request.body.familyKey
-    var macAddr_find   = request.body.macAddr
+    var req = request
+    var res = response
+    center.updateCenter(req, res)
 
-    console.log(familyKey_find);
-    console.log(macAddr_find);
-
-    Center.findOne({familyKey : familyKey_find,
-                    macAddr  : macAddr_find },
-
-    function(error, center) {
-        // body...
-        if (error) {
-          response.end(error)
-        }
-        if (center) {
-          // if (request.body.familyKey) {
-          //     center.familyKey       = request.body.familyKey;
-          //   }
-          // if (request.body.macAddr) {
-          //     center.macAddr         = request.body.macAddr;
-          //   }
-
-          if (request.body.connectState) {
-              center.connectState    = request.body.connectState;
-            }
-          // response.send(center)
-          return center.save(function(error) {
-            if (error) {
-              response.send(error);
-            }else {
-              response.send("success")              // return response.send(phone);
-            }
-          });
-        }
-      })
+    // var familyKey_find = request.body.familyKey
+    // var macAddr_find   = request.body.macAddr
+    //
+    // console.log(familyKey_find);
+    // console.log(macAddr_find);
+    //
+    // Center.findOne({familyKey : familyKey_find,
+    //                 macAddr  : macAddr_find },
+    //
+    // function(error, center) {
+    //     // body...
+    //     if (error) {
+    //       response.end(error)
+    //     }
+    //     if (center) {
+    //       // if (request.body.familyKey) {
+    //       //     center.familyKey       = request.body.familyKey;
+    //       //   }
+    //       // if (request.body.macAddr) {
+    //       //     center.macAddr         = request.body.macAddr;
+    //       //   }
+    //
+    //       if (request.body.connectState) {
+    //           center.connectState    = request.body.connectState;
+    //         }
+    //       // response.send(center)
+    //       return center.save(function(error) {
+    //         if (error) {
+    //           response.send(error);
+    //         }else {
+    //           response.send("success")              // return response.send(phone);
+    //         }
+    //       });
+    //     }
+    //   })
     });
 
   app.post('/family/center/delete',function(request, response){

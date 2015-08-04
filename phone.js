@@ -154,6 +154,7 @@ function getFamilyMember(familyKey_find) {
     function (error,phones) {
       // body...
       console.log(phones.length);
+      console.log(phones[0].familyKey);
       return phones;
 
     }

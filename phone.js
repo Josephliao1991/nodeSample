@@ -160,7 +160,7 @@ function getFamilyMember(familyKey_find) {
         console.log(phones[i].deviceToken)
       }
 
-      return phones;
+      return phones[];
 
     }
   )

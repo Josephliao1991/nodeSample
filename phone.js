@@ -176,7 +176,8 @@ function deletePhoneById(request, response) {
   function(error, phone) {
       // body...
       if (error) {
-        response.send(error)
+        // response.send(error)
+        console.log(error);
       }
       if (phone) {
         console.log("wait for delete : " + phone);

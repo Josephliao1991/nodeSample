@@ -206,6 +206,7 @@ var push = require('./push.js');
     var req = request
     var res = response
     push.sendPush(req, res)
+    res.end("end");
     // var familyKey_alert = request.body.familyKey
     // var macAddr_alert   = request.body.macAddr
     //

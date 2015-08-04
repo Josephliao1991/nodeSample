@@ -157,7 +157,7 @@ function getFamilyMember(familyKey_find) {
       // console.log(phones[0].familyKey);
 
       for (var i = 0; i < phones.length; i++) {
-        console.log(phones[i])
+        console.log(phones[i].deviceToken)
       }
 
       return phones;

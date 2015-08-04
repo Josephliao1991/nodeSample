@@ -105,13 +105,6 @@ var center = require('./center.js');
   })
 
 /*===========================CENTER==================================*/
-  // //Create Center Mongodb Module
-  // var Center = mongoose.model('center', {
-  //     familyKey     : String,
-  //     macAddr       : String,
-  //
-  //     connectState  : Boolean,
-  // });
 
   //implement /family/inedot/ API
   app.get('/family/center/all',function(request, response){
@@ -119,14 +112,6 @@ var center = require('./center.js');
     var req = request
     var res = response
     center.allCenter(req, res)
-      // Center.find(function(error, centers) {
-      //   // body...
-      //   if (error) {
-      //     response.send(error)
-      //   }else {
-      //     response.json(centers)
-      //   }
-      // })
   });
 
   app.get('/family/center',function(request, response){
@@ -134,36 +119,6 @@ var center = require('./center.js');
     var req = request
     var res = response
     center.familyCenter(req, res)
-    // var familyKey_find = request.query.familyKey
-    // var macAddr_find   = request.query.macAddr
-    // console.log('Center Query With familyKey: '+ familyKey_find);
-    // console.log('Center Query With macAddr: '+ macAddr_find);
-    //
-    // if (macAddr_find) {
-    //
-    //   Center.find({familyKey : familyKey_find,
-    //               macAddr   : macAddr_find},
-    //
-    //     function(error, center) {
-    //       // body...
-    //       if (error) {
-    //         response.send(error)
-    //       }else {
-    //         response.json(center)
-    //       }
-    //     })
-    // }else {
-    //
-    //   Center.find({familyKey : familyKey_find},
-    //     function(error, centers) {
-    //       // body...
-    //       if (error) {
-    //         response.send(error)
-    //       }else {
-    //         response.json(centers)
-    //       }
-    //     })
-    //   }
   });
 
   app.get('/family/center/getFamilyKey',function(request, response) {
@@ -171,49 +126,12 @@ var center = require('./center.js');
     var req = request
     var res = response
     center.getCenterFamilyKey(request, response)
-    // var macAddr_find = request.query.macAddr
-    // console.log("getFamilyKey Query : " + macAddr_find);
-    // if (macAddr_find) {
-    //     Center.findOne({macAddr : macAddr_find},
-    //       function(error, center) {
-    //         // body...
-    //         if (error) {
-    //           response.send(error)
-    //         }
-    //         // console.log(center);
-    //         if (center) {
-    //           var familyKey = center.familyKey
-    //           console.log(center.familyKey);
-    //           response.send(familyKey)
-    //         }else {
-    //           response.end("Belong with no family")
-    //         }
-    //       })
-    // }
-
   })
 
   app.post('/family/center/create',function(request, response){
-
     var req = request
     var res = response
     center.createCenter(req, res)
-    // Center.create({
-    //
-    //     familyKey     : request.body.familyKey,
-    //     macAddr       : request.body.macAddr,
-    //
-    //     connectState  : request.body.connectState,
-    //
-    // },function(error, center){
-    //   // body...
-    //   if (error) {
-    //       response.send(error)
-    //   }else {
-    //       // response.json(phone)
-    //       response.send("success")
-    //   }
-    // })
   });
 
   app.post('/family/center/update',function(request, response){
@@ -221,76 +139,13 @@ var center = require('./center.js');
     var req = request
     var res = response
     center.updateCenter(req, res)
-
-    // var familyKey_find = request.body.familyKey
-    // var macAddr_find   = request.body.macAddr
-    //
-    // console.log(familyKey_find);
-    // console.log(macAddr_find);
-    //
-    // Center.findOne({familyKey : familyKey_find,
-    //                 macAddr  : macAddr_find },
-    //
-    // function(error, center) {
-    //     // body...
-    //     if (error) {
-    //       response.end(error)
-    //     }
-    //     if (center) {
-    //       // if (request.body.familyKey) {
-    //       //     center.familyKey       = request.body.familyKey;
-    //       //   }
-    //       // if (request.body.macAddr) {
-    //       //     center.macAddr         = request.body.macAddr;
-    //       //   }
-    //
-    //       if (request.body.connectState) {
-    //           center.connectState    = request.body.connectState;
-    //         }
-    //       // response.send(center)
-    //       return center.save(function(error) {
-    //         if (error) {
-    //           response.send(error);
-    //         }else {
-    //           response.send("success")              // return response.send(phone);
-    //         }
-    //       });
-    //     }
-    //   })
-    });
+  });
 
   app.post('/family/center/delete',function(request, response){
     // body...
     var req = request
     var res = response
     center.deleteCenter(req, res)
-    // var familyKey_find = request.body.familyKey
-    // var macAddr_find   = request.body.macAddr
-    //
-    // console.log(familyKey_find);
-    // console.log(macAddr_find);
-    //
-    // Center.findOne({familyKey : familyKey_find,
-    //                 macAddr   : macAddr_find },
-    //
-    // function(error, center) {
-    //     // body...
-    //     if (error) {
-    //       response.end(error)
-    //     }
-    //
-    //     if (center) {
-    //         // response.send(center)
-    //         center.remove(function (error) {
-    //           // body...
-    //           if (error) {
-    //             response.send(error)
-    //           }else {
-    //             response.send("success")
-    //           }
-    //         })
-    //     }
-    //   })
   })
 
   app.post('/family/center/deleteById',function(request, response){
@@ -299,28 +154,6 @@ var center = require('./center.js');
     var res = response
     center.deleteCenterById(req, res)
   })
-
-  // app.delete('/family/center/:identifier',function(request, response){
-  //   // body...
-  //
-  //   var delete_id = request.params.identifier
-  //   console.log(delete_id)
-  //
-  //
-  //
-  //   Center.remove({_id :delete_id}, function(error, phone) {
-  //
-  //       if (error) {
-  //         response.send(error);
-  //       }else {
-  //         response.send("success")
-  //         // response.send(phone);
-  //       }
-  //
-  //   })
-  //
-  // })
-
 /*===========================C_PUSH==================================*/
 
   //Create Push Mongodb Module

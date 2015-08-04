@@ -26,9 +26,9 @@ function allPhone(resquest, resopnse) {
   Phone.find(function(error, phones) {
     // body...
     if (error) {
-      res.send(error)
+      resopnse.send(error)
     }else {
-      res.send(phones)
+      resopnse.send(phones)
     }
   })
 }

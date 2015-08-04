@@ -22,7 +22,7 @@ function sendiOSPush(deviceToken, situation) {
   note.expiry = Math.floor(Date.now() / 1000) + 3600; // Expires 1 hour from now.
   note.badge = 1;
   note.sound = "ping.aiff";
-  note.alert = situation;
+  note.alert = ""+situation;
   note.payload = {'messageFrom': 'Caroline'};
   note.device = myDevice;
 

@@ -20,10 +20,10 @@ function sendPush(request, response) {
         // body...
         console.log("Family Member Is : " + phones);
 
-        for (var i = 0; i < phones.length; i++) {
-          var deviceToken = phones[i].deviceToken
-          nodeiOSPush.sendiOSPush(deviceToken, situation)
-        }
+        // for (var i = 0; i < phones.length; i++) {
+        //   var deviceToken = phones[i].deviceToken
+          nodeiOSPush.sendiOSPush("sss", situation)
+        // }
       })
    })
 

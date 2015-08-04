@@ -131,7 +131,7 @@ function updateCenter(request, response) {
           }
         });
       }else {
-        respone.send("no such device")
+        response.send("no such device")
       }
 
     })

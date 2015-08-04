@@ -170,9 +170,7 @@ function deletePhone(request, response) {
 function deletePhoneById(request, response) {
   // body...
   var id_find  = request.body.identifier
-
-  console.log(familyKey_find);
-  console.log(deviceToken_find);
+  console.log(id_find);
 
   Phone.findOne({_id   : id_find},
   function(error, phone) {
@@ -182,17 +180,18 @@ function deletePhoneById(request, response) {
       }
       if (phone) {
         console.log("wait for delete : " + phone);
-        phone.remove(function (error) {
-          // body...
-          if (error) {
-            response.send(error)
-          }else {
-            console.log("Delete success");
-            response.send("success")
-          }
-        })
+        // phone.remove(function (error) {
+        //   // body...
+        //   if (error) {
+        //     response.send(error)
+        //   }else {
+        //     console.log("Delete success");
+        //     response.send("success")
+        //   }
+        // })
       }else {
-        respone.send("no such device")
+        // respone.send("no such device")
+        console.log("NO DEVICE");
       }
   })
 }

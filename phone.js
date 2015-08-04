@@ -150,7 +150,7 @@ function deletePhoneById(request, response) {
 /*=====================================================*/
 function getFamilyMember(familyKey_find) {
   // body...
-  Phone.findOne({familyKey  : familyKey_find},
+  Phone.find({familyKey  : familyKey_find},
     function (error,phones) {
       // body...
       console.log(phones.length);

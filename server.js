@@ -222,7 +222,7 @@ var cpush = require('./c-push.js');
     //     }
     //
     //   })
-    String members = phone.getFamilyMember(familyKey_alert)
+    var members = phone.getFamilyMember(familyKey_alert).toString()
     // members = phone.getFamilyMember(familyKey_alert)
     console.log(members);
 

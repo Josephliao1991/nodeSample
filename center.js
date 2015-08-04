@@ -137,11 +137,43 @@ function updateCenter(request, response) {
     })
 }
 
+function deleteCenter(request, response) {
+  // body...
+  var familyKey_find = request.body.familyKey
+  var macAddr_find   = request.body.macAddr
+
+  console.log(familyKey_find);
+  console.log(macAddr_find);
+
+  Center.findOne({familyKey : familyKey_find,
+                  macAddr   : macAddr_find },
+
+  function(error, center) {
+      // body...
+      if (error) {
+        response.end(error)
+      }
+
+      if (center) {
+          // response.send(center)
+          center.remove(function (error) {
+            // body...
+            if (error) {
+              response.send(error)
+            }else {
+              response.send("success")
+            }
+          })
+      }
+    })
+}
+
 module.exports = {
   allCenter     : allCenter,
   familyCenter  : familyCenter,
   getCenterFamilyKey    : getCenterFamilyKey,
   createCenter  : createCenter,
-  updateCenter  : updateCenter
+  updateCenter  : updateCenter,
+  deleteCenter  : deleteCenter
 
 }

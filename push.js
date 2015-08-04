@@ -7,19 +7,25 @@ function sendPush(request, response) {
   // body...
   var familyKey_alert = request.body.familyKey
   var macAddr_alert   = request.body.macAddr
-  var xx;
-  xx = inedot.iNeDot.findOne({familyKey : familyKey_alert,
-                         macAddr   : macAddr_alert}).exec()
 
-  console.log(xx);
-
-    phone.Phone.findOne({familyKey  : familyKey_alert},
-      function(error, phones) {
+  inedot.iNeDot.findOne({familyKey  : familyKey_alert,
+                         macAddr    : macAddr_alert},
+   function(error, inedot) {
       // body...
-      // console.log(phones);
-      nodeiOSPush.sendiOSPush("sss")
+      var situation = inedot.situation
+      console.log("Now iNeDot Situation Is : " + situation);
 
-    })
+      phone.Phone.findOne({familyKey  : familyKey_alert},
+        function(error, phones) {
+        // body...
+        console.log("Family Member Is : " + phones);
+
+        for (var i = 0; i < phones.length; i++) {
+          var deviceToken = phones[i].deviceToken
+          nodeiOSPush.sendiOSPush(deviceToken, situation)
+        }
+      })
+   })
 
 }
 

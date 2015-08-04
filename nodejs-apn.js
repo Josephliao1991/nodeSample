@@ -1,7 +1,7 @@
 
 var apns = require('apn');
 
-function sendiOSPush(deviceToken, situation) {
+function sendiOSPush(deviceToken, situation, name, macAddr) {
   // body...
   var options = {
       cert: 'aps_development.pem',                 /* Certificate file path */
@@ -22,7 +22,7 @@ function sendiOSPush(deviceToken, situation) {
   note.expiry = Math.floor(Date.now() / 1000) + 3600; // Expires 1 hour from now.
   note.badge = 1;
   note.sound = "ping.aiff";
-  note.alert = ""+situation;
+  note.alert = "situation : "+situation+" name : "name+" macAddr : "macAddr+" devicetoken : "+deviceToken;
   note.payload = {'messageFrom': 'Caroline'};
   note.device = myDevice;
 

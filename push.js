@@ -13,7 +13,9 @@ function sendPush(request, response) {
    function(error, inedot) {
       // body...
       var situation = inedot[0].situation
-      console.log("Now iNeDot Situation Is : " + situation);
+      var name      = inedot[0].name
+      var macAddr   = inedot[0].macAddr
+      console.log("Now iNeDot("+name+") Situation Is : " + situation);
 
       phone.Phone.find({familyKey  : familyKey_alert},
         function(error, phones) {
@@ -23,7 +25,7 @@ function sendPush(request, response) {
         for (var i = 0; i < phones.length; i++) {
           var deviceToken = phones[i].deviceToken
           console.log(deviceToken);
-          // nodeiOSPush.sendiOSPush("sss", situation)
+          nodeiOSPush.sendiOSPush(deviceToken, situation, name, macAddr)
         }
       })
    })

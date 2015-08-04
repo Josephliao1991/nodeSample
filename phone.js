@@ -155,13 +155,13 @@ function getFamilyMember(familyKey_find) {
       // body...
       // console.log(phones.length);
       // console.log(phones[0].familyKey);
-      var members = []
-      members = phones
-      for (var i = 0; i < phones.length; i++) {
-        console.log(phones[i].deviceToken)
-      }
+      // var members = []
+      // members = phones
+      // for (var i = 0; i < phones.length; i++) {
+      //   console.log(phones[i].deviceToken)
+      // }
 
-      return members;
+      return phones[0].deviceToken;
 
     }
   )

@@ -33,17 +33,44 @@ function allPhone(resquest, resopnse) {
   })
 }
 
-function familyPhone(familyKey, callback) {
+// function familyPhone(familyKey, callback) {
+//   // body...
+//   Phone.find({familyKey:familyKey},function(error, phones) {
+//       // body...
+//       if (error) {
+//         return callback(error)
+//       }else {
+//         callback(null, phones)
+//       }
+//     })
+// }
+
+function familyPhone(request, response) {
   // body...
-  Phone.find({familyKey:familyKey},function(error, phones) {
-      // body...
-      if (error) {
-        return callback(error)
-      }else {
-        callback(null, phones)
-      }
-    })
+  // Phone.find({familyKey:familyKey},function(error, phones) {
+  //     // body...
+  //     if (error) {
+  //       return callback(error)
+  //     }else {
+  //       callback(null, phones)
+  //     }
+  //   })
+
+  var familyKey_find = request.query.familyKey
+  console.log('familyKey:'+ familyKey_find);
+
+  phone.familyPhone(familyKey_find,function (error, phones) {
+    // body...
+    if (error) {
+      response.send(error)
+    }
+    if (phones) {
+      response.send(phones)
+    }
+  })
+
 }
+
 function createPhone(request, callback) {
   // body...
 

@@ -41,18 +41,22 @@ var inedot = require('./inedot.js');
 
   app.get('/family/phone',function(request, response){
 
-    var familyKey_find = request.query.familyKey
-    console.log('familyKey:'+ familyKey_find);
-
-    phone.familyPhone(familyKey_find,function (error, phones) {
-      // body...
-      if (error) {
-        response.send(error)
-      }
-      if (phones) {
-        response.send(phones)
-      }
-    })
+    var req = request
+    var res = response
+    
+    phone.familyPhone(req, res)
+    // var familyKey_find = request.query.familyKey
+    // console.log('familyKey:'+ familyKey_find);
+    //
+    // phone.familyPhone(familyKey_find,function (error, phones) {
+    //   // body...
+    //   if (error) {
+    //     response.send(error)
+    //   }
+    //   if (phones) {
+    //     response.send(phones)
+    //   }
+    // })
   });
 
   app.post('/family/phone/create',function(request, response){

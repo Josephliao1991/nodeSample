@@ -155,248 +155,76 @@ var cpush = require('./c-push.js');
     var res = response
     center.deleteCenterById(req, res)
   })
-/*===========================C_PUSH==================================*/
 
-  // //Create Push Mongodb Module
-  // /* Command Rule
-  // command : Number
-  // Baby  = 0
-  // Area  = 1
-  // Alert = 2
-  // Temp  = 3
-  // Break Connection  = 4
-  // */
-  // var CPush = mongoose.model('c_push', {
-  //     familyKey     : String,
-  //     c_macAddr     : String,
-  //     i_macAddr     : String,
-  //     command       : Number,
-  //     checkMark     : Boolean
-  // });
+/*===========================C_PUSH==================================*/
 
   //implement /family/inedot/ API
   app.get('/family/c_push/all',function(request, response){
-
     var req = request
     var res =response
     cpush.allCPush(req, res)
-      // CPush.find(function(error, c_pushs) {
-      //   // body...
-      //   if (error) {
-      //     response.send(error)
-      //   }else {
-      //     response.json(c_pushs)
-      //   }
-      // })
   });
 
   app.get('/family/c_push',function(request, response){
-
     var req = request
     var res = response
     cpush.familyCPush(req, res)
-    // var familyKey_find = request.query.familyKey
-    // var c_macAddr_find = request.query.c_macAddr
-    // console.log('c_push Query With familyKey: '+ familyKey_find);
-    // console.log('c_push Query With c_macAddr: '+ c_macAddr_find);
-    //
-    // if (c_macAddr_find) {
-    //
-    //   CPush.find({familyKey : familyKey_find,
-    //               c_macAddr : c_macAddr_find,
-    //               checkMark : false},
-    //
-    //     function(error, c_push) {
-    //       // body...
-    //       if (error) {
-    //         response.send(error)
-    //       }else {
-    //         response.json(c_push)
-    //       }
-    //     })
-    // }
   });
 
   app.post('/family/c_push/create',function(request, response){
     var req = request
     var res = response
     cpush.createCPush(req, res)
-    // CPush.create({
-    //
-    //     familyKey     : request.body.familyKey,
-    //     c_macAddr     : request.body.c_macAddr,
-    //     i_macAddr     : request.body.i_macAddr,
-    //     command       : request.body.command,
-    //     checkMark     : false
-    //
-    // },function(error, c_push){
-    //   // body...
-    //   if (error) {
-    //       response.send(error)
-    //   }else {
-    //       // response.json(phone)
-    //       response.send("success")
-    //   }
-    // })
   });
-
-  // app.post('/family/c_push/update',function(request, response){
-  //   // body...
-  //   var familyKey_find  = request.body.familyKey
-  //   var c_macAddr_find  = request.body.c_macAddr
-  //   var i_macAddr_find  = request.body.i_macAddr
-  //
-  //   console.log(familyKey_find);
-  //   console.log(c_macAddr_find);
-  //   console.log(i_macAddr_find);
-  //
-  //   CPush.findOne({familyKey : familyKey_find,
-  //                  c_macAddr : c_macAddr_find,
-  //                  i_macAddr : i_macAddr_find,
-  //                  checkMark : false},
-  //
-  //   function(error, c_push) {
-  //       // body...
-  //       if (error) {
-  //         response.end(error)
-  //       }
-  //       if (c_push) {
-  //         // if (request.body.familyKey) {
-  //         //     push.familyKey       = request.body.familyKey;
-  //         //   }
-  //         // if (request.body.c_macAddr) {
-  //         //     push.c_macAddr       = request.body.c_macAddr;
-  //         //   }
-  //
-  //         c_push.checkMark = true
-  //
-  //         // response.send(center)
-  //         return c_push.save(function(error) {
-  //           if (error) {
-  //             response.send(error);
-  //           }else {
-  //             response.send("success")              // return response.send(phone);
-  //           }
-  //         });
-  //       }
-  //     })
-  //   });
 
   app.post('/family/c_push/update',function(request, response){
     // body...
     var req = request
     var res = response
     cpush.updateCPush(req, res)
-    // // var familyKey_find  = request.body.familyKey
-    // // var c_macAddr_find  = request.body.c_macAddr
-    // // var i_macAddr_find  = request.body.i_macAddr
-    // var identifier_find = request.body.identifier;
-    //
-    // // console.log(familyKey_find);
-    // // console.log(c_macAddr_find);
-    // // console.log(i_macAddr_find);
-    // console.log(identifier_find);
-    //
-    // CPush.findById({_id : identifier_find},
-    //
-    // function(error, c_push) {
-    //     // body...
-    //     if (error) {
-    //       response.end(error)
-    //     }
-    //     if (c_push) {
-    //       // if (request.body.familyKey) {
-    //       //     push.familyKey       = request.body.familyKey;
-    //       //   }
-    //       // if (request.body.c_macAddr) {
-    //       //     push.c_macAddr       = request.body.c_macAddr;
-    //       //   }
-    //
-    //       c_push.checkMark = true
-    //
-    //       // response.send(center)
-    //       return c_push.save(function(error) {
-    //         if (error) {
-    //           response.send(error);
-    //         }else {
-    //           response.send("success")              // return response.send(phone);
-    //         }
-    //       });
-    //     }
-    //   })
-    });
+  });
 
-    app.post('/family/c_push/changeCheckMark',function(request, response){
-      // body...
-      var req = request
-      var res = response
-      cpush.changeCPushCheckMark(req, res)
-    })
+  app.post('/family/c_push/changeCheckMark',function(request, response){
+    // body...
+    var req = request
+    var res = response
+    cpush.changeCPushCheckMark(req, res)
+  })
 
-    app.post('/family/c_push/delete',function(request, response){
-      // body...
-      var req = request
-      var res = response
-      cpush.deleteCPush(req, res)
-      // var familyKey_find  = request.body.familyKey
-      // var c_macAddr_find  = request.body.c_macAddr
-      // var i_macAddr_find  = request.body.i_macAddr
-      //
-      // console.log(familyKey_find);
-      // console.log(c_macAddr_find);
-      // console.log(i_macAddr_find);
-      //
-      // CPush.findOne({familyKey : familyKey_find,
-      //                c_macAddr : c_macAddr_find,
-      //                i_macAddr : i_macAddr_find},
-      //
-      // function(error, c_push) {
-      //     // body...
-      //     if (error) {
-      //       response.end(error)
-      //     }
-      //
-      //     if (c_push) {
-      //         // response.send(center)
-      //         c_push.remove(function (error) {
-      //           // body...
-      //           if (error) {
-      //             response.send(error)
-      //           }else {
-      //             response.send("success")
-      //           }
-      //         })
-      //     }
-      //   })
-    })
+  app.post('/family/c_push/delete',function(request, response){
+    // body...
+    var req = request
+    var res = response
+    cpush.deleteCPush(req, res)
+  })
+
+/*===========================HOME ALERT API==================================*/
+
+  app.post('/monitor', function(request, response) {
+    // body...
+    var familyKey_alert = request.body.familyKey
+    var macAddr_alert   = request.body.macAddr
+
+    iNeDot.findOne({familyKey : familyKey_alert,
+                    macAddr   : macAddr_alert},
+    function(error,inedot) {
+        // body...
+        if (error) {
+          response.send(error)
+        }
+        if (inedot) {
+          var situation = inedot.situation
+          response.send("success")
 
 
-    //HOME ALERT API
-    app.post('/monitor', function(request, response) {
-      // body...
-      var familyKey_alert = request.body.familyKey
-      var macAddr_alert   = request.body.macAddr
+        }else {
+          response.send("fail")
+        }
 
-      iNeDot.findOne({familyKey : familyKey_alert,
-                      macAddr   : macAddr_alert},
-      function(error,inedot) {
-          // body...
-          if (error) {
-            response.send(error)
-          }
-          if (inedot) {
-            var situation = inedot.situation
-            response.send("success")
+      })
 
 
-          }else {
-            response.send("fail")
-          }
-
-        })
-
-
-    })
+  })
 
   app.listen(8080,argv.fe_ip,function(request, response) {
     // body...

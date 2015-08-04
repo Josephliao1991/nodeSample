@@ -28,7 +28,7 @@ function alliNeDot(request, response) {
   })
 };
 
-function familyiNeDot(request, resopnse) {
+function familyiNeDot(request, response) {
   // body...
   var familyKey_find = request.query.familyKey
   var macAddr_find   = request.query.macAddr

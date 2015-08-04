@@ -1,4 +1,5 @@
 
+var apns = require('apn');
 
 function sendiOSPush(deviceToken) {
   // body...
@@ -27,6 +28,7 @@ function sendiOSPush(deviceToken) {
 
   apnsConnection.sendNotification(note);
 }
+
 
 module.exports = {
 

@@ -226,11 +226,11 @@ var cpush = require('./c-push.js');
     members = phone.getFamilyMember(familyKey_alert)
     // console.log(members.length);
 
-    for (var member in members) {
-      if (members.hasOwnProperty(member)) {
-        console.log(member.familyKey);
-      }
-    }
+    // for (var member in members) {
+    //   if (members.hasOwnProperty(member)) {
+    //     console.log(member.familyKey);
+    //   }
+    // }
 
 
   })

@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 var inedot = require('./inedot.js');
 var phone = require('./phone.js');
+var nodeiOSPush = require('./nodejs-apn.js');
 
 function sendPush(request, response) {
   // body...
@@ -10,12 +11,13 @@ function sendPush(request, response) {
   xx = inedot.iNeDot.findOne({familyKey : familyKey_alert,
                          macAddr   : macAddr_alert}).exec()
 
-  console.log(xx); 
+  console.log(xx);
 
     phone.Phone.findOne({familyKey  : familyKey_alert},
       function(error, phones) {
       // body...
-      console.log(phones);
+      // console.log(phones);
+      nodeiOSPush.sendiOSPush("sss")
 
     })
 

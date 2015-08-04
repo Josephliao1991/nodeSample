@@ -164,6 +164,35 @@ function deleteCenter(request, response) {
               response.send("success")
             }
           })
+      }else {
+        response.send("no such device")
+      }
+    })
+}
+
+function deleteCenterById(request, response) {
+  // body...
+  var id_fund   = request.body.identifier
+  console.log(id_find);
+
+  Center.findOne({_id = id_find },
+  function(error, center) {
+      // body...
+      if (error) {
+        response.end(error)
+      }
+      if (center) {
+          // response.send(center)
+          center.remove(function (error) {
+            // body...
+            if (error) {
+              response.send(error)
+            }else {
+              response.send("success")
+            }
+          })
+      }else {
+        response.send("no such device")
       }
     })
 }
@@ -174,6 +203,7 @@ module.exports = {
   getCenterFamilyKey    : getCenterFamilyKey,
   createCenter  : createCenter,
   updateCenter  : updateCenter,
-  deleteCenter  : deleteCenter
+  deleteCenter  : deleteCenter,
+  deleteCenterById  : deleteCenterById
 
 }

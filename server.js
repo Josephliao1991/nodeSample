@@ -293,6 +293,13 @@ var center = require('./center.js');
     //   })
   })
 
+  app.post('/family/center/deleteById',function(request, response){
+    // body...
+    var req = request
+    var res = response
+    center.deleteCenterById(req, res)
+  })
+
   // app.delete('/family/center/:identifier',function(request, response){
   //   // body...
   //

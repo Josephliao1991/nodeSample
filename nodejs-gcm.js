@@ -24,7 +24,7 @@ http.createServer(function (req,res) {
     console.log(response); // http://developer.android.com/guide/google/gcm/gcm.html#response
   });
      res.end('Hello World');
-}).listen(8124,"192.168.1.167");
+}).listen(8124);
 console.log('Server is running at http://192.168.1.167:8124/');
 
 

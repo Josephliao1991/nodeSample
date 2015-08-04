@@ -172,7 +172,7 @@ function deleteCenter(request, response) {
 
 function deleteCenterById(request, response) {
   // body...
-  var id_fund   = request.body.identifier
+  var id_find   = request.body.identifier
   console.log(id_find);
 
   Center.findOne({_id  : id_find },

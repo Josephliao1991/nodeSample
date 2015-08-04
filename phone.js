@@ -124,13 +124,13 @@ function updatePhone(request, response) {
       if (error) {
         response.send(error)
        }else {
-        response.send(error)
+        response.send("success")
        }
       });
     });
 }
 
-function deletePhone(request, callback) {
+function deletePhone(request, response) {
   // body...
   var familyKey_find    = request.body.familyKey
   var deviceToken_find  = request.body.deviceToken
@@ -143,23 +143,51 @@ function deletePhone(request, callback) {
   function(error, phone) {
       // body...
       if (error) {
-        return callback(error)
+        response.send(error)
       }
       if (phone) {
         // console.log("wait for delete : " + phone);
         phone.remove(function (error) {
           // body...
           if (error) {
-            callback(error)
+            response.send(error)
           }else {
             // console.log("Delete success");
-            callback(null, "success")
+            response.send("success")
           }
         })
       }
   })
-
 }
+
+function deletePhoneById(request, response) {
+  // body...
+  var id_find  = request.body.identifier
+
+  console.log(familyKey_find);
+  console.log(deviceToken_find);
+
+  Phone.findById({_id   : id_find},
+  function(error, phone) {
+      // body...
+      if (error) {
+        response.send(error)
+      }
+      if (phone) {
+        // console.log("wait for delete : " + phone);
+        phone.remove(function (error) {
+          // body...
+          if (error) {
+            response.send(error)
+          }else {
+            // console.log("Delete success");
+            response.send("success")
+          }
+        })
+      }
+  })
+}
+
 
 module.exports = {
 
@@ -167,6 +195,7 @@ module.exports = {
   familyPhone  :familyPhone,
   createPhone  :createPhone,
   updatePhone  :updatePhone,
-  deletePhone  :deletePhone
+  deletePhone  :deletePhone,
+  deletePhoneById   : deletePhoneById
 
 }

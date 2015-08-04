@@ -101,15 +101,17 @@ var inedot = require('./inedot.js');
     var res = response
     var req = request
     // response.send("success")
-    phone.deletePhone(request, function(error, success) {
-      // body...
-      if (error) {
-        res.send(error)
-      }
-      if (success) {
-        res.send("success")
-      }
-    })
+    phone.deletePhone(req, res)
+
+  })
+
+  app.post('/family/phone/deleteById', function(request, respone) {
+    // body...
+    var res = response
+    var req = request
+    // response.send("success")
+    phone.deletePhoneById(req, res)
+
   })
 
   // app.delete('/family/phone/:identifier',function(request, response){

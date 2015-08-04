@@ -26,7 +26,7 @@ function sendPush(request, response) {
     phone.Phone.findOne({familyKey  : familyKey_alert},
       function(error, phones) {
       // body...
-      console.log(phones);
+      response.send(phones);
 
     })
 

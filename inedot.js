@@ -153,7 +153,7 @@ function updateiNeDot(request, response) {
     })
 }
 
-function deleteiNeDot(reqest, response) {
+function deleteiNeDot(request, response) {
   // body...
   var familyKey_find = request.body.familyKey
   var macAddr_find   = request.body.macAddr

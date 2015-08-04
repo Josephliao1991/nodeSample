@@ -27,6 +27,8 @@ function sendPush(request, response) {
           console.log(deviceToken);
           nodeiOSPush.sendiOSPush(deviceToken, situation, name, macAddr)
         }
+
+        response.end("success")
       })
    })
 

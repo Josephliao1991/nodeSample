@@ -60,10 +60,28 @@ function familyPhone(request, response) {
         response.send(phones)
       }
     })
-
 }
 
-function createPhone(request, callback) {
+// function createPhone(request, callback) {
+//   // body...
+//
+//   Phone.create({
+//       familyKey   : request.body.familyKey,
+//       deviceToken : request.body.deviceToken,
+//       operation   : request.body.operation
+//   },function(error, phone){
+//     // body...
+//     if (error) {
+//         return callback(error)
+//     }else {
+//         // response.json(phone)
+//         callback(null, "success")
+//     }
+//   })
+//
+// }
+
+function createPhone(request, response) {
   // body...
 
   Phone.create({
@@ -73,14 +91,16 @@ function createPhone(request, callback) {
   },function(error, phone){
     // body...
     if (error) {
-        return callback(error)
-    }else {
-        // response.json(phone)
-        callback(null, "success")
+      resopnse.send(error)
+    }
+    if (success) {
+      response.send("success")
     }
   })
 
 }
+
+
 
 function updatePhone(request, callback) {
   // body...

@@ -21,7 +21,6 @@ function allPhone(resquest, resopnse) {
 
 function familyPhone(request, response) {
   // body...
-
   var familyKey_find = request.query.familyKey
   console.log('familyKey:'+ familyKey_find);
 
@@ -148,6 +147,18 @@ function deletePhoneById(request, response) {
   })
 }
 
+/*=====================================================*/
+function getFamilyMember(familyKey_find) {
+  // body...
+  Phone.findOne({familyKey  : familyKey_find},
+    function (error,phones) {
+      // body...
+      return phones;
+
+    }
+  )
+
+}
 
 module.exports = {
 
@@ -156,6 +167,8 @@ module.exports = {
   createPhone  :createPhone,
   updatePhone  :updatePhone,
   deletePhone  :deletePhone,
-  deletePhoneById   : deletePhoneById
+  deletePhoneById   : deletePhoneById,
+
+  getFamilyMember  : getFamilyMember
 
 }

@@ -123,11 +123,13 @@ function updateCPush(request, response) {
             response.send("success")              // return response.send(phone);
           }
         });
+      }else {
+        response.send("no such CPush")
       }
     })
 }
 
-function changeCPushCheckMatk(request, response) {
+function changeCPushCheckMark(request, response) {
   // body...
   var identifier_find = request.body.identifier;
   var checkMark       = request.body.checkMark;
@@ -159,6 +161,43 @@ function changeCPushCheckMatk(request, response) {
             response.send("success")              // return response.send(phone);
           }
         });
+      }else {
+        response.send("no such CPush")
+      }
+    })
+}
+
+function deleteCPush(request, response) {
+  // body...
+  // var familyKey_find  = request.body.familyKey
+  // var c_macAddr_find  = request.body.c_macAddr
+  // var i_macAddr_find  = request.body.i_macAddr
+  var id_find  = request.body.identifier
+
+  // console.log(familyKey_find);
+  // console.log(c_macAddr_find);
+  // console.log(i_macAddr_find);
+  console.log(id);
+
+  CPush.findOne({_id  : id_find},
+    function(error, c_push) {
+      // body...
+      if (error) {
+        response.end(error)
+      }
+
+      if (c_push) {
+          // response.send(center)
+          c_push.remove(function (error) {
+            // body...
+            if (error) {
+              response.send(error)
+            }else {
+              response.send("success")
+            }
+          })
+      }else {
+        response.send("no such CPush")
       }
     })
 }
@@ -168,6 +207,7 @@ module.exports = {
   familyCPush : familyCPush,
   createCPush : createCPush,
   updateCPush : updateCPush,
-  changeCPushCheckMatk  : changeCPushCheckMatk
+  changeCPushCheckMark  : changeCPushCheckMark,
+  deleteCPush : deleteCPush
 
 }

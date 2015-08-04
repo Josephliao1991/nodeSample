@@ -326,45 +326,48 @@ var cpush = require('./c-push.js');
     //   })
     });
 
-    app.post('/family/c_push/changeCheckMatk',function(request, response){
+    app.post('/family/c_push/changeCheckMark',function(request, response){
       // body...
       var req = request
       var res = response
-      cpush.changeCPushCheckMatk(req, res)
+      cpush.changeCPushCheckMark(req, res)
     })
 
     app.post('/family/c_push/delete',function(request, response){
       // body...
-      var familyKey_find  = request.body.familyKey
-      var c_macAddr_find  = request.body.c_macAddr
-      var i_macAddr_find  = request.body.i_macAddr
-
-      console.log(familyKey_find);
-      console.log(c_macAddr_find);
-      console.log(i_macAddr_find);
-
-      CPush.findOne({familyKey : familyKey_find,
-                     c_macAddr : c_macAddr_find,
-                     i_macAddr : i_macAddr_find},
-
-      function(error, c_push) {
-          // body...
-          if (error) {
-            response.end(error)
-          }
-
-          if (c_push) {
-              // response.send(center)
-              c_push.remove(function (error) {
-                // body...
-                if (error) {
-                  response.send(error)
-                }else {
-                  response.send("success")
-                }
-              })
-          }
-        })
+      var req = request
+      var res = response
+      cpush.deleteCPush(req, res)
+      // var familyKey_find  = request.body.familyKey
+      // var c_macAddr_find  = request.body.c_macAddr
+      // var i_macAddr_find  = request.body.i_macAddr
+      //
+      // console.log(familyKey_find);
+      // console.log(c_macAddr_find);
+      // console.log(i_macAddr_find);
+      //
+      // CPush.findOne({familyKey : familyKey_find,
+      //                c_macAddr : c_macAddr_find,
+      //                i_macAddr : i_macAddr_find},
+      //
+      // function(error, c_push) {
+      //     // body...
+      //     if (error) {
+      //       response.end(error)
+      //     }
+      //
+      //     if (c_push) {
+      //         // response.send(center)
+      //         c_push.remove(function (error) {
+      //           // body...
+      //           if (error) {
+      //             response.send(error)
+      //           }else {
+      //             response.send("success")
+      //           }
+      //         })
+      //     }
+      //   })
     })
 
 

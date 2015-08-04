@@ -65,7 +65,7 @@ function familyCPush(request, response) {
   }
 }
 
-function updateCPush(request, response) {
+function createCPush(request, response) {
   // body...
   CPush.create({
 
@@ -86,9 +86,88 @@ function updateCPush(request, response) {
   })
 }
 
+function updateCPush(request, response) {
+  // body...
+  // var familyKey_find  = request.body.familyKey
+  // var c_macAddr_find  = request.body.c_macAddr
+  // var i_macAddr_find  = request.body.i_macAddr
+  var identifier_find = request.body.identifier;
+
+  // console.log(familyKey_find);
+  // console.log(c_macAddr_find);
+  // console.log(i_macAddr_find);
+  console.log(identifier_find);
+
+  CPush.findById({_id : identifier_find},
+
+  function(error, c_push) {
+      // body...
+      if (error) {
+        response.end(error)
+      }
+      if (c_push) {
+        // if (request.body.familyKey) {
+        //     push.familyKey       = request.body.familyKey;
+        //   }
+        // if (request.body.c_macAddr) {
+        //     push.c_macAddr       = request.body.c_macAddr;
+        //   }
+
+        c_push.checkMark = true
+
+        // response.send(center)
+        return c_push.save(function(error) {
+          if (error) {
+            response.send(error);
+          }else {
+            response.send("success")              // return response.send(phone);
+          }
+        });
+      }
+    })
+}
+
+function changeCPushCheckMatk(request, response) {
+  // body...
+  var identifier_find = request.body.identifier;
+  var checkMark       = request.body.checkMark;
+
+  console.log(identifier_find);
+  console.log(checkMark);
+
+  CPush.findById({_id : identifier_find},
+    function(error, c_push) {
+      // body...
+      if (error) {
+        response.end(error)
+      }
+      if (c_push) {
+        // if (request.body.familyKey) {
+        //     push.familyKey       = request.body.familyKey;
+        //   }
+        // if (request.body.c_macAddr) {
+        //     push.c_macAddr       = request.body.c_macAddr;
+        //   }
+        if (checkMark) {
+          c_push.checkMark = checkMark
+        }
+
+        return c_push.save(function(error) {
+          if (error) {
+            response.send(error);
+          }else {
+            response.send("success")              // return response.send(phone);
+          }
+        });
+      }
+    })
+}
+
 module.exports = {
   allCPush    : allCPush,
   familyCPush : familyCPush,
-  updateCPush : updateCPush
+  createCPush : createCPush,
+  updateCPush : updateCPush,
+  changeCPushCheckMatk  : changeCPushCheckMatk
 
 }

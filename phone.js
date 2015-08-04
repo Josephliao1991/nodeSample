@@ -153,8 +153,8 @@ function getFamilyMember(familyKey_find) {
   Phone.find({familyKey  : familyKey_find},
     function (error,phones) {
       // body...
-      console.log(phones.length);
-      console.log(phones[0].familyKey);
+      // console.log(phones.length);
+      // console.log(phones[0].familyKey);
       return phones;
 
     }

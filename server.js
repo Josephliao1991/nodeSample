@@ -222,8 +222,14 @@ var cpush = require('./c-push.js');
     //     }
     //
     //   })
-    var member = phone.getFamilyMember(familyKey_alert)
-    console.log(member);
+    var members = phone.getFamilyMember(familyKey_alert)
+    console.log(members.length);
+
+    for (var member in members) {
+      if (object.hasOwnProperty(member)) {
+        console.log(member.familyKey);
+      }
+    }
 
 
   })

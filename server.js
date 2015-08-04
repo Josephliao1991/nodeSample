@@ -123,38 +123,41 @@ var inedot = require('./inedot.js');
 
   app.post('/family/inedot/create',function(request, response){
 
-    var presetValue;
-    if (request.body.situation == "temp" && request.body.temp) {
-        presetValue = [{temp : request.body.temp}]
-    }else if (request.body.situation == "alert" && request.body.alert) {
-        presetValue = [{alert : request.body.alert}]
-    }else if (request.body.situation == "message" && request.body.message) {
-        presetValue = [{message : request.body.message}]
-    }
-
-    iNeDot.create({
-
-        familyKey     : request.body.familyKey,
-        macAddr       : request.body.macAddr,
-
-        owner         : request.body.owner,
-        connectState  : request.body.connectState,
-
-        name          : request.body.name,
-        situation     : request.body.situation,
-
-        battery       : request.body.battery,
-
-        preset        : presetValue
-    },function(error, inedot){
-      // body...
-      if (error) {
-          response.send(error)
-      }else {
-          // response.json(phone)
-          response.send("success")
-      }
-    })
+    var req = request
+    var res = response
+    inedot.createiNeDot(req, res)
+    // var presetValue;
+    // if (request.body.situation == "temp" && request.body.temp) {
+    //     presetValue = [{temp : request.body.temp}]
+    // }else if (request.body.situation == "alert" && request.body.alert) {
+    //     presetValue = [{alert : request.body.alert}]
+    // }else if (request.body.situation == "message" && request.body.message) {
+    //     presetValue = [{message : request.body.message}]
+    // }
+    //
+    // iNeDot.create({
+    //
+    //     familyKey     : request.body.familyKey,
+    //     macAddr       : request.body.macAddr,
+    //
+    //     owner         : request.body.owner,
+    //     connectState  : request.body.connectState,
+    //
+    //     name          : request.body.name,
+    //     situation     : request.body.situation,
+    //
+    //     battery       : request.body.battery,
+    //
+    //     preset        : presetValue
+    // },function(error, inedot){
+    //   // body...
+    //   if (error) {
+    //       response.send(error)
+    //   }else {
+    //       // response.json(phone)
+    //       response.send("success")
+    //   }
+    // })
   });
 
   app.post('/family/inedot/update',function(request, response){

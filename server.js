@@ -33,9 +33,10 @@ var inedot = require('./inedot.js');
       //     response.send(phones)
       //   }
       // })
+      var res = response
+      var req = request
+      phone.allPhone(req, res)
 
-      phone.allPhone(request, response)
-      
   });
 
   app.get('/family/phone',function(request, response){

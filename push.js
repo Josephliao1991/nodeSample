@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var inedot = require('./inedot.js');
 
 function sendPush(request, response) {
   // body...

@@ -5,7 +5,7 @@ http.createServer(function (req,res) {
 
   var GCM = require('./gcmnew');
 
-  var gcm = new GCM('AIzaSyAs_RofE7utmeE9nLCpwX8qQmC2Jbvr3HU'); // https://code.google.com/apis/console
+  var gcm = new GCM('AIzaSyDF0AW6fgIqLnLdH_yPYPvfsKuI_BwQycI'); // https://code.google.com/apis/console
 
   // create the message
   var msg = {

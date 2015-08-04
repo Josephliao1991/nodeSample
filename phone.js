@@ -156,7 +156,7 @@ function getFamilyMember(familyKey_find) {
       // console.log(phones.length);
       // console.log(phones[0].familyKey);
       for (var member in phones) {
-        if (object.hasOwnProperty(member)) {
+        if (phones.hasOwnProperty(member)) {
           console.log(member.familyKey);
         }
       }

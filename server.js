@@ -227,7 +227,7 @@ var cpush = require('./c-push.js');
     // console.log(members.length);
 
     for (var member in members) {
-      if (object.hasOwnProperty(member)) {
+      if (members.hasOwnProperty(member)) {
         console.log(member.familyKey);
       }
     }

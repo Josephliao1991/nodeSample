@@ -137,7 +137,7 @@ function changeCPushCheckMark(request, response) {
   console.log(identifier_find);
   console.log(checkMark);
 
-  CPush.findById({_id : identifier_find},
+  CPush.findById({ _id : identifier_find},
     function(error, c_push) {
       // body...
       if (error) {
@@ -177,7 +177,7 @@ function deleteCPush(request, response) {
   // console.log(familyKey_find);
   // console.log(c_macAddr_find);
   // console.log(i_macAddr_find);
-  console.log(id);
+  console.log(id_find);
 
   CPush.findOne({_id  : id_find},
     function(error, c_push) {

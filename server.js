@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 var argv = require('optimist').argv;
 var phone = require('./phone.js');
 var inedot = require('./inedot.js');
+var center = require('./center.js');
   //Connect to Mongodb
   mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
@@ -71,7 +72,6 @@ var inedot = require('./inedot.js');
   });
 
   app.get('/family/inedot',function(request, response){
-
     var res = response
     var req = request
     inedot.familyiNeDot(req, res)
@@ -105,25 +105,28 @@ var inedot = require('./inedot.js');
   })
 
 /*===========================CENTER==================================*/
-  //Create Center Mongodb Module
-  var Center = mongoose.model('center', {
-      familyKey     : String,
-      macAddr       : String,
-
-      connectState  : Boolean,
-  });
+  // //Create Center Mongodb Module
+  // var Center = mongoose.model('center', {
+  //     familyKey     : String,
+  //     macAddr       : String,
+  //
+  //     connectState  : Boolean,
+  // });
 
   //implement /family/inedot/ API
   app.get('/family/center/all',function(request, response){
 
-      Center.find(function(error, centers) {
-        // body...
-        if (error) {
-          response.send(error)
-        }else {
-          response.json(centers)
-        }
-      })
+    var req = request
+    var res = response
+    center.allCenter(req, res)
+      // Center.find(function(error, centers) {
+      //   // body...
+      //   if (error) {
+      //     response.send(error)
+      //   }else {
+      //     response.json(centers)
+      //   }
+      // })
   });
 
   app.get('/family/center',function(request, response){

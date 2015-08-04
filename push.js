@@ -31,7 +31,7 @@ function sendPush(request, response) {
             //iOS
             nodeiOSPush.sendiOSPush(deviceToken, situation, name, macAddr)
           }else {
-            //Android 
+            //Android
           }
 
         }

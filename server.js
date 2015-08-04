@@ -206,24 +206,6 @@ var push = require('./push.js');
     var req = request
     var res = response
     push.sendPush(req, res)
-    // var familyKey_alert = request.body.familyKey
-    // var macAddr_alert   = request.body.macAddr
-    //
-    // inedot.iNeDot.findOne({familyKey : familyKey_alert,
-    //                 macAddr   : macAddr_alert},
-    // function(error,inedot) {
-    //     // body...
-    //     if (error) {
-    //       response.send(error)
-    //     }
-    //     if (inedot) {
-    //       var situation = inedot.situation
-    //       response.send(situation)
-    //     }else {
-    //       response.send("fail")
-    //     }
-    //
-    //   })
   })
 
   app.listen(8080,argv.fe_ip,function(request, response) {

@@ -8,6 +8,7 @@ var phone = require('./phone.js');
 var inedot = require('./inedot.js');
 var center = require('./center.js');
 var cpush = require('./c-push.js');
+var push = require('./push.js');
   //Connect to Mongodb
   mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
@@ -202,26 +203,27 @@ var cpush = require('./c-push.js');
 
   app.post('/monitor', function(request, response) {
     // body...
-    var familyKey_alert = request.body.familyKey
-    var macAddr_alert   = request.body.macAddr
-
-    inedot.iNeDot.findOne({familyKey : familyKey_alert,
-                    macAddr   : macAddr_alert},
-    function(error,inedot) {
-        // body...
-        if (error) {
-          response.send(error)
-        }
-        if (inedot) {
-          var situation = inedot.situation
-          response.send(situation)
-
-
-        }else {
-          response.send("fail")
-        }
-
-      })
+    var req = request
+    var res = response
+    push.sendPush(req, res)
+    // var familyKey_alert = request.body.familyKey
+    // var macAddr_alert   = request.body.macAddr
+    //
+    // inedot.iNeDot.findOne({familyKey : familyKey_alert,
+    //                 macAddr   : macAddr_alert},
+    // function(error,inedot) {
+    //     // body...
+    //     if (error) {
+    //       response.send(error)
+    //     }
+    //     if (inedot) {
+    //       var situation = inedot.situation
+    //       response.send(situation)
+    //     }else {
+    //       response.send("fail")
+    //     }
+    //
+    //   })
   })
 
   app.listen(8080,argv.fe_ip,function(request, response) {

@@ -204,6 +204,8 @@ module.exports = {
   createCenter  : createCenter,
   updateCenter  : updateCenter,
   deleteCenter  : deleteCenter,
-  deleteCenterById  : deleteCenterById
+  deleteCenterById  : deleteCenterById,
+
+  Center  : Center
 
 }

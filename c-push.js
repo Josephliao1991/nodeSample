@@ -208,6 +208,8 @@ module.exports = {
   createCPush : createCPush,
   updateCPush : updateCPush,
   changeCPushCheckMark  : changeCPushCheckMark,
-  deleteCPush : deleteCPush
+  deleteCPush : deleteCPush,
+
+  CPush : CPush
 
 }

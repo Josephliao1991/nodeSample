@@ -177,6 +177,8 @@ module.exports = {
   deletePhone  :deletePhone,
   deletePhoneById   : deletePhoneById,
 
-  getFamilyMember  : getFamilyMember
+  getFamilyMember  : getFamilyMember,
+
+  Phone   : Phone
 
 }

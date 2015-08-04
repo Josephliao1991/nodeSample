@@ -7,6 +7,7 @@ var argv = require('optimist').argv;
 var phone = require('./phone.js');
 var inedot = require('./inedot.js');
 var center = require('./center.js');
+var cpush = require('./c-push.js');
   //Connect to Mongodb
   mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
@@ -156,34 +157,37 @@ var center = require('./center.js');
   })
 /*===========================C_PUSH==================================*/
 
-  //Create Push Mongodb Module
-  /* Command Rule
-  command : Number
-  Baby  = 0
-  Area  = 1
-  Alert = 2
-  Temp  = 3
-  Break Connection  = 4
-  */
-  var CPush = mongoose.model('c_push', {
-      familyKey     : String,
-      c_macAddr     : String,
-      i_macAddr     : String,
-      command       : Number,
-      checkMark     : Boolean
-  });
+  // //Create Push Mongodb Module
+  // /* Command Rule
+  // command : Number
+  // Baby  = 0
+  // Area  = 1
+  // Alert = 2
+  // Temp  = 3
+  // Break Connection  = 4
+  // */
+  // var CPush = mongoose.model('c_push', {
+  //     familyKey     : String,
+  //     c_macAddr     : String,
+  //     i_macAddr     : String,
+  //     command       : Number,
+  //     checkMark     : Boolean
+  // });
 
   //implement /family/inedot/ API
   app.get('/family/c_push/all',function(request, response){
 
-      CPush.find(function(error, c_pushs) {
-        // body...
-        if (error) {
-          response.send(error)
-        }else {
-          response.json(c_pushs)
-        }
-      })
+    var req = request
+    var res =response
+    cpush.allCPush(req, res)
+      // CPush.find(function(error, c_pushs) {
+      //   // body...
+      //   if (error) {
+      //     response.send(error)
+      //   }else {
+      //     response.json(c_pushs)
+      //   }
+      // })
   });
 
   app.get('/family/c_push',function(request, response){

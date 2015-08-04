@@ -222,7 +222,8 @@ var cpush = require('./c-push.js');
     //     }
     //
     //   })
-    var members = phone.getFamilyMember(familyKey_alert)
+    var members = []
+    members = phone.getFamilyMember(familyKey_alert)
     console.log(members.length);
 
     for (var member in members) {

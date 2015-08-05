@@ -1,10 +1,35 @@
-var http = require('http');
+// var http = require('http');
+//
+// http.createServer(function (req,res) {
+//      res.writeHead(200,{'Content-Type': 'text/plain'});
+//
+//   var GCM = require('./gcmnew');
+//
+//   var gcm = new GCM('AIzaSyDF0AW6fgIqLnLdH_yPYPvfsKuI_BwQycI'); // https://code.google.com/apis/console
+//
+//   // create the message
+//   var msg = {
+//     registration_ids: ['doX9i93g9BM:APA91bF0wohELmW-ZgisUWEd9eaNqRX_tmBUSPnqOC6u2cb1kxJC7UhhYN3NKORx9WubhL_8mjF8FfLzbbs4Rci4fVT5Xdzmd_U_U0CksSdxQji4UtL-k6CWSqCou7NGnXHYGaUIBZtu'],
+//     collapse_key: "0002dsaa", // http://developer.android.com/guide/google/gcm/gcm.html#send-msg
+//     time_to_live: 180, // just 30 minutes
+//     data: {
+//       SubTitle: "Hello",
+//       Message: "fuck you gcm!" // your payload data
+//     }
+//   };
+//
+//   // send the message and see what happened
+//   gcm.send(msg, function(err, response) {
+//     // that error is from the http request, not gcm callback
+//     console.log(response); // http://developer.android.com/guide/google/gcm/gcm.html#response
+//   });
+//      res.end('Hello World');
+// }).listen(8124);
+// console.log('Server is running at http://192.168.1.167:8124/');
 
-http.createServer(function (req,res) {
-     res.writeHead(200,{'Content-Type': 'text/plain'});
-
+function sendAndroidPush(deviceToken, situation, name, macAddr) {
+  // body...
   var GCM = require('./gcmnew');
-
   var gcm = new GCM('AIzaSyDF0AW6fgIqLnLdH_yPYPvfsKuI_BwQycI'); // https://code.google.com/apis/console
 
   // create the message
@@ -23,9 +48,15 @@ http.createServer(function (req,res) {
     // that error is from the http request, not gcm callback
     console.log(response); // http://developer.android.com/guide/google/gcm/gcm.html#response
   });
-     res.end('Hello World');
-}).listen(8124);
-console.log('Server is running at http://192.168.1.167:8124/');
+
+
+}
+
+module.exports = {
+
+  sendAndroidPush   : sendAndroidPush
+
+}
 
 
 

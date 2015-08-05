@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var inedot = require('./inedot.js');
 var phone = require('./phone.js');
 var nodeiOSPush = require('./nodejs-apn.js');
+var nodeAndroidPush = require('./nodejs-gcm.js');
 
 function sendPush(request, response) {
   // body...
@@ -32,6 +33,7 @@ function sendPush(request, response) {
             nodeiOSPush.sendiOSPush(deviceToken, situation, name, macAddr)
           }else {
             //Android
+            nodeAndroidPush.sendAndroidPush(deviceToken, situation, name, macAddr)
           }
 
         }

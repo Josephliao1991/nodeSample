@@ -38,8 +38,11 @@ function sendAndroidPush(deviceToken, situation, name, macAddr) {
     collapse_key: "0002dsaa", // http://developer.android.com/guide/google/gcm/gcm.html#send-msg
     time_to_live: 180, // just 30 minutes
     data: {
-      SubTitle: "Hello",
-      Message: "fuck you gcm!" // your payload data
+      subTitle    : "Hello",
+      message     : "Emergency From " + name, // your payload data
+      situation   : situation,
+      name        : name,
+      macAddr     : macAddr
     }
   };
 

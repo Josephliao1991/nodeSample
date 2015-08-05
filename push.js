@@ -35,13 +35,10 @@ function sendPush(request, response) {
             //Android
             nodeAndroidPush.sendAndroidPush(deviceToken, situation, name, macAddr)
           }
-
         }
-
         response.end("success")
       })
    })
-
 }
 
 

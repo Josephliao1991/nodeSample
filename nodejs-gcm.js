@@ -30,11 +30,12 @@
 function sendAndroidPush(deviceToken, situation, name, macAddr) {
   // body...
   var GCM = require('./gcmnew');
+  // var gcm = new GCM('AIzaSyDF0AW6fgIqLnLdH_yPYPvfsKuI_BwQycI'); // https://code.google.com/apis/console //My
   var gcm = new GCM('AIzaSyAs_RofE7utmeE9nLCpwX8qQmC2Jbvr3HU'); // https://code.google.com/apis/console
 
   // create the message
   var msg = {
-    registration_ids: ['doX9i93g9BM:APA91bF0wohELmW-ZgisUWEd9eaNqRX_tmBUSPnqOC6u2cb1kxJC7UhhYN3NKORx9WubhL_8mjF8FfLzbbs4Rci4fVT5Xdzmd_U_U0CksSdxQji4UtL-k6CWSqCou7NGnXHYGaUIBZtu'],
+    registration_ids: ['APA91bG08EPmMW1eKAKLB5jiae0epCFyQjo1PiPEKio9r0PNlo7r1T57DB9a96m693Z5NUqwiZJyCdTIH_MJwygfZD355TuUoqtpptf5SwQIcxmix7ZE4QW1dsHtnqhi6VPM0DuAA9pL'],
     collapse_key: "0002dsaa", // http://developer.android.com/guide/google/gcm/gcm.html#send-msg
     time_to_live: 180, // just 30 minutes
     data: {

@@ -31,14 +31,14 @@ function sendAndroidPush(deviceToken, situation, name, macAddr) {
   // body...
   var GCM = require('./gcmnew');
   var gcm = new GCM('AIzaSyDF0AW6fgIqLnLdH_yPYPvfsKuI_BwQycI'); // https://code.google.com/apis/console
-
+  var message =
   // create the message
   var msg = {
     registration_ids: ['doX9i93g9BM:APA91bF0wohELmW-ZgisUWEd9eaNqRX_tmBUSPnqOC6u2cb1kxJC7UhhYN3NKORx9WubhL_8mjF8FfLzbbs4Rci4fVT5Xdzmd_U_U0CksSdxQji4UtL-k6CWSqCou7NGnXHYGaUIBZtu'],
     collapse_key: "0002dsaa", // http://developer.android.com/guide/google/gcm/gcm.html#send-msg
     time_to_live: 180, // just 30 minutes
     data: {
-      subTitle    : "Hello",
+      title    : "iNeDot",
       message     : "Emergency From " + name, // your payload data
       situation   : situation,
       name        : name,

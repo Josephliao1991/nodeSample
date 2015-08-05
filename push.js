@@ -13,31 +13,35 @@ function sendPush(request, response) {
                       macAddr    : macAddr_alert},
    function(error, inedot) {
       // body...
-      var situation = inedot[0].situation
-      var name      = inedot[0].name
-      var macAddr   = inedot[0].macAddr
-      console.log("Now iNeDot("+name+") Situation Is : " + situation);
+      if (inedot) {
+        var situation = inedot[0].situation
+        var name      = inedot[0].name
+        var macAddr   = inedot[0].macAddr
+        console.log("Now iNeDot("+name+") Situation Is : " + situation);
 
-      phone.Phone.find({familyKey  : familyKey_alert},
-        function(error, phones) {
-        // body...
-        // console.log("Family Member Is : " + phones);
+        phone.Phone.find({familyKey  : familyKey_alert},
+          function(error, phones) {
+          // body...
+          // console.log("Family Member Is : " + phones);
 
-        for (var i = 0; i < phones.length; i++) {
-          var deviceToken = phones[i].deviceToken
-          var operation   = phones[i].operation
-          console.log(deviceToken);
-          console.log(operation);
-          if (operation == "ios") {
-            //iOS
-            nodeiOSPush.sendiOSPush(deviceToken, situation, name, macAddr)
-          }else {
-            //Android
-            nodeAndroidPush.sendAndroidPush(deviceToken, situation, name, macAddr)
+          for (var i = 0; i < phones.length; i++) {
+            var deviceToken = phones[i].deviceToken
+            var operation   = phones[i].operation
+            console.log(deviceToken);
+            console.log(operation);
+            if (operation == "ios") {
+              //iOS
+              nodeiOSPush.sendiOSPush(deviceToken, situation, name, macAddr)
+            }else {
+              //Android
+              nodeAndroidPush.sendAndroidPush(deviceToken, situation, name, macAddr)
+            }
           }
-        }
-        response.end("success")
-      })
+          response.end("success")
+        })
+      }else {
+        response.end("fail")
+      }
    })
 }
 

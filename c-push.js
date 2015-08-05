@@ -197,7 +197,8 @@ function deleteCPush(request, response) {
             }
           })
       }else {
-        response.send("no such CPush")
+        // response.send("no such CPush")
+        response.send("fail")
       }
     })
 }

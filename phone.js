@@ -62,7 +62,7 @@ function getQRPhone(request, response) {
   checkFamilyExist(name,function (error,exist) {
     // body...
     console.log(exist);
-    if (exist) {
+    if (exist == true) {
       console.log("exist");
     }else {
       console.log("dosen't exist");

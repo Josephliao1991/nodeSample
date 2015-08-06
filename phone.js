@@ -9,7 +9,7 @@ var Phone = mongoose.model('phone', {
 
 function checkFamilyExist(familyKey) {
   // body...
-  Phone.find(function(error, phones) {
+  Phone.find({familyKey:familyKey},function(error, phones) {
     // body...
     if (error) {
       return error

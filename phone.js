@@ -17,9 +17,9 @@ function checkFamilyExist(familyKey,callback) {
 
     console.log(phones);
     if (phones.length = 0) {
-      return callback(null,false)
+      return callback(null,"false")
     }else {
-      return callback(null,true)
+      return callback(null,"true")
     }
   })
 }
@@ -62,7 +62,7 @@ function getQRPhone(request, response) {
   checkFamilyExist(name,function (error,exist) {
     // body...
     console.log(exist);
-    if (exist == true) {
+    if (exist == "true") {
       console.log("exist");
     }else {
       console.log("dosen't exist");

@@ -40,8 +40,21 @@ function getQRPhone(request, response) {
   // body...
   var name = request.query.familyKey
   // console.log(name);
+
+
   if (name) {
-    QRHandler.readqr(name+".png").pipe(response)
+    Phone.find({familyKey:familyKey_find},function(error, phones) {
+        // body...
+        if (error) {
+          response.send(error)
+        }
+        if (phones) {
+          QRHandler.readqr(name+".png").pipe(response)
+        }else {
+          response.send("fail")
+        }
+      })
+
   }else {
     response.end("fail")
   }

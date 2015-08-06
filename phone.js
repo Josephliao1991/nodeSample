@@ -16,10 +16,10 @@ function checkFamilyExist(familyKey,callback) {
     }
 
     console.log(phones);
-    if (phones.length = 0) {
-      return callback(null,"false")
-    }else {
+    if (phones.length > 0) {
       return callback(null,"true")
+    }else {
+      return callback(null,"false")
     }
   })
 }

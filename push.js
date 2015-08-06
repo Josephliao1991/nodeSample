@@ -13,7 +13,7 @@ function sendPush(request, response) {
                       macAddr    : macAddr_alert},
    function(error, inedot) {
       // body...
-      if (inedot) {
+      if (inedot.length>0) {
         var situation = inedot[0].situation
         var name      = inedot[0].name
         var macAddr   = inedot[0].macAddr

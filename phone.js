@@ -16,11 +16,11 @@ function checkFamilyExist(familyKey) {
     }
 
     console.log(phones);
-    // if (phones.length = 0) {
-    //   return false
-    // }else {
-    //   return true
-    // }
+    if (phones.length = 0) {
+      return 0
+    }else {
+      return 1
+    }
   })
 }
 

@@ -58,7 +58,9 @@ function getQRPhone(request, response) {
   // console.log(name);
 
   if (name) {
-    if (checkFamilyExist()) {
+    var exist = checkFamilyExist()
+    console.log(exist);
+    if (exist) {
       console.log("exist");
     }else {
       console.log("dosen't exist");

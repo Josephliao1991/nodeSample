@@ -7,6 +7,22 @@ var Phone = mongoose.model('phone', {
     operation   : String
 });
 
+function checkFamilyExist(familyKey) {
+  // body...
+  Phone.find(function(error, phones) {
+    // body...
+    if (error) {
+      return error
+    }
+    if (phones.length = 0) {
+      return false
+    }else {
+      return true
+    }
+  })
+}
+
+
 function allPhone(resquest, resopnse) {
   // body...
 
@@ -41,24 +57,31 @@ function getQRPhone(request, response) {
   var name = request.query.familyKey
   // console.log(name);
 
-
   if (name) {
-    Phone.find({familyKey:name},function(error, phones) {
-        // body...
-        if (error) {
-          response.send(error)
-        }
-        if (phones.length > 0) {
-          // response.send(phones)
-          QRHandler.readqr(name+".png").pipe(response)
-        }else {
-          response.send("fail")
-        }
-      })
-
-  }else {
-    response.end("fail")
+    if (checkFamilyExist()) {
+      console.log("exist");
+    }else {
+      console.log("dosen't exist");
+    }
   }
+
+  // if (name) {
+  //   Phone.find({familyKey:name},function(error, phones) {
+  //       // body...
+  //       if (error) {
+  //         response.send(error)
+  //       }
+  //       if (phones.length > 0) {
+  //         // response.send(phones)
+  //         QRHandler.readqr(name+".png").pipe(response)
+  //       }else {
+  //         response.send("fail")
+  //       }
+  //     })
+  //
+  // }else {
+  //   response.end("fail")
+  // }
 
 }
 

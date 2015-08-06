@@ -7,7 +7,7 @@ var Phone = mongoose.model('phone', {
     operation   : String
 });
 
-function checkFamilyExist(familyKey) {
+function checkFamilyExist(familyKey,callback) {
   // body...
   Phone.find({familyKey:familyKey},function(error, phones) {
     // body...
@@ -17,9 +17,9 @@ function checkFamilyExist(familyKey) {
 
     console.log(phones);
     if (phones.length = 0) {
-      return 0
+      return callback(null,false)
     }else {
-      return 1
+      return callback(null,true)
     }
   })
 }
@@ -59,15 +59,20 @@ function getQRPhone(request, response) {
   var name = request.query.familyKey
   // console.log(name);
 
-  if (name) {
-    var exist = checkFamilyExist()
+  checkFamilyExist(name,function (error,exist) {
+    // body...
     console.log(exist);
     if (exist) {
       console.log("exist");
     }else {
       console.log("dosen't exist");
     }
-  }
+  })
+
+  // if (name) {
+  //   var exist = checkFamilyExist()
+  //
+  // }
 
   // if (name) {
   //   Phone.find({familyKey:name},function(error, phones) {

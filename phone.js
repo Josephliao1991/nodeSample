@@ -49,7 +49,8 @@ function getQRPhone(request, response) {
           response.send(error)
         }
         if (phones) {
-          QRHandler.readqr(name+".png").pipe(response)
+          response.send(phones)
+          // QRHandler.readqr(name+".png").pipe(response)
         }else {
           response.send("fail")
         }

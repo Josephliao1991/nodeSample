@@ -38,14 +38,7 @@ function familyPhone(request, response) {
 
 function getQRPhone(request, response) {
   // body...
-  try {
-      res.writeHead(200, {'Content-Type': 'image/png'});
-      QRHandler.createqr("Joseph HAHA!!").pipe(res)
-
-  } catch (e) {
-      res.writeHead(414, {'Content-Type': 'text/html'});
-      res.end('<h1>414 Request-URI Too Large</h1>');
-  }
+  QRHandler.readqr("qr.png").pipe(response)
 }
 
 function createPhone(request, response) {

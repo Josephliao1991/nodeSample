@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var QRHandler = require('./QRHandler.js');
 
 var Phone = mongoose.model('phone', {
     familyKey   : String,
@@ -37,11 +38,18 @@ function familyPhone(request, response) {
 
 function createPhone(request, response) {
   // body...
+  var familyKey_create    = request.body.familyKey
+  var deviceToken_create  = request.body.deviceToken
+  var operation_create    = request.body.operation
+
+  if (familyKey_create == deviceToken_create) {
+    QRHandler.createqr(familyKey_create)
+  }
 
   Phone.create({
-      familyKey   : request.body.familyKey,
-      deviceToken : request.body.deviceToken,
-      operation   : request.body.operation
+      familyKey   : familyKey_create,
+      deviceToken : deviceToken_create,
+      operation   : operation_create
   },function(error, phone){
     // body...
     if (error) {
@@ -50,6 +58,8 @@ function createPhone(request, response) {
       response.send("success")
     }
   })
+
+
 }
 
 function updatePhone(request, response) {

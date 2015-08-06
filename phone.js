@@ -96,19 +96,20 @@ function createPhone(request, response) {
         QRHandler.createqr(familyKey_create)
 
       }
-    })
 
-    Phone.create({
-        familyKey   : familyKey_create,
-        deviceToken : deviceToken_create,
-        operation   : operation_create
-    },function(error, phone){
-      // body...
-      if (error) {
-        resopnse.send(error)
-      }else {
-        response.send("success")
-      }
+      Phone.create({
+          familyKey   : familyKey_create,
+          deviceToken : deviceToken_create,
+          operation   : operation_create
+      },function(error, phone){
+        // body...
+        if (error) {
+          resopnse.send(error)
+        }else {
+          response.send("success")
+        }
+      })
+
     })
 
   }

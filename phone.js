@@ -39,8 +39,13 @@ function familyPhone(request, response) {
 function getQRPhone(request, response) {
   // body...
   var name = request.query.familyKey
-  console.log(name);
-  // QRHandler.readqr(name+".png").pipe(response)
+  // console.log(name);
+  if (name) {
+    QRHandler.readqr(name+".png").pipe(response)
+  }else {
+    response.end("fail")
+  }
+
 }
 
 function createPhone(request, response) {

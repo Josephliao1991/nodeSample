@@ -38,6 +38,13 @@ var push = require('./push.js');
     phone.familyPhone(req, res)
   });
 
+  app.get('/family/phone/getQR',function (request, response) {
+    // body...
+    var req = request
+    var res = response
+    phone.getQRPhone(req, res)
+  })
+
   app.post('/family/phone/create',function(request, response){
     var req = request
     var res = response

@@ -14,11 +14,13 @@ function checkFamilyExist(familyKey) {
     if (error) {
       return error
     }
-    if (phones.length = 0) {
-      return false
-    }else {
-      return true
-    }
+
+    console.log(phones);
+    // if (phones.length = 0) {
+    //   return false
+    // }else {
+    //   return true
+    // }
   })
 }
 

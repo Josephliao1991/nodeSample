@@ -43,7 +43,7 @@ function getQRPhone(request, response) {
 
 
   if (name) {
-    Phone.find({familyKey:familyKey_find},function(error, phones) {
+    Phone.find({familyKey:name},function(error, phones) {
         // body...
         if (error) {
           response.send(error)

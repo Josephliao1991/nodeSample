@@ -59,38 +59,22 @@ function getQRPhone(request, response) {
   var name = request.query.familyKey
   // console.log(name);
 
-  checkFamilyExist(name,function (error,exist) {
-    // body...
-    console.log(exist);
-    if (exist == "true") {
-      console.log("exist");
-    }else {
-      console.log("dosen't exist");
-    }
-  })
+  if (name) {
+    checkFamilyExist(name,function (error,exist) {
+      // body...
+      console.log(exist);
+      if (exist == "true") {
+        console.log("exist");
+        QRHandler.readqr(name+".png").pipe(response)
 
-  // if (name) {
-  //   var exist = checkFamilyExist()
-  //
-  // }
-
-  // if (name) {
-  //   Phone.find({familyKey:name},function(error, phones) {
-  //       // body...
-  //       if (error) {
-  //         response.send(error)
-  //       }
-  //       if (phones.length > 0) {
-  //         // response.send(phones)
-  //         QRHandler.readqr(name+".png").pipe(response)
-  //       }else {
-  //         response.send("fail")
-  //       }
-  //     })
-  //
-  // }else {
-  //   response.end("fail")
-  // }
+      }else {
+        console.log("dosen't exist");
+        response.send("fail")
+      }
+    })
+  }else {
+    response.end("fail")
+  }
 
 }
 

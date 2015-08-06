@@ -111,6 +111,8 @@ function createPhone(request, response) {
       }
     })
 
+  }
+
 }
 
 function updatePhone(request, response) {

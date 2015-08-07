@@ -69,14 +69,14 @@ function createiNeDot(request, response) {
   var name_create = request.body.name
   var situation_create = request.body.situation
   var battery_create = request.body.battery
-  var presetValue = request.body.preset
-  // if (request.body.situation == "temp" && request.body.temp) {
-  //     presetValue = [{temp : request.body.temp}]
-  // }else if (request.body.situation == "alert" && request.body.alert) {
-  //     presetValue = [{alert : request.body.alert}]
-  // }else if (request.body.situation == "message" && request.body.message) {
-  //     presetValue = [{message : request.body.message}]
-  // }
+  var presetValue;
+  if (request.body.situation == "temp" && request.body.temp) {
+      presetValue = [{temp : request.body.preset}]
+  }else if (request.body.situation == "alert" && request.body.alert) {
+      presetValue = [{alert : request.body.preset}]
+  }else if (request.body.situation == "message" && request.body.message) {
+      presetValue = [{message : request.body.preset}]
+  }
 
   if (familyKey_create && macAddr_create && owner_create && connectState_create && name_create && situation_create && battery_create) {
 

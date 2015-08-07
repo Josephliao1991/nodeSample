@@ -278,7 +278,7 @@ module.exports = {
   updatePhone  : updatePhone,
   deletePhone  : deletePhone,
   deletePhoneById   : deletePhoneById,
-  familyExist  : familyExist
+  familyExist  : familyExist,
   // getFamilyMember  : getFamilyMember,
 
   Phone   : Phone

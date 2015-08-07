@@ -43,6 +43,7 @@ function familyiNeDot(request, response) {
         if (error) {
           response.send(error)
         }else {
+          console.log("iNeDots Query success");
           response.json(inedots)
         }
       })

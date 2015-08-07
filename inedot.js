@@ -61,38 +61,54 @@ function familyiNeDot(request, response) {
 
 function createiNeDot(request, response) {
   // body...
-  var presetValue;
-  if (request.body.situation == "temp" && request.body.temp) {
-      presetValue = [{temp : request.body.temp}]
-  }else if (request.body.situation == "alert" && request.body.alert) {
-      presetValue = [{alert : request.body.alert}]
-  }else if (request.body.situation == "message" && request.body.message) {
-      presetValue = [{message : request.body.message}]
+
+  var familyKey_create = request.body.familyKey
+  var macAddr_create = request.body.macAddr
+  var owner_create = request.body.owner
+  var connectState_create = request.body.connectState
+  var name_create = request.body.name
+  var situation_create = request.body.situation
+  var battery_create = request.body.battery
+  var presetValue = request.body.preset
+  // if (request.body.situation == "temp" && request.body.temp) {
+  //     presetValue = [{temp : request.body.temp}]
+  // }else if (request.body.situation == "alert" && request.body.alert) {
+  //     presetValue = [{alert : request.body.alert}]
+  // }else if (request.body.situation == "message" && request.body.message) {
+  //     presetValue = [{message : request.body.message}]
+  // }
+
+  if (familyKey_create && macAddr_create && owner_create && connectState_create && name_create && situation_create && battery_create) {
+
+    iNeDot.create({
+
+        familyKey     : familyKey_create,
+        macAddr       : macAddr_create,
+
+        owner         : owner_create,
+        connectState  : connectState_create,
+
+        name          : name_create,
+        situation     : situation_create,
+
+        battery       : battery_create,
+
+        preset        : presetValue
+    },function(error, inedot){
+      // body...
+      if (error) {
+          response.send(error)
+      }else {
+          // response.json(phone)
+          response.json({result : "success"})
+      }
+    })
+
+  }else {
+    response.json({result : "fail"})
   }
 
-  iNeDot.create({
 
-      familyKey     : request.body.familyKey,
-      macAddr       : request.body.macAddr,
-
-      owner         : request.body.owner,
-      connectState  : request.body.connectState,
-
-      name          : request.body.name,
-      situation     : request.body.situation,
-
-      battery       : request.body.battery,
-
-      preset        : presetValue
-  },function(error, inedot){
-    // body...
-    if (error) {
-        response.send(error)
-    }else {
-        // response.json(phone)
-        response.json({result : "success"})
-    }
-  })
 }
 
 function updateiNeDot(request, response) {
@@ -103,56 +119,62 @@ function updateiNeDot(request, response) {
   console.log(familyKey_find);
   console.log(macAddr_find);
 
-  iNeDot.findOne({familyKey : familyKey_find,
-                macAddr  : macAddr_find },function(error, inedot) {
-  // return iNeDot.findById(identifier,function(error, inedot) {
-      // body...
-      if (error) {
-        response.end(error)
-      }
-
-      if (inedot) {
-        // if (request.body.familyKey) {
-        //     inedot.familyKey       = request.body.familyKey;
-        //   }
-        // if (request.body.macAddr) {
-        //     inedot.macAddr         = request.body.macAddr;
-        //   }
-        if (request.body.situation) {
-            inedot.situation       = request.body.situation;
-          }
-        if (request.body.connectState) {
-            inedot.connectState    = request.body.connectState;
-          }
-        if (request.body.name) {
-            inedot.name            = request.body.name;
-          }
-        if (request.body.battery) {
-            inedot.battery         = request.body.battery;
-          }
-        if (request.body.owner) {
-            inedot.owner           = request.body.owner;
-          }
-        if (request.body.situation == "temp" && request.body.temp) {
-            inedot.preset     = [{temp : request.body.temp}];
-        }else if (request.body.situation == "alert" && request.body.alert) {
-            inedot.preset     = [{alert : request.body.alert}];
-        }else if (request.body.situation == "message" && request.body.message) {
-            inedot.preset     = [{message : request.body.message}];
+  if (familyKey_find && macAddr_find) {
+    iNeDot.findOne({familyKey : familyKey_find,
+                  macAddr  : macAddr_find },function(error, inedot) {
+    // return iNeDot.findById(identifier,function(error, inedot) {
+        // body...
+        if (error) {
+          response.end(error)
         }
 
-        // response.send(inedot)
-        return inedot.save(function(error) {
-          if (error) {
-            response.send(error);
-          }else {
-            response.json({result : "success"})              // return response.send(phone);
+        if (inedot) {
+          // if (request.body.familyKey) {
+          //     inedot.familyKey       = request.body.familyKey;
+          //   }
+          // if (request.body.macAddr) {
+          //     inedot.macAddr         = request.body.macAddr;
+          //   }
+          if (request.body.situation) {
+              inedot.situation       = request.body.situation;
+            }
+          if (request.body.connectState) {
+              inedot.connectState    = request.body.connectState;
+            }
+          if (request.body.name) {
+              inedot.name            = request.body.name;
+            }
+          if (request.body.battery) {
+              inedot.battery         = request.body.battery;
+            }
+          if (request.body.owner) {
+              inedot.owner           = request.body.owner;
+            }
+          if (request.body.situation == "temp" && request.body.temp) {
+              inedot.preset     = [{temp : request.body.temp}];
+          }else if (request.body.situation == "alert" && request.body.alert) {
+              inedot.preset     = [{alert : request.body.alert}];
+          }else if (request.body.situation == "message" && request.body.message) {
+              inedot.preset     = [{message : request.body.message}];
           }
-        });
-      }else {
-        response.json({result : "no such device"})
-      }
-    })
+
+          // response.send(inedot)
+          return inedot.save(function(error) {
+            if (error) {
+              response.send(error);
+            }else {
+              response.json({result : "success"})              // return response.send(phone);
+            }
+          });
+        }else {
+          response.json({result : "no such device"})
+        }
+      })
+  }else {
+    response.json({result : "fail"})
+  }
+
+
 }
 
 function deleteiNeDot(request, response) {

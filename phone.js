@@ -4,7 +4,8 @@ var QRHandler = require('./QRHandler.js');
 var Phone = mongoose.model('phone', {
     familyKey   : String,
     deviceToken : String,
-    operation   : String
+    operation   : String,
+    badgeNumber : Number
 });
 
 function checkFamilyExist(familyKey,callback) {
@@ -97,7 +98,8 @@ function createPhone(request, response) {
         Phone.create({
             familyKey   : familyKey_create,
             deviceToken : deviceToken_create,
-            operation   : operation_create
+            operation   : operation_create,
+            badgeNumber : 0
         },function(error, phone){
           // body...
           if (error) {
@@ -113,7 +115,8 @@ function createPhone(request, response) {
     Phone.create({
         familyKey   : familyKey_create,
         deviceToken : deviceToken_create,
-        operation   : operation_create
+        operation   : operation_create,
+        badgeNumber : 0
     },function(error, phone){
       // body...
       if (error) {
@@ -143,7 +146,10 @@ function updatePhone(request, response) {
     if (phone) {
 
       if (request.body.operation) {
-          phone.operation    = request.body.operation;
+        phone.operation    = request.body.operation;
+      }
+      if (request.body.badgeNumber) {
+        phone.badgeNumber  = request.body.badgeNumber;
       }
 
       phone.save(function(error) {
@@ -252,7 +258,7 @@ module.exports = {
   deletePhone  :deletePhone,
   deletePhoneById   : deletePhoneById,
 
-  getFamilyMember  : getFamilyMember,
+  // getFamilyMember  : getFamilyMember,
 
   Phone   : Phone
 

@@ -79,22 +79,33 @@ function getCenterFamilyKey(request, response) {
 
 function createCenter(request, response) {
   // body...
-  console.log("create center by familyKey: "+ request.body.familyKey);
-  console.log("create center by macAddr: "+ request.body.macAddr);
-  Center.create({
-      familyKey     : request.body.familyKey,
-      macAddr       : request.body.macAddr,
 
-      connectState  : request.body.connectState,},
-  function(error, center){
-    // body...
-    if (error) {
-        response.send(error)
-    }else {
-        // response.json(phone)
-        response.send("success")
-    }
-  })
+  var familyKey_create = request.body.familyKey
+  var macAddr_create   = request/body.macAddr
+  console.log("create center by familyKey: "+ familyKey_create);
+  console.log("create center by macAddr: "+ macAddr_create);
+
+
+  if (familyKey_create && macAddr_create ) {
+    Center.create({
+        familyKey     : request.body.familyKey,
+        macAddr       : request.body.macAddr,
+
+        connectState  : request.body.connectState,},
+    function(error, center){
+      // body...
+      if (error) {
+          response.send(error)
+      }else {
+          // response.json(phone)
+          response.json({"result" : "success"})
+      }
+    })
+  }else {
+    response.json({"result" : "fail"})
+  }
+
+
 }
 
 function updateCenter(request, response) {
@@ -105,38 +116,46 @@ function updateCenter(request, response) {
   console.log(familyKey_find);
   console.log(macAddr_find);
 
-  Center.findOne({familyKey : familyKey_find,
-                  macAddr  : macAddr_find },
+  if (familyKey_find && macAddr_find ) {
 
-  function(error, center) {
-      // body...
-      if (error) {
-        response.end(error)
-      }
-      if (center) {
-        // if (request.body.familyKey) {
-        //     center.familyKey       = request.body.familyKey;
-        //   }
-        // if (request.body.macAddr) {
-        //     center.macAddr         = request.body.macAddr;
-        //   }
+    Center.findOne({familyKey : familyKey_find,
+                    macAddr  : macAddr_find },
 
-        if (request.body.connectState) {
-            center.connectState    = request.body.connectState;
-          }
-        // response.send(center)
-        return center.save(function(error) {
-          if (error) {
-            response.send(error);
-          }else {
-            response.send("success")              // return response.send(phone);
-          }
-        });
-      }else {
-        response.send("no such device")
-      }
+    function(error, center) {
+        // body...
+        if (error) {
+          response.end(error)
+        }
+        if (center) {
+          // if (request.body.familyKey) {
+          //     center.familyKey       = request.body.familyKey;
+          //   }
+          // if (request.body.macAddr) {
+          //     center.macAddr         = request.body.macAddr;
+          //   }
 
-    })
+          if (request.body.connectState) {
+              center.connectState    = request.body.connectState;
+            }
+          // response.send(center)
+          return center.save(function(error) {
+            if (error) {
+              response.send(error);
+            }else {
+              response.json({"result" : "success"})              // return response.send(phone);
+            }
+          });
+        }else {
+          response.json({"result" : "no such device"})
+        }
+
+      })
+
+  }else {
+    response.json({"result" : "fail"})
+  }
+
+
 }
 
 function deleteCenter(request, response) {

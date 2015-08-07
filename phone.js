@@ -82,7 +82,7 @@ function getQRPhone(request, response) {
 
 function familyExist(request, response) {
   // body...
-  var familyKey_find = request.body.familyKey
+  var familyKey_find = request.query.familyKey
   checkFamilyExist(familyKey_find,function (error,exist) {
     // body...
     if (exist == "true") {

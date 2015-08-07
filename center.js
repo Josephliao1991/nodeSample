@@ -81,17 +81,18 @@ function createCenter(request, response) {
   // body...
 
   var familyKey_create = request.body.familyKey
-  var macAddr_create   = request/body.macAddr
+  var macAddr_create   = request.body.macAddr
+  var connectState     = request.body.connectState
   console.log("create center by familyKey: "+ familyKey_create);
   console.log("create center by macAddr: "+ macAddr_create);
 
 
   if (familyKey_create && macAddr_create ) {
     Center.create({
-        familyKey     : request.body.familyKey,
-        macAddr       : request.body.macAddr,
+        familyKey     : familyKey_create,
+        macAddr       : macAddr_create,
 
-        connectState  : request.body.connectState,},
+        connectState  : connectState},
     function(error, center){
       // body...
       if (error) {

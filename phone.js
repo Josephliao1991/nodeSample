@@ -102,48 +102,54 @@ function createPhone(request, response) {
   var token_create        = request.body.token
   var operation_create    = request.body.operation
 
+  if (familyKey_create && deviceToken_create && token_create && operation_create) {
 
-  if (familyKey_create == deviceToken_create) {
+    if (familyKey_create == deviceToken_create) {
 
-    checkFamilyExist(familyKey_create,function (error, exist) {
-      // body...
-      if (exist == "true") {
-        response.end("fail,allready create family")
-      }else {
-        QRHandler.createqr(familyKey_create)
-        Phone.create({
-            familyKey   : familyKey_create,
-            deviceToken : deviceToken_create,
-            token       : token_create,
-            operation   : operation_create,
-            badgeNumber : 0
-        },function(error, phone){
-          // body...
-          if (error) {
-            resopnse.send(error)
-          }else {
-            response.json({result : "success"})
-          }
-        })
-      }
-    })
+      checkFamilyExist(familyKey_create,function (error, exist) {
+        // body...
+        if (exist == "true") {
+          response.end("fail,allready create family")
+        }else {
+          QRHandler.createqr(familyKey_create)
+          Phone.create({
+              familyKey   : familyKey_create,
+              deviceToken : deviceToken_create,
+              token       : token_create,
+              operation   : operation_create,
+              badgeNumber : 0
+          },function(error, phone){
+            // body...
+            if (error) {
+              resopnse.send(error)
+            }else {
+              response.json({result : "success"})
+            }
+          })
+        }
+      })
 
-  }else {
-    Phone.create({
-        familyKey   : familyKey_create,
-        deviceToken : deviceToken_create,
-        token       : token_create,
-        operation   : operation_create,
-        badgeNumber : 0
-    },function(error, phone){
-      // body...
-      if (error) {
-        resopnse.send(error)
-      }else {
-        response.json({result : "success"})
-      }
-    })
+    }else {
+
+      Phone.create({
+          familyKey   : familyKey_create,
+          deviceToken : deviceToken_create,
+          token       : token_create,
+          operation   : operation_create,
+          badgeNumber : 0
+      },function(error, phone){
+        // body...
+        if (error) {
+          resopnse.send(error)
+        }else {
+          response.json({result : "success"})
+        }
+      })
+    }
+
   }
+
+
 
 }
 
@@ -155,37 +161,43 @@ function updatePhone(request, response) {
   console.log(familyKey_find);
   console.log(deviceToken_find);
 
-  Phone.findOne({familyKey     : familyKey_find,
-                 deviceToken   : deviceToken_find },
-  function(error, phone) {
-    if (error) {
-      response.send(error)
-    }
-    if (phone) {
+  if (familyKey_find && deviceToken_find ) {
 
-      if (request.body.operation) {
-        phone.operation    = request.body.operation;
+    Phone.findOne({familyKey     : familyKey_find,
+                   deviceToken   : deviceToken_find },
+    function(error, phone) {
+      if (error) {
+        response.send(error)
       }
-      if (request.body.token) {
-        phone.token        = request.body.token;
+      if (phone) {
+
+        if (request.body.operation) {
+          phone.operation    = request.body.operation;
+        }
+        if (request.body.token) {
+          phone.token        = request.body.token;
+        }
+        if (request.body.badgeNumber) {
+          phone.badgeNumber  = request.body.badgeNumber;
+        }
+
+        phone.save(function(error) {
+          if (error) {
+            response.send(error)
+           }else {
+            response.json({result : "success"})
+           }
+        });
+
+      }else {
+        response.json({result : "no such device"})
       }
-      if (request.body.badgeNumber) {
-        phone.badgeNumber  = request.body.badgeNumber;
-      }
 
-      phone.save(function(error) {
-        if (error) {
-          response.send(error)
-         }else {
-          response.json({result : "success"})
-         }
-      });
+    });
 
-    }else {
-      response.json({result : "no such device"})
-    }
+  }
 
-  });
+
 }
 
 function deletePhone(request, response) {

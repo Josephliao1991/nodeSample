@@ -150,7 +150,7 @@ function updateiNeDot(request, response) {
           }
         });
       }else {
-        response.json({result : "no such device")
+        response.json({result : "no such device"})
       }
     })
 }
@@ -183,7 +183,7 @@ function deleteiNeDot(request, response) {
             }
           })
       }else {
-        response.json({result : "no such device")
+        response.json({result : "no such device"})
       }
     })
 }
@@ -210,7 +210,7 @@ function deleteiNeDotById(request, response) {
             }
           })
       }else {
-        response.json({result : "no such device")
+        response.json({result : "no such device"})
       }
     })
 }

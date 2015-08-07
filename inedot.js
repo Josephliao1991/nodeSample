@@ -70,11 +70,11 @@ function createiNeDot(request, response) {
   var situation_create = request.body.situation
   var battery_create = request.body.battery
   var presetValue;
-  if (request.body.situation == "temp" && request.body.temp) {
+  if (request.body.situation == "temp" && request.body.preset) {
       presetValue = [{temp : request.body.preset}]
-  }else if (request.body.situation == "alert" && request.body.alert) {
+  }else if (request.body.situation == "alert" && request.body.preset) {
       presetValue = [{alert : request.body.preset}]
-  }else if (request.body.situation == "message" && request.body.message) {
+  }else if (request.body.situation == "message" && request.body.preset) {
       presetValue = [{message : request.body.preset}]
   }
 

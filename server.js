@@ -171,6 +171,7 @@ var push = require('./push.js');
     center.deleteCenterById(req, res)
   })
 
+
 /*===========================C_PUSH==================================*/
 
   //implement /family/inedot/ API
@@ -222,6 +223,13 @@ var push = require('./push.js');
     push.sendPush(req, res)
   })
 
+  app.post('/test',function (request, response) {
+    // body...
+    var name = request.body.test
+    console.log("Alice Test name is : "+name);
+    response.send("Alice Test name is : "+name);
+
+  })
   app.listen(8080,argv.fe_ip,function(request, response) {
     // body...
     // console.log('App listening at http://%s:%s', server.address().address, server.address().port);

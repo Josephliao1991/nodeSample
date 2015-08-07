@@ -86,9 +86,9 @@ function familyExist(request, response) {
   checkFamilyExist(familyKey_find,function (error,exist) {
     // body...
     if (exist == "true") {
-      response.json({"result" : "true"});
+      response.json({"result" : true});
     }else {
-      response.json({"result" : "false"});
+      response.json({"result" : false});
     }
 
   })

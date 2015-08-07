@@ -26,15 +26,20 @@ function sendPush(request, response) {
 
           for (var i = 0; i < phones.length; i++) {
             var deviceToken = phones[i].deviceToken
+            var token       = phones[i].token
             var operation   = phones[i].operation
-            console.log(deviceToken);
-            console.log(operation);
+            var badgeNumber = (phones[i].badgeNumber)+1
+
+            console.log("deviceToken: "+deviceToken);
+            console.log("token: "+token);
+            console.log("operation: "+operation);
+            console.log("badgeNumber: "+badgeNumber);
             if (operation == "ios") {
               //iOS
-              nodeiOSPush.sendiOSPush(deviceToken, situation, name, macAddr)
+              nodeiOSPush.sendiOSPush(deviceToken,badgeNumber, situation, name, macAddr)
             }else {
               //Android
-              nodeAndroidPush.sendAndroidPush(deviceToken, situation, name, macAddr)
+              nodeAndroidPush.sendAndroidPush(token,badgeNumber, situation, name, macAddr)
             }
           }
           response.end("success")

@@ -27,7 +27,7 @@
 // }).listen(8124);
 // console.log('Server is running at http://192.168.1.167:8124/');
 
-function sendAndroidPush(deviceToken, situation, name, macAddr) {
+function sendAndroidPush(deviceToken,badgeNumber, situation, name, macAddr) {
   // body...
   var GCM = require('./gcmnew');
   // var gcm = new GCM('AIzaSyDF0AW6fgIqLnLdH_yPYPvfsKuI_BwQycI'); // https://code.google.com/apis/console //My
@@ -37,6 +37,7 @@ function sendAndroidPush(deviceToken, situation, name, macAddr) {
   var msg = {
     // registration_ids: ['fy3VUb_Dorc:APA91bG08EPmMW1eKAKLB5jiae0epCFyQjo1PiPEKio9r0PNlo7r1T57DB9a96m693Z5NUqwiZJyCdTIH_MJwygfZD355TuUoqtpptf5SwQIcxmix7ZE4QW1dsHtnqhi6VPM0DuAA9pL'],
     registration_ids: ['APA91bGDUiuEqcHck166Qh_yF9gXpzWlosMgfL9Q8lae1MLEb8ar0XdwrgJBDDKaXkxpWqEZf53SiGk7cQbri3dfoaOK76N2lk-9S1PabOn6JAc_dnAJwHvmfChOWu7V3af2GXEnJNcHSYau2H9BWucoZU7VcT62_Q'],
+    // registration_ids: [deviceToken],
     collapse_key: "0002dsaa", // http://developer.android.com/guide/google/gcm/gcm.html#send-msg
     time_to_live: 180, // just 30 minutes
     data: {
@@ -44,7 +45,8 @@ function sendAndroidPush(deviceToken, situation, name, macAddr) {
       message     : "Emergency From " + name, // your payload data
       situation   : situation,
       name        : name,
-      macAddr     : macAddr
+      macAddr     : macAddr,
+      badgeNumber : badgeNumber
     }
   };
 

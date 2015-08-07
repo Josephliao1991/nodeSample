@@ -3,7 +3,8 @@ var QRHandler = require('./QRHandler.js');
 
 var Phone = mongoose.model('phone', {
     familyKey   : String,
-    deviceToken : String,
+    deviceToken : String,//iOS : deviceToken  & Android : registerID
+    token       : String,
     operation   : String,
     badgeNumber : Number
 });
@@ -83,6 +84,7 @@ function createPhone(request, response) {
   // body...
   var familyKey_create    = request.body.familyKey
   var deviceToken_create  = request.body.deviceToken
+  var token_create        = request.body.token
   var operation_create    = request.body.operation
 
 
@@ -98,6 +100,7 @@ function createPhone(request, response) {
         Phone.create({
             familyKey   : familyKey_create,
             deviceToken : deviceToken_create,
+            token       : token_create,
             operation   : operation_create,
             badgeNumber : 0
         },function(error, phone){
@@ -115,6 +118,7 @@ function createPhone(request, response) {
     Phone.create({
         familyKey   : familyKey_create,
         deviceToken : deviceToken_create,
+        token       : token_create,
         operation   : operation_create,
         badgeNumber : 0
     },function(error, phone){
@@ -147,6 +151,9 @@ function updatePhone(request, response) {
 
       if (request.body.operation) {
         phone.operation    = request.body.operation;
+      }
+      if (request.body.token) {
+        phone.token        = request.body.token;
       }
       if (request.body.badgeNumber) {
         phone.badgeNumber  = request.body.badgeNumber;
@@ -250,12 +257,12 @@ function getFamilyMember(familyKey_find) {
 
 module.exports = {
 
-  allPhone     :allPhone,
-  familyPhone  :familyPhone,
+  allPhone     : allPhone,
+  familyPhone  : familyPhone,
   getQRPhone   : getQRPhone,
-  createPhone  :createPhone,
-  updatePhone  :updatePhone,
-  deletePhone  :deletePhone,
+  createPhone  : createPhone,
+  updatePhone  : updatePhone,
+  deletePhone  : deletePhone,
   deletePhoneById   : deletePhoneById,
 
   // getFamilyMember  : getFamilyMember,

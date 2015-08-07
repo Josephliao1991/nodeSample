@@ -7,6 +7,7 @@ function sendiOSPush(deviceToken, badgeNumber, situation, name, macAddr) {
       cert: 'aps_development.pem',                 /* Certificate file path */
       key:  'apns_dev_key.pem',                  /* Key file path */
       gateway: 'gateway.sandbox.push.apple.com',/* gateway address */
+      passphrase : '0000',
       port: 2195,                       /* gateway port */
       errorCallback: errorHappened ,    /* Callback when error occurs function(err,notification) */
   };

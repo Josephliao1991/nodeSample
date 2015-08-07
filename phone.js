@@ -71,11 +71,11 @@ function getQRPhone(request, response) {
 
       }else {
         console.log("dosen't exist");
-        response.send("fail")
+        response.json({result : "fail"})
       }
     })
   }else {
-    response.end("fail")
+    response.json({result : "fail"})
   }
 
 }

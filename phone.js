@@ -108,7 +108,7 @@ function createPhone(request, response) {
           if (error) {
             resopnse.send(error)
           }else {
-            response.send("success")
+            response.json({result : "success"})
           }
         })
       }
@@ -126,7 +126,7 @@ function createPhone(request, response) {
       if (error) {
         resopnse.send(error)
       }else {
-        response.send("success")
+        response.json({result : "success"})
       }
     })
   }
@@ -163,12 +163,12 @@ function updatePhone(request, response) {
         if (error) {
           response.send(error)
          }else {
-          response.send("success")
+          response.json({result : "success"})
          }
       });
 
     }else {
-      response.send("no such device")
+      response.json({result : "no such device"})
     }
 
   });
@@ -197,11 +197,11 @@ function deletePhone(request, response) {
             response.send(error)
           }else {
             // console.log("Delete success");
-            response.send("success")
+            response.json({result : "success"})
           }
         })
       }else {
-        response.send("no such device")
+        response.json({result : "no such device"})
       }
   })
 }
@@ -225,11 +225,11 @@ function deletePhoneById(request, response) {
             response.send(error)
           }else {
             // console.log("Delete success");
-            response.send("success")
+            rresponse.json({result : "success"})
           }
         })
       }else {
-        response.send("no such device")
+        response.json({result : "no such device"})
       }
   })
 }

@@ -79,6 +79,8 @@ function getCenterFamilyKey(request, response) {
 
 function createCenter(request, response) {
   // body...
+  console.log("create center by familyKey: "+ request.body.familyKey);
+  console.log("create center by macAddr: "+ request.body.macAddr);
   Center.create({
       familyKey     : request.body.familyKey,
       macAddr       : request.body.macAddr,

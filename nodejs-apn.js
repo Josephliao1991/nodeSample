@@ -15,13 +15,9 @@ function sendiOSPush(deviceToken, badgeNumber, situation, name, macAddr) {
   }
   var apnsConnection = new apns.Connection(options);
 
-<<<<<<< HEAD
   var token = deviceToken
   // var token = "23985a90d260d1d6a2cb5670714d1f79025a1c44f7f8aab3f991e4a67f08e353";
-=======
-  // var token = deviceToken
-  var token = "23985a90d260d1d6a2cb5670714d1f79025a1c44f7f8aab3f991e4a6 7f08e353";
->>>>>>> c5e95a0b7655a1b57c134712a75466a65225b586
+
   var myDevice = new apns.Device(token);
   var note = new apns.Notification();
   note.expiry = Math.floor(Date.now() / 1000) + 3600; // Expires 1 hour from now.

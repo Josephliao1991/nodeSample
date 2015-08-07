@@ -80,6 +80,21 @@ function getQRPhone(request, response) {
 
 }
 
+function familyExist(request, response) {
+  // body...
+  var familyKey_find = request.body.familyKey
+  checkFamilyExist(familyKey_find,function (error,exist) {
+    // body...
+    if (exist == "true") {
+      response.json({"result" : "true"});
+    }else {
+      response.json({"result" : "false"});
+    }
+
+  })
+
+}
+
 function createPhone(request, response) {
   // body...
   var familyKey_create    = request.body.familyKey
@@ -263,7 +278,7 @@ module.exports = {
   updatePhone  : updatePhone,
   deletePhone  : deletePhone,
   deletePhoneById   : deletePhoneById,
-
+  familyExist  : familyExist
   // getFamilyMember  : getFamilyMember,
 
   Phone   : Phone

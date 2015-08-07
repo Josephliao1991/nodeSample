@@ -45,6 +45,13 @@ var push = require('./push.js');
     phone.getQRPhone(req, res)
   })
 
+  app.get('/family/phone/familyExist',function (request, response) {
+    // body...
+    var req = request
+    var res = response
+    phone.familyExist(req, res)
+  })
+
   app.post('/family/phone/create',function(request, response){
     var req = request
     var res = response

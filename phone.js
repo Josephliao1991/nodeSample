@@ -88,7 +88,6 @@ function createPhone(request, response) {
   var operation_create    = request.body.operation
 
 
-
   if (familyKey_create == deviceToken_create) {
 
     checkFamilyExist(familyKey_create,function (error, exist) {

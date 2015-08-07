@@ -224,7 +224,7 @@ function deletePhoneById(request, response) {
             response.send(error)
           }else {
             // console.log("Delete success");
-            rresponse.json({result : "success"})
+            response.json({result : "success"})
           }
         })
       }else {

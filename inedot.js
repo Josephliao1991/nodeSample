@@ -90,7 +90,7 @@ function createiNeDot(request, response) {
         response.send(error)
     }else {
         // response.json(phone)
-        response.json({result : "fail"})
+        response.json({result : "success"})
     }
   })
 }
@@ -146,7 +146,7 @@ function updateiNeDot(request, response) {
           if (error) {
             response.send(error);
           }else {
-            response.json({result : "fail"})              // return response.send(phone);
+            response.json({result : "success"})              // return response.send(phone);
           }
         });
       }else {
@@ -179,7 +179,7 @@ function deleteiNeDot(request, response) {
             if (error) {
               response.send(error)
             }else {
-              response.json({result : "fail"})
+              response.json({result : "success"})
             }
           })
       }else {
@@ -206,7 +206,7 @@ function deleteiNeDotById(request, response) {
             if (error) {
               response.send(error)
             }else {
-              response.json({result : "fail"})
+              response.json({result : "success"})
             }
           })
       }else {

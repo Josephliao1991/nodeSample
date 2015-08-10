@@ -44,8 +44,8 @@ function checkPhoneExist(deviceToken,callback) {
 
 function plusBadgeNumber(familyKey,deviceToken) {
   // body...
-  var familyKey_find = request.body.familyKey
-  var deviceToken_find   = request.body.deviceToken
+  var familyKey_find = familyKey
+  var deviceToken_find   = deviceToken
 
   console.log("zero badgeNumber with familyKey : "+familyKey_find);
   console.log("zero badgeNumber with deviceToken : "+deviceToken_find);

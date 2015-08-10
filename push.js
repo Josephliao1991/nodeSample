@@ -22,7 +22,7 @@ function sendPush(request, response) {
         phone.Phone.findOne({familyKey  : familyKey_alert},
           function(error, phones) {
           // body...
-          // console.log("Family Member Is : " + phones);
+          console.log("Family Member Is : " + phones);
 
           for (var i = 0; i < phones.length; i++) {
             var deviceToken = phones[i].deviceToken
@@ -35,6 +35,7 @@ function sendPush(request, response) {
             console.log("token: "+token);
             console.log("operation: "+operation);
             console.log("badgeNumber: "+badgeNumber);
+
             if (operation == "ios") {
               //iOS
               nodeiOSPush.sendiOSPush(deviceToken,badgeNumber, situation, name, macAddr)

@@ -114,16 +114,23 @@ function familyExist(request, response) {
 
 function phoneExist(request, response) {
   // body...
-  var devuceToken_find = request.query.deviceToken
-  checkPhoneExist(deviceToken_find, function (error, familyKey_exist) {
-    // body...
-    if (familyKey_exist) {
-      response.json({"result" : true,
-                     "familyKey" : familyKey_exist})
-    }else {
-      response.json({"result" : false})  
-    }
-  })
+  var deviceToken_find = request.query.deviceToken
+
+  if (deviceToken_find) {
+    checkPhoneExist(deviceToken_find, function (error, familyKey_exist) {
+      // body...
+      if (familyKey_exist) {
+        response.json({"result" : true,
+                       "familyKey" : familyKey_exist})
+      }else {
+        response.json({"result" : false})
+      }
+    })
+  }else {
+    response.json({"result" : false})  
+  }
+
+
 }
 
 function createPhone(request, response) {

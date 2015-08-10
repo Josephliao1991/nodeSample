@@ -100,11 +100,21 @@ function inedotExist(request, response) {
   var macAddr_find = request.query.macAddr
 
   if (macAddr_find) {
-    checkiNeDotExist(macAddr_find, function (error, familyKey_exist) {
+    checkiNeDotExist(macAddr_find, function (error, indeot) {
       // body...
-      if (familyKey_exist) {
+      if (indeot) {
+
+        var data = {"familyKey"     : indeot.familyKey,
+                    "macAddr"       : indeot.macAddr,
+                    "owner"         : indeot.owner,
+                    "connectState"  : indeot.connectState,
+                    "name"          : indeot.name,
+                    "situation"     : indeot.situation,
+                    "battery"       : indeot.battery,
+                    "preset"        : indeot.preset}
+
         response.json({"result" : true,
-                       "familyKey" : familyKey_exist})
+                       "data" : data})
       }else {
         response.json({"result" : false})
       }

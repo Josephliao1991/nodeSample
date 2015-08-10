@@ -26,22 +26,6 @@ function checkFamilyExist(familyKey,callback) {
   })
 }
 
-function checkPhoneExist(deviceToken,callback) {
-  // body...
-  Phone.findOne({deviceToken : deviceToken}, function (error, phone) {
-    // body...
-    if (error) {
-      return error
-    }
-    if (phone) {
-      console.log(phone.familyKey);
-      return callback(null, phone)
-    }else {
-      return callback(null, null)
-    }
-  })
-}
-
 function checkPhoneInFamily(familyKey, deviceToken, callback) {
   // body...
   Phone.findOne({ familyKey   : familyKey,
@@ -59,6 +43,24 @@ function checkPhoneInFamily(familyKey, deviceToken, callback) {
     }
   })
 }
+
+function checkPhoneExist(deviceToken,callback) {
+  // body...
+  Phone.findOne({deviceToken : deviceToken}, function (error, phone) {
+    // body...
+    if (error) {
+      return error
+    }
+    if (phone) {
+      console.log(phone.familyKey);
+      return callback(null, phone)
+    }else {
+      return callback(null, null)
+    }
+  })
+}
+
+
 
 function plusBadgeNumber(familyKey,deviceToken) {
   // body...
@@ -169,13 +171,14 @@ function phoneExist(request, response) {
     checkPhoneExist(deviceToken_find, function (error, phone) {
       // body...
 
-      var data = {"familyKey"   : phone.familyKey,
-                 "operation"    : phone.operation,
-                 "deviceToken"  : phone.deviceToken,
-                 "badgeNumber"  : phone.badgeNumber,
-                 "token"        : phone.token}
-
       if (phone) {
+
+        var data = {"familyKey"   : phone.familyKey,
+                   "operation"    : phone.operation,
+                   "deviceToken"  : phone.deviceToken,
+                   "badgeNumber"  : phone.badgeNumber,
+                   "token"        : phone.token}
+
         response.json({"result" : true,
                        "date"  : data})
       }else {

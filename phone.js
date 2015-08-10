@@ -169,19 +169,11 @@ function phoneExist(request, response) {
     checkPhoneExist(deviceToken_find, function (error, phone) {
       // body...
 
-      var data;
-      if (phone.operation == "android") {
-        data = {"familyKey"   : phone.familyKey,
-                "operation"   : phone.operation,
-                "deviceToken" : phone.deviceToken,
-                "badgeNumber" : phone.badgeNumber}
-      }else {
-        data = {"familyKey"   : phone.familyKey,
-                "operation"   : phone.operation,
-                "deviceToken" : phone.deviceToken,
-                "badgeNumber" : phone.badgeNumber,
-                "token"       : phone.token}
-      }
+      var data = {"familyKey"   : phone.familyKey,
+                 "operation"    : phone.operation,
+                 "deviceToken"  : phone.deviceToken,
+                 "badgeNumber"  : phone.badgeNumber,
+                 "token"        : phone.token}
 
       if (phone) {
         response.json({"result" : true,

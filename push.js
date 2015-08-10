@@ -25,12 +25,13 @@ function sendPush(request, response) {
           console.log("Family Member Is : " + phones);
           console.log("phones length : "+phones.length);
           for (var i = 0; i < phones.length; i++) {
+            var familyKey   = phones[i].familyKey
             var deviceToken = phones[i].deviceToken
             var token       = phones[i].token
             var operation   = phones[i].operation
             var badgeNumber = (phones[i].badgeNumber)+1
             // badgeNumber++
-
+            console.log("familyKey: "+familyKey);
             console.log("deviceToken: "+deviceToken);
             console.log("token: "+token);
             console.log("operation: "+operation);
@@ -45,6 +46,8 @@ function sendPush(request, response) {
               // console.log("androidPush");
               nodeAndroidPush.sendAndroidPush(token,badgeNumber, situation, name, macAddr)
             }
+            
+            phone.plusBadgeNumber(familyKey, deviceToken);
           }
           response.end("success")
         })

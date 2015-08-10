@@ -42,7 +42,42 @@ function checkPhoneExist(deviceToken,callback) {
   })
 }
 
+function plusBadgeNumber(familyKey,deviceToken) {
+  // body...
+  var familyKey_find = request.body.familyKey
+  var deviceToken_find   = request.body.deviceToken
 
+  console.log("zero badgeNumber with familyKey : "+familyKey_find);
+  console.log("zero badgeNumber with deviceToken : "+deviceToken_find);
+
+  if (familyKey_find && deviceToken_find ) {
+
+    Phone.findOne({familyKey     : familyKey_find,
+                   deviceToken   : deviceToken_find },
+    function(error, phone) {
+      if (error) {
+        console.log(error);
+      }
+      if (phone) {
+        var badgeNumber = phone.badgeNumber
+        badgeNumber++
+
+        phone.save(function(error) {
+          if (error) {
+            console.log(error);
+           }else {
+            console.log("badgeNumber plus success");
+           }
+        });
+
+      }else {
+        console.log("no such device");
+      }
+    });
+  }
+}
+
+/*==========================================================*/
 function allPhone(resquest, resopnse) {
   // body...
 
@@ -368,6 +403,7 @@ module.exports = {
   familyExist  : familyExist,
   phoneExist   : phoneExist,
   zorePhoneBedgeNumber  : zorePhoneBedgeNumber,
+  plusBadgeNumber   : plusBadgeNumber,
   // getFamilyMember  : getFamilyMember,
 
   Phone   : Phone

@@ -41,7 +41,7 @@ function sendPush(request, response) {
               //iOS
               console.log("iOSPush with token : "+deviceToken);
               nodeiOSPush.sendiOSPush(deviceToken,badgeNumber, situation, name, macAddr)
-            }else {
+            }else if(operation == "android"){
               //Android
               console.log("androidPush with token : "+token);
               nodeAndroidPush.sendAndroidPush(token,badgeNumber, situation, name, macAddr)

@@ -23,7 +23,7 @@ function sendPush(request, response) {
           function(error, phones) {
           // body...
           console.log("Family Member Is : " + phones);
-
+          console.log("phones length : "+phones.length);
           for (var i = 0; i < phones.length; i++) {
             var deviceToken = phones[i].deviceToken
             var token       = phones[i].token

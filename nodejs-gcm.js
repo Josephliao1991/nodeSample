@@ -40,7 +40,9 @@ function sendAndroidPush(deviceToken,badgeNumber, situation, name, macAddr) {
   // create the message
   console.log("GCM Push : "+token);
   var msg = {
-    registration_ids: ['APA91bGDUiuEqcHck166Qh_yF9gXpzWlosMgfL9Q8lae1MLEb8ar0XdwrgJBDDKaXkxpWqEZf53SiGk7cQbri3dfoaOK76N2lk-9S1PabOn6JAc_dnAJwHvmfChOWu7V3af2GXEnJNcHSYau2H9BWucoZU7VcT62_Q','APA91bHONvSmM3Cpi0h1YRiETjX8jbqRbGMAd8wOtRaG0bNTQw8zJy_vai9HfGAqQy5oe9GDgwlecHljW8Y8Xynjjg9OnBz4T5MOlT1SjtwgH96Nan5crs1WqZ6F3bWHSjesTy5TXQx5G6tOoVrotW9lvq9ri77IgA'],
+    registration_ids: ['APA91bGDUiuEqcHck166Qh_yF9gXpzWlosMgfL9Q8lae1MLEb8ar0XdwrgJBDDKaXkxpWqEZf53SiGk7cQbri3dfoaOK76N2lk-9S1PabOn6JAc_dnAJwHvmfChOWu7V3af2GXEnJNcHSYau2H9BWucoZU7VcT62_Q',
+                      'APA91bHONvSmM3Cpi0h1YRiETjX8jbqRbGMAd8wOtRaG0bNTQw8zJy_vai9HfGAqQy5oe9GDgwlecHljW8Y8Xynjjg9OnBz4T5MOlT1SjtwgH96Nan5crs1WqZ6F3bWHSjesTy5TXQx5G6tOoVrotW9lvq9ri77IgA',
+                      'APA91bG08EPmMW1eKAKLB5jiae0epCFyQjo1PiPEKio9r0PNlo7r1T57DB9a96m693Z5NUqwiZJyCdTIH_MJwygfZD355TuUoqtpptf5SwQIcxmix7ZE4QW1dsHtnqhi6VPM0DuAA9pL'],
     collapse_key: "0002dsaa", // http://developer.android.com/guide/google/gcm/gcm.html#send-msg
     time_to_live: 180, // just 30 minutes
     // data: {

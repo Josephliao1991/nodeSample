@@ -114,7 +114,7 @@ function inedotExist(request, response) {
                     "preset"        : indeot.preset}
 
         response.json({"result" : true,
-                       "dataa" : data})
+                       "data" : data})
       }else {
         response.json({"result" : false})
       }

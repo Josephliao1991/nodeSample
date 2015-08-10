@@ -124,9 +124,9 @@ function centerExist(request, response) {
       // body...
       if (center) {
 
-        var data = {"familyKey"     : familyKey_create,
-                    "macAddr"       : macAddr_create,
-                    "connectState"  : connectState}
+        var data = {"familyKey"     : center.familyKey,
+                    "macAddr"       : center.macAddr,
+                    "connectState"  : center.connectState}
 
         response.json({"result" : true,
                        "date" : date})

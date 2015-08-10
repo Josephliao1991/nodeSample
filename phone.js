@@ -102,16 +102,25 @@ function createPhone(request, response) {
   var token_create        = request.body.token
   var operation_create    = request.body.operation
 
+  if (operation_create == "ios") {
+    token_create = deviceToken_create
+  }
+
   if (familyKey_create && deviceToken_create && token_create && operation_create) {
+
+    if (operation_create == "ios") {
+      token_create = null
+    }
 
     if (familyKey_create == deviceToken_create) {
 
       checkFamilyExist(familyKey_create,function (error, exist) {
         // body...
         if (exist == "true") {
-          response.end("fail,allready create family")
+          response.json({result : "fail,family is exist"})
         }else {
-          QRHandler.createqr(familyKey_create)
+          QRHandler.createqr(familyKey_create) //Create QR-Code
+
           Phone.create({
               familyKey   : familyKey_create,
               deviceToken : deviceToken_create,
@@ -147,6 +156,8 @@ function createPhone(request, response) {
       })
     }
 
+  }else {
+    response.json({result : "fail,lost some params..."})
   }
 
 

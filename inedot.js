@@ -17,14 +17,14 @@ var iNeDot = mongoose.model('inedot', {
 });
 function checkiNeDotExist(macAddr,callback) {
   // body...
-  iNeDot.find({macAddr : macAddr}, function (error, inedot) {
+  iNeDot.findOne({macAddr : macAddr}, function (error, inedot) {
     // body...
     if (error) {
       return error
     }
-    if (inedot.length>0) {
+    if (inedot) {
       console.log(inedot.familyKey);
-      return callback(null, json(inedot))
+      return callback(null, inedot)
     }else {
       return callback(null, null)
     }
@@ -85,7 +85,7 @@ function inedotExist(request, response) {
       // body...
       if (familyKey_exist) {
         response.json({"result" : true,
-                       "date" : inedot})
+                       "familyKey" : familyKey_exist})
       }else {
         response.json({"result" : false})
       }
@@ -114,6 +114,8 @@ function createiNeDot(request, response) {
   }else if (request.body.situation == "message" && request.body.preset) {
       presetValue = [{message : request.body.preset}]
   }
+
+  //checkiNeDotExist
 
   if (familyKey_create && macAddr_create && owner_create && connectState_create && name_create && situation_create && battery_create) {
 

@@ -26,6 +26,25 @@ function checkFamilyExist(familyKey,callback) {
   })
 }
 
+function checkPhoneExist(deviceToken,callback) {
+  // body...
+  Phone.findOne({deviceToken : deviceToken}, function (error, phone) {
+    // body...
+    if (error) {
+      return error
+    }
+    if (phone) {
+      console.log(phone.deviceToken);
+      return callback(null, phone.deviceToken)
+    }else {
+      return callback(null, null)
+    }
+
+
+  })
+
+}
+
 
 function allPhone(resquest, resopnse) {
   // body...
@@ -90,9 +109,21 @@ function familyExist(request, response) {
     }else {
       response.json({"result" : false});
     }
-
   })
+}
 
+function phoneExist(request, response) {
+  // body...
+  var devuceToken_find = request.query.deviceToken
+  checkPhoneExist(deviceToken_find, function (error, familyKey_exist) {
+    // body...
+    if (familyKey_exist) {
+      response.json({"result" : true,
+                     "familyKey" : familyKey_exist})
+    }else {
+      response.json({"result" : false})  
+    }
+  })
 }
 
 function createPhone(request, response) {
@@ -301,6 +332,7 @@ module.exports = {
   deletePhone  : deletePhone,
   deletePhoneById   : deletePhoneById,
   familyExist  : familyExist,
+  phoneExist   : phoneExist,
   // getFamilyMember  : getFamilyMember,
 
   Phone   : Phone

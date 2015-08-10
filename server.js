@@ -52,6 +52,13 @@ var push = require('./push.js');
     phone.familyExist(req, res)
   })
 
+  app.get('/family/phone/phoneExist',function (request, response) {
+    // body...
+    var req = request
+    var res = response
+    phone.phoneExist(req, res)
+  })
+
   app.post('/family/phone/create',function(request, response){
     var req = request
     var res = response

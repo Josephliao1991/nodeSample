@@ -32,7 +32,8 @@ function sendAndroidPush(deviceToken,badgeNumber, situation, name, macAddr) {
   var GCM = require('./gcmnew');
   // var gcm = new GCM('AIzaSyDF0AW6fgIqLnLdH_yPYPvfsKuI_BwQycI'); // https://code.google.com/apis/console //My
   var gcm = new GCM('AIzaSyAs_RofE7utmeE9nLCpwX8qQmC2Jbvr3HU'); // https://code.google.com/apis/console
-  var token = deviceToken
+  // var token = deviceToken
+  var token = "APA91bGDUiuEqcHck166Qh_yF9gXpzWlosMgfL9Q8lae1MLEb8ar0XdwrgJBDDKaXkxpWqEZf53SiGk7cQbri3dfoaOK76N2lk-9S1PabOn6JAc_dnAJwHvmfChOWu7V3af2GXEnJNcHSYau2H9BWucoZU7VcT62_Q"
   if (token.length < 20) {
     token = "APA91bGDUiuEqcHck166Qh_yF9gXpzWlosMgfL9Q8lae1MLEb8ar0XdwrgJBDDKaXkxpWqEZf53SiGk7cQbri3dfoaOK76N2lk-9S1PabOn6JAc_dnAJwHvmfChOWu7V3af2GXEnJNcHSYau2H9BWucoZU7VcT62_Q";
   }

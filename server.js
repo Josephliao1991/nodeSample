@@ -165,7 +165,7 @@ var push = require('./push.js');
     center.getCenterFamilyKey(request, response)
   })
 
-  app.get('/family/inedot/inedotExist',function (request, response) {
+  app.get('/family/center/centerExist',function (request, response) {
     // body...
     var req = request
     var res = response

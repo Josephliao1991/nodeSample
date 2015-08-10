@@ -46,14 +46,14 @@ function sendAndroidPush(deviceToken,badgeNumber, situation, name, macAddr) {
     registration_ids: [token],
     collapse_key: "0002dsaa", // http://developer.android.com/guide/google/gcm/gcm.html#send-msg
     time_to_live: 180, // just 30 minutes
-    // data: {
-    //   title       : "iNeDot",
-    //   message     : "Emergency From " + name, // your payload data
-    //   situation   : situation,
-    //   name        : name,
-    //   macAddr     : macAddr,
-    //   badgeNumber : badgeNumber
-    // }
+    data: {
+      title       : "iNeDot",
+      message     : "Emergency From " + name, // your payload data
+      situation   : situation,
+      name        : name,
+      macAddr     : macAddr,
+      badgeNumber : badgeNumber
+    }
   };
 
   // send the message and see what happened

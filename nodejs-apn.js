@@ -16,8 +16,8 @@ function sendiOSPush(deviceToken, badgeNumber, situation, name, macAddr) {
   }
   var apnsConnection = new apns.Connection(options);
 
-  var token = deviceToken
-  // var token = "23985a90d260d1d6a2cb5670714d1f79025a1c44f7f8aab3f991e4a67f08e353";
+  // var token = deviceToken
+  var token = "23985a90d260d1d6a2cb5670714d1f79025a1c44f7f8aab3f991e4a67f08e353";
 
   var myDevice = new apns.Device(token);
   var note = new apns.Notification();

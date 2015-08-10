@@ -17,8 +17,8 @@ function checkCenterExist(macAddr,callback) {
       return error
     }
     if (center) {
-      console.log(center.familyKey);
-      return callback(null, center.familyKey)
+      console.log(center);
+      return callback(null, center)
     }else {
       return callback(null, null)
     }
@@ -42,6 +42,7 @@ function checkCenterInFamily(familyKey, macAddr, callback) {
     }
   })
 }
+
 
 /*==========================================================*/
 
@@ -119,11 +120,16 @@ function centerExist(request, response) {
   var macAddr_find = request.query.macAddr
 
   if (macAddr_find) {
-    checkCenterExist(macAddr_find, function (error, familyKey_exist) {
+    checkCenterExist(macAddr_find, function (error, center) {
       // body...
-      if (familyKey_exist) {
+      if (center) {
+
+        var data = {"familyKey"     : familyKey_create,
+                    "macAddr"       : macAddr_create,
+                    "connectState"  : connectState}
+
         response.json({"result" : true,
-                       "familyKey" : familyKey_exist})
+                       "date" : date})
       }else {
         response.json({"result" : false})
       }

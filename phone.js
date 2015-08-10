@@ -28,7 +28,7 @@ function checkFamilyExist(familyKey,callback) {
 
 function checkPhoneExist(deviceToken,callback) {
   // body...
-  Phone.find({deviceToken : deviceToken}, function (error, phone) {
+  Phone.findOne({deviceToken : deviceToken}, function (error, phone) {
     // body...
     if (error) {
       return error

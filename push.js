@@ -19,7 +19,7 @@ function sendPush(request, response) {
         var macAddr   = inedot[0].macAddr
         console.log("Now iNeDot("+name+") Situation Is : " + situation);
 
-        phone.Phone.find({familyKey  : familyKey_alert},
+        phone.Phone.findOne({familyKey  : familyKey_alert},
           function(error, phones) {
           // body...
           // console.log("Family Member Is : " + phones);

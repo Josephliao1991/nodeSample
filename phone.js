@@ -99,18 +99,17 @@ function createPhone(request, response) {
   // body...
   var familyKey_create    = request.body.familyKey
   var deviceToken_create  = request.body.deviceToken
-  var token_create        = request.body.token
   var operation_create    = request.body.operation
-
-  if (operation_create == "ios") {
-    token_create = deviceToken_create
+  var token_create
+  var deviceOperationCheck  = true
+  if (operation_create == "android") {
+    token_create = request.body.token
+    if (token_create == null) {
+      deviceOperationCheck = false
+    }
   }
 
-  if (familyKey_create && deviceToken_create && token_create && operation_create) {
-
-    if (operation_create == "ios") {
-      token_create = null
-    }
+  if (familyKey_create && deviceToken_create && operation_create && deviceOperationCheck) {
 
     if (familyKey_create == deviceToken_create) {
 

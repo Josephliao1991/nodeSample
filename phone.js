@@ -28,7 +28,7 @@ function checkFamilyExist(familyKey,callback) {
 
 function checkPhoneExist(deviceToken,callback) {
   // body...
-  Phone.findOne({deviceToken : deviceToken}, function (error, phone) {
+  Phone.find({deviceToken : deviceToken}, function (error, phone) {
     // body...
     if (error) {
       return error
@@ -39,10 +39,7 @@ function checkPhoneExist(deviceToken,callback) {
     }else {
       return callback(null, null)
     }
-
-
   })
-
 }
 
 
@@ -127,7 +124,7 @@ function phoneExist(request, response) {
       }
     })
   }else {
-    response.json({"result" : false})  
+    response.json({"result" : false})
   }
 
 
@@ -242,10 +239,40 @@ function updatePhone(request, response) {
       }
 
     });
-
   }
+}
 
+function zorePhoneBedgeNumber(request, response) {
+  // body...
+  var familyKey_find = request.body.familyKey
+  var deviceToken_find   = request.body.deviceToken
 
+  console.log("zero badgeNumber with familyKey : "+familyKey_find);
+  console.log("zero badgeNumber with deviceToken : "+deviceToken_find);
+
+  if (familyKey_find && deviceToken_find ) {
+
+    Phone.findOne({familyKey     : familyKey_find,
+                   deviceToken   : deviceToken_find },
+    function(error, phone) {
+      if (error) {
+        response.send(error)
+      }
+      if (phone) {
+        phone.badgeNumber  = 0;
+        phone.save(function(error) {
+          if (error) {
+            response.send(error)
+           }else {
+            response.json({result : "success"})
+           }
+        });
+
+      }else {
+        response.json({result : "no such device"})
+      }
+    });
+  }
 }
 
 function deletePhone(request, response) {
@@ -340,6 +367,7 @@ module.exports = {
   deletePhoneById   : deletePhoneById,
   familyExist  : familyExist,
   phoneExist   : phoneExist,
+  zorePhoneBedgeNumber  : zorePhoneBedgeNumber
   // getFamilyMember  : getFamilyMember,
 
   Phone   : Phone

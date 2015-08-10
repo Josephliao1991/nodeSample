@@ -72,6 +72,13 @@ var push = require('./push.js');
     phone.updatePhone(req, res)
   })
 
+  app.post('/family/phone/zoreBedgeNumber', function (request, response) {
+    // body...
+    var req = request
+    var res = response
+    phone.zorePhoneBedgeNumber(req, res)
+  })
+
   app.post('/family/phone/delete',function(request, response){
     // body...
     var res = response

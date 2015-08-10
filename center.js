@@ -8,6 +8,24 @@ var Center = mongoose.model('center', {
     connectState  : Boolean,
 });
 
+
+function checkCenterExist(macAddr,callback) {
+  // body...
+  Center.findOne({macAddr : macAddr}, function (error, center) {
+    // body...
+    if (error) {
+      return error
+    }
+    if (center) {
+      console.log(center.familyKey);
+      return callback(null, center.familyKey)
+    }else {
+      return callback(null, null)
+    }
+  })
+}
+/*==========================================================*/
+
 function allCenter(request, response) {
   // body...
   Center.find(function(error, centers) {
@@ -74,6 +92,25 @@ function getCenterFamilyKey(request, response) {
             response.end("Belong with no family")
           }
         })
+  }
+}
+
+function centerExist(request, response) {
+  // body...
+  var macAddr_find = request.query.macAddr
+
+  if (macAddr_find) {
+    checkCenterExist(macAddr_find, function (error, familyKey_exist) {
+      // body...
+      if (familyKey_exist) {
+        response.json({"result" : true,
+                       "familyKey" : familyKey_exist})
+      }else {
+        response.json({"result" : false})
+      }
+    })
+  }else {
+    response.json({"result" : false})
   }
 }
 
@@ -227,7 +264,7 @@ module.exports = {
   updateCenter  : updateCenter,
   deleteCenter  : deleteCenter,
   deleteCenterById  : deleteCenterById,
-
+  centerExist   : centerExist,
   Center  : Center
 
 }

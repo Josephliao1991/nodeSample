@@ -34,8 +34,8 @@ function checkPhoneExist(deviceToken,callback) {
       return error
     }
     if (phone) {
-      console.log(phone.deviceToken);
-      return callback(null, phone.deviceToken)
+      console.log(phone.familyKey);
+      return callback(null, phone.familyKey)
     }else {
       return callback(null, null)
     }
@@ -160,8 +160,6 @@ function phoneExist(request, response) {
   }else {
     response.json({"result" : false})
   }
-
-
 }
 
 function createPhone(request, response) {

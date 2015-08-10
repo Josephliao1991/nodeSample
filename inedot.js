@@ -15,6 +15,22 @@ var iNeDot = mongoose.model('inedot', {
 
     preset        : Array
 });
+function checkiNeDotExist(macAddr,callback) {
+  // body...
+  iNeDot.findOne({macAddr : macAddr}, function (error, inedot) {
+    // body...
+    if (error) {
+      return error
+    }
+    if (inedot) {
+      console.log(inedot.familyKey);
+      return callback(null, inedot.familyKey)
+    }else {
+      return callback(null, null)
+    }
+  })
+}
+/*================================================*/
 
 function alliNeDot(request, response) {
   // body...
@@ -59,6 +75,26 @@ function familyiNeDot(request, response) {
       })
     }
 };
+
+function inedotExist(request, response) {
+  // body...
+  var macAddr_find = request.query.macAddr
+
+  if (macAddr_find) {
+    checkiNeDotExist(macAddr_find, function (error, familyKey_exist) {
+      // body...
+      if (familyKey_exist) {
+        response.json({"result" : true,
+                       "familyKey" : familyKey_exist})
+      }else {
+        response.json({"result" : false})
+      }
+    })
+  }else {
+    response.json({"result" : false})
+  }
+}
+
 
 function createiNeDot(request, response) {
   // body...
@@ -246,5 +282,6 @@ module.exports = {
   updateiNeDot  : updateiNeDot,
   deleteiNeDot  : deleteiNeDot,
   deleteiNeDotById   : deleteiNeDotById,
+  inedotExist  : inedotExist,
   iNeDot        : iNeDot
 }

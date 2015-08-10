@@ -107,6 +107,13 @@ var push = require('./push.js');
     inedot.familyiNeDot(req, res)
   });
 
+  app.get('/family/inedot/inedotExist',function (request, response) {
+    // body...
+    var req = request
+    var res = response
+    inedot.inedotExist(req, res)
+  })
+
   app.post('/family/inedot/create',function(request, response){
     var req = request
     var res = response
@@ -156,6 +163,13 @@ var push = require('./push.js');
     var req = request
     var res = response
     center.getCenterFamilyKey(request, response)
+  })
+
+  app.get('/family/inedot/inedotExist',function (request, response) {
+    // body...
+    var req = request
+    var res = response
+    center.centerExist(req, res)
   })
 
   app.post('/family/center/create',function(request, response){

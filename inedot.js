@@ -24,7 +24,7 @@ function checkiNeDotExist(macAddr,callback) {
     }
     if (inedot.length>0) {
       console.log(inedot.familyKey);
-      return callback(null, inedot)
+      return callback(null, json(inedot))
     }else {
       return callback(null, null)
     }

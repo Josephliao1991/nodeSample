@@ -176,6 +176,7 @@ function createPhone(request, response) {
     }
   }
 
+
   if (familyKey_create && deviceToken_create && operation_create && deviceOperationCheck) {
 
     if (familyKey_create == deviceToken_create) {

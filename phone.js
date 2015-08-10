@@ -367,7 +367,7 @@ module.exports = {
   deletePhoneById   : deletePhoneById,
   familyExist  : familyExist,
   phoneExist   : phoneExist,
-  zorePhoneBedgeNumber  : zorePhoneBedgeNumber
+  zorePhoneBedgeNumber  : zorePhoneBedgeNumber,
   // getFamilyMember  : getFamilyMember,
 
   Phone   : Phone

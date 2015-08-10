@@ -59,8 +59,7 @@ function plusBadgeNumber(familyKey,deviceToken) {
         console.log(error);
       }
       if (phone) {
-        var badgeNumber = phone.badgeNumber
-        badgeNumber++
+        var phone.badgeNumber = phone.badgeNumber+1
 
         phone.save(function(error) {
           if (error) {

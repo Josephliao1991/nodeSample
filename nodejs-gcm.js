@@ -56,8 +56,8 @@ function sendAndroidPush(deviceToken,badgeNumber, situation, name, macAddr) {
   // send the message and see what happened
   gcm.send(msg, function(err, response) {
     // that error is from the http request, not gcm callback
-    if (error) {
-      console.log(error);
+    if (err) {
+      console.log(err);
     }
     console.log(response); // http://developer.android.com/guide/google/gcm/gcm.html#response
   });

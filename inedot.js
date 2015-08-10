@@ -17,12 +17,12 @@ var iNeDot = mongoose.model('inedot', {
 });
 function checkiNeDotExist(macAddr,callback) {
   // body...
-  iNeDot.findOne({macAddr : macAddr}, function (error, inedot) {
+  iNeDot.find({macAddr : macAddr}, function (error, inedot) {
     // body...
     if (error) {
       return error
     }
-    if (inedot) {
+    if (inedot.length>0) {
       console.log(inedot.familyKey);
       return callback(null, inedot)
     }else {

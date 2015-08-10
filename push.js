@@ -47,7 +47,7 @@ function sendPush(request, response) {
               nodeAndroidPush.sendAndroidPush(token,badgeNumber, situation, name, macAddr)
             }
 
-            phone.plusBadgeNumber(familyKey, deviceToken);
+            // phone.plusBadgeNumber(familyKey, deviceToken);
           }
           response.end("success")
         })

@@ -30,6 +30,25 @@ function checkiNeDotExist(macAddr,callback) {
     }
   })
 }
+
+function checkiNeDotInFamily(familyKey, macAddr, callback) {
+  // body...
+  iNeDot.findOne({familyKey : familyKey,
+                  macAddr   : macAddr},
+  function (error, inedot) {
+    // body...
+    if (error) {
+      return error
+    }
+    if (inedot) {
+      console.log(inedot.familyKey);
+      return callback(null, "true")
+    }else {
+      return callback(null, "false")
+    }
+  })
+}
+
 /*================================================*/
 
 function alliNeDot(request, response) {

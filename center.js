@@ -24,6 +24,25 @@ function checkCenterExist(macAddr,callback) {
     }
   })
 }
+
+function checkCenterInFamily(familyKey, macAddr, callback) {
+  // body...
+  Center.findOne({familyKey : familyKey,
+                  macAddr   : macAddr},
+  function (error, center) {
+    // body...
+    if (error) {
+      return error
+    }
+    if (center) {
+      console.log(center.familyKey);
+      return callback(null, "true")
+    }else {
+      return callback(null, "false")
+    }
+  })
+}
+
 /*==========================================================*/
 
 function allCenter(request, response) {

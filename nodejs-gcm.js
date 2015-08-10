@@ -37,6 +37,7 @@ function sendAndroidPush(deviceToken,badgeNumber, situation, name, macAddr) {
     token = "APA91bGDUiuEqcHck166Qh_yF9gXpzWlosMgfL9Q8lae1MLEb8ar0XdwrgJBDDKaXkxpWqEZf53SiGk7cQbri3dfoaOK76N2lk-9S1PabOn6JAc_dnAJwHvmfChOWu7V3af2GXEnJNcHSYau2H9BWucoZU7VcT62_Q";
   }
   // create the message
+  console.log("GCM Push : "+token);
   var msg = {
     registration_ids: [token],
     collapse_key: "0002dsaa", // http://developer.android.com/guide/google/gcm/gcm.html#send-msg

@@ -39,14 +39,14 @@ function sendPush(request, response) {
 
             if (operation == "ios") {
               //iOS
-              // console.log("iOSPush");
+              console.log("iOSPush with token : "+deviceToken);
               nodeiOSPush.sendiOSPush(deviceToken,badgeNumber, situation, name, macAddr)
             }else {
               //Android
-              // console.log("androidPush");
+              console.log("androidPush with token : "+token);
               nodeAndroidPush.sendAndroidPush(token,badgeNumber, situation, name, macAddr)
             }
-            
+
             phone.plusBadgeNumber(familyKey, deviceToken);
           }
           response.end("success")

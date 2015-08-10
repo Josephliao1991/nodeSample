@@ -29,7 +29,7 @@ function sendPush(request, response) {
             var token       = phones[i].token
             var operation   = phones[i].operation
             var badgeNumber = (phones[i].badgeNumber)
-            badgeNumber++
+            // badgeNumber++
 
             console.log("deviceToken: "+deviceToken);
             console.log("token: "+token);

@@ -37,12 +37,12 @@ function getDeviceOwner(familiyKey, macAddr, callback) {
 
 function connectStateResponse(request, response) {
   // body...
-  var familiyKey  = request.body.familiyKey
+  var familyKey  = request.body.familyKey
   var macAddr     = request.body.macAddr
   var req   = request
   var res   = response
 
-  getDeviceOwner(familiyKey, macAddr, function (error, phone) {
+  getDeviceOwner(familyKey, macAddr, function (error, phone) {
     // body...
 
     console.log("familyKey : "+familyKey);

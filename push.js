@@ -66,7 +66,7 @@ function sendPushTrouble(deviceToken, request, response) {
 
 module.exports = {
 
-  sendPush  : sendPush
+  sendPush  : sendPush,
   sendPushTrouble   : sendPushTrouble
 
 }

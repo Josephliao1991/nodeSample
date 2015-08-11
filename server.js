@@ -9,6 +9,7 @@ var inedot = require('./inedot.js');
 var center = require('./center.js');
 var cpush = require('./c-push.js');
 var push = require('./push.js');
+var troubleHandler = require('troubleHandler');
   //Connect to Mongodb
   mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
@@ -251,13 +252,25 @@ var push = require('./push.js');
     push.sendPush(req, res)
   })
 
-  app.post('/test',function (request, response) {
-    // body...
-    var name = request.body.test
-    console.log("Alice Test name is : "+name);
-    response.send("Alice Test name is : "+name);
+  // app.post('/test',function (request, response) {
+  //   // body...
+  //   var name = request.body.test
+  //   console.log("Alice Test name is : "+name);
+  //   response.send("Alice Test name is : "+name);
+  //
+  // })
 
+  /*===========================TROUBLE RESPONSE API==================================*/
+
+  app.post('/trouble', function (request, response) {
+    // body...
+    var req = request
+    var res = response
+    troubleHandler(req, res)
   })
+
+
+
   app.listen(8080,argv.fe_ip,function(request, response) {
     // body...
     // console.log('App listening at http://%s:%s', server.address().address, server.address().port);

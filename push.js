@@ -46,7 +46,6 @@ function sendPush(request, response) {
               console.log("androidPush with token : "+token);
               nodeAndroidPush.sendAndroidPush(token,badgeNumber, situation, name, macAddr)
             }
-
             // phone.plusBadgeNumber(familyKey, deviceToken);
           }
           response.end("success")
@@ -58,10 +57,16 @@ function sendPush(request, response) {
 }
 
 
+function sendPushTrouble(deviceToken, request, response) {
+  // body...
+  response.send("SendPushTrouble Success")
+  console.log("SendPushTrouble Success")
+}
 
 
 module.exports = {
 
   sendPush  : sendPush
+  sendPushTrouble   : sendPushTrouble
 
 }

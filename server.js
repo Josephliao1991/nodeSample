@@ -266,7 +266,7 @@ var troubleHandler = require('troubleHandler');
     // body...
     var req = request
     var res = response
-    troubleHandler(req, res)
+    troubleHandler.troubleHandler(req, res)
   })
 
 

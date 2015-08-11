@@ -3,7 +3,7 @@ var inedot = require('./inedot.js');
 var phone = require('./phone.js');
 var mongoose = require('mongoose');
 
-function getDeviceOwner(familiyKey, macAddr, callback) {
+function getDeviceOwner(familyKey, macAddr, callback) {
   // body...
   inedot.iNeDot.findOne({familyKey  : familyKey,
                   macAddr     : macAddr},

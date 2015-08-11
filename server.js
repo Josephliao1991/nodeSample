@@ -9,7 +9,7 @@ var inedot = require('./inedot.js');
 var center = require('./center.js');
 var cpush = require('./c-push.js');
 var push = require('./push.js');
-var troubleHandler = require('troubleHandler');
+var troubleHandler = require('./troubleHandler.js');
   //Connect to Mongodb
   mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
@@ -266,7 +266,7 @@ var troubleHandler = require('troubleHandler');
     // body...
     var req = request
     var res = response
-    troubleHandler.troubleHandler(req, res)
+    troubleHandler(req, res)
   })
 
 

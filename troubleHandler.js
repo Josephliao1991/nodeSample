@@ -1,6 +1,7 @@
 var push = require('./push.js');
 var inedot = require('./inedot.js');
 var phone = require('./phone.js');
+var mongoose = require('mongoose');
 
 function getDeviceOwner(familiyKey, macAddr, callback) {
   // body...

@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 function getDeviceOwner(familyKey, macAddr, callback) {
   // body...
   inedot.iNeDot.findOne({familyKey  : familyKey,
-                  macAddr     : macAddr},
+                         macAddr    : macAddr},
    function (error, inedot) {
      // body...
      if (error) {
@@ -14,7 +14,7 @@ function getDeviceOwner(familyKey, macAddr, callback) {
      }
      if (inedot) {
        var deviceToken = inedot.owner
-       console.log("inedot : -- "+deviceToken);
+      //  console.log("inedot : -- "+deviceToken);
        phone.Phone.findOne({familyKey  : familyKey,
                             deviceToken : deviceToken},
         function (error, phone) {
@@ -46,23 +46,22 @@ function connectStateResponse(request, response) {
   getDeviceOwner(familyKey, macAddr, function (error, phone) {
     // body...
 
-    console.log("familyKey : "+familyKey);
-    console.log("macAddr: "+macAddr);
-    if (phone) {
-        console.log("phone : "+phone.deviceToken);
+    // console.log("familyKey : "+familyKey);
+    // console.log("macAddr: "+macAddr);
+    // if (phone) {
+    //     console.log("phone : "+phone.deviceToken);
+    // }else {
+    //   console.log("null");
+    // }
+
+    var deviceToken;
+    if (phone.operation == "ios") {
+      deviceToken = phone.deviceToken
     }else {
-      console.log("null");
+      deviceToken = phone.token
     }
 
-
-    // var deviceToken;
-    // if (phone.operation == "ios") {
-    //   deviceToken = phone.deviceToken
-    // }else {
-    //   deviceToken = phone.token
-    // }
-    //
-    // push.sendPushTrouble(deviceToken, req, res);
+    push.sendPushTrouble(deviceToken, req, res);
 
 
   })

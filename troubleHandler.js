@@ -44,14 +44,24 @@ function connectStateResponse(request, response) {
 
   getDeviceOwner(familiyKey, macAddr, function (error, phone) {
     // body...
-    var deviceToken;
-    if (phone.operation == "ios") {
-      deviceToken = phone.deviceToken
+
+    console.log("familyKey : "+familyKey);
+    console.log("macAddr: "+macAddr);
+    if (phone) {
+        console.log("phone : "+phone.deviceToken);
     }else {
-      deviceToken = phone.token
+      console.log("null");
     }
 
-    push.sendPushTrouble(deviceToken, req, res);
+
+    // var deviceToken;
+    // if (phone.operation == "ios") {
+    //   deviceToken = phone.deviceToken
+    // }else {
+    //   deviceToken = phone.token
+    // }
+    //
+    // push.sendPushTrouble(deviceToken, req, res);
 
 
   })

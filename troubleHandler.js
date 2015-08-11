@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 
 function getDeviceOwner(familiyKey, macAddr, callback) {
   // body...
-  inedot.iNeDot.findOne({familiyKey  : familiyKey,
+  inedot.iNeDot.findOne({familyKey  : familyKey,
                   macAddr     : macAddr},
    function (error, inedot) {
      // body...
@@ -15,7 +15,7 @@ function getDeviceOwner(familiyKey, macAddr, callback) {
      if (inedot) {
        var deviceToken = inedot.owner
        console.log("inedot : -- "+deviceToken);
-       phone.Phone.findOne({familiyKey  : familiyKey,
+       phone.Phone.findOne({familyKey  : familyKey,
                             deviceToken : deviceToken},
         function (error, phone) {
           // body...

@@ -24,6 +24,7 @@ function sendPush(request, response) {
           // body...
           console.log("Family Member Is : " + phones);
           console.log("phones length : "+phones.length);
+
           for (var i = 0; i < phones.length; i++) {
             var familyKey   = phones[i].familyKey
             var deviceToken = phones[i].deviceToken
@@ -57,16 +58,98 @@ function sendPush(request, response) {
 }
 
 
-function sendPushTrouble(deviceToken, request, response) {
+function sendPushTrouble(phone, message, request, response) {
   // body...
+  var operation = phone.operation
+  var deviceToken;
+  if (phone.operation == "ios") {
+    deviceToken = phone.deviceToken
+    console.log("iOSPush with token : "+deviceToken);
+    nodeiOSPush.sendiOSTroublePush(deviceToken, message)
+  }else {
+    deviceToken = phone.token
+    console.log("androidPush with token : "+token);
+    nodeAndroidPush.sendAndroidTroublePush(deviceToken, message)
+  }
+
   response.send("SendPushTrouble Success")
   console.log("SendPushTrouble Success")
 }
 
+function sendPushConnectStateChange(familyKey,message, request, response) {
+  // body...
+
+    phone.Phone.find({familyKey  : familyKey_alert},
+      function(error, phones) {
+      // body...
+      console.log("Family Member Is : " + phones);
+      console.log("phones length : "+phones.length);
+
+      for (var i = 0; i < phones.length; i++) {
+        var familyKey   = phones[i].familyKey
+        var deviceToken = phones[i].deviceToken
+        var token       = phones[i].token
+        var operation   = phones[i].operation
+        // badgeNumber++
+        console.log("familyKey: "+familyKey);
+        console.log("deviceToken: "+deviceToken);
+        console.log("token: "+token);
+        console.log("operation: "+operation);
+
+        if (operation == "ios") {
+          //iOS
+          console.log("iOSPush with token : "+deviceToken);
+          nodeiOSPush.sendiOSTroublePush(deviceToken, message)
+        }else if(operation == "android"){
+          //Android
+          console.log("androidPush with token : "+token);
+          nodeAndroidPush.sendAndroidTroublePush(token, message)
+        }
+        // phone.plusBadgeNumber(familyKey, deviceToken);
+      }
+      response.end("success")
+    })
+
+}
+
+function sendPushLowPowerAlert(familyKey, message, request, response) {
+  // body...
+  phone.Phone.find({familyKey  : familyKey_alert},
+    function(error, phones) {
+    // body...
+    console.log("Family Member Is : " + phones);
+    console.log("phones length : "+phones.length);
+
+    for (var i = 0; i < phones.length; i++) {
+      var familyKey   = phones[i].familyKey
+      var deviceToken = phones[i].deviceToken
+      var token       = phones[i].token
+      var operation   = phones[i].operation
+      // badgeNumber++
+      console.log("familyKey: "+familyKey);
+      console.log("deviceToken: "+deviceToken);
+      console.log("token: "+token);
+      console.log("operation: "+operation);
+
+      if (operation == "ios") {
+        //iOS
+        console.log("iOSPush with token : "+deviceToken);
+        nodeiOSPush.sendiOSTroublePush(deviceToken, message)
+      }else if(operation == "android"){
+        //Android
+        console.log("androidPush with token : "+token);
+        nodeAndroidPush.sendAndroidTroublePush(token, message)
+      }
+      // phone.plusBadgeNumber(familyKey, deviceToken);
+    }
+    response.end("success")
+  })
+}
 
 module.exports = {
 
   sendPush  : sendPush,
-  sendPushTrouble   : sendPushTrouble
-
+  sendPushTrouble   : sendPushTrouble,
+  sendPushConnectStateChange    : sendPushConnectStateChange,
+  sendPushLowPowerAlert   : sendPushLowPowerAlert
 }

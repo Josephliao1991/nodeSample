@@ -107,7 +107,7 @@ function getCenterFamilyKey(request, response) {
           if (center) {
             var familyKey = center.familyKey
             console.log(center.familyKey);
-            response.send('[{"' + familyKey + '"}]')
+            response.send('[' + familyKey + ']')
           }else {
             response.end("Belong with no family")
           }

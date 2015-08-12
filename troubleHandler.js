@@ -105,7 +105,7 @@ function deviceLowPowerAlert(request, response) {
   // body...
   var familyKey  = request.body.familyKey
   var macAddr    = request.body.macAddr
-  var powerValue  = request.body.powerValue
+  var powerValue = request.body.powerValue
   var req   = request
   var res   = response
 
@@ -123,6 +123,8 @@ function troubleHandler(request, response) {
   var req  = request
   var res  = response
   var trouble     = request.body.trouble
+  console.log("trouble report (trouble): "+trouble);
+
 
   if (trouble == 0) {
     connectStateResponse(req, res)
@@ -131,8 +133,6 @@ function troubleHandler(request, response) {
   }else if (trouble == 2) {
 
   }
-
-
 
 }
 

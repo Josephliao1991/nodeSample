@@ -131,7 +131,7 @@ function troubleHandler(request, response) {
   }else if (trouble == 1) {
     deviceConnectStateChange(req, res)
   }else if (trouble == 2) {
-
+    deviceLowPowerAlert(req, res)
   }
 
 }

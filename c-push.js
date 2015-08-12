@@ -139,7 +139,7 @@ function createCPush(request, response) {
   CPush.create({
 
       familyKey     : familyKey_create,
-      c_macAddr     : c_macAddr_creater,
+      c_macAddr     : c_macAddr_create,
       i_macAddr     : i_macAddr_create,
       command       : command_create,
       preset        : preset_create,

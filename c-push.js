@@ -91,11 +91,13 @@ function familyCPush(request, response) {
           var data = []
 
           for (var i = 0; i < c_push.length; i++) {
+            var _id       = c_push[i]._id
             var i_macAddr = c_push[i].i_macAddr
             var command   = ""+c_push[i].command
             var presetValue = ""+c_push[i].preset
             // var presetValue = "test preset"
-            var item = {"i_macAddr": i_macAddr,
+            var item = {"_id"      : _id,
+                        "i_macAddr": i_macAddr,
                         "command"  : command,
                         "preset"   : presetValue}
             data.push(item)

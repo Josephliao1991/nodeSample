@@ -107,7 +107,8 @@ function sendPushConnectStateChange(familyKey,message, request, response) {
         }
         // phone.plusBadgeNumber(familyKey, deviceToken);
       }
-      response.end("success")
+      response.send("sendPushConnectStateChange Success")
+      console.log("sendPushConnectStateChange Success")
     })
 
 }
@@ -142,7 +143,8 @@ function sendPushLowPowerAlert(familyKey, message, request, response) {
       }
       // phone.plusBadgeNumber(familyKey, deviceToken);
     }
-    response.end("success")
+    response.send("sendPushLowPowerAlert Success")
+    console.log("sendPushLowPowerAlert Success")
   })
 }
 

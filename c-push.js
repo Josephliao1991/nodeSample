@@ -87,9 +87,23 @@ function familyCPush(request, response) {
         if (c_push.length>0) {
 
           //Prepare data fot center
+          var data = []
+
+          for (var i = 0; i < c_push.length; i++) {
+            var i_macAddr = c_push[i].i_macAddr
+            var command   = c_push[i].command
+            var presetValue;
+            if (c_push[i].preset) {
+              presetValue = ""+c_push[i].preset
+            }
+
+            var
+
+          }
+
 
         }else {
-          response.json({"result":"none"})
+          response.json([{"result":"none"}])
         }
       })
   }else {

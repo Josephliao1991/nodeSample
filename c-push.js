@@ -103,7 +103,7 @@ function familyCPush(request, response) {
 
 
         }else {
-          response.json([{"result":"none"}])
+          response.send("[{"+"result"+":"+"none"+"}]")
         }
       })
   }else {

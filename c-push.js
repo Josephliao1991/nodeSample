@@ -92,15 +92,14 @@ function familyCPush(request, response) {
           for (var i = 0; i < c_push.length; i++) {
             var i_macAddr = c_push[i].i_macAddr
             var command   = c_push[i].command
-            var presetValue;
-            if (c_push[i].preset) {
-              presetValue = ""+c_push[i].preset
-            }
-
-            
-
+            var presetValue = +c_push[i].preset
+            var item = {"i_macAddr": i_macAddr,
+                        "command"  : command,
+                        "preset"   : preset}
+            data.push(item)
           }
 
+          response.json(data)
 
         }else {
           response.json([{"result":"none"}])

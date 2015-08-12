@@ -258,13 +258,13 @@ var troubleHandler = require('./troubleHandler.js');
     push.sendPush(req, res)
   })
 
-  // app.post('/test',function (request, response) {
-  //   // body...
-  //   var name = request.body.test
-  //   console.log("Alice Test name is : "+name);
-  //   response.send("Alice Test name is : "+name);
-  //
-  // })
+  app.post('/test',function (request, response) {
+    // body...
+    var name = request.body.test
+    console.log("Alice Test name is : "+name);
+    response.send("Alice Test name is : "+name);
+
+  })
 
   /*===========================TROUBLE RESPONSE API==================================*/
 

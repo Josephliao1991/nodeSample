@@ -138,24 +138,32 @@ function createCPush(request, response) {
     preset_create = "none"
   }
 
-  CPush.create({
+  if (familyKey_create && c_macAddr_create && i_macAddr_create && command_create && preset_create ) {
 
-      familyKey     : familyKey_create,
-      c_macAddr     : c_macAddr_create,
-      i_macAddr     : i_macAddr_create,
-      command       : command_create,
-      preset        : preset_create,
-      checkMark     : false
+    CPush.create({
 
-  },function(error, c_push){
-    // body...
-    if (error) {
-        response.send(error)
-    }else {
-        // response.json(phone)
-        response.send("success")
-    }
-  })
+        familyKey     : familyKey_create,
+        c_macAddr     : c_macAddr_create,
+        i_macAddr     : i_macAddr_create,
+        command       : command_create,
+        preset        : preset_create,
+        checkMark     : false
+
+    },function(error, c_push){
+      // body...
+      if (error) {
+          response.send(error)
+      }else {
+          // response.json(phone)
+          response.json({"result" : "success"})
+      }
+    })
+
+  }else {
+    response.json({"result" : "lost some params"})
+  }
+
+
 }
 
 function updateCPush(request, response) {
@@ -192,11 +200,11 @@ function updateCPush(request, response) {
           if (error) {
             response.send(error);
           }else {
-            response.send("success")              // return response.send(phone);
+            response.json({"result" : "success"})              // return response.send(phone);
           }
         });
       }else {
-        response.send("no such CPush")
+        response.json({"result" : "no such CPush"})
       }
     })
 }
@@ -230,11 +238,11 @@ function changeCPushCheckMark(request, response) {
           if (error) {
             response.send(error);
           }else {
-            response.send("success")              // return response.send(phone);
+            response.json({"result" : "success"})              // return response.send(phone);
           }
         });
       }else {
-        response.send("no such CPush")
+        response.json({"result" : "no such CPush"})
       }
     })
 }
@@ -265,12 +273,12 @@ function deleteCPush(request, response) {
             if (error) {
               response.send(error)
             }else {
-              response.send("success")
+              response.json({"result" : "success"})
             }
           })
       }else {
         // response.send("no such CPush")
-        response.send("fail")
+        response.json({"result" : "fail"})
       }
     })
 }

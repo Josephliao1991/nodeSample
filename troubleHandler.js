@@ -97,7 +97,7 @@ function deviceConnectStateChange(request, response) {
                  "inedot"     : macAddr,
                  "result"     : condition}
 
-  push.sendDisconnectPush(familyKey, message, req, res)
+  push.sendPushConnectStateChange(familyKey, message, req, res)
 
 }
 

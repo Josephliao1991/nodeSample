@@ -79,7 +79,7 @@ function sendPushTrouble(phone, message, request, response) {
 function sendPushConnectStateChange(familyKey,message, request, response) {
   // body...
 
-    phone.Phone.find({familyKey  : familyKey_alert},
+    phone.Phone.find({familyKey  : familyKey},
       function(error, phones) {
       // body...
       console.log("Family Member Is : " + phones);
@@ -115,7 +115,7 @@ function sendPushConnectStateChange(familyKey,message, request, response) {
 
 function sendPushLowPowerAlert(familyKey, message, request, response) {
   // body...
-  phone.Phone.find({familyKey  : familyKey_alert},
+  phone.Phone.find({familyKey  : familyKey},
     function(error, phones) {
     // body...
     console.log("Family Member Is : " + phones);

@@ -126,7 +126,7 @@ function troubleHandler(request, response) {
   console.log("trouble report (trouble): "+trouble);
 
 
-  if (trouble == 0) {
+  if (trouble == "0") {
     connectStateResponse(req, res)
   }else if (trouble == 1) {
     deviceConnectStateChange(req, res)

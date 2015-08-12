@@ -47,13 +47,13 @@ function connectStateResponse(request, response) {
   getDeviceOwner(familyKey, macAddr, function (error, phone) {
     // body...
 
-    // console.log("familyKey : "+familyKey);
-    // console.log("macAddr: "+macAddr);
-    // if (phone) {
-    //     console.log("phone : "+phone.deviceToken);
-    // }else {
-    //   console.log("null");
-    // }
+    console.log("familyKey : "+familyKey);
+    console.log("macAddr: "+macAddr);
+    if (phone) {
+        console.log("phone : "+phone.deviceToken);
+    }else {
+      console.log("null");
+    }
     if (phone) {
     //   var deviceToken;
     //   if (phone.operation == "ios") {
@@ -126,7 +126,7 @@ function troubleHandler(request, response) {
   console.log("trouble report (trouble): "+trouble);
 
 
-  if (trouble == "0") {
+  if (trouble == 0) {
     connectStateResponse(req, res)
   }else if (trouble == 1) {
     deviceConnectStateChange(req, res)

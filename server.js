@@ -216,6 +216,12 @@ var troubleHandler = require('./troubleHandler.js');
     cpush.familyCPush(req, res)
   });
 
+  app.get('/family/c_push_json',function(request, response){
+    var req = request
+    var res = response
+    cpush.familyCPush_JSON(req, res)
+  });
+
   app.post('/family/c_push/create',function(request, response){
     var req = request
     var res = response

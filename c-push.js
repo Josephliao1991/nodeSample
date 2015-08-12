@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-
+var inedot = require('./inedot.js');
 //Create Push Mongodb Module
 /* Command Rule
 command : Number
@@ -29,7 +29,7 @@ function allCPush(request, response) {
   })
 }
 
-function familyCPush(request, response) {
+function familyCPush_JSON(request, response) {
   // body...
   var familyKey_find = request.query.familyKey
   var c_macAddr_find = request.query.c_macAddr
@@ -62,6 +62,49 @@ function familyCPush(request, response) {
           response.json(c_push)
         }
       })
+  }
+}
+
+function familyCPush(request, response) {
+  // body...
+  var familyKey_find = request.query.familyKey
+  var c_macAddr_find = request.query.c_macAddr
+  console.log('c_push Query With familyKey: '+ familyKey_find);
+  console.log('c_push Query With c_macAddr: '+ c_macAddr_find);
+
+  if (c_macAddr_find) {
+
+    CPush.find({familyKey : familyKey_find,
+                c_macAddr : c_macAddr_find,
+                checkMark : false},
+
+      function(error, c_push) {
+        // body...
+        if (error) {
+          response.send(error)
+        }
+
+        if (c_push.length>0) {
+
+          //Prepare data fot center
+
+        }else {
+          response.json({"result":"none"})
+        }
+      })
+  }else {
+    // CPush.find({familyKey : familyKey_find,
+    //             checkMark : false},
+    //
+    //   function(error, c_push) {
+    //     // body...
+    //     if (error) {
+    //       response.send(error)
+    //     }else {
+    //       response.json(c_push)
+    //     }
+    //   })
+    response.json({"result":"lost some parmas"})
   }
 }
 
@@ -206,6 +249,7 @@ function deleteCPush(request, response) {
 module.exports = {
   allCPush    : allCPush,
   familyCPush : familyCPush,
+  familyCPush_JSON  : familyCPush_JSON,
   createCPush : createCPush,
   updateCPush : updateCPush,
   changeCPushCheckMark  : changeCPushCheckMark,

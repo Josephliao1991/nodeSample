@@ -97,13 +97,13 @@ function familyCPush(request, response) {
               presetValue = ""+c_push[i].preset
             }
 
-            var
+            
 
           }
 
 
         }else {
-          response.send("[{"+"result"+":"+"none"+"}]")
+          response.json([{"result":"none"}])
         }
       })
   }else {

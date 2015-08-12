@@ -14,6 +14,7 @@ var CPush = mongoose.model('c_push', {
     c_macAddr     : String,
     i_macAddr     : String,
     command       : Number,
+    preset        : String,
     checkMark     : Boolean
 });
 
@@ -118,18 +119,30 @@ function familyCPush(request, response) {
     //       response.json(c_push)
     //     }
     //   })
-    response.json({"result":"lost some parmas"})
+    response.json([{"result":"lost some parmas"}])
   }
 }
 
 function createCPush(request, response) {
   // body...
+  var familyKey_create  = request.body.familyKey
+  var c_macAddr_create  = request.body.c_macAddr
+  var i_macAddr_create  = request.body.i_macAddr
+  var command_create    = request.body.command
+  var preset_create
+  if (request.body.preset) {
+    preset_create = request.body.preset+""
+  }else {
+    preset_create = "none"
+  }
+
   CPush.create({
 
-      familyKey     : request.body.familyKey,
-      c_macAddr     : request.body.c_macAddr,
-      i_macAddr     : request.body.i_macAddr,
-      command       : request.body.command,
+      familyKey     : familyKey_create,
+      c_macAddr     : c_macAddr_creater,
+      i_macAddr     : i_macAddr_create,
+      command       : command_create,
+      preset        : preset_create,
       checkMark     : false
 
   },function(error, c_push){

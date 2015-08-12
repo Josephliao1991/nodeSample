@@ -92,7 +92,7 @@ function familyCPush(request, response) {
 
           for (var i = 0; i < c_push.length; i++) {
             var i_macAddr = c_push[i].i_macAddr
-            var command   = c_push[i].command
+            var command   = ""+c_push[i].command
             var presetValue = ""+c_push[i].preset
             // var presetValue = "test preset"
             var item = {"i_macAddr": i_macAddr,

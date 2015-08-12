@@ -54,7 +54,7 @@ function connectStateResponse(request, response) {
     // }else {
     //   console.log("null");
     // }
-    // if (phone) {
+    if (phone) {
     //   var deviceToken;
     //   if (phone.operation == "ios") {
     //     deviceToken = phone.deviceToken

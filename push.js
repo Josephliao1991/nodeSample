@@ -151,6 +151,7 @@ function sendPushLowPowerAlert(familyKey, message, request, response) {
 /*===========================Push TestinG API==================================*/
 function pushTest(request, response) {
   // body...
+  var familyKey   = request.query.familyKey
   var deviceToken = request.query.deviceToken
   var operation = request.query.operation
   if (operation == "ios") {

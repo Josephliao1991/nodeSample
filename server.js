@@ -284,7 +284,7 @@ var troubleHandler = require('./troubleHandler.js');
     push.pushTest(req, res)
   })
 
-  app.get('/family/c_push/changeCheckMark',function(request, response){
+  app.get('/family/c_push/changeCheckMarkTest',function(request, response){
     // body...
     var req = request
     var res = response

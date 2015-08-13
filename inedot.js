@@ -145,36 +145,49 @@ function createiNeDot(request, response) {
   }
 
   //checkiNeDotExist
+  checkiNeDotExist(macAddr_create,function (error, inedot) {
+    // body...
+    if (error) {
+      response.json({result : "fail"})
+    }
 
-  if (familyKey_create && macAddr_create && owner_create && connectState_create && name_create && situation_create && battery_create) {
+    if (inedot) {
+      response.json({result : "fail,inedot is exist"})
+    }else {
+      if (familyKey_create && macAddr_create && owner_create && connectState_create && name_create && situation_create && battery_create) {
 
-    iNeDot.create({
+        iNeDot.create({
 
-        familyKey     : familyKey_create,
-        macAddr       : macAddr_create,
+            familyKey     : familyKey_create,
+            macAddr       : macAddr_create,
 
-        owner         : owner_create,
-        connectState  : connectState_create,
+            owner         : owner_create,
+            connectState  : connectState_create,
 
-        name          : name_create,
-        situation     : situation_create,
+            name          : name_create,
+            situation     : situation_create,
 
-        battery       : battery_create,
+            battery       : battery_create,
 
-        preset        : presetValue
-    },function(error, inedot){
-      // body...
-      if (error) {
-          response.send(error)
+            preset        : presetValue
+        },function(error, inedot){
+          // body...
+          if (error) {
+              response.send(error)
+          }else {
+              // response.json(phone)
+              response.json({result : "success"})
+          }
+        })
+
       }else {
-          // response.json(phone)
-          response.json({result : "success"})
+        response.json({result : "fail"})
       }
-    })
+    }
 
-  }else {
-    response.json({result : "fail"})
-  }
+  })
+
+
 
 
 }

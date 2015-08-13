@@ -204,17 +204,46 @@ function createPhone(request, response) {
     }
   }
 
+  checkPhoneExist(deviceToken_create, function (error,phone) {
+    // body...
+    if (error) {
+      response.json({result : "fail"})
+    }
 
-  if (familyKey_create && deviceToken_create && operation_create && deviceOperationCheck) {
+    if (phone) {
 
-    if (familyKey_create == deviceToken_create) {
+      response.json({result : "fail,phone is exist"})
 
-      checkFamilyExist(familyKey_create,function (error, exist) {
-        // body...
-        if (exist == "true") {
-          response.json({result : "fail,family is exist"})
+    }else {
+      if (familyKey_create && deviceToken_create && operation_create && deviceOperationCheck) {
+
+        if (familyKey_create == deviceToken_create) {
+
+          checkFamilyExist(familyKey_create,function (error, exist) {
+            // body...
+            if (exist == "true") {
+              response.json({result : "fail,family is exist"})
+            }else {
+              QRHandler.createqr(familyKey_create) //Create QR-Code
+
+              Phone.create({
+                  familyKey   : familyKey_create,
+                  deviceToken : deviceToken_create,
+                  token       : token_create,
+                  operation   : operation_create,
+                  badgeNumber : 0
+              },function(error, phone){
+                // body...
+                if (error) {
+                  resopnse.send(error)
+                }else {
+                  response.json({result : "success"})
+                }
+              })
+            }
+          })
+
         }else {
-          QRHandler.createqr(familyKey_create) //Create QR-Code
 
           Phone.create({
               familyKey   : familyKey_create,
@@ -231,29 +260,16 @@ function createPhone(request, response) {
             }
           })
         }
-      })
 
-    }else {
+      }else {
+        response.json({result : "fail,lost some params..."})
+      }
 
-      Phone.create({
-          familyKey   : familyKey_create,
-          deviceToken : deviceToken_create,
-          token       : token_create,
-          operation   : operation_create,
-          badgeNumber : 0
-      },function(error, phone){
-        // body...
-        if (error) {
-          resopnse.send(error)
-        }else {
-          response.json({result : "success"})
-        }
-      })
     }
 
-  }else {
-    response.json({result : "fail,lost some params..."})
-  }
+  })
+
+
 
 
 

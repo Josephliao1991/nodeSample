@@ -340,10 +340,10 @@ function changeCPushDataTest(request, response) {
       }
       if (c_push) {
         if (request.body.familyKey) {
-            push.familyKey       = request.body.familyKey;
+            c_push.familyKey       = request.body.familyKey;
           }
         if (request.body.c_macAddr) {
-            push.c_macAddr       = request.body.c_macAddr;
+            c_push.c_macAddr       = request.body.c_macAddr;
           }
         if (checkMark) {
           c_push.checkMark = checkMark

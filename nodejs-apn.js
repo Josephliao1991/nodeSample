@@ -64,7 +64,7 @@ function sendiOSTroublePush(deviceToken, message) {
   note.expiry = Math.floor(Date.now() / 1000) + 3600; // Expires 1 hour from now.
   note.badge = 88888;
   note.sound = "ping.aiff";
-  note.alert = "Push Trouble Test"+
+  note.alert = "Push Trouble Test"
   note.payload = message;
 
   note.device = myDevice;

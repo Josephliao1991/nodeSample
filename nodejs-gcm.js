@@ -45,7 +45,7 @@ function sendAndroidPush(deviceToken,badgeNumber, situation, name, macAddr) {
     //                   'fy3VUb_Dorc:APA91bG08EPmMW1eKAKLB5jiae0epCFyQjo1PiPEKio9r0PNlo7r1T57DB9a96m693Z5NUqwiZJyCdTIH_MJwygfZD355TuUoqtpptf5SwQIcxmix7ZE4QW1dsHtnqhi6VPM0DuAA9pL'],
     registration_ids: [token],
     collapse_key: "0002dsaa", // http://developer.android.com/guide/google/gcm/gcm.html#send-msg
-    android.support.content.wakelockid : 1,
+    "android.support.content.wakelockid" : 1,
     time_to_live: 180, // just 30 minutes
     data: {
       title       : "iNeDot",

@@ -157,11 +157,11 @@ function pushTest(request, response) {
   if (operation == "ios") {
     //iOS
     console.log("TestinG => iOSPush with token : "+deviceToken);
-    nodeiOSPush.sendiOSPush(deviceToken,56, "alert", "PushTest", "JosephSend")
+    nodeiOSPush.sendiOSPush(deviceToken,99999, "alert", "PushTest", "JosephSend")
   }else if(operation == "android"){
     //Android
     console.log("TestinG => androidPush with token : "+deviceToken);
-    nodeAndroidPush.sendAndroidPush(deviceToken,56, "alert", "PushTest", "JosephSend")
+    nodeAndroidPush.sendAndroidPush(deviceToken,99999, "alert", "PushTest", "JosephSend")
   }
   phone.plusBadgeNumber(familyKey, deviceToken);
   response.json({"result" : "success"})

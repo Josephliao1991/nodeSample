@@ -284,7 +284,12 @@ var troubleHandler = require('./troubleHandler.js');
     push.pushTest(req, res)
   })
 
-  
+  app.get('/family/c_push/changeCheckMark',function(request, response){
+    // body...
+    var req = request
+    var res = response
+    cpush.changeCPushCheckMarkTest(req, res)
+  })
 
   app.listen(8080,argv.fe_ip,function(request, response) {
     // body...

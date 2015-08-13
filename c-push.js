@@ -283,6 +283,46 @@ function deleteCPush(request, response) {
     })
 }
 
+/*=====================CPush TestinG==========================*/
+
+function changeCPushCheckMarkTest(request, response) {
+  // body...
+  var identifier_find = request.query.identifier;
+  var checkMark       = request.query.checkMark;
+
+  console.log(identifier_find);
+  console.log(checkMark);
+
+  CPush.findById({ _id : identifier_find},
+    function(error, c_push) {
+      // body...
+      if (error) {
+        response.end(error)
+      }
+      if (c_push) {
+        // if (request.body.familyKey) {
+        //     push.familyKey       = request.body.familyKey;
+        //   }
+        // if (request.body.c_macAddr) {
+        //     push.c_macAddr       = request.body.c_macAddr;
+        //   }
+        if (checkMark) {
+          c_push.checkMark = checkMark
+        }
+
+        return c_push.save(function(error) {
+          if (error) {
+            response.send(error);
+          }else {
+            response.json({"result" : "success"})              // return response.send(phone);
+          }
+        });
+      }else {
+        response.json({"result" : "no such CPush"})
+      }
+    })
+}
+
 module.exports = {
   allCPush    : allCPush,
   familyCPush : familyCPush,
@@ -292,6 +332,8 @@ module.exports = {
   changeCPushCheckMark  : changeCPushCheckMark,
   deleteCPush : deleteCPush,
 
-  CPush : CPush
+  CPush : CPush,
+
+  changeCPushCheckMarkTest  : changeCPushCheckMarkTest
 
 }

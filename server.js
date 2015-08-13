@@ -258,14 +258,6 @@ var troubleHandler = require('./troubleHandler.js');
     push.sendPush(req, res)
   })
 
-  app.post('/test',function (request, response) {
-    // body...
-    var name = request.body.test
-    console.log("Alice Test name is : "+name);
-    response.send("Alice Test name is : "+name);
-
-  })
-
   /*===========================TROUBLE RESPONSE API==================================*/
 
   app.post('/trouble', function (request, response) {
@@ -275,7 +267,22 @@ var troubleHandler = require('./troubleHandler.js');
     troubleHandler.troubleHandler(req, res)
   })
 
+  /*===========================TestinG API==================================*/
 
+  app.post('/test',function (request, response) {
+    // body...
+    var name = request.body.test
+    console.log("Alice Test name is : "+name);
+    response.send("Alice Test name is : "+name);
+
+  })
+
+  app.get('/push',function (request, response) {
+    // body...
+    var req = request
+    var res = response
+    push.pushTest(req, res)
+  })
 
   app.listen(8080,argv.fe_ip,function(request, response) {
     // body...

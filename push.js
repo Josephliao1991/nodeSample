@@ -148,10 +148,28 @@ function sendPushLowPowerAlert(familyKey, message, request, response) {
   })
 }
 
+/*===========================Push TestinG API==================================*/
+function pushTest(request, response) {
+  // body...
+  var deviceToken = request.query.deviceToken
+  var operation = request.query.operation
+  if (operation == "ios") {
+    //iOS
+    console.log("TestinG => iOSPush with token : "+deviceToken);
+    nodeiOSPush.sendiOSPush(deviceToken,56, "alert", "PushTest", "JosephSend")
+  }else if(operation == "android"){
+    //Android
+    console.log("TestinG => androidPush with token : "+token);
+    nodeAndroidPush.sendAndroidPush(deviceToken,56, "alert", "PushTest", "JosephSend")
+  }
+
+}
+
 module.exports = {
 
   sendPush  : sendPush,
   sendPushTrouble   : sendPushTrouble,
   sendPushConnectStateChange    : sendPushConnectStateChange,
-  sendPushLowPowerAlert   : sendPushLowPowerAlert
+  sendPushLowPowerAlert   : sendPushLowPowerAlert,
+  pushTest  : pushTest
 }

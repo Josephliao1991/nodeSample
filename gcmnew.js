@@ -1,10 +1,13 @@
 var request = require('request');
- 
+
 var GCM = function(api_key) {
   this._api_key = api_key;
 }
- 
+
 GCM.prototype.send = function(msg, callback) {
+
+  console.log("Authorization: key = "+this._api_key);
+
   request.post({
     uri: 'https://android.googleapis.com/gcm/send',
     json: msg,
@@ -15,5 +18,5 @@ GCM.prototype.send = function(msg, callback) {
     callback(err, body);
   })
 }
- 
+
 module.exports = GCM;

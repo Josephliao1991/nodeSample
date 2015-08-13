@@ -49,11 +49,11 @@ function connectStateResponse(request, response) {
 
     console.log("familyKey : "+familyKey);
     console.log("macAddr: "+macAddr);
-    if (phone) {
-        console.log("phone : "+phone.deviceToken);
-    }else {
-      console.log("null");
-    }
+    // if (phone) {
+    //     console.log("phone : "+phone.deviceToken);
+    // }else {
+    //   console.log("null");
+    // }
     if (phone) {
     //   var deviceToken;
     //   if (phone.operation == "ios") {

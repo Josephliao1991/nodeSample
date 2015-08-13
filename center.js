@@ -156,7 +156,7 @@ function createCenter(request, response) {
 
     if (center) {
 
-      response,json({"result" : "fail,center is exist"})
+      response.json({"result" : "fail,center is exist"})
 
     }else {
       if (familyKey_create && macAddr_create ) {

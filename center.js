@@ -148,25 +148,40 @@ function createCenter(request, response) {
   console.log("create center by familyKey: "+ familyKey_create);
   console.log("create center by macAddr: "+ macAddr_create);
 
+  checkCenterExist(macAddr_create, function (error,center) {
+    // body...
+    if (error) {
+      response.json({"result" : "fail"})
+    }
 
-  if (familyKey_create && macAddr_create ) {
-    Center.create({
-        familyKey     : familyKey_create,
-        macAddr       : macAddr_create,
+    if (center) {
 
-        connectState  : connectState},
-    function(error, center){
-      // body...
-      if (error) {
-          response.send(error)
+      response,json({"result" : "fail,center is exist"})
+
+    }else {
+      if (familyKey_create && macAddr_create ) {
+        Center.create({
+            familyKey     : familyKey_create,
+            macAddr       : macAddr_create,
+
+            connectState  : connectState},
+        function(error, center){
+          // body...
+          if (error) {
+              response.send(error)
+          }else {
+              // response.json(phone)
+              response.json({"result" : "success"})
+          }
+        })
       }else {
-          // response.json(phone)
-          response.json({"result" : "success"})
+        response.json({"result" : "fail"})
       }
-    })
-  }else {
-    response.json({"result" : "fail"})
-  }
+    }
+
+  })
+
+
 
 
 }

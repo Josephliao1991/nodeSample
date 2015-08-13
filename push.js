@@ -163,6 +163,8 @@ function pushTest(request, response) {
     nodeAndroidPush.sendAndroidPush(deviceToken,56, "alert", "PushTest", "JosephSend")
   }
 
+  response.json({"result" : "success"})
+
 }
 
 module.exports = {

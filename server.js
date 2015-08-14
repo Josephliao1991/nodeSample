@@ -11,7 +11,7 @@ var cpush = require('./c-push.js');
 var push = require('./push.js');
 var troubleHandler = require('./troubleHandler.js');
   //Connect to Mongodb
-  // mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
+  mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
   //set express to app
   var app = express();
@@ -298,8 +298,8 @@ var troubleHandler = require('./troubleHandler.js');
     cpush.changeCPushDataTest(req, res)
   })
 
+  // app.listen(8080,argv.fe_ip,function(request, response) {
   app.listen(8080,argv.fe_ip,function(request, response) {
-  // app.listen(80,argv.fe_ip,function(request, response) {
     // body...
     // console.log('App listening at http://%s:%s', server.address().address, server.address().port);
     console.log("Press Ctrl+C to quit.");

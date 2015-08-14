@@ -107,8 +107,8 @@ function familyCPush(request, response) {
 
           console.log("c_push data :"+data);
           if (data.length>0) {
-              // response.json(data)
-              response.send(data)
+              response.json(data)
+              // response.send(data)
           }else {
             response.send("Oh,shit,")
           }

@@ -17,7 +17,7 @@ function checkCenterExist(macAddr,callback) {
       return error
     }
     if (center) {
-      console.log(center);
+      console.log("checkCenterExist : "+center);
       return callback(null, center)
     }else {
       return callback(null, null)
@@ -35,7 +35,7 @@ function checkCenterInFamily(familyKey, macAddr, callback) {
       return error
     }
     if (center) {
-      console.log(center.familyKey);
+      console.log("checkCenterInFamily : "+center.familyKey);
       return callback(null, "true")
     }else {
       return callback(null, "false")
@@ -95,7 +95,7 @@ function familyCenter(request, response) {
 function getCenterFamilyKey(request, response) {
   // body...
   var macAddr_find = request.query.macAddr
-  console.log("getFamilyKey Query : " + macAddr_find);
+  console.log("getCenterFamilyKey Query By macAddr: " + macAddr_find);
   if (macAddr_find) {
       Center.findOne({macAddr : macAddr_find},
         function(error, center) {
@@ -106,7 +106,7 @@ function getCenterFamilyKey(request, response) {
           // console.log(center);
           if (center) {
             var familyKey = center.familyKey
-            console.log(center.familyKey);
+            console.log("getCenterFamilyKey : "+center.familyKey);
             response.send('[' + familyKey + ']')
           }else {
             response.end("Belong with no family")
@@ -191,8 +191,8 @@ function updateCenter(request, response) {
   var familyKey_find = request.body.familyKey
   var macAddr_find   = request.body.macAddr
 
-  console.log(familyKey_find);
-  console.log(macAddr_find);
+  console.log("updateCenter : "+familyKey_find);
+  console.log("updateCenter : "+macAddr_find);
 
   if (familyKey_find && macAddr_find ) {
 
@@ -241,8 +241,8 @@ function deleteCenter(request, response) {
   var familyKey_find = request.body.familyKey
   var macAddr_find   = request.body.macAddr
 
-  console.log(familyKey_find);
-  console.log(macAddr_find);
+  console.log("deleteCenter : "+familyKey_find);
+  console.log("deleteCenter : "+macAddr_find);
 
   Center.findOne({familyKey : familyKey_find,
                   macAddr   : macAddr_find },
@@ -272,7 +272,7 @@ function deleteCenter(request, response) {
 function deleteCenterById(request, response) {
   // body...
   var id_find   = request.body.identifier
-  console.log(id_find);
+  console.log("deleteCenterById : "+id_find);
 
   Center.findOne({_id  : id_find },
   function(error, center) {

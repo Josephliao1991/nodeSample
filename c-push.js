@@ -223,8 +223,8 @@ function changeCPushCheckMark(request, response) {
   var identifier_find = request.body.identifier;
   var checkMark       = request.body.checkMark;
 
-  console.log(identifier_find);
-  console.log(checkMark);
+  console.log("changeCPushCheckMark : "  +identifier_find);
+  console.log("changeCPushCheckMark : "  +checkMark);
 
   CPush.findById({ _id : identifier_find},
     function(error, c_push) {
@@ -299,8 +299,8 @@ function changeCPushCheckMarkTest(request, response) {
   var identifier_find = request.query.identifier;
   var checkMark       = request.query.checkMark;
 
-  console.log(identifier_find);
-  console.log(checkMark);
+  console.log("changeCPushCheckMarkTest: "+identifier_find);
+  console.log("changeCPushCheckMarkTest: "+checkMark);
 
   CPush.findById({ _id : identifier_find},
     function(error, c_push) {
@@ -338,8 +338,8 @@ function changeCPushDataTest(request, response) {
   var identifier_find = request.body.identifier;
   var checkMark       = request.body.checkMark;
 
-  console.log(identifier_find);
-  console.log(checkMark);
+  console.log("changeCPushDataTest: "+identifier_find);
+  console.log("changeCPushDataTest: "+checkMark);
 
   CPush.findById({ _id : identifier_find},
     function(error, c_push) {

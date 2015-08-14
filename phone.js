@@ -17,7 +17,7 @@ function checkFamilyExist(familyKey,callback) {
       return error
     }
 
-    console.log(phones);
+    console.log("checkFamilyExist : "+phones);
     if (phones.length > 0) {
       return callback(null,"true")
     }else {
@@ -36,7 +36,7 @@ function checkPhoneInFamily(familyKey, deviceToken, callback) {
       return error
     }
     if (phone) {
-      console.log(phone.familyKey);
+      console.log("checkPhoneInFamily : "+phone.familyKey);
       return callback(null, "true")
     }else {
       return callback(null, "false")
@@ -113,7 +113,7 @@ function allPhone(resquest, resopnse) {
 function familyPhone(request, response) {
   // body...
   var familyKey_find = request.query.familyKey
-  console.log('familyKey:'+ familyKey_find);
+  console.log('Get Family Member By familyKey:'+ familyKey_find);
 
   Phone.find({familyKey:familyKey_find},function(error, phones) {
       // body...
@@ -128,19 +128,19 @@ function familyPhone(request, response) {
 
 function getQRPhone(request, response) {
   // body...
-  var name = request.query.familyKey
+  var familyKey = request.query.familyKey
   // console.log(name);
 
-  if (name) {
-    checkFamilyExist(name,function (error,exist) {
+  if (familyKey) {
+    checkFamilyExist(familyKey,function (error,exist) {
       // body...
-      console.log(exist);
+      // console.log(exist);
       if (exist == "true") {
-        console.log("exist");
-        QRHandler.readqr(name+".png").pipe(response)
+        // console.log("exist");
+        QRHandler.readqr(familyKey+".png").pipe(response)
 
       }else {
-        console.log("dosen't exist");
+        console.log("getQR fail,family dosen't exist");
         response.json({result : "fail"})
       }
     })
@@ -275,8 +275,8 @@ function updatePhone(request, response) {
   var familyKey_find = request.body.familyKey
   var deviceToken_find   = request.body.deviceToken
 
-  console.log(familyKey_find);
-  console.log(deviceToken_find);
+  console.log("updatePhone By FamilyKey: "+familyKey_find);
+  console.log("updatePhone By deviceToken: "+deviceToken_find);
 
   if (familyKey_find && deviceToken_find ) {
 
@@ -352,8 +352,8 @@ function deletePhone(request, response) {
   var familyKey_find    = request.body.familyKey
   var deviceToken_find  = request.body.deviceToken
 
-  console.log(familyKey_find);
-  console.log(deviceToken_find);
+  console.log("Delete Phone By deletePhone: "+familyKey_find);
+  console.log(("Delete Phone By deviceToken: "+deviceToken_find);
 
   Phone.findOne({familyKey     : familyKey_find,
                  deviceToken   : deviceToken_find },
@@ -382,7 +382,7 @@ function deletePhone(request, response) {
 function deletePhoneById(request, response) {
   // body...
   var id_find  = request.body.identifier
-  console.log(id_find);
+  console.log("deletePhoneById : "id_find);
 
   Phone.findOne({_id   : id_find},
   function(error, phone) {

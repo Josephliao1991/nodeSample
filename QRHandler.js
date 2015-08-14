@@ -18,7 +18,7 @@ function createqr(familyKey) {
   // body...
   var ec_level = 'H';
   var text     = familyKey
-  console.log(familyKey);
+  console.log("Create QR-Code By : "+familyKey);
 
   var image = qr.image(text, { type: 'png', ec_level: ec_level, parse_url: false, margin: 1})
   image.pipe(writeFile(familyKey+'.png'));

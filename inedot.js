@@ -23,7 +23,7 @@ function checkiNeDotExist(macAddr,callback) {
       return error
     }
     if (inedot) {
-      console.log(inedot.familyKey);
+      console.log("checkiNeDotExist : "inedot.familyKey);
       return callback(null, inedot)
     }else {
       return callback(null, null)
@@ -41,7 +41,7 @@ function checkiNeDotInFamily(familyKey, macAddr, callback) {
       return error
     }
     if (inedot) {
-      console.log(inedot.familyKey);
+      console.log("checkiNeDotInFamily: "+inedot.familyKey);
       return callback(null, "true")
     }else {
       return callback(null, "false")
@@ -78,7 +78,7 @@ function familyiNeDot(request, response) {
         if (error) {
           response.send(error)
         }else {
-          console.log("iNeDots Query success");
+          // console.log("iNeDots Query success");
           response.json(inedots)
         }
       })
@@ -197,8 +197,8 @@ function updateiNeDot(request, response) {
   var familyKey_find = request.body.familyKey
   var macAddr_find   = request.body.macAddr
 
-  console.log(familyKey_find);
-  console.log(macAddr_find);
+  console.log("updateiNeDot : "+familyKey_find);
+  console.log("updateiNeDot : "+macAddr_find);
 
   if (familyKey_find && macAddr_find) {
     iNeDot.findOne({familyKey : familyKey_find,
@@ -263,8 +263,8 @@ function deleteiNeDot(request, response) {
   var familyKey_find = request.body.familyKey
   var macAddr_find   = request.body.macAddr
 
-  console.log(familyKey_find);
-  console.log(macAddr_find);
+  console.log("deleteiNeDot : "+familyKey_find);
+  console.log("deleteiNeDot : "+macAddr_find);
 
   iNeDot.findOne({familyKey : familyKey_find,
                   macAddr   : macAddr_find },
@@ -294,7 +294,7 @@ function deleteiNeDot(request, response) {
 function deleteiNeDotById(request, response) {
   // body...
   var id_find  = request.body.identifier
-  console.log(id_find);
+  console.log("deleteiNeDotById: "+id_find);
 
   iNeDot.findOne({_id   : id_find},
     function(error, inedot) {

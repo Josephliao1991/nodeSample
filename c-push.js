@@ -91,6 +91,7 @@ function familyCPush(request, response) {
           var data = []
 
           for (var i = 0; i < c_push.length; i++) {
+            console.log("C_Push Data Length : "+c_push.length);
             var _id       = c_push[i]._id
             var i_macAddr = c_push[i].i_macAddr
             var command   = ""+c_push[i].command
@@ -101,9 +102,17 @@ function familyCPush(request, response) {
                         "command"  : command,
                         "preset"   : presetValue}
             data.push(item)
+            console.log("C_Push Data["+i+"]: "+item);
           }
 
-          response.json(data)
+          console.log("c_push data :"+data);
+          if (data.length>0) {
+              // response.json(data)
+              response.send(data)
+          }else {
+            response.send("Oh,shit,")
+          }
+
 
         }else {
           response.json([{"result":"none"}])

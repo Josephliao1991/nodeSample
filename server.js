@@ -11,7 +11,7 @@ var cpush = require('./c-push.js');
 var push = require('./push.js');
 var troubleHandler = require('./troubleHandler.js');
   //Connect to Mongodb
-  mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
+  // mongoose.connect('mongodb://'+argv.be_ip+':80/my_database');
 
   //set express to app
   var app = express();

@@ -382,7 +382,7 @@ function deletePhone(request, response) {
 function deletePhoneById(request, response) {
   // body...
   var id_find  = request.body.identifier
-  console.log("deletePhoneById : "id_find);
+  console.log("deletePhoneById : "+id_find);
 
   Phone.findOne({_id   : id_find},
   function(error, phone) {

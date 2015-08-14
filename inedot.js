@@ -23,7 +23,7 @@ function checkiNeDotExist(macAddr,callback) {
       return error
     }
     if (inedot) {
-      console.log("checkiNeDotExist : "inedot.familyKey);
+      console.log("checkiNeDotExist : "+inedot.familyKey);
       return callback(null, inedot)
     }else {
       return callback(null, null)

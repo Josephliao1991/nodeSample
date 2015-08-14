@@ -352,8 +352,8 @@ function deletePhone(request, response) {
   var familyKey_find    = request.body.familyKey
   var deviceToken_find  = request.body.deviceToken
 
-  console.log("Delete Phone By deletePhone: "+familyKey_find);
-  console.log(("Delete Phone By deviceToken: "+deviceToken_find);
+  console.log("Delete Phone By deletePhone: "+familyKey_find)
+  console.log(("Delete Phone By deviceToken: "+deviceToken_find)
 
   Phone.findOne({familyKey     : familyKey_find,
                  deviceToken   : deviceToken_find },

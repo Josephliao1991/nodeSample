@@ -180,7 +180,7 @@ function phoneExist(request, response) {
                    "token"        : phone.token}
 
         response.json({"result" : true,
-                       "date"  : data})
+                       "data"  : data})
       }else {
         response.json({"result" : false})
       }

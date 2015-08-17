@@ -252,7 +252,7 @@ function updateiNeDot(request, response) {
         }
       })
   }else {
-    response.json({result : "fail"})
+    response.json({result : "fail,lost some params"})
   }
 
 

@@ -302,34 +302,38 @@ function changeCPushCheckMarkTest(request, response) {
   console.log("changeCPushCheckMarkTest: "+identifier_find);
   console.log("changeCPushCheckMarkTest: "+checkMark);
 
-  CPush.findById({ _id : identifier_find},
-    function(error, c_push) {
-      // body...
-      if (error) {
-        response.end(error)
-      }
-      if (c_push) {
-        // if (request.body.familyKey) {
-        //     push.familyKey       = request.body.familyKey;
-        //   }
-        // if (request.body.c_macAddr) {
-        //     push.c_macAddr       = request.body.c_macAddr;
-        //   }
-        if (checkMark) {
-          c_push.checkMark = checkMark
+  if (identifier_find) {
+    CPush.findById({ _id : identifier_find},
+      function(error, c_push) {
+        // body...
+        if (error) {
+          response.end(error)
         }
-
-        return c_push.save(function(error) {
-          if (error) {
-            response.send(error);
-          }else {
-            response.json({"result" : "success"})              // return response.send(phone);
+        if (c_push) {
+          // if (request.body.familyKey) {
+          //     push.familyKey       = request.body.familyKey;
+          //   }
+          // if (request.body.c_macAddr) {
+          //     push.c_macAddr       = request.body.c_macAddr;
+          //   }
+          if (checkMark) {
+            c_push.checkMark = checkMark
           }
-        });
-      }else {
-        response.json({"result" : "no such CPush"})
-      }
-    })
+
+          return c_push.save(function(error) {
+            if (error) {
+              response.send(error);
+            }else {
+              response.json({"result" : "success"})              // return response.send(phone);
+            }
+          });
+        }else {
+          response.json({"result" : "no such CPush"})
+        }
+      })
+  }
+
+
 }
 
 

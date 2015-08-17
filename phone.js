@@ -52,7 +52,7 @@ function checkPhoneExist(deviceToken,callback) {
       return error
     }
     if (phone) {
-      console.log(phone.familyKey);
+      console.log("checkPhoneExist : "+phone.familyKey);
       return callback(null, phone)
     }else {
       return callback(null, null)

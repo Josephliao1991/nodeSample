@@ -298,6 +298,20 @@ var troubleHandler = require('./troubleHandler.js');
     cpush.changeCPushDataTest(req, res)
   })
 
+  app.post('/upload/data',function(request, response){
+    // body...
+    var req = request
+    var res = response
+    console.log("Upload Data testing");
+  })
+
+  app.post('/upload/check',function(request, response){
+    // body...
+    var req = request
+    var res = response
+    console.log("Cehck FileName testing");
+  })
+
   // app.listen(8080,argv.fe_ip,function(request, response) {
   app.listen(8080,argv.fe_ip,function(request, response) {
     // body...

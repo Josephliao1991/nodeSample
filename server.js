@@ -302,7 +302,8 @@ var troubleHandler = require('./troubleHandler.js');
     // body...
     var req = request
     var res = response
-    response.send("Upload Data testing");
+
+    response.json({"result":"Upload Data testing"})
     console.log("Upload Data testing");
   })
 
@@ -310,7 +311,7 @@ var troubleHandler = require('./troubleHandler.js');
     // body...
     var req = request
     var res = response
-    response.send("Cehck FileName testing")
+    response.json({"result":"Cehck FileName testing"})
     console.log("Cehck FileName testing");
   })
 

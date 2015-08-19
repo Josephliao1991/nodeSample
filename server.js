@@ -334,15 +334,16 @@ var csvHandler = require('./csvHandler.js');
 
     csvHandler.saveToCSV(fileName,acce,gyro, function (error,success) {
       // body...
-      if (error) {
-        response.end(error)
-      }
-
-      if (success) {
-        response.json({result : true})
-      }else {
-        response.json({result : false})
-      }
+      // if (error) {
+      //   response.end(error)
+      // }
+      //
+      // if (success) {
+      //   response.json({result : true})
+      // }else {
+      //   response.json({result : false})
+      // }
+      console.log(success);
 
     })
 

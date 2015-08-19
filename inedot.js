@@ -128,6 +128,8 @@ function inedotExist(request, response) {
 function createiNeDot(request, response) {
   // body...
 
+
+
   var familyKey_create = request.body.familyKey
   var macAddr_create = request.body.macAddr
   var owner_create = request.body.owner
@@ -144,6 +146,7 @@ function createiNeDot(request, response) {
       presetValue = [{message : request.body.preset}]
   }
 
+  console.log("createiNeDot request By deviceToken : " +owner_create +"in family : "+familyKey_create);
   //checkiNeDotExist
   checkiNeDotExist(macAddr_create,function (error, inedot) {
     // body...

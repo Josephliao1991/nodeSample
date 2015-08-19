@@ -336,11 +336,12 @@ var csvHandler = require('./csv/csvHandler.js');
 
   })
 
-  app.get('/download/data/:fileName',function(request, response){
+  app.get('/download/data/',function(request, response){
     // body...
     var req = request
     var res = response
-    var fileName = request.parmas.fileName
+    var fileName = request.query.fileName
+    console.log("F ",FileName);
     csvHandler.readCSVFile(FileName).pipe(response);
   })
 

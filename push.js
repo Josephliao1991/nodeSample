@@ -68,7 +68,7 @@ function sendPushTrouble(phone, message, request, response) {
     nodeiOSPush.sendiOSTroublePush(deviceToken, message)
   }else {
     deviceToken = phone.token
-    console.log("androidPush with token : "+token);
+    console.log("androidPush with token : "+deviceToken);
     nodeAndroidPush.sendAndroidTroublePush(deviceToken, message)
   }
 

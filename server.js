@@ -10,7 +10,7 @@ var center = require('./center.js');
 var cpush = require('./c-push.js');
 var push = require('./push.js');
 var troubleHandler = require('./troubleHandler.js');
-var csvHandler = require('./csvHandler.js');
+var csvHandler = require('./csv/csvHandler.js');
   //Connect to Mongodb
   mongoose.connect('mongodb://'+argv.be_ip+':80/familyDatabase');
 
@@ -335,6 +335,16 @@ var csvHandler = require('./csvHandler.js');
     csvHandler.saveToCSV(fileName,acce,gyro)
 
   })
+
+  app.get('/download/data/:fileName',function(request, response){
+    // body...
+    var req = request
+    var res = response
+    var fileName = request.parmas.fileName
+    csvHandler.resdCSVFile(FileName).pipe(response);
+  }
+
+
 
   app.post('/upload/check',function(request, response){
     // body...

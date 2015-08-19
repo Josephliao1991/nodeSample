@@ -6,6 +6,12 @@ function writeFile(name) {
     return fs.createWriteStream(fileDirect + name);
 }
 
+function resdCSVFile(fileName) {
+  // body...
+  return fs.createReadStream(fileDirect + fileName);
+
+}
+
 function saveToCSV(fileName, acce, gyro) {
   // body...
   var acce_json = []
@@ -69,10 +75,6 @@ function saveToCSV(fileName, acce, gyro) {
     })
 
   })
-
-
-
-
 }
 
 
@@ -88,6 +90,6 @@ function saveToCSV(fileName, acce, gyro) {
 
 module.exports = {
 
-  saveToCSV   : saveToCSV
-
+  saveToCSV   : saveToCSV,
+  resdCSVFile : resdCSVFile
 }

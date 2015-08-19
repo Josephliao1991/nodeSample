@@ -312,7 +312,7 @@ var troubleHandler = require('./troubleHandler.js');
     var gyro     = req.body.gyro
 
     console.log("FileName : "+fileName);
-    console.log("Type : "+Type);
+    console.log("Type : "+type);
     console.log("Acce : "+acce);
     console.log("Gyro : "+ gyro);
 

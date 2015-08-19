@@ -266,7 +266,7 @@ function deleteCPush(request, response) {
   // console.log(familyKey_find);
   // console.log(c_macAddr_find);
   // console.log(i_macAddr_find);
-  console.log(id_find);
+  console.log("deleteCPush : "+id_find);
 
   CPush.findOne({_id  : id_find},
     function(error, c_push) {

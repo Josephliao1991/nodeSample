@@ -305,6 +305,17 @@ var troubleHandler = require('./troubleHandler.js');
 
     response.json({"result":"Upload Data testing"})
     console.log("Upload Data testing");
+
+    var fileName = req.body.fileName
+    var type     = req.body.type
+    var acce     = req.body.acce
+    var gyro     = req.body.gyro
+
+    console.log("FileName : "+FileName);
+    console.log("Type : "+Type);
+    console.log("Acce : "+acce);
+    console.log("Gyro : "+ gyro);
+
   })
 
   app.post('/upload/check',function(request, response){

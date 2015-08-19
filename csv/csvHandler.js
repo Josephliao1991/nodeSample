@@ -45,11 +45,13 @@ function saveToCSV(fileName, acce, gyro) {
     console.log("acce"+csv);
     // csv.pipe(writeFile(fileName+'_acce'+'.csv'));
     // csv.writeFile
-    fs.writeFile(fileName+'accs'+'.csv',csv,function (error) {
+    fs.writeFile(fileName+'_accs'+'.csv',csv,function (error) {
       // body...
       if (error) {
         console.log(error);
       }
+      console.log("save success");
+
     })
 
   })

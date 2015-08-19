@@ -311,15 +311,18 @@ var troubleHandler = require('./troubleHandler.js');
     var acce     = [req.body.acce]
     var gyro     = [req.body.gyro]
 
-    for (var i = 0; i < acce.length; i++) {
-      acce.push(req.body.acce[i]);
-      console.log("AccE : "+req.body.acce[i]);
-    }
 
-    for (var i = 0; i < gyro.length; i++) {
-      gyro.push(req.body.gyro[i]);
-      console.log("Gyro : "+req.body.gyro[i]);
-    }
+    console.log(acce.length);
+    console.log(gyro.length);
+    // for (var i = 0; i < acce.length; i++) {
+    //   acce.push(req.body.acce[i]);
+    //   console.log("AccE : "+req.body.acce[i]);
+    // }
+
+    // for (var i = 0; i < gyro.length; i++) {
+    //   gyro.push(req.body.gyro[i]);
+    //   console.log("Gyro : "+req.body.gyro[i]);
+    // }
 
     console.log("FileName : "+fileName);
     console.log("Type : "+type);

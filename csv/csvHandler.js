@@ -50,6 +50,9 @@ function saveToCSV(fileName, acce, gyro) {
       if (error) {
         console.log(error);
       }
+    })
+
+  })
 
   json2csv({data:gyro_json, feilds: fields},function (error, csv) {
     // body...
@@ -70,13 +73,7 @@ function saveToCSV(fileName, acce, gyro) {
 
   })
 
-
-
 }
-
-
-
-
 
 
 

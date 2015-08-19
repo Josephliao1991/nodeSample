@@ -312,7 +312,7 @@ var troubleHandler = require('./troubleHandler.js');
     var gyro     = req.body.gyro
 
 
-    console.log(acce[0].date);
+    console.log(acce.date);
     console.log(gyro[0].xvalue);
     // for (var i = 0; i < acce.length; i++) {
     //   acce.push(req.body.acce[i]);

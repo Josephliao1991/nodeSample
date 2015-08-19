@@ -10,6 +10,7 @@ var center = require('./center.js');
 var cpush = require('./c-push.js');
 var push = require('./push.js');
 var troubleHandler = require('./troubleHandler.js');
+var csvHandler = require('./csvHandler.js');
   //Connect to Mongodb
   mongoose.connect('mongodb://'+argv.be_ip+':80/familyDatabase');
 
@@ -311,8 +312,8 @@ var troubleHandler = require('./troubleHandler.js');
     var acce     = req.body.acce[0]
     var gyro     = req.body.gyro[0]
 
-    var jsonAcce = JSON.stringify(acce);
-    console.log(jsonAcce);
+    // var jsonAcce = JSON.stringify(acce);
+    // console.log(jsonAcce);
     // console.log(acce["date"][5]);
     // console.log(gyro["xvalue"][5]);
     // console.log(gyro["date"].length);
@@ -330,6 +331,20 @@ var troubleHandler = require('./troubleHandler.js');
     console.log("Type : "+type);
     console.log("Acce : "+acce);
     console.log("Gyro : "+gyro);
+
+    csvHandler.saveToCSV(fileName,acce,gyro, function (error,success) {
+      // body...
+      if (error) {
+        response.end(error)
+      }
+
+      if (success) {
+        response.json({result : true})
+      }else {
+        response.json({result : false})
+      }
+
+    })
 
   })
 

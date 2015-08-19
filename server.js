@@ -311,10 +311,11 @@ var troubleHandler = require('./troubleHandler.js');
     var acce     = req.body.acce[0]
     var gyro     = req.body.gyro[0]
 
-
-    console.log(acce["date"][5]);
-    console.log(gyro["xvalue"][5]);
-    console.log(gyro["date"].length);
+    var jsonAcce = JSON.parse(req.body.acce);
+    console.log(jsonAcce);
+    // console.log(acce["date"][5]);
+    // console.log(gyro["xvalue"][5]);
+    // console.log(gyro["date"].length);
     // for (var i = 0; i < acce.length; i++) {
     //   acce.push(req.body.acce[i]);
     //   console.log("AccE : "+req.body.acce[i]);

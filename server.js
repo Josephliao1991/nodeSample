@@ -308,8 +308,8 @@ var troubleHandler = require('./troubleHandler.js');
 
     var fileName = req.body.fileName
     var type     = req.body.type
-    var acce     = req.body.acce
-    var gyro     = req.body.gyro
+    var acce[]     = req.body.acce
+    var gyro[]     = req.body.gyro
 
     console.log("FileName : "+fileName);
     console.log("Type : "+type);

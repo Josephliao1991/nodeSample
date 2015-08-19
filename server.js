@@ -311,7 +311,7 @@ var troubleHandler = require('./troubleHandler.js');
     var acce     = req.body.acce[0]
     var gyro     = req.body.gyro[0]
 
-    var jsonAcce = JSON.parse(req.body.acce);
+    var jsonAcce = JSON.parse(acce);
     console.log(jsonAcce);
     // console.log(acce["date"][5]);
     // console.log(gyro["xvalue"][5]);

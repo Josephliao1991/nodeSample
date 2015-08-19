@@ -308,13 +308,13 @@ var troubleHandler = require('./troubleHandler.js');
 
     var fileName = req.body.fileName
     var type     = req.body.type
-    var acce     = req.body.acce
-    var gyro     = req.body.gyro
+    var acce     = req.body.acce[0]
+    var gyro     = req.body.gyro[0]
 
 
-    console.log(acce[0]["date"][5]);
-    console.log(gyro[0]["xvalue"][5]);
-    console.log(gyro[0]["date"].length);
+    console.log(acce["date"][5]);
+    console.log(gyro["xvalue"][5]);
+    console.log(gyro["date"].length);
     // for (var i = 0; i < acce.length; i++) {
     //   acce.push(req.body.acce[i]);
     //   console.log("AccE : "+req.body.acce[i]);

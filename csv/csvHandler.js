@@ -8,7 +8,7 @@ function writeFile(name) {
 
 function readCSVFile(fileName) {
   // body...
-  return fs.createReadStream(fileName+'.cvs');
+  return fs.createReadStream(fileName+'.csv');
 
 }
 

@@ -66,6 +66,7 @@ function connectStateResponse(request, response) {
       failure  ==> 1
       Can Not Find ==> 2
       */
+      console.log(phone);
 
       var message = {"messageFrom": "iNedotServer",
                      "report"     : "connectStateRsepons",

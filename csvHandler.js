@@ -1,10 +1,17 @@
 var json2csv = require('json2csv');
+var fs = require('fs');
 
+var fileDirect = './csv/'
+function writeFile(name) {
+    return fs.createWriteStream(fileDirect + name);
+}
 
-function saveToCSV(fileName, acce, gyro, callback) {
+function saveToCSV(fileName, acce, gyro) {
   // body...
   var acce_json = []
   var gyro_json = []
+
+  var fields = ['date','xvalue','yvalue','zvalue']
 
   for (var i = 0; i < acce.date.length; i++) {
     acce_json.push({date    : acce["date"][i],
@@ -24,8 +31,26 @@ function saveToCSV(fileName, acce, gyro, callback) {
 
   console.log("Gyro_Json [0] : "+gyro_json[0]["xvalue"]);
 
+  json2csv({data:acce_json, feilds: fields},function (error, csv) {
+    // body...
+    if (error) {
+      console.log(error);
+    }
+    console.log("acce"+csv);
 
-  callback(null,true)
+  })
+
+  json2csv({data:gyro_json, feilds: fields},function (error, csv) {
+    // body...
+    if (error) {
+      console.log(error);
+    }
+    console.log("gyro"+csv);
+
+  })
+
+
+
 
 }
 

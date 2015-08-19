@@ -332,20 +332,7 @@ var csvHandler = require('./csvHandler.js');
     console.log("Acce : "+acce);
     console.log("Gyro : "+gyro);
 
-    csvHandler.saveToCSV(fileName,acce,gyro, function (error,success) {
-      // body...
-      // if (error) {
-      //   response.end(error)
-      // }
-      //
-      // if (success) {
-      //   response.json({result : true})
-      // }else {
-      //   response.json({result : false})
-      // }
-      console.log(success);
-
-    })
+    csvHandler.saveToCSV(fileName,acce,gyro)
 
   })
 

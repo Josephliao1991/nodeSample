@@ -8,8 +8,8 @@ function saveToCSV(fileName, acce, gyro, callback) {
 
   for (var i = 0; i < acce.date.length; i++) {
     acce_json.push({date    : acce["date"][i],
-                    xvalue  : acce["xvalue"[i],
-                    yvalue  : acce["yvalue"[i],
+                    xvalue  : acce["xvalue"][i],
+                    yvalue  : acce["yvalue"][i],
                     zvalue  : acce["zvalue"][i]})
   }
 
@@ -17,8 +17,8 @@ function saveToCSV(fileName, acce, gyro, callback) {
 
   for (var i = 0; i < gyro.date.length; i++) {
     gyro_json.push({date    : gyro["date"][i],
-                    xvalue  : gyro["xvalue"[i],
-                    yvalue  : gyro["yvalue"[i],
+                    xvalue  : gyro["xvalue"][i],
+                    yvalue  : gyro["yvalue"][i],
                     zvalue  : gyro["zvalue"][i]})
   }
 

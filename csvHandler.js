@@ -13,7 +13,7 @@ function saveToCSV(fileName, acce, gyro, callback) {
                     zvalue  : acce["zvalue"][i]})
   }
 
-  console.log("Acce_Json [0] : "+acce_json[0]);
+  console.log("Acce_Json [0] : "+acce_json[0]["xvalue"]);
 
   for (var i = 0; i < gyro.date.length; i++) {
     gyro_json.push({date    : gyro["date"][i],
@@ -22,11 +22,11 @@ function saveToCSV(fileName, acce, gyro, callback) {
                     zvalue  : gyro["zvalue"][i]})
   }
 
-  console.log("Gyro_Json [0] : "+gyro_json[0]);
+  console.log("Gyro_Json [0] : "+gyro_json[0]["xvalue"]);
 
 
   callback(null,true)
-  
+
 }
 
 

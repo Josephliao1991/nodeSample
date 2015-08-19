@@ -313,11 +313,12 @@ var troubleHandler = require('./troubleHandler.js');
 
     for (var i = 0; i < req.body.acce.length; i++) {
       acce.push(req.body.acce[i]);
-
+      console.log("AccE : "+req.body.acce[i]);
     }
 
     for (var i = 0; i < req.body.gyro.length; i++) {
       gyro.push(req.body.gyro[i]);
+      console.log("Gyro : "+req.body.gyro[i]);
     }
 
     console.log("FileName : "+fileName);

@@ -1,7 +1,7 @@
 var json2csv = require('json2csv');
 var fs = require('fs');
 
-var fileDirect = '/csv/'
+var fileDirect = './csv/'
 function writeFile(name) {
     return fs.createWriteStream(fileDirect + name);
 }
@@ -38,7 +38,8 @@ function saveToCSV(fileName, acce, gyro) {
     }
     console.log("acce"+csv);
     // csv.pipe(writeFile(fileName+'_acce'+'.csv'));
-    fs.writeFile(fileDirect+fileName+'_acce'+'.csv',csv,function (error) {
+    // csv.writeFile
+    fs.writeFile(fileName+'_acce'+'.csv',csv,function (error) {
       // body...
       if (error) {
         console.log(error);
@@ -56,7 +57,16 @@ function saveToCSV(fileName, acce, gyro) {
       console.log(error);
     }
     console.log("gyro"+csv);
-    // csv.pipe(writeFile(fileName+'_gyro'+'.csv'));
+
+    fs.writeFile(fileName+'_gyro'+'.csv',csv,function (error) {
+      // body...
+      if (error) {
+        console.log(error);
+      }
+
+      console.log("save success");
+
+    })
 
   })
 

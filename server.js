@@ -341,7 +341,7 @@ var csvHandler = require('./csv/csvHandler.js');
     var req = request
     var res = response
     var fileName = request.parmas.fileName
-    csvHandler.resdCSVFile(FileName).pipe(response);
+    csvHandler.readCSVFile(FileName).pipe(response);
   })
 
 

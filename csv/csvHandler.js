@@ -6,9 +6,9 @@ function writeFile(name) {
     return fs.createWriteStream(fileDirect + name);
 }
 
-function resdCSVFile(fileName) {
+function readCSVFile(fileName) {
   // body...
-  return fs.createReadStream(fileDirect + fileName);
+  return fs.createReadStream(fileName);
 
 }
 
@@ -85,5 +85,5 @@ function saveToCSV(fileName, acce, gyro) {
 module.exports = {
 
   saveToCSV   : saveToCSV,
-  resdCSVFile : resdCSVFile
+  readCSVFile : readCSVFile
 }

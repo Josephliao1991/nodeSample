@@ -24,10 +24,13 @@ function saveToCSV(fileName, acce, gyro, callback) {
 
   console.log("Gyro_Json [0] : "+gyro_json[0]);
 
+
+  callback(null,true)
+  
 }
 
 
-callback(null,true)
+
 
 
 

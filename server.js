@@ -308,12 +308,12 @@ var troubleHandler = require('./troubleHandler.js');
 
     var fileName = req.body.fileName
     var type     = req.body.type
-    var acce
-    var gyro
+    var acce     = []
+    var gyro     = []
 
     for (var i = 0; i < req.body.acce.length; i++) {
       acce.push(req.body.acce[i]);
-      
+
     }
 
     for (var i = 0; i < req.body.gyro.length; i++) {

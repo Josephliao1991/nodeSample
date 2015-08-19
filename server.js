@@ -16,7 +16,7 @@ var troubleHandler = require('./troubleHandler.js');
   //set express to app
   var app = express();
   app.use(bodyparser.json())
-  app.use(bodyparser.urlencoded({extended: false}))
+  app.use(bodyparser.urlencoded({extended: true}))
   app.use(bodyparser.json({ type: 'application/vnd.api+json' }))
   app.use(methodOverride())
 

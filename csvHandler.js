@@ -20,7 +20,7 @@ function saveToCSV(fileName, acce, gyro) {
                     zvalue  : acce["zvalue"][i]})
   }
 
-  console.log("Acce_Json [0] : "+acce_json[0]["xvalue"]);
+  // console.log("Acce_Json [0] : "+acce_json[0]["xvalue"]);
 
   for (var i = 0; i < gyro.date.length; i++) {
     gyro_json.push({date    : gyro["date"][i],
@@ -29,7 +29,7 @@ function saveToCSV(fileName, acce, gyro) {
                     zvalue  : gyro["zvalue"][i]})
   }
 
-  console.log("Gyro_Json [0] : "+gyro_json[0]["xvalue"]);
+  // console.log("Gyro_Json [0] : "+gyro_json[0]["xvalue"]);
 
   json2csv({data:acce_json, feilds: fields},function (error, csv) {
     // body...
@@ -37,6 +37,7 @@ function saveToCSV(fileName, acce, gyro) {
       console.log(error);
     }
     console.log("acce"+csv);
+    csv.pipe(writeFile(fileName+'_acce'+'.csv'));
 
   })
 
@@ -46,6 +47,7 @@ function saveToCSV(fileName, acce, gyro) {
       console.log(error);
     }
     console.log("gyro"+csv);
+    csv.pipe(writeFile(fileName+'_gyro'+'.csv'));
 
   })
 

@@ -341,7 +341,7 @@ var csvHandler = require('./csv/csvHandler.js');
     var req = request
     var res = response
     var fileName = request.query.fileName
-    console.log("F ",FileName);
+    console.log("F ",fileName);
     csvHandler.readCSVFile(FileName).pipe(response);
   })
 

@@ -308,21 +308,21 @@ var troubleHandler = require('./troubleHandler.js');
 
     var fileName = req.body.fileName
     var type     = req.body.type
-    var acce
-    var gyro
+    var acce     = req.body.acce
+    var gyro     = req.body.gyro
 
-    for (var i = 0; i < req.body.acce.length; i++) {
-      acce.push(req.body.acce[i]);
-    }
-
-    for (var i = 0; i < req.body.gyro.length; i++) {
-      gyro.push(req.body.gyro[i]);
-    }
+    // for (var i = 0; i < req.body.acce.length; i++) {
+    //   acce.push(req.body.acce[i]);
+    // }
+    //
+    // for (var i = 0; i < req.body.gyro.length; i++) {
+    //   gyro.push(req.body.gyro[i]);
+    // }
 
     console.log("FileName : "+fileName);
     console.log("Type : "+type);
     console.log("Acce : "+acce);
-    console.log("Gyro : "+ gyro);
+    console.log("Gyro : "+gyro);
 
   })
 

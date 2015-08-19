@@ -45,7 +45,7 @@ function saveToCSV(fileName, acce, gyro) {
     console.log("acce"+csv);
     // csv.pipe(writeFile(fileName+'_acce'+'.csv'));
     // csv.writeFile
-    fs.writeFile(fileName+'_acce'+'.csv',csv,function (error) {
+    fs.writeFile("/csv/"+fileName+'_acce'+'.csv',csv,function (error) {
       // body...
       if (error) {
         console.log(error);
@@ -64,7 +64,7 @@ function saveToCSV(fileName, acce, gyro) {
     }
     console.log("gyro"+csv);
 
-    fs.writeFile(fileName+'_gyro'+'.csv',csv,function (error) {
+    fs.writeFile("/csv/"+fileName+'_gyro'+'.csv',csv,function (error) {
       // body...
       if (error) {
         console.log(error);

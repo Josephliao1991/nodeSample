@@ -8,7 +8,7 @@ function writeFile(name) {
 
 function readCSVFile(fileName) {
   // body...
-  return fs.createReadStream(fileName);
+  return fs.createReadStream( + fileName);
 
 }
 
@@ -45,7 +45,7 @@ function saveToCSV(fileName, acce, gyro) {
     console.log("acce"+csv);
     // csv.pipe(writeFile(fileName+'_acce'+'.csv'));
     // csv.writeFile
-    fs.writeFile("/csv/"+fileName+'accs'+'.csv',csv,function (error) {
+    fs.writeFile(fileName+'accs'+'.csv',csv,function (error) {
       // body...
       if (error) {
         console.log(error);
@@ -58,7 +58,7 @@ function saveToCSV(fileName, acce, gyro) {
     }
     console.log("gyro"+csv);
 
-    fs.writeFile("/csv/"+fileName+'_gyro'+'.csv',csv,function (error) {
+    fs.writeFile(fileName+'_gyro'+'.csv',csv,function (error) {
       // body...
       if (error) {
         console.log(error);
@@ -69,11 +69,10 @@ function saveToCSV(fileName, acce, gyro) {
     })
 
   })
+
+
+
 }
-
-
-
-
 
 
 

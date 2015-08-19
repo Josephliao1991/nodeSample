@@ -313,7 +313,7 @@ var troubleHandler = require('./troubleHandler.js');
 
 
     console.log(acce[0]);
-    console.log(gyro.length);
+    console.log(gyro[1]);
     // for (var i = 0; i < acce.length; i++) {
     //   acce.push(req.body.acce[i]);
     //   console.log("AccE : "+req.body.acce[i]);

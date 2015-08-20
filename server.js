@@ -350,7 +350,8 @@ var csvHandler = require('./csv/csvHandler.js');
 
     var filename = path.basename(file);
     var mimetype = mime.lookup(file);
-
+    console.log("fileName: "+filename);
+    console.log("mimeType: "+mimeType);
     response.setHeader('Content-disposition', 'attachment; filename=' + filename);
     response.setHeader('Content-type', mimetype);
 

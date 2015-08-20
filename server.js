@@ -353,7 +353,8 @@ var csvHandler = require('./csv/csvHandler.js');
     console.log("mimeType: "+mimetype_accs);
     response.setHeader('Content-disposition', 'attachment; filename=' + filename_accs);
     response.setHeader('Content-type', mimetype_accs);
-    csvHandler.readCSVFile(fileName+'_accs').pipe(response);
+    var accsStream = csvHandler.readCSVFile(fileName+'_accs');
+    accsStream.pipe(response);
 
     var file_gyro = __dirname + '/csv/'+fileName+'_gyro.csv';
     var filename_gyor = path.basename(file_gyro);
@@ -362,7 +363,8 @@ var csvHandler = require('./csv/csvHandler.js');
     console.log("mimeType: "+mimetype_gyro);
     response.setHeader('Content-disposition', 'attachment; filename=' + filename_gyor);
     response.setHeader('Content-type', mimetype_gyro);
-    csvHandler.readCSVFile(fileName+'_gyro').pipe(response);
+    var gyroStream = csvHandler.readCSVFile(fileName+'_gyro')
+    gyroStream.pipe(response);
 
   })
 

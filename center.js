@@ -129,7 +129,7 @@ function centerExist(request, response) {
                     "connectState"  : center.connectState}
 
         response.json({"result" : true,
-                       "date" : data})
+                       "data" : data})
       }else {
         response.json({"result" : false})
       }

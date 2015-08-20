@@ -4,6 +4,8 @@ var bodyparser = require('body-parser');
 var methodOverride = require('method-override');
 var mongoose = require('mongoose');
 var argv = require('optimist').argv;
+var path = require('path');
+var mime = require('mime');
 var phone = require('./phone.js');
 var inedot = require('./inedot.js');
 var center = require('./center.js');
@@ -342,7 +344,20 @@ var csvHandler = require('./csv/csvHandler.js');
     var res = response
     var fileName = request.query.fileName
     console.log("F ",fileName);
+
+
+    var file = __dirname + '/csv/'+filename+'.csv';
+
+    var filename = path.basename(file);
+    var mimetype = mime.lookup(file);
+
+    response.setHeader('Content-disposition', 'attachment; filename=' + filename);
+    response.setHeader('Content-type', mimetype);
+
     csvHandler.readCSVFile(fileName).pipe(response);
+    // var filestream = fs.createReadStream(file);
+    // filestream.pipe(res);
+
   })
 
 

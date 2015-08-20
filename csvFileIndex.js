@@ -8,14 +8,14 @@ var csvFile = mongoose.model('csvfile', {
 
 function checkFileExist(fileName,callback) {
   // body...
-  csvFile.findOne({fileName : fileName}, function (error,csvFile) {
+  csvFile.find({fileName : fileName}, function (error,csvFile) {
     // body...
     if (error) {
       callback(error)
     }
 
-    if (csvFile) {
-      callback(null,1)
+    if (csvFile.length>0) {
+      callback(null,csvFile)
     }else {
       callback(null,null)
     }
@@ -40,13 +40,13 @@ function createFile(fileName) {
     if (!exist) {
       csvFile.create({fileName : fileName_accs},function (error,csvFile) {
         // body...
-        console.log("CSV FILE IS SAVE!!  ",+csvFile);
+        console.log("CSV FILE IS SAVE!!  ",+csvFile.fileName);
 
       })
 
       csvFile.create({fileName : fileName_gyro},function (error,csvFile) {
         // body...
-        console.log("CSV FILE IS SAVE!!  ",+csvFile);
+        console.log("CSV FILE IS SAVE!!  ",+csvFile.fileName);
 
       })
 

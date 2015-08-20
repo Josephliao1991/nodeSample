@@ -362,7 +362,7 @@ var csvFileIndex = require('./csvFileIndex.js');
         // var filestream = fs.createReadStream(file);
         // filestream.pipe(res);
       }else {
-        response.end("File Is Not Esixt,Please Check Your File Name! \n <FileName>_accs or <FileName>_gyro")
+        response.end("File Is Not Esixt,Please Check Your File Name! \n <FileName>_accs or <FileName>_gyro \n FileName : "+exist)
       }
 
     })

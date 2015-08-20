@@ -347,7 +347,7 @@ var csvFileIndex = require('./csvFileIndex.js');
     var fileName = request.query.fileName
     console.log("F ",fileName);
 
-    csvFileIndex.checkFileExist(FileName, function (error,exist) {
+    csvFileIndex.checkFileExist(fileName, function (error,exist) {
       // body...
       if (!exist) {
         var file = __dirname + '/csv/'+fileName+'.csv';

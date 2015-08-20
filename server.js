@@ -13,7 +13,7 @@ var cpush = require('./c-push.js');
 var push = require('./push.js');
 var troubleHandler = require('./troubleHandler.js');
 var csvHandler = require('./csv/csvHandler.js');
-var csvFileIndex = require('csvFileIndex');
+var csvFileIndex = require('./csvFileIndex.js');
   //Connect to Mongodb
   mongoose.connect('mongodb://'+argv.be_ip+':80/familyDatabase');
 

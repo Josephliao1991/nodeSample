@@ -346,7 +346,7 @@ var csvHandler = require('./csv/csvHandler.js');
     console.log("F ",fileName);
 
 
-    var file = __dirname + '/csv/'+filename+'.csv';
+    var file = __dirname + '/csv/'+fileName+'.csv';
 
     var filename = path.basename(file);
     var mimetype = mime.lookup(file);

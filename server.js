@@ -346,18 +346,23 @@ var csvHandler = require('./csv/csvHandler.js');
     console.log("F ",fileName);
 
 
-    var file = __dirname + '/csv/'+fileName+'.csv';
+    var file_accs = __dirname + '/csv/'+fileName+'_accs.csv';
+    var filename_accs = path.basename(file_accs);
+    var mimetype_accs = mime.lookup(file_accs);
+    console.log("fileName: "+filename_accs);
+    console.log("mimeType: "+mimetype_accs);
+    response.setHeader('Content-disposition', 'attachment; filename=' + filename_accs);
+    response.setHeader('Content-type', mimetype_accs);
+    csvHandler.readCSVFile(fileName+'_accs').pipe(response);
 
-    var filename = path.basename(file);
-    var mimetype = mime.lookup(file);
-    console.log("fileName: "+filename);
-    console.log("mimeType: "+mimetype);
-    response.setHeader('Content-disposition', 'attachment; filename=' + filename);
-    response.setHeader('Content-type', mimetype);
-
-    csvHandler.readCSVFile(fileName).pipe(response);
-    // var filestream = fs.createReadStream(file);
-    // filestream.pipe(res);
+    var file_gyro = __dirname + '/csv/'+fileName+'_gyro.csv';
+    var filename_gyor = path.basename(file_gyro);
+    var mimetype_gyro = mime.lookup(file_gyro);
+    console.log("fileName: "+filename_gyor);
+    console.log("mimeType: "+mimetype_gyro);
+    response.setHeader('Content-disposition', 'attachment; filename=' + filename_gyor);
+    response.setHeader('Content-type', mimetype_gyro);
+    csvHandler.readCSVFile(fileName+'_gyro').pipe(response);
 
   })
 

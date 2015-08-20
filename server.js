@@ -351,7 +351,7 @@ var csvFileIndex = require('./csvFileIndex.js');
       // body...
       if (exist) {
         var file = __dirname + '/csv/'+fileName+'.csv';
-
+        console.log("File dirname : "+file);
         var filename = path.basename(file);
         var mimetype = mime.lookup(file);
         console.log("fileName: "+filename);

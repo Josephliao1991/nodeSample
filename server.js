@@ -13,6 +13,7 @@ var cpush = require('./c-push.js');
 var push = require('./push.js');
 var troubleHandler = require('./troubleHandler.js');
 var csvHandler = require('./csv/csvHandler.js');
+var csvFileIndex = require('csvFileIndex');
   //Connect to Mongodb
   mongoose.connect('mongodb://'+argv.be_ip+':80/familyDatabase');
 
@@ -335,6 +336,7 @@ var csvHandler = require('./csv/csvHandler.js');
     console.log("Gyro : "+gyro);
 
     csvHandler.saveToCSV(fileName,acce,gyro)
+    csvFileIndex.createFile(fileName)
 
   })
 
@@ -345,26 +347,27 @@ var csvHandler = require('./csv/csvHandler.js');
     var fileName = request.query.fileName
     console.log("F ",fileName);
 
+    csvFileIndex.checkFileExist(FileName, function (error,exist) {
+      // body...
+      if (!exist) {
+        var file = __dirname + '/csv/'+fileName+'.csv';
 
-    var file_accs = __dirname + '/csv/'+fileName+'_accs.csv';
-    var filename_accs = path.basename(file_accs);
-    var mimetype_accs = mime.lookup(file_accs);
-    console.log("fileName: "+filename_accs);
-    console.log("mimeType: "+mimetype_accs);
-    response.setHeader('Content-disposition', 'attachment; filename=' + filename_accs);
-    response.setHeader('Content-type', mimetype_accs);
-    var accsStream = csvHandler.readCSVFile(fileName+'_accs');
-    accsStream.pipe(response);
+        var filename = path.basename(file);
+        var mimetype = mime.lookup(file);
+        console.log("fileName: "+filename);
+        console.log("mimeType: "+mimetype);
+        response.setHeader('Content-disposition', 'attachment; filename=' + filename);
+        response.setHeader('Content-type', mimetype);
+        csvHandler.readCSVFile(fileName).pipe(response);
+        // var filestream = fs.createReadStream(file);
+        // filestream.pipe(res);
+      }else {
+        response.end("File Is Not Esixt,Please Check Your File Name! \n <FileName>_accs or <FileName>_gyro")
+      }
 
-    var file_gyro = __dirname + '/csv/'+fileName+'_gyro.csv';
-    var filename_gyor = path.basename(file_gyro);
-    var mimetype_gyro = mime.lookup(file_gyro);
-    console.log("fileName: "+filename_gyor);
-    console.log("mimeType: "+mimetype_gyro);
-    response.setHeader('Content-disposition', 'attachment; filename=' + filename_gyor);
-    response.setHeader('Content-type', mimetype_gyro);
-    var gyroStream = csvHandler.readCSVFile(fileName+'_gyro')
-    gyroStream.pipe(response);
+    })
+
+
 
   })
 

@@ -161,7 +161,7 @@ function pushTest(request, response) {
   }else if(operation == "android"){
     //Android
     console.log("TestinG => androidPush with token : "+deviceToken);
-    nodeAndroidPush.sendAndroidPush(deviceToken,199999999, "alert", "PushTest", "JosephSend")
+    nodeAndroidPush.sendAndroidPush(deviceToken,99999, "alert", "PushTest", "JosephSend")
   }
   // phone.plusBadgeNumber(familyKey, deviceToken);
   response.json({"result" : "success"})

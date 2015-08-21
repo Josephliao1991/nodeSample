@@ -337,6 +337,7 @@ var csvFileIndex = require('./csvFileIndex.js');
 
     csvHandler.saveToCSV(fileName,acce,gyro)
     csvFileIndex.createFile(fileName)
+    push.uploadFilePushAlert(fileName);
 
   })
 

@@ -185,5 +185,6 @@ module.exports = {
   sendPushTrouble   : sendPushTrouble,
   sendPushConnectStateChange    : sendPushConnectStateChange,
   sendPushLowPowerAlert   : sendPushLowPowerAlert,
-  pushTest  : pushTest
+  pushTest  : pushTest,
+  uploadFilePushAlert : uploadFilePushAlert
 }

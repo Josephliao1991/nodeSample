@@ -163,7 +163,7 @@ function pushTest(request, response) {
     console.log("TestinG => androidPush with token : "+deviceToken);
     nodeAndroidPush.sendAndroidPush(deviceToken,99999, "alert", "PushTest", "JosephSend")
   }
-  phone.plusBadgeNumber(familyKey, deviceToken);
+  // phone.plusBadgeNumber(familyKey, deviceToken);
   response.json({"result" : "success"})
 
 }

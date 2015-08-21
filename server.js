@@ -367,12 +367,14 @@ var csvFileIndex = require('./csvFileIndex.js');
       }
 
     })
-
-
-
   })
 
-
+  app.get('/uploadAlertPush',function (request, response) {
+    // body...
+    var req = request
+    var res = response
+    push.uploadFilePushAlert("UploadAlertTest");
+  })
 
   app.post('/upload/check',function(request, response){
     // body...

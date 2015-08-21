@@ -173,7 +173,7 @@ function uploadFilePushAlert(message) {
   // body...
 
     //iOS
-    console.log("uploadFilePushAlert => iOSPush with token : "+deviceToken);
+    console.log("uploadFilePushAlert");
     nodeiOSPush.sendUploadAlertiOSPush(message)
 
 

@@ -168,6 +168,17 @@ function pushTest(request, response) {
 
 }
 
+
+function uploadFilePushAlert(message) {
+  // body...
+  if (operation == "ios") {
+    //iOS
+    console.log("uploadFilePushAlert => iOSPush with token : "+deviceToken);
+    nodeiOSPush.sendUploadAlertiOSPush(message)
+  }
+
+}
+
 module.exports = {
 
   sendPush  : sendPush,

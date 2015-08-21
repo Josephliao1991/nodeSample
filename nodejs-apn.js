@@ -94,7 +94,7 @@ function sendUploadAlertiOSPush(message) {
   var myDevice = new apns.Device("e5e717c79e4bb9a1e97b820aa5a693d3e657c1a12bf2d67102911078b3735540");
   var note = new apns.Notification();
   note.expiry = Math.floor(Date.now() / 1000) + 3600; // Expires 1 hour from now.
-  note.badge = 9999999999;
+  note.badge = 0;
   note.sound = "ping.aiff";
   note.alert = "UploadAlert "+message
   note.payload = {"messageFrom": "iNedotServer"};

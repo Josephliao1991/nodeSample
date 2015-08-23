@@ -23,6 +23,23 @@ var csvFileIndex = require('./csvFileIndex.js');
   app.use(bodyparser.urlencoded({extended: true}))
   app.use(bodyparser.json({ type: 'application/vnd.api+json' }))
   app.use(methodOverride())
+  app.use(function(req, res, next) {
+    var data = [];
+    req.addListener("data", function(chunk) {
+        data.push(new Buffer(chunk));
+    });
+    req.addListener("end", function() {
+        buffer = Buffer.concat(data);
+        // zlib.inflate(buffer, function(err, result) {
+        //     if (!err) {
+        //         req.body = result.toString();
+        //         next();
+        //     } else {
+        //         next(err);
+        //     }
+        // });
+    });
+});
 
   //Testing api
   app.get('/',function(request,response){
@@ -311,42 +328,42 @@ var csvFileIndex = require('./csvFileIndex.js');
     response.json({"result":"Upload Data testing"})
     console.log("Upload Data testing");
 
-    var data = [];
+    // var data = [];
     // req.addListener("data", function(chunk) {
-    request.on("data", function(chunk) {
-
-        console.log("Chunk : "+chunk);
-        data.push(new Buffer(chunk));
-
-    });
+    // request.on("data", function(chunk) {
+    //
+    //     console.log("Chunk : "+chunk);
+    //     data.push(new Buffer(chunk));
+    //
+    // });
     // request.addListener("end", function() {
     //     buffer = Buffer.concat(data);
     //
     //     console.log("Buffer Data: "+buffer);
-    //     // zlib.inflate(buffer, function(err, result) {
-    //     //     if (!err) {
-    //     //         req.body = result.toString();
-    //     //         next();
-    //     //     } else {
-    //     //         next(err);
-    //     //     }
-    //     // });
-    //
-    //     // var fileName = buffer.body.fileName
-    //     // var type     = buffer.body.type
-    //     // var acce     = buffer.body.acce[0]
-    //     // var gyro     = buffer.body.gyro[0]
-    //     //
-    //     // console.log("FileName : "+fileName);
-    //     // console.log("Type : "+type);
-    //     // console.log("Acce : "+acce);
-    //     // console.log("Gyro : "+gyro);
-    //     //
-    //     // csvHandler.saveToCSV(fileName,acce,gyro)
-    //     // csvFileIndex.createFile(fileName)
-    //     // push.uploadFilePushAlert(fileName);
-    //
-    // });
+        // zlib.inflate(buffer, function(err, result) {
+        //     if (!err) {
+        //         req.body = result.toString();
+        //         next();
+        //     } else {
+        //         next(err);
+        //     }
+        // });
+
+        var fileName = buffer.body.fileName
+        var type     = buffer.body.type
+        var acce     = buffer.body.acce[0]
+        var gyro     = buffer.body.gyro[0]
+        //
+        // console.log("FileName : "+fileName);
+        // console.log("Type : "+type);
+        // console.log("Acce : "+acce);
+        // console.log("Gyro : "+gyro);
+        //
+        // csvHandler.saveToCSV(fileName,acce,gyro)
+        // csvFileIndex.createFile(fileName)
+        // push.uploadFilePushAlert(fileName);
+
+    });
 
   })
 

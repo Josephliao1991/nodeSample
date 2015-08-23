@@ -23,12 +23,12 @@ var csvFileIndex = require('./csvFileIndex.js');
   app.use(bodyparser.urlencoded(
     { extended: true,
       parameterLimit: 10000,
-      limit: 1024 * 1024 * 10}))
+      limit: 1024 * 1024 * 20}))
 
   app.use(bodyparser.json(
     { type: 'application/vnd.api+json',
       parameterLimit: 10000,
-      limit: 1024 * 1024 * 10 }))
+      limit: 1024 * 1024 * 20 }))
   app.use(methodOverride())
 //   app.use(function(req, res, next) {
 //     var data = [];

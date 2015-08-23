@@ -304,16 +304,49 @@ var csvFileIndex = require('./csvFileIndex.js');
 
   app.post('/upload/data',function(request, response){
     // body...
-    var req = request
-    var res = response
+
+    // var req = request
+    // var res = response
 
     response.json({"result":"Upload Data testing"})
     console.log("Upload Data testing");
 
-    var fileName = req.body.fileName
-    var type     = req.body.type
-    var acce     = req.body.acce[0]
-    var gyro     = req.body.gyro[0]
+    var data = [];
+    // req.addListener("data", function(chunk) {
+    req.on("data", function(chunk) {
+        data.push(new Buffer(chunk));
+    });
+    req.addListener("end", function() {
+        buffer = Buffer.concat(data);
+        // zlib.inflate(buffer, function(err, result) {
+        //     if (!err) {
+        //         req.body = result.toString();
+        //         next();
+        //     } else {
+        //         next(err);
+        //     }
+        // });
+
+        var fileName = req.body.fileName
+        var type     = req.body.type
+        var acce     = req.body.acce[0]
+        var gyro     = req.body.gyro[0]
+
+        console.log("FileName : "+fileName);
+        console.log("Type : "+type);
+        console.log("Acce : "+acce);
+        console.log("Gyro : "+gyro);
+
+        csvHandler.saveToCSV(fileName,acce,gyro)
+        csvFileIndex.createFile(fileName)
+        push.uploadFilePushAlert(fileName);
+
+    });
+
+    // var fileName = req.body.fileName
+    // var type     = req.body.type
+    // var acce     = req.body.acce[0]
+    // var gyro     = req.body.gyro[0]
 
     // var jsonAcce = JSON.stringify(acce);
     // console.log(jsonAcce);
@@ -330,14 +363,14 @@ var csvFileIndex = require('./csvFileIndex.js');
     //   console.log("Gyro : "+req.body.gyro[i]);
     // }
 
-    console.log("FileName : "+fileName);
-    console.log("Type : "+type);
-    console.log("Acce : "+acce);
-    console.log("Gyro : "+gyro);
-
-    csvHandler.saveToCSV(fileName,acce,gyro)
-    csvFileIndex.createFile(fileName)
-    push.uploadFilePushAlert(fileName);
+    // console.log("FileName : "+fileName);
+    // console.log("Type : "+type);
+    // console.log("Acce : "+acce);
+    // console.log("Gyro : "+gyro);
+    //
+    // csvHandler.saveToCSV(fileName,acce,gyro)
+    // csvFileIndex.createFile(fileName)
+    // push.uploadFilePushAlert(fileName);
 
   })
 

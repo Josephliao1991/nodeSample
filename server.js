@@ -25,11 +25,13 @@ var csvFileIndex = require('./csvFileIndex.js');
   app.use(methodOverride())
   app.use(function(req, res, next) {
     var data = [];
-    req.addListener("data", function(chunk) {
+    req.on("data", function(chunk) {
+      console.log("chunk : "+chunk);
         data.push(new Buffer(chunk));
     });
     req.addListener("end", function() {
         buffer = Buffer.concat(data);
+        console.log("buffer : "+buffer);
         // zlib.inflate(buffer, function(err, result) {
         //     if (!err) {
         //         req.body = result.toString();

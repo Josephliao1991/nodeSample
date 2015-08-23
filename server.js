@@ -363,7 +363,7 @@ var csvFileIndex = require('./csvFileIndex.js');
         // csvFileIndex.createFile(fileName)
         // push.uploadFilePushAlert(fileName);
 
-    });
+    // });
 
   })
 

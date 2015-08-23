@@ -356,10 +356,10 @@ var csvFileIndex = require('./csvFileIndex.js');
         var acce     = request.body.acce[0]
         var gyro     = request.body.gyro[0]
         //
-        // console.log("FileName : "+fileName);
-        // console.log("Type : "+type);
-        // console.log("Acce : "+acce);
-        // console.log("Gyro : "+gyro);
+        console.log("FileName : "+fileName);
+        console.log("Type : "+type);
+        console.log("Acce : "+acce);
+        console.log("Gyro : "+gyro);
         //
         // csvHandler.saveToCSV(fileName,acce,gyro)
         // csvFileIndex.createFile(fileName)

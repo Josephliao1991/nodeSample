@@ -313,7 +313,7 @@ var csvFileIndex = require('./csvFileIndex.js');
 
     var data = [];
     // req.addListener("data", function(chunk) {
-    request.on("data", function(chunk) {
+    request.addListener("data", function(chunk) {
         data.push(new Buffer(chunk));
         console.log("Chunk : "+chunk);
     });

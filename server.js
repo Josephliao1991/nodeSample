@@ -313,11 +313,13 @@ var csvFileIndex = require('./csvFileIndex.js');
 
     var data = [];
     // req.addListener("data", function(chunk) {
-    req.on("data", function(chunk) {
+    request.on("data", function(chunk) {
         data.push(new Buffer(chunk));
     });
-    req.addListener("end", function() {
+    request.addListener("end", function() {
         buffer = Buffer.concat(data);
+
+        console.log("Buffer Data: "+buffer);
         // zlib.inflate(buffer, function(err, result) {
         //     if (!err) {
         //         req.body = result.toString();
@@ -327,50 +329,21 @@ var csvFileIndex = require('./csvFileIndex.js');
         //     }
         // });
 
-        var fileName = req.body.fileName
-        var type     = req.body.type
-        var acce     = req.body.acce[0]
-        var gyro     = req.body.gyro[0]
-
-        console.log("FileName : "+fileName);
-        console.log("Type : "+type);
-        console.log("Acce : "+acce);
-        console.log("Gyro : "+gyro);
-
-        csvHandler.saveToCSV(fileName,acce,gyro)
-        csvFileIndex.createFile(fileName)
-        push.uploadFilePushAlert(fileName);
+        // var fileName = buffer.body.fileName
+        // var type     = buffer.body.type
+        // var acce     = buffer.body.acce[0]
+        // var gyro     = buffer.body.gyro[0]
+        //
+        // console.log("FileName : "+fileName);
+        // console.log("Type : "+type);
+        // console.log("Acce : "+acce);
+        // console.log("Gyro : "+gyro);
+        //
+        // csvHandler.saveToCSV(fileName,acce,gyro)
+        // csvFileIndex.createFile(fileName)
+        // push.uploadFilePushAlert(fileName);
 
     });
-
-    // var fileName = req.body.fileName
-    // var type     = req.body.type
-    // var acce     = req.body.acce[0]
-    // var gyro     = req.body.gyro[0]
-
-    // var jsonAcce = JSON.stringify(acce);
-    // console.log(jsonAcce);
-    // console.log(acce["date"][5]);
-    // console.log(gyro["xvalue"][5]);
-    // console.log(gyro["date"].length);
-    // for (var i = 0; i < acce.length; i++) {
-    //   acce.push(req.body.acce[i]);
-    //   console.log("AccE : "+req.body.acce[i]);
-    // }
-
-    // for (var i = 0; i < gyro.length; i++) {
-    //   gyro.push(req.body.gyro[i]);
-    //   console.log("Gyro : "+req.body.gyro[i]);
-    // }
-
-    // console.log("FileName : "+fileName);
-    // console.log("Type : "+type);
-    // console.log("Acce : "+acce);
-    // console.log("Gyro : "+gyro);
-    //
-    // csvHandler.saveToCSV(fileName,acce,gyro)
-    // csvFileIndex.createFile(fileName)
-    // push.uploadFilePushAlert(fileName);
 
   })
 

@@ -20,8 +20,15 @@ var csvFileIndex = require('./csvFileIndex.js');
   //set express to app
   var app = express();
   app.use(bodyparser.json())
-  app.use(bodyparser.urlencoded({extended: true}))
-  app.use(bodyparser.json({ type: 'application/vnd.api+json' }))
+  app.use(bodyparser.urlencoded(
+    { extended: true,
+      parameterLimit: 10000,
+      limit: 1024 * 1024 * 10}))
+
+  app.use(bodyparser.json(
+    { type: 'application/vnd.api+json',
+      parameterLimit: 10000,
+      limit: 1024 * 1024 * 10 }))
   app.use(methodOverride())
 //   app.use(function(req, res, next) {
 //     var data = [];

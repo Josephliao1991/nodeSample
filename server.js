@@ -313,38 +313,38 @@ var csvFileIndex = require('./csvFileIndex.js');
 
     var data = [];
     // req.addListener("data", function(chunk) {
-    request.addListener("data", function(chunk) {
+    request.body.acce.on("data", function(chunk) {
         data.push(new Buffer(chunk));
         console.log("Chunk : "+chunk);
     });
-    request.addListener("end", function() {
-        buffer = Buffer.concat(data);
-
-        console.log("Buffer Data: "+buffer);
-        // zlib.inflate(buffer, function(err, result) {
-        //     if (!err) {
-        //         req.body = result.toString();
-        //         next();
-        //     } else {
-        //         next(err);
-        //     }
-        // });
-
-        // var fileName = buffer.body.fileName
-        // var type     = buffer.body.type
-        // var acce     = buffer.body.acce[0]
-        // var gyro     = buffer.body.gyro[0]
-        //
-        // console.log("FileName : "+fileName);
-        // console.log("Type : "+type);
-        // console.log("Acce : "+acce);
-        // console.log("Gyro : "+gyro);
-        //
-        // csvHandler.saveToCSV(fileName,acce,gyro)
-        // csvFileIndex.createFile(fileName)
-        // push.uploadFilePushAlert(fileName);
-
-    });
+    // request.addListener("end", function() {
+    //     buffer = Buffer.concat(data);
+    //
+    //     console.log("Buffer Data: "+buffer);
+    //     // zlib.inflate(buffer, function(err, result) {
+    //     //     if (!err) {
+    //     //         req.body = result.toString();
+    //     //         next();
+    //     //     } else {
+    //     //         next(err);
+    //     //     }
+    //     // });
+    //
+    //     // var fileName = buffer.body.fileName
+    //     // var type     = buffer.body.type
+    //     // var acce     = buffer.body.acce[0]
+    //     // var gyro     = buffer.body.gyro[0]
+    //     //
+    //     // console.log("FileName : "+fileName);
+    //     // console.log("Type : "+type);
+    //     // console.log("Acce : "+acce);
+    //     // console.log("Gyro : "+gyro);
+    //     //
+    //     // csvHandler.saveToCSV(fileName,acce,gyro)
+    //     // csvFileIndex.createFile(fileName)
+    //     // push.uploadFilePushAlert(fileName);
+    //
+    // });
 
   })
 

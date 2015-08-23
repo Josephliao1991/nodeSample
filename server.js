@@ -327,7 +327,7 @@ var csvFileIndex = require('./csvFileIndex.js');
     // var req = request
     // var res = response
 
-    response.json({"result":"Upload Data testing"})
+    // response.json({"result":"Upload Data testing"})
     console.log("Upload Data testing");
 
     // var data = [];
@@ -351,10 +351,10 @@ var csvFileIndex = require('./csvFileIndex.js');
         //     }
         // });
 
-        var fileName = buffer.body.fileName
-        var type     = buffer.body.type
-        var acce     = buffer.body.acce[0]
-        var gyro     = buffer.body.gyro[0]
+        var fileName = request.body.fileName
+        var type     = request.body.type
+        var acce     = request.body.acce[0]
+        var gyro     = request.body.gyro[0]
         //
         // console.log("FileName : "+fileName);
         // console.log("Type : "+type);

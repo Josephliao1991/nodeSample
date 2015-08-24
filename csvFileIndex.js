@@ -15,8 +15,8 @@ function checkFileExist(fileName,callback) {
       callback(error)
     }
 
-    if (name.length>0) {
-      callback(null,name)
+    if (fileindex.length>0) {
+      callback(null,fileindex)
     }else {
       callback(null,null)
     }

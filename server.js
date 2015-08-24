@@ -343,6 +343,7 @@ var csvFile = require('./csv/csvFile.js');
     var acce     = request.body.acce[0]
     var gyro     = request.body.gyro[0]
     //
+    console.log("acce datalength : "+acce.length);
     console.log("FileName : "+fileName);
     console.log("Type : "+type);
     console.log("Acce : "+acce);

@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 //Create Center Mongodb Module
-var csvFile = mongoose.model('csvFile', {
+var csvFile = mongoose.model('csvfile', {
     fileName     : String,
     type         : String,
     xvalue       : Number,

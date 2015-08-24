@@ -44,13 +44,25 @@ function createFile(fileName) {
     // if (!exist) {
       CsvFileIndex.create({fileName : fileName_accs},function (error,name) {
         // body...
-        console.log("CSV FILE index IS SAVE!!  ",+name);
+        if (error) {
+          console.log(error);
+        }
+        if (name) {
+          console.log("CSV FILE index IS SAVE!!  ",+name);
+        }
+
 
       })
 
       CsvFileIndex.create({fileName : fileName_gyro},function (error,name) {
         // body...
-        console.log("CSV FILE index IS SAVE!!  ",+name);
+
+        if (error) {
+          console.log(error);
+        }
+        if (name) {
+          console.log("CSV FILE index IS SAVE!!  ",+name);
+        }
 
       })
 

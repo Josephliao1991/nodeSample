@@ -355,32 +355,32 @@ var csvFile = require('./csv/csvFile.js');
     if (type == "continue") {
 
       //save to mongodb
-      csvFile.createcsvFileData(fileName, "acce", acce);
-      csvFile.createcsvFileData(fileName, "gyro", gyro);
+      // csvFile.createcsvFileData(fileName, "acce", acce);
+      // csvFile.createcsvFileData(fileName, "gyro", gyro);
     }else if (type == "done") {
 
       csvFileIndex.createFile(fileName)
       push.uploadFilePushAlert(fileName);
 
-      csvFile.createcsvFileData(fileName, "acce", acce, function (error) {
-        // body...
-        if (error) {
-          console.log(error);
-        }
-        csvHandler.saveAcceToCSV(fileName)
-        // csvFileIndex.createFile(fileName)
-        // push.uploadFilePushAlert(fileName);
-      });
-
-      csvFile.createcsvFileData(fileName, "gyro", gyro, function (error) {
-        // body...
-        if (error) {
-          console.log(error);
-        }
-        csvHandler.saveGyroToCSV(fileName)
-        // csvFileIndex.createFile(fileName)
-        // push.uploadFilePushAlert(fileName);
-      });
+      // csvFile.createcsvFileData(fileName, "acce", acce, function (error) {
+      //   // body...
+      //   if (error) {
+      //     console.log(error);
+      //   }
+      //   csvHandler.saveAcceToCSV(fileName)
+      //   // csvFileIndex.createFile(fileName)
+      //   // push.uploadFilePushAlert(fileName);
+      // });
+      //
+      // csvFile.createcsvFileData(fileName, "gyro", gyro, function (error) {
+      //   // body...
+      //   if (error) {
+      //     console.log(error);
+      //   }
+      //   csvHandler.saveGyroToCSV(fileName)
+      //   // csvFileIndex.createFile(fileName)
+      //   // push.uploadFilePushAlert(fileName);
+      // });
 
     }
 

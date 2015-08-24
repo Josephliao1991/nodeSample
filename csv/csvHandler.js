@@ -21,7 +21,7 @@ function saveAcceToCSV(fileName) {
     // body...
     var fields = ['date','xvalue','yvalue','zvalue']
     //
-    for (var i = 0; i < data.date.length; i++) {
+    for (var i = 0; i < data.length; i++) {
       acce_json.push({date    : data[i]["date"],
                       xvalue  : data[i]["xvalue"],
                       yvalue  : data[i]["yvalue"],
@@ -62,7 +62,7 @@ function saveGyroToCSV(fileName) {
 
     var fields = ['date','xvalue','yvalue','zvalue']
     // console.log("Save Gyro data in CSV");
-    for (var i = 0; i < gyro.date.length; i++) {
+    for (var i = 0; i < data.length; i++) {
       gyro_json.push({date    : data[i]["date"],
                       xvalue  : data[i]["xvalue"],
                       yvalue  : data[i]["yvalue"],

@@ -16,7 +16,7 @@ function readCSVFile(fileName) {
 function saveAcceToCSV(fileName) {
   // body...
   var acce_json = []
-  console.log("Save Acce data in CSV");
+  // console.log("Save Acce data in CSV");
   csvfile.getCsvFile(fileName, "acce", function (error,data) {
     // body...
     var fields = ['date','xvalue','yvalue','zvalue']
@@ -54,9 +54,7 @@ function saveAcceToCSV(fileName) {
 function saveGyroToCSV(fileName) {
   // body...
   var gyro_json = []
-  console.log("Save Gyro data in CSV");
-
-
+  // console.log("Save Gyro data in CSV");
 
   csvfile.getCsvFile(fileName, "gyro", function (error,data) {
 

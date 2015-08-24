@@ -1,21 +1,21 @@
 var mongoose = require('mongoose');
 
 //Create iNeDot Mongodb Module
-var csvFile = mongoose.model('csvfileindex', {
+var csvFileIndex = mongoose.model('csvfileindex', {
     fileName     : String,
 
 });
 
 function checkFileExist(fileName,callback) {
   // body...
-  csvFile.find({fileName : fileName}, function (error,csvFile) {
+  csvFileIndex.find({fileName : fileName}, function (error,csvFileIndex) {
     // body...
     if (error) {
       callback(error)
     }
 
-    if (csvFile.length>0) {
-      callback(null,csvFile)
+    if (csvFileIndex.length>0) {
+      callback(null,csvFileIndex)
     }else {
       callback(null,null)
     }
@@ -38,15 +38,15 @@ function createFile(fileName) {
     var fileName_gyro = fileName+'_gyro'
 
     if (!exist) {
-      csvFile.create({fileName : fileName_accs},function (error,csvFile) {
+      csvFileIndex.create({fileName : fileName_accs},function (error,csvFileIndex) {
         // body...
-        console.log("CSV FILE IS SAVE!!  ",+csvFile.fileName);
+        console.log("CSV FILE IS SAVE!!  ",+csvFileIndex.fileName);
 
       })
 
-      csvFile.create({fileName : fileName_gyro},function (error,csvFile) {
+      csvFileIndex.create({fileName : fileName_gyro},function (error,csvFileIndex) {
         // body...
-        console.log("CSV FILE IS SAVE!!  ",+csvFile.fileName);
+        console.log("CSV FILE IS SAVE!!  ",+csvFileIndex.fileName);
 
       })
 

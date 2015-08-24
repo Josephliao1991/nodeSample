@@ -334,7 +334,7 @@ var csvFileIndex = require('./csvFileIndex.js');
     // var req = request
     // var res = response
 
-    // response.json({"result":"Upload Data testing"})
+    response.json({"result":"Upload Data testing"})
     console.log("Upload Data testing");
 
     // var data = [];

@@ -2,8 +2,7 @@ var mongoose = require('mongoose');
 
 //Create iNeDot Mongodb Module
 var CsvFileIndex = mongoose.model('csvfileindex', {
-    fileName     : String,
-
+    fileName     : String
 });
 
 function checkFileExist(fileName,callback) {

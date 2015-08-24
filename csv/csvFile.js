@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 //Create Center Mongodb Module
 var csvFile = mongoose.model('csvFile', {
-    filaName     : String,
+    fileName     : String,
     type         : String,
     xvalue       : Number,
     yvalue       : Number,

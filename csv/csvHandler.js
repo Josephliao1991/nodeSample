@@ -19,16 +19,16 @@ function saveAcceToCSV(fileName) {
   console.log("Save Gyro data in CSV");
   csvfile.getCsvFile(fileName, "acce", function (error,data) {
     // body...
-    var fields = ['date','xvalue','yvalue','zvalue']
+    // var fields = ['date','xvalue','yvalue','zvalue']
+    //
+    // for (var i = 0; i < data.date.length; i++) {
+    //   acce_json.push({date    : data["date"][i],
+    //                   xvalue  : data["xvalue"][i],
+    //                   yvalue  : data["yvalue"][i],
+    //                   zvalue  : data["zvalue"][i]})
+    // }
 
-    for (var i = 0; i < data.date.length; i++) {
-      acce_json.push({date    : data["date"][i],
-                      xvalue  : data["xvalue"][i],
-                      yvalue  : data["yvalue"][i],
-                      zvalue  : data["zvalue"][i]})
-    }
-
-    json2csv({data:acce_json, feilds: fields},function (error, csv) {
+    json2csv({data:data, feilds: fields},function (error, csv) {
       // body...
       if (error) {
         console.log(error);
@@ -56,19 +56,19 @@ function saveGyroToCSV(fileName) {
   var gyro_json = []
 
   csvfile.getCsvFile(fileName, "gyro", function (error,data) {
-    console.log("Save Gyro data in CSV");
-    for (var i = 0; i < gyro.date.length; i++) {
-      gyro_json.push({date    : data["date"][i],
-                      xvalue  : data["xvalue"][i],
-                      yvalue  : data["yvalue"][i],
-                      zvalue  : data["zvalue"][i]})
-    }
+    // console.log("Save Gyro data in CSV");
+    // for (var i = 0; i < gyro.date.length; i++) {
+    //   gyro_json.push({date    : data["date"][i],
+    //                   xvalue  : data["xvalue"][i],
+    //                   yvalue  : data["yvalue"][i],
+    //                   zvalue  : data["zvalue"][i]})
+    // }
 
     // console.log("Gyro_Json [0] : "+gyro_json[0]["xvalue"]);
 
 
 
-    json2csv({data:gyro_json, feilds: fields},function (error, csv) {
+    json2csv({data:data, feilds: fields},function (error, csv) {
       // body...
       if (error) {
         console.log(error);

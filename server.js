@@ -362,8 +362,8 @@ var csvFile = require('./csv/csvFile.js');
           console.log(error);
         }
         csvHandler.saveAcceToCSV(fileName)
-        csvFileIndex.createFile(fileName)
-        push.uploadFilePushAlert(fileName);
+        // csvFileIndex.createFile(fileName)
+        // push.uploadFilePushAlert(fileName);
       });
 
       csvFile.createcsvFileData(fileName, "acce", gyro, function (error) {

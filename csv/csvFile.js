@@ -33,7 +33,7 @@ function getCsvFile(fileName, type, callback) {
 function createcsvFileData(fileName, type, data, callback) {
   // body...
 
-  console.log("Type : "+type +"length : "+ datalength);
+  console.log("Type : "+type +"length : "+ data.length);
 
   for (var i = 0; i < data.length; i++) {
 

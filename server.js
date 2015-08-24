@@ -334,7 +334,7 @@ var csvFileIndex = require('./csvFileIndex.js');
     // var req = request
     // var res = response
 
-    response.json({"result":"Upload Data testing"})
+
     console.log("Upload Data testing");
 
     // var data = [];
@@ -373,7 +373,7 @@ var csvFileIndex = require('./csvFileIndex.js');
         // push.uploadFilePushAlert(fileName);
 
     // });
-
+    response.json({"result":"Upload Data testing"})
   })
 
   app.get('/download/data/',function(request, response){

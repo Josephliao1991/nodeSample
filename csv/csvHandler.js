@@ -13,10 +13,9 @@ function readCSVFile(fileName) {
 
 }
 
-function saveToCSV(fileName) {
+function saveAcceToCSV(fileName) {
   // body...
   var acce_json = []
-  var gyro_json = []
 
   csvfile.getCsvFile(fileName, "acce", function (error,data) {
     // body...
@@ -50,8 +49,11 @@ function saveToCSV(fileName) {
 
   })
 
+}
 
-
+function saveGyroToCSV(fileName) {
+  // body...
+  var gyro_json = []
 
   csvfile.getCsvFile(fileName, "gyro", function (error,data) {
 
@@ -86,19 +88,12 @@ function saveToCSV(fileName) {
     })
   })
 
-
-
-
-  // console.log("Acce_Json [0] : "+acce_json[0]["xvalue"]);
-
-
 }
-
-
 
 
 module.exports = {
 
-  saveToCSV   : saveToCSV,
+  saveAcceToCSV   : saveAcceToCSV,
+  saveGyroToCSV   : saveGyroToCSV,
   readCSVFile : readCSVFile
 }

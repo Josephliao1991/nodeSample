@@ -352,20 +352,28 @@ var csvFile = require('./csv/csvFile.js');
     if (type == "continue") {
 
       //save to mongodb
-      csvFile.createcsvFileData(fileName, "acce", acce);
-      csvFile.createcsvFileData(fileName, "gyro", gyro);
+      csvFile.createcsvFileData(fileName, "acce", acce.data);
+      csvFile.createcsvFileData(fileName, "gyro", gyro.data);
     }else if (type == "done") {
 
-      csvFile.createcsvFileData(fileName, "acce", acce, function (error) {
+      csvFile.createcsvFileData(fileName, "acce", acce.data, function (error) {
         // body...
         if (error) {
           console.log(error);
         }
-
-        csvHandler.saveToCSV(fileName)
+        csvHandler.saveAcceToCSV(fileName)
         csvFileIndex.createFile(fileName)
         push.uploadFilePushAlert(fileName);
+      });
 
+      csvFile.createcsvFileData(fileName, "acce", gyro.data, function (error) {
+        // body...
+        if (error) {
+          console.log(error);
+        }
+        csvHandler.saveGyroToCSV(fileName)
+        csvFileIndex.createFile(fileName)
+        push.uploadFilePushAlert(fileName);
       });
 
     }

@@ -358,7 +358,7 @@ var csvFile = require('./csv/csvFile.js');
 
       csvFileIndex.createFile(fileName)
       push.uploadFilePushAlert(fileName);
-      
+
       csvFile.createcsvFileData(fileName, "acce", acce, function (error) {
         // body...
         if (error) {
@@ -369,7 +369,7 @@ var csvFile = require('./csv/csvFile.js');
         // push.uploadFilePushAlert(fileName);
       });
 
-      csvFile.createcsvFileData(fileName, "acce", gyro, function (error) {
+      csvFile.createcsvFileData(fileName, "gyro", gyro, function (error) {
         // body...
         if (error) {
           console.log(error);

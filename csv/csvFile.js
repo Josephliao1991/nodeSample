@@ -21,7 +21,7 @@ function getCsvFile(fileName, type, callback) {
                     console.log(error);
                   }
 
-                  callback('null',saveFile);
+                  callback('null',csvFile);
 
 
                 })

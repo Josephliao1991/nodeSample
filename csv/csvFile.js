@@ -35,7 +35,7 @@ function createcsvFileData(fileName, type, data, callback) {
 
   console.log("Type : "+type +"length : "+ data.length);
 
-  for (var i = 0; i < data.length; i++) {
+  for (var i = 0; i < data.date.length; i++) {
 
     var _date   = date[i].date
     var _xvalue = data[i].xvalue

@@ -21,7 +21,7 @@ function saveAcceToCSV(fileName) {
     // body...
     var fields = ['date','xvalue','yvalue','zvalue']
 
-    for (var i = 0; i < date.length; i++) {
+    for (var i = 0; i < data.date.length; i++) {
       acce_json.push({date    : data["date"][i],
                       xvalue  : data["xvalue"][i],
                       yvalue  : data["yvalue"][i],

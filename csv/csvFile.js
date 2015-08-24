@@ -33,11 +33,11 @@ function getCsvFile(fileName, type, callback) {
 function createcsvFileData(fileName, type, data, callback) {
   // body...
 
-  console.log("Type : "+type +"length : "+ data.length);
+  console.log("Type : "+type +"length : "+ data.date.length);
 
   for (var i = 0; i < data.date.length; i++) {
 
-    var _date   = date[i].date
+    var _date   = data[i].date
     var _xvalue = data[i].xvalue
     var _yvalue = data[i].yvalue
     var _zvalue = data[i].zvalue

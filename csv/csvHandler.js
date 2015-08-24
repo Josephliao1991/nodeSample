@@ -16,7 +16,7 @@ function readCSVFile(fileName) {
 function saveAcceToCSV(fileName) {
   // body...
   var acce_json = []
-
+  console.log("Save Gyro data in CSV");
   csvfile.getCsvFile(fileName, "acce", function (error,data) {
     // body...
     var fields = ['date','xvalue','yvalue','zvalue']
@@ -56,7 +56,7 @@ function saveGyroToCSV(fileName) {
   var gyro_json = []
 
   csvfile.getCsvFile(fileName, "gyro", function (error,data) {
-
+    console.log("Save Gyro data in CSV");
     for (var i = 0; i < gyro.date.length; i++) {
       gyro_json.push({date    : data["date"][i],
                       xvalue  : data["xvalue"][i],

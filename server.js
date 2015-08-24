@@ -14,6 +14,7 @@ var push = require('./push.js');
 var troubleHandler = require('./troubleHandler.js');
 var csvHandler = require('./csv/csvHandler.js');
 var csvFileIndex = require('./csvFileIndex.js');
+var csvFile = require('./csvFile.js');
   //Connect to Mongodb
   mongoose.connect('mongodb://'+argv.be_ip+':80/familyDatabase');
 
@@ -337,42 +338,44 @@ var csvFileIndex = require('./csvFileIndex.js');
 
     console.log("Upload Data testing");
 
-    // var data = [];
-    // req.addListener("data", function(chunk) {
-    // request.on("data", function(chunk) {
+    var fileName = request.body.fileName
+    var type     = request.body.type
+    var acce     = request.body.acce[0]
+    var gyro     = request.body.gyro[0]
     //
-    //     console.log("Chunk : "+chunk);
-    //     data.push(new Buffer(chunk));
-    //
-    // });
-    // request.addListener("end", function() {
-    //     buffer = Buffer.concat(data);
-    //
-    //     console.log("Buffer Data: "+buffer);
-        // zlib.inflate(buffer, function(err, result) {
-        //     if (!err) {
-        //         req.body = result.toString();
-        //         next();
-        //     } else {
-        //         next(err);
-        //     }
-        // });
+    console.log("FileName : "+fileName);
+    console.log("Type : "+type);
+    console.log("Acce : "+acce);
+    console.log("Gyro : "+gyro);
 
-        var fileName = request.body.fileName
-        var type     = request.body.type
-        var acce     = request.body.acce[0]
-        var gyro     = request.body.gyro[0]
-        //
-        console.log("FileName : "+fileName);
-        console.log("Type : "+type);
-        console.log("Acce : "+acce);
-        console.log("Gyro : "+gyro);
-        //
-        // csvHandler.saveToCSV(fileName,acce,gyro)
-        // csvFileIndex.createFile(fileName)
-        // push.uploadFilePushAlert(fileName);
+    if (type == "continue") {
 
-    // });
+      //save to mongodb
+      csvFile.createcsvFileData(fileName, "acce", acce);
+      csvFile.createcsvFileData(FileName, "gyro", gyro);
+    }else if (Type == "done") {
+
+      csvFile.createcsvFileData(fileName, "acce", acce, function (error) {
+        // body...
+        if (error) {
+          console.log(error);
+        }
+
+        csvHandler.saveToCSV(fileName}
+        csvFileIndex.createFile(fileName)
+        push.uploadFilePushAlert(fileName);
+
+      });
+
+    }
+
+
+
+
+
+
+
+
     response.json({"result":"Upload Data testing"})
   })
 

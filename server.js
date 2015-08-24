@@ -369,13 +369,6 @@ var csvFile = require('./csv/csvFile.js');
 
     }
 
-
-
-
-
-
-
-
     response.json({"result":"Upload Data testing"})
   })
 

@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 //Create iNeDot Mongodb Module
-var csvFile = mongoose.model('csvfile', {
+var csvFile = mongoose.model('csvfileindex', {
     fileName     : String,
 
 });

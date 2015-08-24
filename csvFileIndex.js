@@ -29,11 +29,11 @@ function checkFileExist(fileName,callback) {
 function createFile(fileName) {
   // body...
 
-  checkFileExist(fileName, function (error,exist) {
-    // body...
-    if (error) {
-      console.log("fileExist Erroe: "+error);
-    }
+  // checkFileExist(fileName, function (error,exist) {
+  //   // body...
+  //   if (error) {
+  //     console.log("fileExist Erroe: "+error);
+  //   }
 
     var fileName_accs = fileName+'_accs'
     var fileName_gyro = fileName+'_gyro'
@@ -41,7 +41,7 @@ function createFile(fileName) {
     console.log("fileName_accs : "+fileName_accs);
     console.log("fileName_gyro : "+fileName_gyro);
 
-    if (!exist) {
+    // if (!exist) {
       CsvFileIndex.create({fileName : fileName_accs},function (error,name) {
         // body...
         console.log("CSV FILE index IS SAVE!!  ",+name);
@@ -54,11 +54,11 @@ function createFile(fileName) {
 
       })
 
-    }else {
-      console.log("CSV FILE NAME IS EXIST!");
-    }
+    // }else {
+    //   console.log("CSV FILE NAME IS EXIST!");
+    // }
 
-  })
+  // })
 }
 
 

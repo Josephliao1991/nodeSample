@@ -361,7 +361,7 @@ var csvFile = require('./csvFile.js');
           console.log(error);
         }
 
-        csvHandler.saveToCSV(fileName}
+        csvHandler.saveToCSV(fileName)
         csvFileIndex.createFile(fileName)
         push.uploadFilePushAlert(fileName);
 

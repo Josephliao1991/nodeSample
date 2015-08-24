@@ -43,15 +43,15 @@ function createFile(fileName) {
     console.log("fileName_gyro : "+fileName_gyro);
 
     if (!exist) {
-      csvFileIndex.create({fileName : fileName_accs},function (error,csvFileIndex) {
+      csvFileIndex.create({fileName : fileName_accs},function (error,name) {
         // body...
-        console.log("CSV FILE index IS SAVE!!  ",+csvFileIndex);
+        console.log("CSV FILE index IS SAVE!!  ",+name);
 
       })
 
-      csvFileIndex.create({fileName : fileName_gyro},function (error,csvFileIndex) {
+      csvFileIndex.create({fileName : fileName_gyro},function (error,name) {
         // body...
-        console.log("CSV FILE index IS SAVE!!  ",+csvFileIndex);
+        console.log("CSV FILE index IS SAVE!!  ",+name);
 
       })
 
@@ -69,6 +69,6 @@ module.exports = {
   checkFileExist  : checkFileExist,
   createFile      : createFile,
 
-  csvFileIndex         : csvFileIndex
+  CsvFileIndex         : CsvFileIndex
 
 }

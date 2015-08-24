@@ -23,10 +23,10 @@ function saveToCSV(fileName) {
     var fields = ['date','xvalue','yvalue','zvalue']
 
     for (var i = 0; i < date.length; i++) {
-      acce_json.push({date    : acce["date"][i],
-                      xvalue  : acce["xvalue"][i],
-                      yvalue  : acce["yvalue"][i],
-                      zvalue  : acce["zvalue"][i]})
+      acce_json.push({date    : data["date"][i],
+                      xvalue  : data["xvalue"][i],
+                      yvalue  : data["yvalue"][i],
+                      zvalue  : data["zvalue"][i]})
     }
 
     json2csv({data:acce_json, feilds: fields},function (error, csv) {
@@ -56,10 +56,10 @@ function saveToCSV(fileName) {
   csvfile.getCsvFile(fileName, "gyro", function (error,data) {
 
     for (var i = 0; i < gyro.date.length; i++) {
-      gyro_json.push({date    : gyro["date"][i],
-                      xvalue  : gyro["xvalue"][i],
-                      yvalue  : gyro["yvalue"][i],
-                      zvalue  : gyro["zvalue"][i]})
+      gyro_json.push({date    : data["date"][i],
+                      xvalue  : data["xvalue"][i],
+                      yvalue  : data["yvalue"][i],
+                      zvalue  : data["zvalue"][i]})
     }
 
     // console.log("Gyro_Json [0] : "+gyro_json[0]["xvalue"]);

@@ -64,6 +64,6 @@ module.exports = {
   checkFileExist  : checkFileExist,
   createFile      : createFile,
 
-  csvFile         : csvFile
+  csvFileIndex         : csvFileIndex
 
 }

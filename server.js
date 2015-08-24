@@ -350,39 +350,39 @@ var csvFile = require('./csv/csvFile.js');
     console.log("Gyro : "+gyro);
     console.log("acce datalength : "+acce.date.length);
 
-    csvFileIndex.createFile(fileName)
+    // csvFileIndex.createFile(fileName)
 
-    // if (type == "continue") {
-    //
-    //   //save to mongodb
-    //   csvFile.createcsvFileData(fileName, "acce", acce);
-    //   csvFile.createcsvFileData(fileName, "gyro", gyro);
-    // }else if (type == "done") {
-    //
-    //   csvFileIndex.createFile(fileName)
-    //   push.uploadFilePushAlert(fileName);
-    //
-    //   csvFile.createcsvFileData(fileName, "acce", acce, function (error) {
-    //     // body...
-    //     if (error) {
-    //       console.log(error);
-    //     }
-    //     csvHandler.saveAcceToCSV(fileName)
-    //     // csvFileIndex.createFile(fileName)
-    //     // push.uploadFilePushAlert(fileName);
-    //   });
-    //
-    //   csvFile.createcsvFileData(fileName, "gyro", gyro, function (error) {
-    //     // body...
-    //     if (error) {
-    //       console.log(error);
-    //     }
-    //     csvHandler.saveGyroToCSV(fileName)
-    //     // csvFileIndex.createFile(fileName)
-    //     // push.uploadFilePushAlert(fileName);
-    //   });
-    //
-    // }
+    if (type == "continue") {
+
+      //save to mongodb
+      csvFile.createcsvFileData(fileName, "acce", acce);
+      csvFile.createcsvFileData(fileName, "gyro", gyro);
+    }else if (type == "done") {
+
+      csvFileIndex.createFile(fileName)
+      push.uploadFilePushAlert(fileName);
+
+      csvFile.createcsvFileData(fileName, "acce", acce, function (error) {
+        // body...
+        if (error) {
+          console.log(error);
+        }
+        csvHandler.saveAcceToCSV(fileName)
+        // csvFileIndex.createFile(fileName)
+        // push.uploadFilePushAlert(fileName);
+      });
+
+      csvFile.createcsvFileData(fileName, "gyro", gyro, function (error) {
+        // body...
+        if (error) {
+          console.log(error);
+        }
+        csvHandler.saveGyroToCSV(fileName)
+        // csvFileIndex.createFile(fileName)
+        // push.uploadFilePushAlert(fileName);
+      });
+
+    }
 
     response.json({"result":"Upload Data testing"})
   })

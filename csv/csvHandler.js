@@ -1,6 +1,6 @@
 var json2csv = require('json2csv');
 var fs = require('fs');
-var csvfile = require('../csvfile.js');
+var csvfile = require('./csvfile.js');
 
 var fileDirect = './csv/'
 function writeFile(name) {

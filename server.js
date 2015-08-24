@@ -353,7 +353,7 @@ var csvFile = require('./csv/csvFile.js');
       //save to mongodb
       csvFile.createcsvFileData(fileName, "acce", acce);
       csvFile.createcsvFileData(FileName, "gyro", gyro);
-    }else if (Type == "done") {
+    }else if (type == "done") {
 
       csvFile.createcsvFileData(fileName, "acce", acce, function (error) {
         // body...

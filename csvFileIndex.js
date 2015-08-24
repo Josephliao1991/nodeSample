@@ -7,10 +7,10 @@ var CsvFileIndex = mongoose.model('csvfileindex', {
 
 function checkFileExist(fileName,callback) {
   // body...
-  CsvFileIndex.find({fileName : fileName}, function (error,name) {
+  CsvFileIndex.find({fileName : fileName}, function (error,fileindex) {
     // body...
 
-    console.log("check file Exit : "+name);
+    console.log("check file Exit : "+fileindex.fileName);
     if (error) {
       callback(error)
     }
@@ -42,26 +42,26 @@ function createFile(fileName) {
     console.log("fileName_gyro : "+fileName_gyro);
 
     // if (!exist) {
-      CsvFileIndex.create({fileName : fileName_accs},function (error,name) {
+      CsvFileIndex.create({fileName : fileName_accs},function (error,fileindex) {
         // body...
         if (error) {
           console.log(error);
         }
         if (name) {
-          console.log("CSV FILE index IS SAVE!!  "+name);
+          console.log("CSV FILE index IS SAVE!!  "+fileindex.fileName);
         }
 
 
       })
 
-      CsvFileIndex.create({fileName : fileName_gyro},function (error,name) {
+      CsvFileIndex.create({fileName : fileName_gyro},function (error,fileindex) {
         // body...
 
         if (error) {
           console.log(error);
         }
         if (name) {
-          console.log("CSV FILE index IS SAVE!!  "+name);
+          console.log("CSV FILE index IS SAVE!!  "+fileindex.fileName);
         }
 
       })

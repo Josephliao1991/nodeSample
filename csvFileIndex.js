@@ -10,6 +10,8 @@ function checkFileExist(fileName,callback) {
   // body...
   csvFileIndex.find({fileName : fileName}, function (error,csvFileIndex) {
     // body...
+
+    console.log("check file Exit : "+csvFileIndex);
     if (error) {
       callback(error)
     }
@@ -36,6 +38,9 @@ function createFile(fileName) {
 
     var fileName_accs = fileName+'_accs'
     var fileName_gyro = fileName+'_gyro'
+
+    console.log("fileName_accs : "+fileName_accs);
+    console.log("fileName_gyro : "+fileName_gyro);
 
     if (!exist) {
       csvFileIndex.create({fileName : fileName_accs},function (error,csvFileIndex) {

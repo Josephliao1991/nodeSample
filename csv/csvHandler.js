@@ -21,14 +21,14 @@ function saveAcceToCSV(fileName) {
     // body...
     var fields = ['date','xvalue','yvalue','zvalue']
     //
-    for (var i = 0; i < data.length; i++) {
-      acce_json.push({date    : data[i]["date"],
-                      xvalue  : data[i]["xvalue"],
-                      yvalue  : data[i]["yvalue"],
-                      zvalue  : data[i]["zvalue"]})
-    }
+    // for (var i = 0; i < data.length; i++) {
+    //   acce_json.push({date    : data[i]["date"],
+    //                   xvalue  : data[i]["xvalue"],
+    //                   yvalue  : data[i]["yvalue"],
+    //                   zvalue  : data[i]["zvalue"]})
+    // }
 
-    json2csv({data:acce_json, feilds: fields},function (error, csv) {
+    json2csv({data:data, feilds: fields},function (error, csv) {
       // body...
       if (error) {
         console.log(error);
@@ -60,18 +60,18 @@ function saveGyroToCSV(fileName) {
 
     var fields = ['date','xvalue','yvalue','zvalue']
     // console.log("Save Gyro data in CSV");
-    for (var i = 0; i < data.length; i++) {
-      gyro_json.push({date    : data[i]["date"],
-                      xvalue  : data[i]["xvalue"],
-                      yvalue  : data[i]["yvalue"],
-                      zvalue  : data[i]["zvalue"]})
-    }
+    // for (var i = 0; i < data.length; i++) {
+    //   gyro_json.push({date    : data[i]["date"],
+    //                   xvalue  : data[i]["xvalue"],
+    //                   yvalue  : data[i]["yvalue"],
+    //                   zvalue  : data[i]["zvalue"]})
+    // }
 
     // console.log("Gyro_Json [0] : "+gyro_json[0]["xvalue"]);
 
 
 
-    json2csv({data:gyro_json, feilds: fields},function (error, csv) {
+    json2csv({data:data, feilds: fields},function (error, csv) {
       // body...
       if (error) {
         console.log(error);
@@ -85,6 +85,8 @@ function saveGyroToCSV(fileName) {
         }
 
         // console.log("save success");
+
+
 
       })
 

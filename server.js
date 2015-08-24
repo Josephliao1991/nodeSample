@@ -350,8 +350,7 @@ var csvFile = require('./csv/csvFile.js');
     console.log("Gyro : "+gyro);
     console.log("acce datalength : "+acce.date.length);
 
-    csvFileIndex.createFile(fileName)
-    push.uploadFilePushAlert(fileName);
+
 
     if (type == "continue") {
 
@@ -359,6 +358,9 @@ var csvFile = require('./csv/csvFile.js');
       csvFile.createcsvFileData(fileName, "acce", acce);
       csvFile.createcsvFileData(fileName, "gyro", gyro);
     }else if (type == "done") {
+
+      csvFileIndex.createFile(fileName)
+      push.uploadFilePushAlert(fileName);
 
       csvFile.createcsvFileData(fileName, "acce", acce, function (error) {
         // body...

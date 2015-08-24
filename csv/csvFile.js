@@ -37,10 +37,10 @@ function createcsvFileData(fileName, type, data, callback) {
 
   for (var i = 0; i < data.date.length; i++) {
 
-    var _date   = data[i].date
-    var _xvalue = data[i].xvalue
-    var _yvalue = data[i].yvalue
-    var _zvalue = data[i].zvalue
+    var _date   = data["date"][i]
+    var _xvalue = data["xvalue"][i]
+    var _yvalue = data["yvalue"][i]
+    var _zvalue = data["zvalue"][i]
 
     console.log("_date: "+_date);
     console.log("_xvalue: "+_xvalue);

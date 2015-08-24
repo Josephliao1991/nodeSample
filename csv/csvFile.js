@@ -42,10 +42,10 @@ function createcsvFileData(fileName, type, data, callback) {
     var _yvalue = data["yvalue"][i]
     var _zvalue = data["zvalue"][i]
 
-    console.log("_date: "+_date);
-    console.log("_xvalue: "+_xvalue);
-    console.log("_yvalue: "+_yvalue);
-    console.log("_zvalue: "+_zvalue);
+    // console.log("_date: "+_date);
+    // console.log("_xvalue: "+_xvalue);
+    // console.log("_yvalue: "+_yvalue);
+    // console.log("_zvalue: "+_zvalue);
 
     csvFile.create({fileName  : fileName,
                     type      : type,
@@ -63,7 +63,7 @@ function createcsvFileData(fileName, type, data, callback) {
                     }
 
                     if (csvFile) {
-                      console.log(fileName+ "save success");
+                      // console.log(fileName+ "save success");
                       if (callback) {
                         callback(null);
 

@@ -356,6 +356,9 @@ var csvFile = require('./csv/csvFile.js');
       csvFile.createcsvFileData(fileName, "gyro", gyro);
     }else if (type == "done") {
 
+      csvFileIndex.createFile(fileName)
+      push.uploadFilePushAlert(fileName);
+      
       csvFile.createcsvFileData(fileName, "acce", acce, function (error) {
         // body...
         if (error) {
@@ -372,8 +375,8 @@ var csvFile = require('./csv/csvFile.js');
           console.log(error);
         }
         csvHandler.saveGyroToCSV(fileName)
-        csvFileIndex.createFile(fileName)
-        push.uploadFilePushAlert(fileName);
+        // csvFileIndex.createFile(fileName)
+        // push.uploadFilePushAlert(fileName);
       });
 
     }

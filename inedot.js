@@ -73,7 +73,7 @@ function familyOwneriNeDot(request, response) {
 
   if (familyKey_find && owner_find) {
 
-    iNeDot.find({FamilyKey : familyKey_find,
+    iNeDot.find({familyKey : familyKey_find,
                 owner      : owner_find},function (error, inedots) {
                   // body...
 

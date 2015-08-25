@@ -66,7 +66,7 @@ function alliNeDot(request, response) {
 function familyOwneriNeDot(request, response) {
   // body...
   var familyKey_find  = request.query.familyKey
-  var ownwe_find      = request.query.owner
+  var owner_find      = request.query.owner
 
   console.log("iNeDot Owner By FamilyKey : "+familyKey_find);
   console.log("iNeDot Qwner By OwnerID   : "+owner_find);

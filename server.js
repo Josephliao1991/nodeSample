@@ -133,6 +133,12 @@ var csvFile = require('./csv/csvFile.js');
     inedot.alliNeDot(req, res)
   });
 
+  app.get('/family/inedot/owner',function(request, response){
+    var res = response
+    var req = request
+    inedot.familyOwneriNeDot(req, res)
+  });
+
   app.get('/family/inedot',function(request, response){
     var res = response
     var req = request

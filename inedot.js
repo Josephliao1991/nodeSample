@@ -63,6 +63,39 @@ function alliNeDot(request, response) {
   })
 };
 
+function familyOwneriNeDot(request, response) {
+  // body...
+  var familyKey_find  = request.query.familyKey
+  var ownwe_find      = request.query.owner
+
+  console.log("iNeDot Owner By FamilyKey : "+familyKey_find);
+  console.log("iNeDot Qwner By OwnerID   : "+owner_find);
+
+  if (familyKey_find && owner_find) {
+
+    iNeDot.find({FamilyKey : familyKey_find,
+                owner      : owner_find},function (error, inedots) {
+                  // body...
+
+                  if (error) {
+                    response.send(error)
+                  }
+
+                  if (inedots) {
+                    response.json(inedots)
+                  }else {
+                    response.json({"result" : "none"})
+                  }
+
+                })
+
+  }else {
+
+    response.json({"result" : "lost some params..."})
+  }
+
+}
+
 function familyiNeDot(request, response) {
   // body...
   var familyKey_find = request.query.familyKey
@@ -325,6 +358,7 @@ module.exports = {
 
   alliNeDot     : alliNeDot,
   familyiNeDot  : familyiNeDot,
+  familyOwneriNeDot : familyOwneriNeDot,
   createiNeDot  : createiNeDot,
   updateiNeDot  : updateiNeDot,
   deleteiNeDot  : deleteiNeDot,

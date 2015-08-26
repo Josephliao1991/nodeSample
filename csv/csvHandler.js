@@ -46,7 +46,7 @@ function saveAcceToCSV(fileName,callback) {
             callback(error)
           }
           console.log("acce_json save success");
-          callback(null,null)
+          callback(null,1)
 
         })
 

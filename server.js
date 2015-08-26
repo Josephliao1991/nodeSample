@@ -404,7 +404,7 @@ var csvFile = require('./csv/csvFile.js');
     console.log("FileName: ",fileName);
 
     if (!fileType || !fileName) {
-      resopnse.end("lostsome params")
+      response.end("lostsome params")
     }
 
     // if (fileType == "gyro") {

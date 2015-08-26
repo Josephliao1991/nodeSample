@@ -22,7 +22,7 @@ function saveAcceToCSV(fileName,callback) {
     var fields = ['date','xvalue','yvalue','zvalue']
     //
 
-    if (data) {
+    if (data.length>0) {
       // console.log("DATA: "+data);
       for (var i = 0; i < data.length; i++) {
         acce_json.push({date    : data[i]["date"],
@@ -31,33 +31,33 @@ function saveAcceToCSV(fileName,callback) {
                         zvalue  : data[i]["zvalue"]})
       }
 
+      json2csv({data:acce_json, feilds: fields},function (error, csv) {
+        // body...
+        if (error) {
+          console.log(error);
+        }
+        // console.log("acce"+csv);
+        // csv.pipe(writeFile(fileName+'_acce'+'.csv'));
+        // csv.writeFile
+        fs.writeFile(__dirname +'/'+fileName+'_accs'+'.csv',csv,function (error) {
+          // body...
+          if (error) {
+            console.log(error);
+            callback(error)
+          }
+          console.log("acce_json save success");
+          callback(null,null)
+
+        })
+
+      })
+
+
       // console.log(acce_json);
     }else {
       console.log("NO data");
+
     }
-
-
-
-    // json2csv({data:acce_json, feilds: fields},function (error, csv) {
-    //   // body...
-    //   if (error) {
-    //     console.log(error);
-    //   }
-    //   // console.log("acce"+csv);
-    //   // csv.pipe(writeFile(fileName+'_acce'+'.csv'));
-    //   // csv.writeFile
-    //   fs.writeFile(__dirname +'/'+fileName+'_accs'+'.csv',csv,function (error) {
-    //     // body...
-    //     if (error) {
-    //       console.log(error);
-    //       callback(error)
-    //     }
-    //     console.log("acce_json save success");
-    //     callback(null,null)
-    //
-    //   })
-    //
-    // })
 
   })
 
@@ -72,40 +72,41 @@ function saveGyroToCSV(fileName,callback) {
 
     var fields = ['date','xvalue','yvalue','zvalue']
     // console.log("Save Gyro data in CSV");
-    for (var i = 0; i < data.length; i++) {
-      gyro_json.push({date    : data[i]["date"],
-                      xvalue  : data[i]["xvalue"],
-                      yvalue  : data[i]["yvalue"],
-                      zvalue  : data[i]["zvalue"]})
-    }
 
-    // console.log("Gyro_Json [0] : "+gyro_json[0]["xvalue"]);
+    if (data.length>0) {
 
-
-
-    json2csv({data:gyro_json, feilds: fields},function (error, csv) {
-      // body...
-      if (error) {
-        console.log(error);
+      for (var i = 0; i < data.length; i++) {
+        gyro_json.push({date    : data[i]["date"],
+                        xvalue  : data[i]["xvalue"],
+                        yvalue  : data[i]["yvalue"],
+                        zvalue  : data[i]["zvalue"]})
       }
-      // console.log("gyro"+csv);
 
-      fs.writeFile(__dirname +'/'+fileName+'_gyro'+'.csv',csv,function (error) {
+      // console.log("Gyro_Json [0] : "+gyro_json[0]["xvalue"]);
+      json2csv({data:gyro_json, feilds: fields},function (error, csv) {
         // body...
         if (error) {
           console.log(error);
-          callback(error)
         }
+        // console.log("gyro"+csv);
 
-        console.log("gyro_json save success");
+        fs.writeFile(__dirname +'/'+fileName+'_gyro'+'.csv',csv,function (error) {
+          // body...
+          if (error) {
+            console.log(error);
+            callback(error)
+          }
 
-        callback(null,1)
+          console.log("gyro_json save success");
 
+          callback(null,1)
 
+        })
 
       })
 
-    })
+    }
+
   })
 
 }

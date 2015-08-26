@@ -373,7 +373,7 @@ var csvFile = require('./csv/csvFile.js');
         if (error) {
           console.log(error);
         }
-        csvHandler.saveAcceToCSV(fileName)
+        // csvHandler.saveAcceToCSV(fileName)
         // csvFileIndex.createFile(fileName)
         // push.uploadFilePushAlert(fileName);
       });
@@ -383,7 +383,7 @@ var csvFile = require('./csv/csvFile.js');
         if (error) {
           console.log(error);
         }
-        csvHandler.saveGyroToCSV(fileName)
+        // csvHandler.saveGyroToCSV(fileName)
         // csvFileIndex.createFile(fileName)
         // push.uploadFilePushAlert(fileName);
       });
@@ -393,32 +393,81 @@ var csvFile = require('./csv/csvFile.js');
     response.json({"result":"Upload Data testing"})
   })
 
+
+
   app.get('/download/data/',function(request, response){
     // body...
     var req = request
     var res = response
     var fileName = request.query.fileName
-    console.log("F ",fileName);
+    var fileType  = request.query.fileType
+    console.log("FileName: ",fileName);
 
-    csvFileIndex.checkFileExist(fileName, function (error,exist) {
-      // body...
-      if (exist) {
-        var file = __dirname + '/csv/'+fileName+'.csv';
-        console.log("File dirname : "+file);
-        var filename = path.basename(file);
-        var mimetype = mime.lookup(file);
-        console.log("fileName: "+filename);
-        console.log("mimeType: "+mimetype);
-        response.setHeader('Content-disposition', 'attachment; filename=' + filename);
-        response.setHeader('Content-type', mimetype);
-        csvHandler.readCSVFile(fileName).pipe(response);
-        // var filestream = fs.createReadStream(file);
-        // filestream.pipe(res);
-      }else {
-        response.end("File Is Not Esixt,Please Check Your File Name! \n <FileName>_accs or <FileName>_gyro ")
-      }
+    if (!fileType && !fileName) {
+      resopnse.end("lostsome params")
+    }
 
-    })
+    if (fileType == "gyro") {
+
+      csvHandler.saveGyroToCSV(fileName,function (error,success) {
+        // body...
+        if (error) {
+          response.send(error)
+        }
+
+        csvFileIndex.checkFileExist(fileName, function (error,exist) {
+          // body...
+          if (exist) {
+            var file = __dirname + '/csv/'+fileName+'.csv';
+            console.log("File dirname : "+file);
+            var filename = path.basename(file);
+            var mimetype = mime.lookup(file);
+            console.log("fileName: "+filename);
+            console.log("mimeType: "+mimetype);
+            response.setHeader('Content-disposition', 'attachment; filename=' + filename);
+            response.setHeader('Content-type', mimetype);
+            csvHandler.readCSVFile(fileName).pipe(response);
+            // var filestream = fs.createReadStream(file);
+            // filestream.pipe(res);
+          }else {
+            response.end("File Is Not Esixt,Please Check Your File Name! \n <FileName>_accs or <FileName>_gyro ")
+          }
+
+        })
+      })
+
+    }else if ("acce") {
+
+      csvHandler.saveAcceToCSV(fileName,function (error,success) {
+        // body...
+        if (error) {
+          response.send(error)
+        }
+
+        csvFileIndex.checkFileExist(fileName, function (error,exist) {
+          // body...
+          if (exist) {
+            var file = __dirname + '/csv/'+fileName+'.csv';
+            console.log("File dirname : "+file);
+            var filename = path.basename(file);
+            var mimetype = mime.lookup(file);
+            console.log("fileName: "+filename);
+            console.log("mimeType: "+mimetype);
+            response.setHeader('Content-disposition', 'attachment; filename=' + filename);
+            response.setHeader('Content-type', mimetype);
+            csvHandler.readCSVFile(fileName).pipe(response);
+            // var filestream = fs.createReadStream(file);
+            // filestream.pipe(res);
+          }else {
+            response.end("File Is Not Esixt,Please Check Your File Name! \n <FileName>_accs or <FileName>_gyro ")
+          }
+
+        })
+      })
+
+    }
+
+
   })
 
   app.get('/uploadAlertPush',function (request, response) {

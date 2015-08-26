@@ -24,7 +24,7 @@ function getCsvFile(fileName, type, callback) {
                   callback('null',csvFile);
 
 
-                })
+                }).sort({date:1})
 
 
 }

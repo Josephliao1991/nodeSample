@@ -13,7 +13,7 @@ function readCSVFile(fileName) {
 
 }
 
-function saveAcceToCSV(fileName) {
+function saveAcceToCSV(fileName,callback) {
   // body...
   var acce_json = []
   // console.log("Save Acce data in CSV");
@@ -40,8 +40,10 @@ function saveAcceToCSV(fileName) {
         // body...
         if (error) {
           console.log(error);
+          callback(error)
         }
-        // console.log("save success");
+        console.log("acce_json save success");
+        callback(null,null)
 
       })
 
@@ -51,7 +53,7 @@ function saveAcceToCSV(fileName) {
 
 }
 
-function saveGyroToCSV(fileName) {
+function saveGyroToCSV(fileName,callback) {
   // body...
   var gyro_json = []
   // console.log("Save Gyro data in CSV");
@@ -82,9 +84,12 @@ function saveGyroToCSV(fileName) {
         // body...
         if (error) {
           console.log(error);
+          callback(error)
         }
 
-        // console.log("save success");
+        console.log("gyro_json save success");
+
+        callback(null,1)
 
 
 

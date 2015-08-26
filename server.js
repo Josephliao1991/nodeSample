@@ -415,10 +415,10 @@ var csvFile = require('./csv/csvFile.js');
           response.send(error)
         }
 
-        csvFileIndex.checkFileExist(fileName, function (error,exist) {
+        csvFileIndex.checkFileExist(fileName+"_gyro", function (error,exist) {
           // body...
           if (exist) {
-            var file = __dirname + '/csv/'+fileName+'.csv';
+            var file = __dirname + '/csv/'+fileName+'_gyro.csv';
             console.log("File dirname : "+file);
             var filename = path.basename(file);
             var mimetype = mime.lookup(file);
@@ -444,10 +444,10 @@ var csvFile = require('./csv/csvFile.js');
           response.send(error)
         }
 
-        csvFileIndex.checkFileExist(fileName, function (error,exist) {
+        csvFileIndex.checkFileExist(fileName_acce, function (error,exist) {
           // body...
           if (exist) {
-            var file = __dirname + '/csv/'+fileName+'.csv';
+            var file = __dirname + '/csv/'+fileName+'_acce.csv';
             console.log("File dirname : "+file);
             var filename = path.basename(file);
             var mimetype = mime.lookup(file);

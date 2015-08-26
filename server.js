@@ -428,9 +428,9 @@ var csvFile = require('./csv/csvFile.js');
               var mimetype = mime.lookup(file);
               console.log("fileName: "+filename);
               console.log("mimeType: "+mimetype);
-              response.setHeader('Content-disposition', 'attachment; filename=' + filename+'_gyro');
+              response.setHeader('Content-disposition', 'attachment; filename=' + filename);
               response.setHeader('Content-type', mimetype);
-              csvHandler.readCSVFile(fileName).pipe(response);
+              csvHandler.readCSVFile(fileName+'_gyro.csv').pipe(response);
               // var filestream = fs.createReadStream(file);
               // filestream.pipe(res);
             }else {
@@ -463,9 +463,9 @@ var csvFile = require('./csv/csvFile.js');
               var mimetype = mime.lookup(file);
               console.log("fileName: "+filename);
               console.log("mimeType: "+mimetype);
-              response.setHeader('Content-disposition', 'attachment; filename=' + filename+"_acce");
+              response.setHeader('Content-disposition', 'attachment; filename=' + filename);
               response.setHeader('Content-type', mimetype);
-              csvHandler.readCSVFile(fileName).pipe(response);
+              csvHandler.readCSVFile(fileName+'_acce.csv').pipe(response);
               // var filestream = fs.createReadStream(file);
               // filestream.pipe(res);
             }else {
@@ -479,6 +479,8 @@ var csvFile = require('./csv/csvFile.js');
 
       })
 
+    }else {
+      response.end("File Is Not Esixt,Please Check Your File Name! \n <FileName>_accs or <FileName>_gyro ")
     }
 
 

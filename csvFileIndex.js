@@ -10,7 +10,7 @@ function checkFileExist(fileName,callback) {
   CsvFileIndex.find({fileName : fileName}, function (error,fileindex) {
     // body...
 
-    console.log("check file Exit : "+fileindex);
+    console.log("check file Exit : "+fileindex.fileName);
     if (error) {
       callback(error)
     }

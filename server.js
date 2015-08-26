@@ -456,7 +456,7 @@ var csvFile = require('./csv/csvFile.js');
           response.send("ACCE FILE CREATE Success")
         }
       //
-        csvFileIndex.checkFileExist(fileName_acce, function (error,exist) {
+        csvFileIndex.checkFileExist(fileName+"_acce", function (error,exist) {
           // body...
           if (exist) {
             var file = __dirname + '/csv/'+fileName+'_acce.csv';

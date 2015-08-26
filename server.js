@@ -454,10 +454,10 @@ var csvFile = require('./csv/csvFile.js');
         if (success) {
           // response.send("ACCE FILE CREATE Success")
 
-          csvFileIndex.checkFileExist(fileName+"_acce", function (error,exist) {
+          csvFileIndex.checkFileExist(fileName+"_accs", function (error,exist) {
             // body...
             if (exist) {
-              var file = __dirname + '/csv/'+fileName+'_acce.csv';
+              var file = __dirname + '/csv/'+fileName+'_accs.csv';
               console.log("File dirname : "+file);
               var filename = path.basename(file);
               var mimetype = mime.lookup(file);
@@ -465,7 +465,7 @@ var csvFile = require('./csv/csvFile.js');
               console.log("mimeType: "+mimetype);
               response.setHeader('Content-disposition', 'attachment; filename=' + filename);
               response.setHeader('Content-type', mimetype);
-              csvHandler.readCSVFile(fileName+'_acce').pipe(response);
+              csvHandler.readCSVFile(fileName+'_accs').pipe(response);
               // var filestream = fs.createReadStream(file);
               // filestream.pipe(res);
             }else {

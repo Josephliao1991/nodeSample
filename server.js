@@ -411,11 +411,15 @@ var csvFile = require('./csv/csvFile.js');
 
     console.log("GYRO FILE CREATE");
 
-      // csvHandler.saveGyroToCSV(fileName,function (error,success) {
-      //   // body...
-      //   if (error) {
-      //     response.send(error)
-      //   }
+      csvHandler.saveGyroToCSV(fileName,function (error,success) {
+        // body...
+        if (error) {
+          response.send(error)
+        }
+
+        if (success) {
+          response.send("GYRO FILE CREATE Success")
+        }
       //
       //   csvFileIndex.checkFileExist(fileName+"_gyro", function (error,exist) {
       //     // body...
@@ -436,17 +440,21 @@ var csvFile = require('./csv/csvFile.js');
       //     }
       //
       //   })
-      // })
+      })
 
     }else if ("acce") {
 
       console.log("ACCE FILE CREATE");
 
-      // csvHandler.saveAcceToCSV(fileName,function (error,success) {
-      //   // body...
-      //   if (error) {
-      //     response.send(error)
-      //   }
+      csvHandler.saveAcceToCSV(fileName,function (error,success) {
+        // body...
+        if (error) {
+          response.send(error)
+        }
+
+        if (success) {
+          response.send("ACCE FILE CREATE Success")
+        }
       //
       //   csvFileIndex.checkFileExist(fileName_acce, function (error,exist) {
       //     // body...
@@ -467,7 +475,7 @@ var csvFile = require('./csv/csvFile.js');
       //     }
       //
       //   })
-      // })
+      })
 
     }
 

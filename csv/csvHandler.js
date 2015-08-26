@@ -23,7 +23,7 @@ function saveAcceToCSV(fileName,callback) {
     //
 
     if (data) {
-      console.log("DATA: "+data);
+      // console.log("DATA: "+data);
       for (var i = 0; i < data.length; i++) {
         acce_json.push({date    : data[i]["date"],
                         xvalue  : data[i]["xvalue"],
@@ -31,7 +31,7 @@ function saveAcceToCSV(fileName,callback) {
                         zvalue  : data[i]["zvalue"]})
       }
 
-      console.log(acce_json);
+      // console.log(acce_json);
     }else {
       console.log("NO data");
     }

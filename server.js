@@ -420,26 +420,26 @@ var csvFile = require('./csv/csvFile.js');
         if (success) {
           response.send("GYRO FILE CREATE Success")
         }
-      //
-      //   csvFileIndex.checkFileExist(fileName+"_gyro", function (error,exist) {
-      //     // body...
-      //     if (exist) {
-      //       var file = __dirname + '/csv/'+fileName+'_gyro.csv';
-      //       console.log("File dirname : "+file);
-      //       var filename = path.basename(file);
-      //       var mimetype = mime.lookup(file);
-      //       console.log("fileName: "+filename);
-      //       console.log("mimeType: "+mimetype);
-      //       response.setHeader('Content-disposition', 'attachment; filename=' + filename);
-      //       response.setHeader('Content-type', mimetype);
-      //       csvHandler.readCSVFile(fileName).pipe(response);
-      //       // var filestream = fs.createReadStream(file);
-      //       // filestream.pipe(res);
-      //     }else {
-      //       response.end("File Is Not Esixt,Please Check Your File Name! \n <FileName>_accs or <FileName>_gyro ")
-      //     }
-      //
-      //   })
+
+        csvFileIndex.checkFileExist(fileName+"_gyro", function (error,exist) {
+          // body...
+          if (exist) {
+            var file = __dirname + '/csv/'+fileName+'_gyro.csv';
+            console.log("File dirname : "+file);
+            var filename = path.basename(file);
+            var mimetype = mime.lookup(file);
+            console.log("fileName: "+filename);
+            console.log("mimeType: "+mimetype);
+            response.setHeader('Content-disposition', 'attachment; filename=' + filename);
+            response.setHeader('Content-type', mimetype);
+            csvHandler.readCSVFile(fileName).pipe(response);
+            // var filestream = fs.createReadStream(file);
+            // filestream.pipe(res);
+          }else {
+            response.end("File Is Not Esixt,Please Check Your File Name! \n <FileName>_accs or <FileName>_gyro ")
+          }
+
+        })
       })
 
     }else if ("acce") {
@@ -456,25 +456,25 @@ var csvFile = require('./csv/csvFile.js');
           response.send("ACCE FILE CREATE Success")
         }
       //
-      //   csvFileIndex.checkFileExist(fileName_acce, function (error,exist) {
-      //     // body...
-      //     if (exist) {
-      //       var file = __dirname + '/csv/'+fileName+'_acce.csv';
-      //       console.log("File dirname : "+file);
-      //       var filename = path.basename(file);
-      //       var mimetype = mime.lookup(file);
-      //       console.log("fileName: "+filename);
-      //       console.log("mimeType: "+mimetype);
-      //       response.setHeader('Content-disposition', 'attachment; filename=' + filename);
-      //       response.setHeader('Content-type', mimetype);
-      //       csvHandler.readCSVFile(fileName).pipe(response);
-      //       // var filestream = fs.createReadStream(file);
-      //       // filestream.pipe(res);
-      //     }else {
-      //       response.end("File Is Not Esixt,Please Check Your File Name! \n <FileName>_accs or <FileName>_gyro ")
-      //     }
-      //
-      //   })
+        csvFileIndex.checkFileExist(fileName_acce, function (error,exist) {
+          // body...
+          if (exist) {
+            var file = __dirname + '/csv/'+fileName+'_acce.csv';
+            console.log("File dirname : "+file);
+            var filename = path.basename(file);
+            var mimetype = mime.lookup(file);
+            console.log("fileName: "+filename);
+            console.log("mimeType: "+mimetype);
+            response.setHeader('Content-disposition', 'attachment; filename=' + filename);
+            response.setHeader('Content-type', mimetype);
+            csvHandler.readCSVFile(fileName).pipe(response);
+            // var filestream = fs.createReadStream(file);
+            // filestream.pipe(res);
+          }else {
+            response.end("File Is Not Esixt,Please Check Your File Name! \n <FileName>_accs or <FileName>_gyro ")
+          }
+
+        })
       })
 
     }

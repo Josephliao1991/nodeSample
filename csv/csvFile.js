@@ -13,7 +13,7 @@ var csvFile = mongoose.model('csvfile', {
 function getCsvFile(fileName, type, callback) {
   // body...
   csvFile.find({fileName  : fileName,
-                type      : type},function (error,csvFile) {
+                type      : type}).sort([['date', -1]]).exec(function (error,csvFile) {
                   // body...
 
                   if (error) {
@@ -27,8 +27,7 @@ function getCsvFile(fileName, type, callback) {
                   callback('null',csvFile);
 
 
-                }).sort({dete:1})
-
+                });
 
 }
 

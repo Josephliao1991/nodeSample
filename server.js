@@ -407,65 +407,69 @@ var csvFile = require('./csv/csvFile.js');
       response.end("lostsome params")
     }
 
-    // if (fileType == "gyro") {
-    //
-    //   csvHandler.saveGyroToCSV(fileName,function (error,success) {
-    //     // body...
-    //     if (error) {
-    //       response.send(error)
-    //     }
-    //
-    //     csvFileIndex.checkFileExist(fileName+"_gyro", function (error,exist) {
-    //       // body...
-    //       if (exist) {
-    //         var file = __dirname + '/csv/'+fileName+'_gyro.csv';
-    //         console.log("File dirname : "+file);
-    //         var filename = path.basename(file);
-    //         var mimetype = mime.lookup(file);
-    //         console.log("fileName: "+filename);
-    //         console.log("mimeType: "+mimetype);
-    //         response.setHeader('Content-disposition', 'attachment; filename=' + filename);
-    //         response.setHeader('Content-type', mimetype);
-    //         csvHandler.readCSVFile(fileName).pipe(response);
-    //         // var filestream = fs.createReadStream(file);
-    //         // filestream.pipe(res);
-    //       }else {
-    //         response.end("File Is Not Esixt,Please Check Your File Name! \n <FileName>_accs or <FileName>_gyro ")
-    //       }
-    //
-    //     })
-    //   })
-    //
-    // }else if ("acce") {
-    //
-    //   csvHandler.saveAcceToCSV(fileName,function (error,success) {
-    //     // body...
-    //     if (error) {
-    //       response.send(error)
-    //     }
-    //
-    //     csvFileIndex.checkFileExist(fileName_acce, function (error,exist) {
-    //       // body...
-    //       if (exist) {
-    //         var file = __dirname + '/csv/'+fileName+'_acce.csv';
-    //         console.log("File dirname : "+file);
-    //         var filename = path.basename(file);
-    //         var mimetype = mime.lookup(file);
-    //         console.log("fileName: "+filename);
-    //         console.log("mimeType: "+mimetype);
-    //         response.setHeader('Content-disposition', 'attachment; filename=' + filename);
-    //         response.setHeader('Content-type', mimetype);
-    //         csvHandler.readCSVFile(fileName).pipe(response);
-    //         // var filestream = fs.createReadStream(file);
-    //         // filestream.pipe(res);
-    //       }else {
-    //         response.end("File Is Not Esixt,Please Check Your File Name! \n <FileName>_accs or <FileName>_gyro ")
-    //       }
-    //
-    //     })
-    //   })
-    //
-    // }
+    if (fileType == "gyro") {
+
+    console.log("GYRO FILE CREATE");
+
+      // csvHandler.saveGyroToCSV(fileName,function (error,success) {
+      //   // body...
+      //   if (error) {
+      //     response.send(error)
+      //   }
+      //
+      //   csvFileIndex.checkFileExist(fileName+"_gyro", function (error,exist) {
+      //     // body...
+      //     if (exist) {
+      //       var file = __dirname + '/csv/'+fileName+'_gyro.csv';
+      //       console.log("File dirname : "+file);
+      //       var filename = path.basename(file);
+      //       var mimetype = mime.lookup(file);
+      //       console.log("fileName: "+filename);
+      //       console.log("mimeType: "+mimetype);
+      //       response.setHeader('Content-disposition', 'attachment; filename=' + filename);
+      //       response.setHeader('Content-type', mimetype);
+      //       csvHandler.readCSVFile(fileName).pipe(response);
+      //       // var filestream = fs.createReadStream(file);
+      //       // filestream.pipe(res);
+      //     }else {
+      //       response.end("File Is Not Esixt,Please Check Your File Name! \n <FileName>_accs or <FileName>_gyro ")
+      //     }
+      //
+      //   })
+      // })
+
+    }else if ("acce") {
+
+      console.log("ACCE FILE CREATE");
+
+      // csvHandler.saveAcceToCSV(fileName,function (error,success) {
+      //   // body...
+      //   if (error) {
+      //     response.send(error)
+      //   }
+      //
+      //   csvFileIndex.checkFileExist(fileName_acce, function (error,exist) {
+      //     // body...
+      //     if (exist) {
+      //       var file = __dirname + '/csv/'+fileName+'_acce.csv';
+      //       console.log("File dirname : "+file);
+      //       var filename = path.basename(file);
+      //       var mimetype = mime.lookup(file);
+      //       console.log("fileName: "+filename);
+      //       console.log("mimeType: "+mimetype);
+      //       response.setHeader('Content-disposition', 'attachment; filename=' + filename);
+      //       response.setHeader('Content-type', mimetype);
+      //       csvHandler.readCSVFile(fileName).pipe(response);
+      //       // var filestream = fs.createReadStream(file);
+      //       // filestream.pipe(res);
+      //     }else {
+      //       response.end("File Is Not Esixt,Please Check Your File Name! \n <FileName>_accs or <FileName>_gyro ")
+      //     }
+      //
+      //   })
+      // })
+
+    }
 
 
   })

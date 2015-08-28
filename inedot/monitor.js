@@ -13,7 +13,7 @@ proc.on('spawn', function () {
 });
 
 proc.on('exit', function (code, signal) {
-  logger.print({msg: 'process exited, code: ' + code + ' signal: ' + signal});
+  logger.error({msg: 'process exited, code: ' + code + ' signal: ' + signal});
 });
 
 proc.on('stdout', function (data) {

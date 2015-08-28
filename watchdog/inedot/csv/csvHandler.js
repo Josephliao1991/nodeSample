@@ -2,9 +2,10 @@ var json2csv = require('json2csv');
 var fs = require('fs');
 var csvfile = require('./csvFile.js');
 
-var fileDirect = './csv/'
+var fileDirect = '/csv/'
 function writeFile(name) {
-    return fs.createWriteStream(fileDirect + name);
+  console.log(__dirname+fileDirect+name);
+    return fs.createWriteStream(__dirname+fileDirect + name);
 }
 
 function readCSVFile(fileName) {

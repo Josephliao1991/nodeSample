@@ -16,7 +16,8 @@ var csvHandler = require('./csv/csvHandler.js');
 var csvFileIndex = require('./csvFileIndex.js');
 var csvFile = require('./csv/csvFile.js');
   //Connect to Mongodb
-  mongoose.connect('mongodb://'+argv.be_ip+':80/familyDatabase');
+  // mongoose.connect('mongodb://'+argv.be_ip+':80/familyDatabase');
+  mongoose.connect('mongodb://10.240.72.88:80/familyDatabase');
 
   //set express to app
   var app = express();
@@ -513,7 +514,8 @@ var csvFile = require('./csv/csvFile.js');
   })
 
   // app.listen(8080,argv.fe_ip,function(request, response) {
-  app.listen(80,argv.fe_ip,function(request, response) {
+  // app.listen(80,argv.fe_ip,function(request, response) {
+  app.listen(80,'10.240.203.56',function(request, response) {    
     // body...
     // console.log('App listening at http://%s:%s', server.address().address, server.address().port);
     console.log("Press Ctrl+C to quit.");

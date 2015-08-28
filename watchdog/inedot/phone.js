@@ -215,7 +215,7 @@ function createPhone(request, response) {
         if (exist == "true") {
           response.json({result : "fail,family is exist"})
         }else {
-          // QRHandler.createqr(familyKey_create) //Create QR-Code
+          QRHandler.createqr(familyKey_create) //Create QR-Code
 
           Phone.create({
               familyKey   : familyKey_create,

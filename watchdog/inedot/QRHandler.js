@@ -22,7 +22,7 @@ function createqr(familyKey) {
 
   var image = qr.image(text, { type: 'png', ec_level: ec_level, parse_url: false, margin: 1})
   image.pipe(writeFile(familyKey+'.png'));
-  return image
+  // return image
 
   // qr.image(text, { type: 'png', ec_level: ec_level_Q, parse_url: false, margin: 1}).pipe(file('qr_q.png'));
   // qr.image(text, { type: 'png', ec_level: ec_level, parse_url: true,  margin: 1}).pipe(file('qr_t.png'));

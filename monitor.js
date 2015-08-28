@@ -2,7 +2,7 @@ var respawn = require('respawn');
 var util = require('util');
 var logger = require('./logger.js');
 
-var proc = respawn(['node', 'app.js'], {
+var proc = respawn(['node', 'server.js'], {
   cwd: '.',
   maxRestarts: 10,
   sleep: 1000,

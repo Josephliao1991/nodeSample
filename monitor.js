@@ -2,9 +2,8 @@ var respawn = require('respawn');
 var util = require('util');
 var logger = require('./logger.js');
 
-var proc = respawn(['server.js'], {
-  // env: {ENV_VAR:'test'}, // set env vars
-  cwd: '.',              // set cwd
+var proc = respawn(['', 'server.js'], {
+  cwd: '.',
   maxRestarts: 10,
   sleep: 1000,
 });

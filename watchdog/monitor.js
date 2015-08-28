@@ -4,7 +4,7 @@ var logger = require('./logger.js');
 
 var proc = respawn(['nodejs', './inedot/server.js'], {
   cwd: '.',
-  maxRestarts: 10,
+  maxRestarts: 50,
   sleep: 1000,
 });
 

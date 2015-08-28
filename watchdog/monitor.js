@@ -2,7 +2,7 @@ var respawn = require('respawn');
 var util = require('util');
 var logger = require('./logger.js');
 
-var proc = respawn(['nodejs', './inedot/server.js'], {
+var proc = respawn(['sudo nodejs', './inedot/server.js --be_ip 10.240.72.88 --fe_ip 10.240.203.56 &'], {
   cwd: '.',
   maxRestarts: 10,
   sleep: 1000,

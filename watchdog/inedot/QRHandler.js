@@ -3,8 +3,9 @@
 var fs = require('fs');
 var qr = require('qr-image');
 
-var fileDirect = './qrfile/'
+var fileDirect = '/qrfile/'
 function writeFile(name) {
+  console.log(__dirname+fileDirect+name);
     return fs.createWriteStream(__dirname+fileDirect + name);
 }
 

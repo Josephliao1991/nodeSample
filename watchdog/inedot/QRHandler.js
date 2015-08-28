@@ -5,7 +5,7 @@ var qr = require('qr-image');
 
 var fileDirect = './qrfile/'
 function writeFile(name) {
-    return fs.createWriteStream(fileDirect + name);
+    return fs.createWriteStream(__dirname+fileDirect + name);
 }
 
 // var text = 'I \u2764\uFE0F QR code!';

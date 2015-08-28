@@ -56,6 +56,17 @@ var csvFile = require('./csv/csvFile.js');
     response.end("Hello world, This is iNeDot Server!");
   });
 
+  app.get('/fail',function(request,response,next){
+
+    setTimeout(function () {
+      var nu = null;
+      nu.access();
+
+      res.send('Hello World');
+  }, 1000);
+
+    // response.end("Hello world, This is iNeDot Server!");
+  });
 /*===========================PHONE==================================*/
   //implement /family/phone/ API
   app.get('/family/phone/all',function(request, response){

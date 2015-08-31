@@ -160,9 +160,6 @@ function inedotExist(request, response) {
 
 function createiNeDot(request, response) {
   // body...
-
-
-
   var familyKey_create = request.body.familyKey
   var macAddr_create = request.body.macAddr
   var owner_create = request.body.owner

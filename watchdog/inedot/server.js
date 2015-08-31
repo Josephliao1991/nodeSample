@@ -514,6 +514,13 @@ var csvFile = require('./csv/csvFile.js');
     console.log("Cehck FileName testing");
   })
 
+  app.post('/array', function (request, response) {
+    // body...
+    var array = request.query.array;
+    console.log(array);
+    console.log(array[0]);
+
+  })
   // app.listen(8080,argv.fe_ip,function(request, response) {
   // app.listen(80,argv.fe_ip,function(request, response) {
   // app.listen(80,'10.240.203.56',function(request, response) { //My Test Server

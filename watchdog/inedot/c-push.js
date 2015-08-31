@@ -136,6 +136,8 @@ function familyCPush(request, response) {
 
 function autoCreateCPush(request, response) {
   // body...
+
+  console.log("i'm in! c-push!!");
   var familyKey_create  = request.body.familyKey
   var c_macAddr_create  = request.body.owner
   var i_macAddr_create  = request.body.macAddr
@@ -162,15 +164,18 @@ function autoCreateCPush(request, response) {
     },function(error, c_push){
       // body...
       if (error) {
-          response.send(error)
+          // response.send(error)
+          console.log(error);
       }else {
           // response.json(phone)
-          response.json({"result" : "success"})
+          // response.json({"result" : "success"})
+          console.log("autoCreateCPush Success");
       }
     })
 
   }else {
-    response.json({"result" : "lost some params"})
+    // response.json({"result" : "lost some params"})
+    console.log("autoCreateCPush failure,lost some params~");
   }
 
 }

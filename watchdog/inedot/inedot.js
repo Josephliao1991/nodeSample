@@ -307,6 +307,19 @@ function updateiNeDot(request, response) {
               inedot.preset     = [{message : request.body.message}];
           }
 
+          center.checkCenterInFamily(familyKey_create,owner_create,function (error,exist) {
+            // body...
+            if (error) {
+              console.log(error);
+            }
+            console.log("isCenter");
+            if (exit) {
+              //autocreate c-push table
+              cpush.autoCreateCPush(request, response)
+            }
+
+          });
+
           // response.send(inedot)
           return inedot.save(function(error) {
             if (error) {
@@ -318,20 +331,7 @@ function updateiNeDot(request, response) {
 
           //auto create c-push table for center if inedot's owner is center
           //if iNedot's owner is center,auto create c_push table for it!
-          center.checkCenterInFamily(familyKey_create,owner_create,function (error,exist) {
-            // body...
-            if (error) {
-              console.log(error);
-            }
-            console.log("isCenter");
-            if (exit) {
-              //autocreate c-push table
-              cpush.autoCreateCPush(request, response)
 
-
-            }
-
-          });
 
         }else {
           response.json({result : "no such device"})

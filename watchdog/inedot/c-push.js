@@ -222,6 +222,51 @@ function createCPush(request, response) {
 
 }
 
+function autoUpdateCPush(identifier) {
+  // body...
+  // var familyKey_find  = request.body.familyKey
+  // var c_macAddr_find  = request.body.c_macAddr
+  // var i_macAddr_find  = request.body.i_macAddr
+  // var identifier_find = request.body.identifier;
+
+  // console.log(familyKey_find);
+  // console.log(c_macAddr_find);
+  // console.log(i_macAddr_find);
+  console.log(identifier);
+
+  CPush.findById({_id : identifier},
+
+  function(error, c_push) {
+      // body...
+      if (error) {
+        // response.end(error)
+        console.log(error);
+      }
+      if (c_push) {
+        // if (request.body.familyKey) {
+        //     push.familyKey       = request.body.familyKey;
+        //   }
+        // if (request.body.c_macAddr) {
+        //     push.c_macAddr       = request.body.c_macAddr;
+        //   }
+        c_push.checkMark = true
+        // response.send(center)
+        return c_push.save(function(error) {
+          if (error) {
+            // response.send(error);
+            console.log(error);
+          }else {
+            // response.json({"result" : "success"})              // return response.send(phone);
+            console.log("Success! c_push updata to read state.");
+          }
+        });
+      }else {
+        // response.json({"result" : "no such CPush"})
+        console.log("Failure! c_push didn't update.");
+      }
+    })
+}
+
 function updateCPush(request, response) {
   // body...
   // var familyKey_find  = request.body.familyKey
@@ -426,9 +471,12 @@ module.exports = {
   allCPush    : allCPush,
   familyCPush : familyCPush,
   familyCPush_JSON  : familyCPush_JSON,
+
   autoCreateCPush : autoCreateCPush,
   createCPush : createCPush,
+  autoUpdateCPush : autoUpdateCPush,
   updateCPush : updateCPush,
+  
   changeCPushCheckMark  : changeCPushCheckMark,
   deleteCPush : deleteCPush,
 

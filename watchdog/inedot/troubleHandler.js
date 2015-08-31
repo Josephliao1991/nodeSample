@@ -41,42 +41,52 @@ function connectStateResponse(request, response) {
   var familyKey  = request.body.familyKey
   var macAddr    = request.body.macAddr
   var condition  = request.body.condition
+  var identifier = request.body.identifier
   var req   = request
   var res   = response
 
-  getDeviceOwner(familyKey, macAddr, function (error, phone) {
-    // body...
+  if (familyKey && macAddr && condition && identifier) {
+    getDeviceOwner(familyKey, macAddr, function (error, phone) {
+      // body...
 
-    console.log("familyKey : "+familyKey);
-    console.log("macAddr: "+macAddr);
-    // if (phone) {
-    //     console.log("phone : "+phone.deviceToken);
-    // }else {
-    //   console.log("null");
-    // }
-    if (phone) {
-    //   var deviceToken;
-    //   if (phone.operation == "ios") {
-    //     deviceToken = phone.deviceToken
-    //   }else {
-    //     deviceToken = phone.token
-    //   }
-      /*
-      Success  ==> 0
-      failure  ==> 1
-      Can Not Find ==> 2
-      */
-      console.log(phone);
+      console.log("familyKey : "+familyKey);
+      console.log("macAddr: "+macAddr);
+      // if (phone) {
+      //     console.log("phone : "+phone.deviceToken);
+      // }else {
+      //   console.log("null");
+      // }
+      if (phone) {
+      //   var deviceToken;
+      //   if (phone.operation == "ios") {
+      //     deviceToken = phone.deviceToken
+      //   }else {
+      //     deviceToken = phone.token
+      //   }
+        /*
+        Success  ==> 0
+        failure  ==> 1
+        Can Not Find ==> 2
+        */
+        console.log(phone);
 
-      var message = {"messageFrom": "iNedotServer",
-                     "report"     : "connectStateRsepons",
-                     "inedot"     : macAddr,
-                     "result"     : condition}
+        var message = {"messageFrom": "iNedotServer",
+                       "report"     : "connectStateRsepons",
+                       "inedot"     : macAddr,
+                       "result"     : condition}
+        //send push for phone to handle problem
+        push.sendPushTrouble(phone, message, req, res);
 
-      push.sendPushTrouble(phone, message, req, res);
-    }
+        //auto delete c_push table data
+        
+      }
 
-  })
+    })
+  }else {
+    response.json({"result":"lost some params..."})
+  }
+
+
 
 }
 

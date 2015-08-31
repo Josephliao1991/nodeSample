@@ -36,7 +36,7 @@ function createqr(familyKey) {
 
 function readqr(name) {
   // body...
-  return fs.createReadStream(fileDirect + name);
+  return fs.createReadStream(__dirname+fileDirect + name);
 }
 
 module.exports = {

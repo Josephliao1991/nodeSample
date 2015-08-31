@@ -299,28 +299,27 @@ function updateiNeDot(request, response) {
             }
           if (request.body.owner) {
               inedot.owner           = request.body.owner;
+
+              center.checkCenterInFamily(familyKey_find,owner_create,function (error,exist) {
+                // body...
+                if (error) {
+                  console.log(error);
+                }
+                console.log("isCenter");
+                if (exit) {
+                  //autocreate c-push table
+                  cpush.autoCreateCPush(request, response)
+                }
+
+              });
+
             }
-          if (request.body.situation == "temp" && request.body.temp) {
-              inedot.preset     = [{temp : request.body.temp}];
-          }else if (request.body.situation == "alert" && request.body.alert) {
-              inedot.preset     = [{alert : request.body.alert}];
-          }else if (request.body.situation == "message" && request.body.message) {
-              inedot.preset     = [{message : request.body.message}];
+          if (request.body.sisuition) {
+              inedot.situation       =  request.body.situation
           }
 
-          if (owner_find) {
-            center.checkCenterInFamily(familyKey_find,owner_create,function (error,exist) {
-              // body...
-              if (error) {
-                console.log(error);
-              }
-              console.log("isCenter");
-              if (exit) {
-                //autocreate c-push table
-                cpush.autoCreateCPush(request, response)
-              }
-
-            });
+          if (request.body.preset) {
+              inedot.preset          =  request.body.preset
           }
 
 

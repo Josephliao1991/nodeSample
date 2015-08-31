@@ -518,8 +518,8 @@ var csvFile = require('./csv/csvFile.js');
     // body...
     var array = JSON.stringify(request.body.array);
     console.log(JSON.stringify(array));
-    // console.log(array.alert.length);
-    // console.log(array.alert);
+    console.log(array.temp);
+    console.log(array.alert);
 
     var jsonString = "{\"key\":\"value\"}";
     var jsonObj = JSON.parse(jsonString);

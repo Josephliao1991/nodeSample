@@ -262,6 +262,7 @@ function updateiNeDot(request, response) {
   // body...
   var familyKey_find = request.body.familyKey
   var macAddr_find   = request.body.macAddr
+  var owner_find     = request.body.owner
 
   console.log("updateiNeDot : "+familyKey_find);
   console.log("updateiNeDot : "+macAddr_find);
@@ -307,18 +308,21 @@ function updateiNeDot(request, response) {
               inedot.preset     = [{message : request.body.message}];
           }
 
-          center.checkCenterInFamily(familyKey_create,owner_create,function (error,exist) {
-            // body...
-            if (error) {
-              console.log(error);
-            }
-            console.log("isCenter");
-            if (exit) {
-              //autocreate c-push table
-              cpush.autoCreateCPush(request, response)
-            }
+          if (owner_find) {
+            center.checkCenterInFamily(familyKey_find,owner_create,function (error,exist) {
+              // body...
+              if (error) {
+                console.log(error);
+              }
+              console.log("isCenter");
+              if (exit) {
+                //autocreate c-push table
+                cpush.autoCreateCPush(request, response)
+              }
 
-          });
+            });
+          }
+
 
           // response.send(inedot)
           return inedot.save(function(error) {

@@ -524,6 +524,9 @@ var csvFile = require('./csv/csvFile.js');
     var jsonObj = JSON.parse(jsonString);
     console.log(jsonObj.key);
 
+    // var jsonString = "{\"key\":\"value\"}";
+    var jsonObjArray = JSON.parse(array);
+    console.log(jsonObjArray);
 
   })
   // app.listen(8080,argv.fe_ip,function(request, response) {

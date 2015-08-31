@@ -237,7 +237,7 @@ function createiNeDot(request, response) {
             console.log(error);
           }
 
-          if (exit) {
+          if (exist) {
             //autocreate c-push table
             cpush.autoCreateCPush(request, response)
 
@@ -306,7 +306,7 @@ function updateiNeDot(request, response) {
                   console.log(error);
                 }
                 console.log("isCenter");
-                if (exit) {
+                if (exist) {
                   //autocreate c-push table
                   cpush.autoCreateCPush(request, response)
                 }

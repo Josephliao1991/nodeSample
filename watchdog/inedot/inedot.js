@@ -271,6 +271,7 @@ function updateiNeDot(request, response) {
                   macAddr  : macAddr_find },function(error, inedot) {
     // return iNeDot.findById(identifier,function(error, inedot) {
         // body...
+        console.log("Show inedot : "+inedot);
         if (error) {
           response.end(error)
         }

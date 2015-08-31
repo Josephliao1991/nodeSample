@@ -14,8 +14,8 @@ function getDeviceOwner(familyKey, macAddr, callback) {
         callback(error)
      }
      if (inedot) {
-       var deviceToken = inedot.owner
-      //  console.log("inedot : -- "+deviceToken);
+       var deviceToken = inedot.person_setting
+       console.log("inedot' person_setting : -- "+deviceToken);
        phone.Phone.findOne({familyKey  : familyKey,
                             deviceToken : deviceToken},
         function (error, phone) {
@@ -47,6 +47,7 @@ function connectStateResponse(request, response) {
   var res   = response
 
   if (familyKey && macAddr && condition && identifier) {
+    
     getDeviceOwner(familyKey, macAddr, function (error, phone) {
       // body...
 

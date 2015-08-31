@@ -11,6 +11,8 @@ var iNeDot = mongoose.model('inedot', {
     situation     : Array,
 
     owner         : String,
+    person_setting       : String,
+
     connectState  : Boolean,
 
     battery       : Number,
@@ -146,7 +148,8 @@ function inedotExist(request, response) {
                     "name"          : indeot.name,
                     "situation"     : indeot.situation,
                     "battery"       : indeot.battery,
-                    "preset"        : indeot.preset}
+                    "preset"        : indeot.preset,
+                    "person_setting": inedot.person_setting}
 
         response.json({"result" : true,
                        "data" : data})
@@ -170,6 +173,7 @@ function createiNeDot(request, response) {
   var situation_create = request.body.situation //json
   var battery_create = request.body.battery
   var preset_create   = request.body.preset //json
+  var person_setting_create = request.body.person_setting
   // var presetValue;
   // if (request.body.situation == "temp" && request.body.preset) {
   //     presetValue = [{temp : request.body.preset}]
@@ -186,7 +190,7 @@ function createiNeDot(request, response) {
   console.log(situation_create);
   console.log(battery_create);
   console.log(preset_create);
-
+  console.log(person_setting_create);
   // console.log("createiNeDot request By deviceToken : " +owner_create +"in family : "+familyKey_create);
   //checkiNeDotExist
   checkiNeDotExist(macAddr_create,function (error, inedot) {
@@ -199,7 +203,7 @@ function createiNeDot(request, response) {
       response.json({result : "fail,inedot is exist"})
     }else {
       if (familyKey_create && macAddr_create && owner_create && connectState_create &&
-        name_create && situation_create && battery_create && preset_create) {
+        name_create && situation_create && battery_create && preset_create && person_setting_create) {
 
           //save to iNedot
           var situation_array = [];
@@ -212,6 +216,7 @@ function createiNeDot(request, response) {
             macAddr       : macAddr_create,
 
             owner         : owner_create,
+            person_setting: person_setting_create,
             connectState  : connectState_create,
 
             name          : name_create,
@@ -322,6 +327,9 @@ function updateiNeDot(request, response) {
               inedot.preset          =  request.body.preset
           }
 
+          if (request.body.person_setting) {
+              inedot.person_setting  = request.body.person_setting
+          }
 
           // response.send(inedot)
           return inedot.save(function(error) {

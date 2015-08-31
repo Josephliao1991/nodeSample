@@ -518,7 +518,7 @@ var csvFile = require('./csv/csvFile.js');
     // body...
     var array = request.body.array;
     console.log(JSON.stringify(array));
-    // console.log(array[0]);
+    console.log(array['alert']);
 
     var jsonString = "{\"key\":\"value\"}";
     var jsonObj = JSON.parse(jsonString);

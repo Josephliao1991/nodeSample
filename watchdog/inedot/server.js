@@ -524,20 +524,11 @@ var csvFile = require('./csv/csvFile.js');
     console.log("JSON.switch.alert: "+array.switch.alert);
     console.log("JSON.type: "+array.type);
 
-    // var jsonString = "{\"key\":\"value\"}";
-    // var jsonObj = JSON.parse(jsonString);
-    // console.log(jsonObj.key);
-
-    // var jsonString = "{\"key\":\"value\"}";
-    // var jsonObjArray = JSON.parse(JSON.stringify(array));
-    // console.log("JSON.parse(stringify): "+jsonObjArray);
-    // console.log(jsonObjArray.temp);
-
   })
   // app.listen(8080,argv.fe_ip,function(request, response) {
   // app.listen(80,argv.fe_ip,function(request, response) {
   // app.listen(80,'10.240.203.56',function(request, response) { //My Test Server
-  app.listen(80,'10.240.125.145',function(request, response) {
+  app.listen(8080,'10.240.125.145',function(request, response) {
 
     // body...
     // console.log('App listening at http://%s:%s', server.address().address, server.address().port);

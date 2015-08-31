@@ -13,8 +13,8 @@ var CPush = mongoose.model('c_push', {
     familyKey     : String,
     c_macAddr     : String,
     i_macAddr     : String,
-    command       : Number,
-    preset        : String,
+    command       : Array,
+    preset        : Array,
     checkMark     : Boolean
 });
 
@@ -133,6 +133,48 @@ function familyCPush(request, response) {
     response.json([{"result":"lost some parmas"}])
   }
 }
+
+function autoCreateCPush(request, response) {
+  // body...
+  var familyKey_create  = request.body.familyKey
+  var c_macAddr_create  = request.body.owner
+  var i_macAddr_create  = request.body.macAddr
+  var command_create    = request.body.situation
+  var preset_create     = request.body.preset
+
+  // if (request.body.preset) {
+  //   preset_create = request.body.preset+""
+  // }else {
+  //   preset_create = "none"
+  // }
+
+  if (familyKey_create && c_macAddr_create && i_macAddr_create && command_create && preset_create ) {
+
+    CPush.create({
+
+        familyKey     : familyKey_create,
+        c_macAddr     : c_macAddr_create,
+        i_macAddr     : i_macAddr_create,
+        command       : command_create,
+        preset        : preset_create,
+        checkMark     : false
+
+    },function(error, c_push){
+      // body...
+      if (error) {
+          response.send(error)
+      }else {
+          // response.json(phone)
+          response.json({"result" : "success"})
+      }
+    })
+
+  }else {
+    response.json({"result" : "lost some params"})
+  }
+
+}
+
 
 function createCPush(request, response) {
   // body...
@@ -379,6 +421,7 @@ module.exports = {
   allCPush    : allCPush,
   familyCPush : familyCPush,
   familyCPush_JSON  : familyCPush_JSON,
+  autoCreateCPush : autoCreateCPush,
   createCPush : createCPush,
   updateCPush : updateCPush,
   changeCPushCheckMark  : changeCPushCheckMark,

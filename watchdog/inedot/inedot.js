@@ -1,4 +1,6 @@
 var mongoose = require('mongoose');
+var center = require('./center.js');
+var c-push = require('./c-push.js');
 
 //Create iNeDot Mongodb Module
 var iNeDot = mongoose.model('inedot', {
@@ -6,7 +8,7 @@ var iNeDot = mongoose.model('inedot', {
     macAddr       : String,
 
     name          : String,
-    situation     : String,
+    situation     : Array,
 
     owner         : String,
     connectState  : Boolean,
@@ -165,16 +167,17 @@ function createiNeDot(request, response) {
   var owner_create = request.body.owner
   var connectState_create = request.body.connectState
   var name_create = request.body.name
-  var situation_create = request.body.situation
+  var situation_create = request.body.situation //json
   var battery_create = request.body.battery
-  var presetValue;
-  if (request.body.situation == "temp" && request.body.preset) {
-      presetValue = [{temp : request.body.preset}]
-  }else if (request.body.situation == "alert" && request.body.preset) {
-      presetValue = [{alert : request.body.preset}]
-  }else if (request.body.situation == "message" && request.body.preset) {
-      presetValue = [{message : request.body.preset}]
-  }
+  var preset_create   = request.body.preset //json
+  // var presetValue;
+  // if (request.body.situation == "temp" && request.body.preset) {
+  //     presetValue = [{temp : request.body.preset}]
+  // }else if (request.body.situation == "alert" && request.body.preset) {
+  //     presetValue = [{alert : request.body.preset}]
+  // }else if (request.body.situation == "message" && request.body.preset) {
+  //     presetValue = [{message : request.body.preset}]
+  // }
 
   console.log("createiNeDot request By deviceToken : " +owner_create +"in family : "+familyKey_create);
   //checkiNeDotExist
@@ -187,8 +190,14 @@ function createiNeDot(request, response) {
     if (inedot) {
       response.json({result : "fail,inedot is exist"})
     }else {
-      if (familyKey_create && macAddr_create && owner_create && connectState_create && name_create && situation_create && battery_create) {
+      if (familyKey_create && macAddr_create && owner_create && connectState_create &&
+        name_create && situation_create && battery_create && preset_create) {
 
+          //save to iNedot
+          var situation_array = [];
+          situation_array.push(situation_create)
+          var preset_array = [];
+          preset_array.push(preset_create)
         iNeDot.create({
 
             familyKey     : familyKey_create,
@@ -198,11 +207,11 @@ function createiNeDot(request, response) {
             connectState  : connectState_create,
 
             name          : name_create,
-            situation     : situation_create,
+            situation     : situation_array,
 
             battery       : battery_create,
 
-            preset        : presetValue
+            preset        : preset_array
         },function(error, inedot){
           // body...
           if (error) {
@@ -211,6 +220,22 @@ function createiNeDot(request, response) {
               // response.json(phone)
               response.json({result : "success"})
           }
+        })
+
+        //if iNedot's owner is center,auto create c_push table for it!
+        center.checkCenterInFamily(familyKey_create,owner_create,function (error,exist) {
+          // body...
+          if (error) {
+            console.log(error);
+          }
+
+          if (exit) {
+            //autocreate c-push table
+            c-push.autoCreateCPush(request, response)
+
+
+          }
+
         })
 
       }else {
@@ -242,6 +267,7 @@ function updateiNeDot(request, response) {
           response.end(error)
         }
 
+        //change iNedot data
         if (inedot) {
           // if (request.body.familyKey) {
           //     inedot.familyKey       = request.body.familyKey;
@@ -280,6 +306,10 @@ function updateiNeDot(request, response) {
               response.json({result : "success"})              // return response.send(phone);
             }
           });
+
+          //auto create c-push table for center if inedot's owner is center
+          c-push.autoCreateCPush(request, response);
+
         }else {
           response.json({result : "no such device"})
         }

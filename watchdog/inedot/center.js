@@ -36,9 +36,9 @@ function checkCenterInFamily(familyKey, macAddr, callback) {
     }
     if (center) {
       console.log("checkCenterInFamily : "+center.familyKey);
-      return callback(null, "true")
+      return callback(null,1)
     }else {
-      return callback(null, "false")
+      return callback(null, null)
     }
   })
 }
@@ -305,6 +305,7 @@ module.exports = {
   deleteCenter  : deleteCenter,
   deleteCenterById  : deleteCenterById,
   centerExist   : centerExist,
+  checkCenterInFamily   : checkCenterInFamily,
   Center  : Center
 
 }

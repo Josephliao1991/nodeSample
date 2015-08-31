@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 var center = require('./center.js');
-var c-push = require('./c-push.js');
+var cpush = require('./c-push.js');
 
 //Create iNeDot Mongodb Module
 var iNeDot = mongoose.model('inedot', {
@@ -231,7 +231,7 @@ function createiNeDot(request, response) {
 
           if (exit) {
             //autocreate c-push table
-            c-push.autoCreateCPush(request, response)
+            cpush.autoCreateCPush(request, response)
 
 
           }
@@ -308,7 +308,7 @@ function updateiNeDot(request, response) {
           });
 
           //auto create c-push table for center if inedot's owner is center
-          c-push.autoCreateCPush(request, response);
+          cpush.autoCreateCPush(request, response);
 
         }else {
           response.json({result : "no such device"})

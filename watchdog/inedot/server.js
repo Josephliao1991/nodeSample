@@ -526,7 +526,7 @@ var csvFile = require('./csv/csvFile.js');
     // console.log(jsonObj.key);
 
     // var jsonString = "{\"key\":\"value\"}";
-    var jsonObjArray = JSON.parse(array);
+    var jsonObjArray = JSON.parse(JSON.stringify(array));
     console.log(jsonObjArray);
     // console.log(jsonObjArray.temp);
 

@@ -178,8 +178,16 @@ function createiNeDot(request, response) {
   // }else if (request.body.situation == "message" && request.body.preset) {
   //     presetValue = [{message : request.body.preset}]
   // }
+  console.log(familyKey_create);
+  console.log(macAddr_create);
+  console.log(owner_create);
+  console.log(connectState_create);
+  console.log(name_create);
+  console.log(situation_create);
+  console.log(battery_create);
+  console.log(preset_create);
 
-  console.log("createiNeDot request By deviceToken : " +owner_create +"in family : "+familyKey_create);
+  // console.log("createiNeDot request By deviceToken : " +owner_create +"in family : "+familyKey_create);
   //checkiNeDotExist
   checkiNeDotExist(macAddr_create,function (error, inedot) {
     // body...

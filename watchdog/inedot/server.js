@@ -516,18 +516,18 @@ var csvFile = require('./csv/csvFile.js');
 
   app.post('/array', function (request, response) {
     // body...
-    var array = request.body.array;
+    var array = request.body.array[0];
     console.log(JSON.stringify(array));
     console.log(array.temp);
     console.log(array.alert);
 
-    var jsonString = "{\"key\":\"value\"}";
-    var jsonObj = JSON.parse(jsonString);
-    console.log(jsonObj.key);
+    // var jsonString = "{\"key\":\"value\"}";
+    // var jsonObj = JSON.parse(jsonString);
+    // console.log(jsonObj.key);
 
     // var jsonString = "{\"key\":\"value\"}";
-    // var jsonObjArray = JSON.parse(array);
-    // console.log(jsonObjArray);
+    var jsonObjArray = JSON.parse(array);
+    console.log(jsonObjArray);
     // console.log(jsonObjArray.temp);
 
   })

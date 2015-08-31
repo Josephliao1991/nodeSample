@@ -18,7 +18,7 @@ var csvFile = require('./csv/csvFile.js');
   //Connect to Mongodb
   // mongoose.connect('mongodb://'+argv.be_ip+':80/familyDatabase');
   // mongoose.connect('mongodb://10.240.72.88:80/familyDatabase'); //myTest Server
-  mongoose.connect('mongodb://10.240.17.142:80/familyDatabase');
+  mongoose.connect('mongodb://10.240.17.142:80/NewFamilyDatabase');
 
   //set express to app
   var app = express();

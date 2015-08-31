@@ -520,6 +520,11 @@ var csvFile = require('./csv/csvFile.js');
     console.log(array);
     console.log(array[0]);
 
+    var jsonString = "{\"key\":\"value\"}";
+    var jsonObj = JSON.parse(jsonString);
+    console.log(jsonObj.key);
+
+
   })
   // app.listen(8080,argv.fe_ip,function(request, response) {
   // app.listen(80,argv.fe_ip,function(request, response) {

@@ -47,7 +47,7 @@ function connectStateResponse(request, response) {
   var res   = response
 
   if (familyKey && macAddr && condition && identifier) {
-    
+
     getDeviceOwner(familyKey, macAddr, function (error, phone) {
       // body...
 
@@ -76,10 +76,13 @@ function connectStateResponse(request, response) {
                        "report"     : "connectStateRsepons",
                        "inedot"     : macAddr,
                        "result"     : condition}
-        //send push for phone to handle problem
-        push.sendPushTrouble(phone, message, req, res);
+
+
         //auto delete c_push table data
         cpush.autoUpdateCPush(identifier);
+        //send push for phone to handle problem
+        push.sendPushTrouble(phone, message, req, res);
+
       }
 
     })

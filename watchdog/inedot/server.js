@@ -516,7 +516,7 @@ var csvFile = require('./csv/csvFile.js');
 
   app.post('/array', function (request, response) {
     // body...
-    var array = JSON.stringify(request.body.array[0]);
+    var array = JSON.stringify(request.body.array);
     console.log(JSON.stringify(array));
     // console.log(array.alert.length);
     // console.log(array.alert);

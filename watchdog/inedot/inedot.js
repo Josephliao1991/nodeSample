@@ -300,7 +300,7 @@ function updateiNeDot(request, response) {
           if (request.body.owner) {
               inedot.owner           = request.body.owner;
 
-              center.checkCenterInFamily(familyKey_find,owner_create,function (error,exist) {
+              center.checkCenterInFamily(familyKey_find,owner_find,function (error,exist) {
                 // body...
                 if (error) {
                   console.log(error);

@@ -517,7 +517,7 @@ var csvFile = require('./csv/csvFile.js');
   app.post('/array', function (request, response) {
     // body...
     var array = request.body.array;
-    // console.log(array);
+    console.log(array);
     // console.log(array[0]);
 
     var jsonString = "{\"key\":\"value\"}";
@@ -525,9 +525,9 @@ var csvFile = require('./csv/csvFile.js');
     console.log(jsonObj.key);
 
     // var jsonString = "{\"key\":\"value\"}";
-    var jsonObjArray = JSON.parse(array);
-    console.log(jsonObjArray);
-    console.log(jsonObjArray.temp);
+    // var jsonObjArray = JSON.parse(array);
+    // console.log(jsonObjArray);
+    // console.log(jsonObjArray.temp);
 
   })
   // app.listen(8080,argv.fe_ip,function(request, response) {

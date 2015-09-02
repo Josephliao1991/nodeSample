@@ -160,7 +160,7 @@ function pushTest(request, response) {
   if (operation == "ios") {
     //iOS
     console.log("TestinG => iOSPush with token : "+deviceToken);
-    // nodeiOSPush.sendiOSPush(deviceToken,99999, "alert", "PushTest", "JosephSend")
+    nodeiOSPush.sendiOSPush(deviceToken,99999, "alert", "PushTest", "JosephSend")
   }else if(operation == "android"){
     //Android
     console.log("TestinG => androidPush with token : "+deviceToken);

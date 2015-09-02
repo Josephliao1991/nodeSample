@@ -154,6 +154,9 @@ function pushTest(request, response) {
   var familyKey   = request.query.familyKey
   var deviceToken = request.query.deviceToken
   var operation = request.query.operation
+
+  console.log(familyKey +" " +deviceToken+ " " + operation);
+
   if (operation == "ios") {
     //iOS
     console.log("TestinG => iOSPush with token : "+deviceToken);

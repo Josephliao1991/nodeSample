@@ -33,25 +33,6 @@ var csvFile = require('./csv/csvFile.js');
       parameterLimit: 10000,
       limit: 1024 * 1024 * 50 }))
   app.use(methodOverride())
-//   app.use(function(req, res, next) {
-//     var data = [];
-//     req.on("data", function(chunk) {
-//       console.log("chunk : "+chunk);
-//         data.push(new Buffer(chunk));
-//     });
-//     req.addListener("end", function() {
-//         buffer = Buffer.concat(data);
-//         console.log("buffer : "+buffer);
-//         // zlib.inflate(buffer, function(err, result) {
-//         //     if (!err) {
-//         //         req.body = result.toString();
-//         //         next();
-//         //     } else {
-//         //         next(err);
-//         //     }
-//         // });
-//     });
-// });
 
   //Testing api
   app.get('/',function(request,response){

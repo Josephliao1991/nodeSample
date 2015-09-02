@@ -4,8 +4,8 @@ var apns = require('apn');
 function sendiOSPush(deviceToken, badgeNumber, situation, name, macAddr) {
   // body...
   var options = {
-      cert: 'aps_development.pem',                 /* Certificate file path */
-      key:  'apns_dev_key.pem',                  /* Key file path */
+      cert: __dirname+'aps_development.pem',                 /* Certificate file path */
+      key:  __dirname+'apns_dev_key.pem',                  /* Key file path */
       gateway: 'gateway.sandbox.push.apple.com',/* gateway address */
       passphrase : '0000',
       port: 2195,                       /* gateway port */

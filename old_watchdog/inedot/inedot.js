@@ -174,6 +174,8 @@ function createiNeDot(request, response) {
       presetValue = [{alert : request.body.preset}]
   }else if (request.body.situation == "message" && request.body.preset) {
       presetValue = [{message : request.body.preset}]
+  }else if (request.body.situation == "humi" && request.body.preset) {
+      presetValue = [{humi  : request.body.preset}]
   }
 
   console.log("createiNeDot request By deviceToken : " +owner_create +"in family : "+familyKey_create);
@@ -270,6 +272,8 @@ function updateiNeDot(request, response) {
               inedot.preset     = [{alert : request.body.alert}];
           }else if (request.body.situation == "message" && request.body.message) {
               inedot.preset     = [{message : request.body.message}];
+          }else if (request.body.situation == "humi" && request.body.preset) {
+              presetValue = [{humi  : request.body.preset}]
           }
 
           // response.send(inedot)

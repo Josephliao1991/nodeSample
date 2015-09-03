@@ -11,7 +11,7 @@ var iNeDot = mongoose.model('inedot', {
     situation     : Array,
 
     owner         : String,
-    person_setting       : String,
+    person_setting: String,
 
     connectState  : Boolean,
 

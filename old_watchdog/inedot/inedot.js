@@ -266,12 +266,12 @@ function updateiNeDot(request, response) {
           if (request.body.owner) {
               inedot.owner           = request.body.owner;
             }
-          if (request.body.situation == "temp" && request.body.temp) {
-              inedot.preset     = [{temp : request.body.temp}];
-          }else if (request.body.situation == "alert" && request.body.alert) {
-              inedot.preset     = [{alert : request.body.alert}];
-          }else if (request.body.situation == "message" && request.body.message) {
-              inedot.preset     = [{message : request.body.message}];
+          if (request.body.situation == "temp" && request.body.preset) {
+              inedot.preset     = [{temp : request.body.preset}];
+          }else if (request.body.situation == "alert" && request.body.preset) {
+              inedot.preset     = [{alert : request.body.preset}];
+          }else if (request.body.situation == "message" && request.body.preset) {
+              inedot.preset     = [{message : request.body.preset}];
           }else if (request.body.situation == "humi" && request.body.preset) {
               presetValue = [{humi  : request.body.preset}]
           }

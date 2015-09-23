@@ -8,7 +8,9 @@ function sendPush(request, response) {
   // body...
   var familyKey_alert = request.body.familyKey
   var macAddr_alert   = request.body.macAddr
-
+  console.log('familyKey_alert: '+familyKey_alert);
+  console.log('macAddr_alert: '+macAddr_alert);
+  
   inedot.iNeDot.find({familyKey  : familyKey_alert,
                       macAddr    : macAddr_alert},
    function(error, inedot) {

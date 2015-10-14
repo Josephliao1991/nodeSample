@@ -513,7 +513,7 @@ var csvFile = require('./csv/csvFile.js');
 
     // body...
     // console.log('App listening at http://%s:%s', server.address().address, server.address().port);
-    console.log("Press Ctrl+C to quit.");
-    console.log("server start");
+    console.log("Press Ctrl+C to quit. \n");
+    console.log("server start \n Hello world, This is iNeDot Server! And Your Son Of Bitch!");
 
   })
